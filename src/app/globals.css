@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ── Dark mode via .dark class (next-themes) ── */
+@custom-variant dark (&:where(.dark, .dark *));
 
+/* ── Design tokens: theme-aware (light/dark) ── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts */
+  --font-sans:    var(--font-outfit);
+  --font-display: var(--font-jost);
+
+  /* Surfaces */
+  --color-surface: var(--bg-surface);
+  --color-card:    var(--bg-card);
+  --color-invert:  var(--bg-invert);
+
+  /* Text */
+  --color-title:    var(--fg-title);
+  --color-prose:    var(--fg-prose);
+  --color-faint:    var(--fg-faint);
+  --color-on-invert: var(--fg-on-invert);
+
+  /* Border */
+  --color-line: var(--border-line);
+
+  /* Accent */
+  --color-link: var(--accent-link);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Light mode (default) ── */
+:root {
+  color-scheme: light;
+  --bg-surface:    #fafafa;
+  --bg-card:       #ffffff;
+  --bg-invert:     #171717;
+  --fg-title:      #171717;
+  --fg-prose:      #4d4d4d;
+  --fg-faint:      #888888;
+  --fg-on-invert:  #ffffff;
+  --border-line:   #ebebeb;
+  --accent-link:   #0070f3;
 }
+
+/* ── Dark mode ── */
+.dark {
+  color-scheme: dark;
+  --bg-surface:    #0d0d0d;
+  --bg-card:       #171717;
+  --bg-invert:     #000000;
+  --fg-title:      #ededed;
+  --fg-prose:      #a0a0a0;
+  --fg-faint:      #575757;
+  --fg-on-invert:  #ffffff;
+  --border-line:   #2a2a2a;
+  --accent-link:   #60a5fa;
+}
+
+/* ── Base styles ── */
+* { box-sizing: border-box; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-surface);
+  color: var(--fg-title);
+  font-family: var(--font-outfit, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-jost, system-ui, sans-serif);
+}
+
+/* ── Typography scale ── */
+.display-xl {
+  font-family: var(--font-jost, system-ui, sans-serif);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.display-lg {
+  font-family: var(--font-jost, system-ui, sans-serif);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.display-md {
+  font-family: var(--font-jost, system-ui, sans-serif);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.display-sm {
+  font-family: var(--font-jost, system-ui, sans-serif);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+/* ── Stacked shadow (Vercel-style) ── */
+.shadow-card {
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.07),
+    0 1px 2px rgba(0,0,0,0.04),
+    0 4px 8px rgba(0,0,0,0.04);
+}
+.shadow-card-lg {
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.07),
+    0 2px 4px rgba(0,0,0,0.05),
+    0 8px 24px rgba(0,0,0,0.06);
+}
+.dark .shadow-card {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 1px 2px rgba(0,0,0,0.3),
+    0 4px 8px rgba(0,0,0,0.25);
+}
+.dark .shadow-card-lg {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 2px 4px rgba(0,0,0,0.3),
+    0 8px 24px rgba(0,0,0,0.3);
+}
+
+/* ── Mesh gradient (hero backdrop) ── */
+.mesh-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% -5%,  rgba(0,124,240,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 5%,   rgba(0,223,216,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 55% at 50% -10%, rgba(121,40,202,0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 75% 15%,  rgba(255,0,128,0.09) 0%, transparent 50%);
+}
+
+/* ── Eyebrow label style ── */
+.eyebrow {
+  font-family: var(--font-outfit, system-ui, sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
 }

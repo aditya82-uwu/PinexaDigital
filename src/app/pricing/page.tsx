@@ -84,9 +84,68 @@ const faqs = [
   },
 ];
 
+const pricingJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "PinexaDigital Web Design Packages",
+  url: siteUrl("/pricing"),
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      item: {
+        "@type": "Offer",
+        name: "Starter",
+        description: "For small businesses launching their first professional website. Up to 5 pages, 2-week delivery.",
+        price: "997",
+        priceCurrency: "USD",
+        url: siteUrl("/pricing"),
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "997",
+          priceCurrency: "USD",
+          unitText: "one-time",
+        },
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      item: {
+        "@type": "Offer",
+        name: "Growth",
+        description: "For businesses serious about generating leads. Up to 12 pages, advanced SEO, 3-week delivery.",
+        price: "2497",
+        priceCurrency: "USD",
+        url: siteUrl("/pricing"),
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "2497",
+          priceCurrency: "USD",
+          unitText: "one-time",
+        },
+      },
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      item: {
+        "@type": "Offer",
+        name: "Enterprise",
+        description: "For large projects, e-commerce, and ongoing partnerships. Custom pricing.",
+        url: siteUrl("/pricing"),
+      },
+    },
+  ],
+};
+
 export default function PricingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }}
+      />
       <section className="bg-card pt-20 pb-16 px-6 text-center border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Pricing" }]} />

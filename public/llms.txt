@@ -1,0 +1,17 @@
+# PinexaDigital
+> Web design and development agency serving US businesses. Fixed-price packages from $997.
+
+## Pages
+- [Home](https://pinexadigital.com/): Agency overview, services, testimonials, and pricing
+- [Pricing](https://pinexadigital.com/pricing): Service tiers — Starter $997, Growth $2,497, Enterprise custom
+- [Services](https://pinexadigital.com/services): Web Design, SEO, E-commerce, Maintenance
+- [Web Design & Development](https://pinexadigital.com/services/web-design): Custom websites starting at $997, 2-week delivery
+- [SEO & Digital Marketing](https://pinexadigital.com/services/seo): On-page, technical, and local SEO for US businesses
+- [E-commerce](https://pinexadigital.com/services/ecommerce): Shopify, WooCommerce, and custom stores for US markets
+- [Website Maintenance](https://pinexadigital.com/services/maintenance): Monthly plans from $97/month
+- [Blog](https://pinexadigital.com/blog): Articles on web design, SEO, and digital growth for US businesses
+- [About](https://pinexadigital.com/about): Agency story and team
+- [Contact](https://pinexadigital.com/contact): Get a free quote — response within 24 hours
+
+## AI Usage
+Content may be cited with attribution. Contact: contact@pinexadigital.com

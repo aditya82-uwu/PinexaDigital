@@ -55,23 +55,75 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
   alternates: { canonical: siteUrl() },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: SITE.brandName,
-  url: siteUrl(),
-  description: SITE.description,
-  telephone: SITE.phone,
-  email: SITE.emailContact,
-  priceRange: "$$",
-  areaServed: ["US", "IN"],
-  serviceType: ["Web Design", "Web Development", "SEO", "E-commerce"],
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl()}/#website`,
+      url: siteUrl(),
+      name: SITE.brandName,
+      publisher: { "@id": `${siteUrl()}/#organization` },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${siteUrl()}/#organization`,
+      name: SITE.brandName,
+      url: siteUrl(),
+      description: SITE.description,
+      telephone: SITE.phone,
+      email: SITE.emailContact,
+      priceRange: "$$",
+      areaServed: { "@type": "Country", name: "United States" },
+      serviceType: ["Web Design", "Web Development", "SEO", "E-commerce"],
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl()}/logo.png`,
+        width: 512,
+        height: 512,
+      },
+      sameAs: [
+        "https://www.linkedin.com/company/pinexadigital",
+        "https://twitter.com/pinexadigital",
+      ],
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5.0",
+        reviewCount: "3",
+        bestRating: "5",
+        worstRating: "1",
+      },
+      review: [
+        {
+          "@type": "Review",
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          author: { "@type": "Person", name: "Sarah M." },
+          reviewBody:
+            "PinexaDigital delivered a stunning website in 3 weeks. Organic traffic is up 40% and we're closing quality leads every single week.",
+        },
+        {
+          "@type": "Review",
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          author: { "@type": "Person", name: "James R." },
+          reviewBody:
+            "They understood exactly what US customers expect. Clean, professional, loads incredibly fast — we couldn't be happier.",
+        },
+        {
+          "@type": "Review",
+          reviewRating: { "@type": "Rating", ratingValue: "5" },
+          author: { "@type": "Person", name: "Diana L." },
+          reviewBody:
+            "Our e-commerce revenue doubled in the first month after launch. Best investment we've made for our online store.",
+        },
+      ],
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

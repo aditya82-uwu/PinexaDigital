@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { siteUrl } from "@/lib/site-config";
 
 export interface Crumb {
   label: string;
@@ -9,7 +10,23 @@ export interface Crumb {
 export default function Breadcrumb({ crumbs }: { crumbs: Crumb[] }) {
   const all: Crumb[] = [{ label: "Home", href: "/" }, ...crumbs];
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: all.map((crumb, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: crumb.label,
+      ...(crumb.href ? { item: siteUrl(crumb.href) } : {}),
+    })),
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
     <nav aria-label="Breadcrumb" className="mb-5">
       <ol className="flex items-center flex-wrap gap-y-1">
         {all.map((crumb, i) => {
@@ -29,5 +46,6 @@ export default function Breadcrumb({ crumbs }: { crumbs: Crumb[] }) {
         })}
       </ol>
     </nav>
+    </>
   );
 }

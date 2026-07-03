@@ -108,7 +108,7 @@ const demos = [
     title: "Construction",
     category: "Construction",
     desc: "Bold construction company site with project gallery, services, and quote request.",
-    url: `https://construction.${SITE.rootDomain}`,
+    url: `https://roofing.${SITE.rootDomain}`,
     tags: ["Construction", "Projects"],
     heroBg: "from-[#0f0800] via-[#1a1000] to-[#2d1a00]",
     heroAccent: "bg-orange-600",

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Menu, X } from "lucide-react";
@@ -38,6 +39,9 @@ function ThemeToggle() {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -54,9 +58,14 @@ export default function Navbar() {
       <nav className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <span className="font-display font-bold text-[16px] tracking-tight text-title">
-            {SITE.brandName}
-          </span>
+          <Image
+            src={!mounted || resolvedTheme === "dark" ? "/logo-light.png" : "/logo-dark.png"}
+            alt={SITE.brandName}
+            width={140}
+            height={32}
+            className="h-8 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}

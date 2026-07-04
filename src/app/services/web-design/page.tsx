@@ -6,7 +6,7 @@ import { SITE, siteUrl } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Web Design & Development Services for US Businesses",
-  description: `Custom web design and development for US businesses. ${SITE.brandName} builds fast, high-converting websites that drive real results. Fixed pricing from $997. Get a free quote.`,
+  description: `Custom web design and development for US businesses. ${SITE.brandName} builds fast, high-converting websites that drive real results. Fixed pricing from $299. Get a free quote.`,
   alternates: { canonical: siteUrl("/services/web-design") },
 };
 
@@ -14,7 +14,7 @@ const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Web Design & Development",
-  description: "Custom websites built for speed, SEO, and US audiences. Starting from $997.",
+  description: "Custom websites built for speed, SEO, and US audiences. Starting from $299.",
   url: siteUrl("/services/web-design"),
   provider: {
     "@type": "ProfessionalService",
@@ -24,11 +24,11 @@ const serviceJsonLd = {
   areaServed: { "@type": "Country", name: "United States" },
   offers: {
     "@type": "Offer",
-    price: "997",
+    price: "299",
     priceCurrency: "USD",
     priceSpecification: {
       "@type": "UnitPriceSpecification",
-      price: "997",
+      price: "299",
       priceCurrency: "USD",
       unitText: "one-time",
     },
@@ -63,7 +63,7 @@ const whoFor = [
 const faqs = [
   {
     q: "What's the difference between your Starter and Growth packages?",
-    a: "The Starter package ($997) covers up to 5 pages and is designed for businesses that need a clean, professional website quickly — homepage, about, services, contact, and one more. The Growth package ($2,497) covers up to 12 pages, includes a custom design system, advanced SEO, and a blog setup ready for content marketing. If you plan to publish content or need more than 5 pages, Growth is the right choice.",
+    a: "The Starter package ($299) covers up to 5 pages and is designed for businesses that need a clean, professional website quickly — homepage, about, services, contact, and one more. The Growth package ($499) covers up to 12 pages, includes a custom design system, advanced SEO, and a blog setup ready for content marketing. If you plan to publish content or need more than 5 pages, Growth is the right choice.",
   },
   {
     q: "Do you use templates or build from scratch?",
@@ -129,16 +129,16 @@ export default function WebDesignPage() {
           </div>
           <div className="bg-invert rounded-xl p-8 shadow-card-lg">
             <p className="eyebrow text-[#555] mb-4">Starting from</p>
-            <p className="display-xl text-on-invert mb-1">$997</p>
+            <p className="display-xl text-on-invert mb-1">$299</p>
             <p className="text-[14px] text-[#888] mb-4">one-time, no hidden fees</p>
             <div className="border-t border-[#333] pt-4 mb-6 space-y-2">
               <div className="flex justify-between text-[13px]">
                 <span className="text-[#888]">Starter (5 pages)</span>
-                <span className="text-on-invert font-semibold">$997</span>
+                <span className="text-on-invert font-semibold">$299</span>
               </div>
               <div className="flex justify-between text-[13px]">
                 <span className="text-[#888]">Growth (12 pages)</span>
-                <span className="text-on-invert font-semibold">$2,497</span>
+                <span className="text-on-invert font-semibold">$499</span>
               </div>
               <div className="flex justify-between text-[13px]">
                 <span className="text-[#888]">Enterprise</span>

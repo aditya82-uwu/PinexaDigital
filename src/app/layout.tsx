@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "US web design",
     "website design for small business",
     "ecommerce development",
-    "SEO agency",
+    "CRM automation",
     "PinexaDigital",
   ],
   authors: [{ name: SITE.brandName, url: siteUrl() }],
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     siteName: SITE.brandName,
     title: `${SITE.brandName} — Web Design & Development Agency`,
     description: SITE.description,
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: `${SITE.brandName} — Web Agency` }],
+    images: [{ url: "/logo.png", width: 512, height: 512, alt: `${SITE.brandName} — Web Agency` }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.brandName} — Web Design & Development Agency`,
     description: SITE.description,
-    images: ["/og-image.jpg"],
+    images: ["/logo.png"],
   },
   icons: {
     icon: "/favicon.png",
@@ -86,7 +86,7 @@ const jsonLd = {
       email: SITE.emailContact,
       priceRange: "$$",
       areaServed: { "@type": "Country", name: "United States" },
-      serviceType: ["Web Design", "Web Development", "SEO", "E-commerce"],
+      serviceType: ["Web Design", "Web Development", "CRM Automation", "E-commerce"],
       logo: {
         "@type": "ImageObject",
         url: `${siteUrl()}/logo.png`,
@@ -94,39 +94,11 @@ const jsonLd = {
         height: 512,
       },
       sameAs: [
-        "https://www.linkedin.com/company/pinexadigital",
-        "https://twitter.com/pinexadigital",
+        "https://www.linkedin.com/in/pinexa-digital-064059420",
+        "https://www.instagram.com/pinexadigital/",
       ],
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5.0",
-        reviewCount: "3",
-        bestRating: "5",
-        worstRating: "1",
-      },
-      review: [
-        {
-          "@type": "Review",
-          reviewRating: { "@type": "Rating", ratingValue: "5" },
-          author: { "@type": "Person", name: "Sarah M." },
-          reviewBody:
-            "PinexaDigital delivered a stunning website in 3 weeks. Organic traffic is up 40% and we're closing quality leads every single week.",
-        },
-        {
-          "@type": "Review",
-          reviewRating: { "@type": "Rating", ratingValue: "5" },
-          author: { "@type": "Person", name: "James R." },
-          reviewBody:
-            "They understood exactly what US customers expect. Clean, professional, loads incredibly fast — we couldn't be happier.",
-        },
-        {
-          "@type": "Review",
-          reviewRating: { "@type": "Rating", ratingValue: "5" },
-          author: { "@type": "Person", name: "Diana L." },
-          reviewBody:
-            "Our e-commerce revenue doubled in the first month after launch. Best investment we've made for our online store.",
-        },
-      ],
+      // aggregateRating and review removed until we have real, verifiable client reviews —
+      // fabricated review schema violates Google's structured data policy and FTC endorsement guides.
     },
   ],
 };

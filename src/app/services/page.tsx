@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Code2, Search, ShoppingBag, ShieldCheck, ArrowRight, Check } from "lucide-react";
+import { Code2, Workflow, ShoppingBag, ShieldCheck, ArrowRight, Check } from "lucide-react";
 import { SITE, siteUrl } from "@/lib/site-config";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 
@@ -30,21 +30,21 @@ const services = [
     ],
   },
   {
-    icon: Search,
-    title: "SEO & Digital Marketing",
-    shortDesc: "Rank on Google and attract qualified US visitors through data-driven SEO strategies.",
+    icon: Workflow,
+    title: "CRM Automation & Integration",
+    shortDesc: "Automate your sales and support workflows so leads get followed up and data stays in sync.",
     fullDesc:
-      "Getting found on Google by US customers is not accidental — it's the result of deliberate technical and content work. Our SEO service covers everything: technical audits to find and fix indexing issues, on-page optimisation of your existing pages, local SEO setup if you serve a specific geographic area, and content strategy to target the searches your potential customers are actually performing. We don't make vague promises about \"improving your rankings\" — we identify specific keyword opportunities, show you the gap between where you are and where you could be, and execute a plan to close it.",
-    href: "/services/seo",
-    tags: ["On-page SEO", "Technical SEO", "Local SEO", "Content"],
+      "Most businesses lose leads and time to disconnected tools and manual data entry — a form submission that sits unread, a spreadsheet that's always a day out of date, a follow-up that never happens because someone forgot. We set up your CRM and build the automation layer around it using n8n, Zapier, and Make: lead routing, follow-up sequences, and integrations with the tools you already use. Simple, single-workflow automations start at $200–$300. For custom, multi-system integrations, we scope it with you first and follow up with a fixed quote — no hourly billing, no surprises.",
+    href: "/services/crm-automation",
+    tags: ["n8n", "Zapier", "Make", "CRM Setup"],
     gradient: "from-violet-500 to-purple-500",
     includes: [
-      "Full technical SEO audit and fixes",
-      "Keyword research for your target market",
-      "On-page optimisation for all key pages",
-      "Local SEO and Google Business Profile setup",
-      "Monthly rank tracking and reporting",
-      "Content strategy and blog calendar",
+      "CRM setup and pipeline configuration",
+      "Lead routing and data sync automation",
+      "Email and SMS follow-up sequences",
+      "Third-party tool integrations",
+      "Workflow monitoring and error alerts",
+      "Custom automation quoted after a discovery call",
     ],
   },
   {
@@ -100,7 +100,7 @@ const faqs = [
   },
   {
     q: "How is your pricing structured?",
-    a: "Web design and e-commerce projects are fixed-price, one-time fees — Starter from $997, Growth from $2,497. SEO and maintenance are monthly retainers. All pricing is transparent on our pricing page with no hidden fees.",
+    a: "Web design and e-commerce projects are fixed-price, one-time fees — Starter from $299, Growth from $499. Maintenance is a monthly retainer, and CRM automation starts at $200–$300 for simple workflows, with custom integrations quoted individually. All pricing is transparent with no hidden fees.",
   },
 ];
 

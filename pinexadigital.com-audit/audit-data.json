@@ -1,181 +1,146 @@
 {
   "meta": {
     "domain": "pinexadigital.com",
-    "url": "https://pinexadigital.com",
-    "audit_date": "2026-06-29",
+    "url": "https://www.pinexadigital.com",
+    "audit_date": "2026-07-04",
+    "previous_audit_date": "2026-06-29",
+    "previous_health_score": 36,
     "pages_crawled": 11,
-    "business_type": "Agency — Web Design & Development"
+    "business_type": "Agency — Web Design & Development (US market, remote/no storefront)"
   },
   "summary": {
-    "health_score": 36,
+    "health_score": 38,
     "business_type": "Web Design & Development Agency",
     "top_findings": [
-      "robots.txt blocks ALL crawlers (Disallow: /) — site is completely invisible to Google and every AI engine",
-      "Global noindex/nofollow in layout.tsx — second independent layer preventing indexation",
-      "Blog post pages (/blog/[slug]) do not exist — 6 internal links lead to 404s",
-      "OG image /og-image.jpg missing from /public — social sharing previews are broken",
-      "Indian phone number (+91) on a US-targeted site — critical trust and entity signal conflict"
+      "robots.txt still returns 'Disallow: /' for all crawlers — unresolved 5 days after being flagged Critical; every other fix on this list has zero real-world effect until this ships",
+      "Canonical tags, sitemap URLs, and OG URLs all point at the non-www apex domain, which itself 308-redirects to www — a self-defeating canonical signal",
+      "Site-wide AggregateRating/Review schema (5.0★, 3 reviews) is self-authored and unverifiable — a real Google rich-result policy risk",
+      "JSON-LD sameAs links to LinkedIn and Twitter/X both resolve to HTTP 404 — broken entity signals, worse than having none",
+      "Sitemap is missing all 6 live blog post pages, and the +91 Indian phone number sitewide contradicts the site's US-market positioning"
     ],
     "quick_wins": [
-      "Fix robots.txt: replace 'Disallow: /' with 'Allow: /' — 30 minutes, unlocks all crawling",
-      "Remove robots: { index: false } from layout.tsx — 5 minutes, removes global noindex",
-      "Add BreadcrumbList JSON-LD to the existing Breadcrumb component — breadcrumb data already exists",
-      "Create /public/llms.txt — 2 hours, enables AI crawler guidance",
-      "Add AggregateRating schema to root JSON-LD — testimonial data already in page.tsx"
+      "Change src/app/robots.ts from disallow:\"/\" to allow:\"/\" and redeploy — 15 minutes, est. +35-40pt real-world visibility impact",
+      "Change SITE.rootDomain in src/lib/site-config.ts to 'www.pinexadigital.com' — fixes canonical/sitemap/OG host mismatch everywhere in one edit",
+      "Remove the duplicate '| PinexaDigital' suffix from services/seo and services/maintenance page titles",
+      "Add the 6 blog posts to src/app/sitemap.ts by importing from blog-data.ts instead of a hardcoded array",
+      "Fix or remove the broken sameAs LinkedIn/Twitter links in layout.tsx JSON-LD"
     ]
   },
   "categories": [
     {
       "name": "Technical SEO",
-      "score": 28,
+      "score": 24,
       "weight": 0.22,
       "what_works": [
-        "Sitemap.xml exists with 11 URLs, correct lastmod and priority values",
-        "Canonical tags set on all inner pages via Next.js metadata alternates.canonical",
-        "lang=\"en\" on html element",
-        "next/font/google — zero render-blocking font requests",
-        "next/image — automatic WebP/AVIF, lazy loading, size optimization"
+        "Sitewide meta robots correctly set to index,follow (fixed from prior audit's global noindex bug)",
+        "Canonical tags present on all 11 sitemap pages plus /privacy, /terms, and all 6 blog posts (host is wrong, but the tag itself is consistently implemented)",
+        "HSTS preload-eligible, plus X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy now ship on every route (new since prior audit)",
+        "All pages confirmed server-rendered (is_spa: False), zero console errors",
+        "6 blog post detail pages now return 200 (previously all 404) and /api/contact now exists"
       ],
       "findings": [
         {
-          "title": "robots.txt blocks all crawlers",
+          "title": "robots.txt still disallows the entire site — unresolved regression (5 days)",
           "severity": "Critical",
-          "description": "Disallow: / under User-Agent: * prevents Googlebot, Bingbot, GPTBot, ClaudeBot, and every other crawler from accessing any page on the site.",
-          "recommendation": "Replace with: User-agent: * / Allow: / / Sitemap: https://pinexadigital.com/sitemap.xml — remove the non-standard Host: directive."
+          "description": "src/app/robots.ts hardcodes rules:{userAgent:\"*\",disallow:\"/\"}. Confirmed live via curl. Blocks Googlebot, Bingbot, and every AI crawler from every URL, nullifying all other fixes shipped this cycle.",
+          "recommendation": "Change to allow:\"/\" (or remove the rules override), redeploy, verify with curl, then request re-crawl in GSC/Bing Webmaster Tools."
         },
         {
-          "title": "Global meta noindex/nofollow in layout.tsx",
-          "severity": "Critical",
-          "description": "layout.tsx sets robots: { index: false, follow: false } — emits noindex, nofollow on every page. Second independent blocking layer even if robots.txt is fixed.",
-          "recommendation": "Change to robots: { index: true, follow: true } in layout.tsx. Apply noindex at page level only where genuinely needed."
-        },
-        {
-          "title": "Homepage is a Client Component with no metadata export",
-          "severity": "Critical",
-          "description": "app/page.tsx uses 'use client' and exports no metadata. Next.js App Router cannot export metadata from Client Components, so the homepage inherits only layout defaults including the global noindex.",
-          "recommendation": "Split into a Server Component (page.tsx, exports metadata) wrapping a Client Component (HomeClient.tsx) for interactive UI."
-        },
-        {
-          "title": "OG image /og-image.jpg missing from /public",
+          "title": "Canonical/sitemap/OG URLs use the wrong host (apex instead of www)",
           "severity": "High",
-          "description": "All metadata (OG and Twitter card) references /og-image.jpg which does not exist. Social sharing previews will show no image.",
-          "recommendation": "Create a 1200×630px branded JPEG at /public/og-image.jpg."
+          "description": "SITE.rootDomain in site-config.ts is 'pinexadigital.com' (no www), but the live site serves at www.pinexadigital.com (apex 308-redirects). Every canonical tag points at a URL that itself redirects.",
+          "recommendation": "Change rootDomain to 'www.pinexadigital.com' in src/lib/site-config.ts; regenerate sitemap and redeploy."
         },
         {
-          "title": "6 blog post pages return 404",
-          "severity": "High",
-          "description": "All 6 blog post links in /blog lead to non-existent /blog/[slug] routes. Creates crawl errors and wastes PageRank flow.",
-          "recommendation": "Build /src/app/blog/[slug]/page.tsx dynamic route with real content, or remove blog links and update sitemap until pages exist."
-        },
-        {
-          "title": "Contact form POSTs to /api/contact which does not exist",
-          "severity": "High",
-          "description": "ContactForm.tsx submits to /api/contact but no Route Handler exists. Every submission silently fails — business-critical functional failure.",
-          "recommendation": "Create app/api/contact/route.ts with POST handler. Use Resend or Nodemailer for email delivery."
-        },
-        {
-          "title": "No security headers in next.config.ts",
-          "severity": "High",
-          "description": "Missing CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy. Security scanners will grade F.",
-          "recommendation": "Add a headers() export to next.config.ts covering all standard security headers."
-        },
-        {
-          "title": "Sitemap lists URLs that return 404",
+          "title": "Duplicate brand name in two <title> tags",
           "severity": "Medium",
-          "description": "Sitemap.xml should only list canonically indexable, 200-status pages. After fixing blog routes, regenerate sitemap dynamically.",
-          "recommendation": "Use app/sitemap.ts with a dynamic export. Resubmit to Google Search Console after fixing."
+          "description": "services/seo/page.tsx and services/maintenance/page.tsx hardcode '| PinexaDigital' inside their own title, and the layout template appends it again, producing '...| PinexaDigital | PinexaDigital' live.",
+          "recommendation": "Remove the manual '| PinexaDigital' suffix from both files; let the layout title template add it once."
         },
         {
-          "title": "No llms.txt file",
+          "title": "No Content-Security-Policy header",
           "severity": "Medium",
-          "description": "AI crawlers (GPTBot, ClaudeBot, PerplexityBot) have no structured guidance file.",
-          "recommendation": "Create /public/llms.txt with site name, description, key URL list, and AI usage declarations."
+          "description": "4 of 5 standard security headers ship via next.config.ts; CSP is the one missing, leaving XSS/injection mitigation weaker than it should be.",
+          "recommendation": "Add a CSP header, starting permissive (allowing 'unsafe-inline' for Next.js hydration scripts) and tightening iteratively."
         },
         {
-          "title": "Non-standard Host: directive in robots.txt",
+          "title": "Sitemap.xml omits all 6 live blog post pages",
+          "severity": "Medium",
+          "description": "sitemap.ts uses a hardcoded 11-URL array and never imports posts from blog-data.ts, so all 6 published, 200-returning blog posts are absent from the sitemap.",
+          "recommendation": "Generate blog post sitemap entries dynamically from the same data source that powers /blog and blog/[slug]."
+        },
+        {
+          "title": "Sitemap lastModified uses request-time new Date(), not real content dates",
+          "severity": "Medium",
+          "description": "All 11 sitemap URLs share an identical, fabricated lastmod timestamp generated at request time, which Google discounts as an inaccurate freshness signal.",
+          "recommendation": "Use real per-page last-modified dates (post 'date' field for blog, static constants for marketing pages)."
+        },
+        {
+          "title": "og-image.jpg still returns 404",
           "severity": "Low",
-          "description": "Host: directive is Yandex-only, ignored by Google and Bing. Adds noise.",
-          "recommendation": "Remove the Host: line from robots.txt."
+          "description": "metadataBase + openGraph.images + twitter.images all reference /og-image.jpg, which 404s — social shares render with no preview image.",
+          "recommendation": "Add a 1200x630 branded JPEG at public/og-image.jpg."
+        },
+        {
+          "title": "No IndexNow implementation",
+          "severity": "Low",
+          "description": "No IndexNow key file or API integration found. Optional, but would help re-establish visibility quickly once robots.txt is fixed.",
+          "recommendation": "Generate an IndexNow key, host it at /{key}.txt, call the IndexNow API on deploy."
         }
       ]
     },
     {
       "name": "Content Quality",
-      "score": 28,
+      "score": 48,
       "weight": 0.23,
       "what_works": [
-        "Transparent fixed pricing published openly ($997/$2,497/Custom)",
-        "Clear site architecture with breadcrumbs on all inner pages",
-        "Service sub-pages have numbered process steps and feature inclusion lists",
-        "FAQ section on pricing page is structurally ready for schema markup",
-        "Page-level metadata (title, description, OG, Twitter card) correctly implemented on inner pages"
+        "Blog posts are real and substantive (900+ words sampled), dated, with BlogPosting/BreadcrumbList schema — prior 404 issue fully resolved",
+        "Transparent, specific pricing ($997/$2,497/Custom) with FAQ block — rare trust signal for this vertical",
+        "Service sub-pages are well-differentiated (700-1,000 words each, not template-duplicated) with numbered process steps",
+        "Consistent metadata (title/description/OG/canonical) present on every page checked"
       ],
       "findings": [
         {
-          "title": "All 6 blog posts are 404 — blog is completely broken",
+          "title": "Site-wide testimonials/reviews are unverifiable and schema-embedded as fact",
           "severity": "Critical",
-          "description": "Blog posts dated March–June 2025 link to routes that return 404. No /app/blog/[slug]/page.tsx exists. Most recent post is 13 months old as of June 2026.",
-          "recommendation": "Build the dynamic route and write 1,500+ word articles for at least 2-3 posts. Add author names and a 2026-dated post immediately."
+          "description": "3 homepage testimonials (first name + last initial only, no company, no photo, no link) are simultaneously asserted as structured Review/AggregateRating data (5.0★, 3 reviews) with no third-party verification path.",
+          "recommendation": "Replace with real, attributable reviews (full name + company + link, or sourced from a verified platform) or drop the Review/AggregateRating schema until real reviews exist."
         },
         {
-          "title": "Indian phone number (+91) on a US-targeted site",
+          "title": "Portfolio page has essentially no actual project imagery",
           "severity": "Critical",
-          "description": "+91 78198 32001 appears on the contact page and in JSON-LD schema. Contradicts the US-specialist positioning and causes immediate trust failure with US prospects.",
-          "recommendation": "Obtain a US virtual number (Google Voice, Grasshopper, OpenPhone ~$10-25/month) and update site-config.ts and schema."
+          "description": "parse_html.py found exactly one <img> on /portfolio — the site logo. The page whose entire purpose is visual proof-of-work ships with no screenshots of actual client sites.",
+          "recommendation": "Add real screenshots (or clearly-labeled mockups) for each portfolio entry."
         },
         {
-          "title": "About page has no named humans",
+          "title": "Zero named human authorship anywhere on the site",
           "severity": "High",
-          "description": "No founder name, no team names, no photos, no credentials. Generic origin story matches common AI-generated agency template patterns. US clients cannot determine who they are paying.",
-          "recommendation": "Add founder/team section with real full names, 2-3 sentence bios, headshots, and LinkedIn links."
+          "description": "Blog posts use Organization-only authorship (no Person, no bio, no headshot) on all 6 posts. /about describes 'a focused team' with no named individuals.",
+          "recommendation": "Add at least one named author with bio/credentials to /about and attribute blog posts to that person."
         },
         {
-          "title": "Services overview page is critically thin (~285 words vs 800-word minimum)",
+          "title": "US-targeting site displays an Indian phone number sitewide",
           "severity": "High",
-          "description": "Four service cards with ~30-50 words each. Less than 35% of the topical minimum for a commercial service page.",
-          "recommendation": "Expand each service section to 200+ words with problem/solution framing, differentiators, and a mini-FAQ. Target 1,000+ total words."
+          "description": "+91 78198 32001 appears as a live tel: link in the footer of every page while all copy and schema explicitly target US businesses/customers.",
+          "recommendation": "Provision a US-based number (Google Voice, VoIP, or toll-free) for the public-facing footer/contact page."
         },
         {
-          "title": "Testimonials are completely unverifiable — initials only, no photos or links",
-          "severity": "High",
-          "description": "Sarah M., James R., Diana L. — initials-only avatars, no headshots, no company URLs, no review platform links. A 4th avatar (TK) has no corresponding testimonial.",
-          "recommendation": "Upgrade to full name + company name linked to their website. Add Google Business Profile or Clutch review links."
-        },
-        {
-          "title": "Homepage stats are unverified marketing claims",
-          "severity": "High",
-          "description": "50+ projects, 98% satisfaction, 21 days delivery, 100% 5-star reviews — no third-party verification. Hero dashboard shows fictional +127% growth figures.",
-          "recommendation": "Add source attribution per stat. Link 5-star claim to a real review platform. Replace fictional dashboard with real client screenshot."
-        },
-        {
-          "title": "Blog last updated 13 months ago",
-          "severity": "High",
-          "description": "Most recent post: June 1, 2025. Current date: June 29, 2026. Signals abandoned blog to Google freshness systems.",
-          "recommendation": "Publish at least one substantive 2026 post before enabling indexing. Aim for monthly cadence."
-        },
-        {
-          "title": "No Privacy Policy or Terms of Service",
-          "severity": "High",
-          "description": "Contact form collects user data. No Privacy Policy, no cookie notice, no Terms of Service. CCPA/CAN-SPAM compliance gap and quality rater trust flag.",
-          "recommendation": "Add /privacy-policy and /terms pages. Link from footer. Generate from a reputable privacy policy generator."
-        },
-        {
-          "title": "No author bylines on blog listing",
+          "title": "/pricing is thin relative to purchase-decision weight",
           "severity": "Medium",
-          "description": "No author name attributed to any blog post. Combined with anonymous About page, no human identity is attached to any content.",
-          "recommendation": "Add author field to post data. Create author bio pages linked from each post."
+          "description": "250 words for a page that has to carry an entire buying decision — no case studies, no process narrative, no risk-reversal language beyond tier cards + FAQ.",
+          "recommendation": "Add a short 'what happens after you pay' narrative and at least one linked case study per tier."
         },
         {
-          "title": "No Google Business Profile or third-party review profile linked",
+          "title": "No dedicated author/team page or bios",
           "severity": "Medium",
-          "description": "'100% 5-star reviews' claim with no verification path anywhere.",
-          "recommendation": "Create and verify a Google Business Profile. Also consider Clutch.co (standard in US web agency market)."
+          "description": "No /team or /about#team section with individual bios, which would reinforce both Expertise and Experience E-E-A-T pillars.",
+          "recommendation": "Add a 3-4 person 'who we are' grid on /about with real names/roles/photos."
         },
         {
-          "title": "Blog titles reference '2025' — stale by 12+ months",
+          "title": "Blog post dates are not chronological",
           "severity": "Low",
-          "description": "Two post titles include '2025' — will appear outdated to visitors arriving in 2026.",
-          "recommendation": "Update to '2026' equivalents or use evergreen titles with a 'Last updated' byline when content is published."
+          "description": "Post dates span a wide, non-chronological range, reading as backdated/batch-published rather than an ongoing cadence.",
+          "recommendation": "Verify and correct publish dates; add an 'updated' date for refreshed evergreen posts."
         }
       ]
     },
@@ -184,312 +149,251 @@
       "score": 55,
       "weight": 0.20,
       "what_works": [
-        "Title template system working: '%s | PinexaDigital' on inner pages",
-        "Meta descriptions present and distinct on all inner pages",
-        "H1 tags are keyword-relevant and distinct across all pages (no duplication)",
-        "Canonical tags set on all inner pages",
-        "Breadcrumb navigation present on all inner pages",
-        "Keywords array set in root metadata (harmless for Google, may help Bing)"
+        "Title/meta/heading hygiene is clean on 9 of 11 pages",
+        "Breadcrumb-based internal linking is consistent site-wide",
+        "3 of 4 SERP-backwards-analyzed keywords show ALIGNED-to-MEDIUM page-type match against what Google currently rewards"
       ],
       "findings": [
         {
-          "title": "Homepage title is brand-first with no keyword",
-          "severity": "Medium",
-          "description": "Homepage inherits the layout default: 'PinexaDigital — Web Design & Development Agency'. 'PinexaDigital' is an unknown brand for new US visitors. A keyword-first title would improve CTR.",
-          "recommendation": "Once the homepage has a Server Component wrapper with metadata export, set title: 'Web Design Agency for US Businesses | PinexaDigital'."
+          "title": "No comparison/differentiation content anywhere on the site",
+          "severity": "High",
+          "description": "All 4 keywords analyzed via SERP-backwards SXO review show a directory/listicle competitor ('Top 10 agencies') in 40-70% of results, but the site has zero comparison or 'why us' content.",
+          "recommendation": "Add a 'Why PinexaDigital vs. a typical agency' comparison block to the homepage and /services/web-design."
         },
         {
-          "title": "No keyword targeting on any page beyond broad terms",
-          "severity": "Medium",
-          "description": "Service pages target very broad terms ('web design', 'SEO'). No city-level or vertical-specific targeting (e.g. 'web design for US restaurants' or 'web design Austin TX').",
-          "recommendation": "After indexing is fixed, run keyword research for commercial intent US queries. Consider adding location or vertical landing pages for highest-converting segments."
+          "title": "No SEO retainer pricing shown anywhere",
+          "severity": "High",
+          "description": "/services/seo and /pricing cover only one-time web-design packages. Competing 'SEO agency for small business' results anchor at explicit monthly prices (e.g. $499/mo).",
+          "recommendation": "Add an SEO/Growth monthly retainer tier to /pricing and link it from the /services/seo CTA."
         },
         {
-          "title": "Services overview page has no unique keyword content",
-          "severity": "Medium",
-          "description": "The /services page is largely a category page with thin descriptions that repeat what sub-pages say. No unique angle or content.",
-          "recommendation": "Give the services overview a distinct purpose: comparison table, buyer's guide framing, or 'which service do I need' decision tree."
+          "title": "Sitemap architecture issues (non-canonical host, missing blog URLs)",
+          "severity": "High",
+          "description": "See Technical SEO findings — sitemap lists non-www URLs that redirect on every entry and omits all 6 blog posts.",
+          "recommendation": "Fix rootDomain and dynamically include blog posts in sitemap.ts."
         },
         {
-          "title": "Internal linking is shallow — blog and portfolio link everywhere but nothing links back to them",
-          "severity": "Low",
-          "description": "Navigation links exist but deep content pages (blog posts, portfolio cases) are not referenced from service pages as supporting evidence.",
-          "recommendation": "Add contextual internal links from service pages to relevant blog posts and portfolio case studies once they exist."
+          "title": "FAQ content lacks FAQPage schema on 3 pages",
+          "severity": "Medium",
+          "description": "/services/web-design, /services/seo, and /pricing all have visible, well-structured Q&A accordions with no FAQPage JSON-LD wrapping them.",
+          "recommendation": "Add FAQPage schema matching the existing visible accordion content (no SERP rich-result benefit post-May-2026 policy change, but valuable for AI/GEO citation)."
+        },
+        {
+          "title": "Pricing page has no trust signals at the point of highest purchase anxiety",
+          "severity": "Medium",
+          "description": "/pricing shows 3 tiered cards and an FAQ but zero testimonials, guarantees, or client logos next to the price table.",
+          "recommendation": "Insert a condensed 'Trusted by 50+ businesses / 5.0 avg rating' strip directly above or beside the pricing cards."
         }
       ]
     },
     {
       "name": "Schema / Structured Data",
-      "score": 18,
+      "score": 78,
       "weight": 0.10,
       "what_works": [
-        "ProfessionalService @type is semantically appropriate",
-        "@context correctly uses https",
-        "Core identity fields present: name, url, description, telephone, email, priceRange",
-        "JSON-LD format used (correct over Microdata or RDFa)",
-        "siteUrl() helper centralises the domain"
+        "WebSite + ProfessionalService graph, BreadcrumbList site-wide, per-service Service schema, ItemList/Offer pricing, and Blog/BlogPosting are all now correctly implemented and confirmed server-rendered — up from 18/100 on 2026-06-29",
+        "All JSON-LD validated: correct @context, valid types, absolute URLs, ISO 8601 dates, no placeholder text"
       ],
       "findings": [
         {
-          "title": "Global noindex makes all schema inert",
+          "title": "Site-wide AggregateRating/Review is a self-serving, unverifiable review policy risk",
           "severity": "Critical",
-          "description": "Google does not show rich results for pages it cannot index. Every schema improvement below is moot until indexing is enabled.",
-          "recommendation": "Fix the noindex issue first (see Technical SEO findings). Then validate schema via Google Rich Results Test."
+          "description": "The ProfessionalService node carries aggregateRating (5.0/3 reviews) and 3 embedded Review objects with no third-party verification path and no datePublished — a real Google rich-result policy risk (self-serving reviews).",
+          "recommendation": "Remove Review/AggregateRating schema until real, verifiable third-party reviews exist, or source them from Google Business Profile/Clutch and link the profile."
         },
         {
-          "title": "No BreadcrumbList schema despite a Breadcrumb component on every inner page",
-          "severity": "High",
-          "description": "The Breadcrumb component renders correctly but emits zero structured data. BreadcrumbList is one of Google's most reliably triggered rich results.",
-          "recommendation": "Inject JSON-LD BreadcrumbList inside the Breadcrumb component, built from the same crumbs prop already available."
-        },
-        {
-          "title": "No Service schema on any of the four service pages",
-          "severity": "High",
-          "description": "Each service page describes a distinct offering with name, description, deliverables, and pricing — but no Service schema.",
-          "recommendation": "Add @type: Service JSON-LD to each service page with name, description, provider, areaServed, and offers with PriceSpecification."
-        },
-        {
-          "title": "No PriceSpecification or Offer schema on pricing page",
-          "severity": "High",
-          "description": "Three tiers ($997, $2,497, Custom) with full feature lists — no structured data. Google and LLMs must infer pricing from raw text.",
-          "recommendation": "Add an ItemList or individual Offer blocks for the two fixed tiers. Use InvoicePrice for the custom tier."
-        },
-        {
-          "title": "No AggregateRating schema despite explicit 5-star claims",
-          "severity": "High",
-          "description": "Homepage shows '5.0 Stars' badge and five filled stars on 3 testimonials but no AggregateRating schema. Lost star snippet in SERPs.",
-          "recommendation": "Add AggregateRating to the ProfessionalService block: ratingValue 5.0, reviewCount 3, plus individual Review entities for each testimonial."
-        },
-        {
-          "title": "areaServed includes 'IN' (India) contradicting US-only positioning",
+          "title": "ProfessionalService vs Organization — type appropriateness",
           "severity": "Medium",
-          "description": "areaServed: ['US', 'IN'] sends a conflicting signal when all site copy targets US businesses exclusively.",
-          "recommendation": "Change to areaServed: { '@type': 'Country', 'name': 'United States' }."
+          "description": "ProfessionalService is a LocalBusiness subtype implying a physical/service-area presence, but this is a remote-only agency with no address in the markup.",
+          "recommendation": "Switch to Organization type, which supports all currently-used properties without implying a local-business presence."
         },
         {
-          "title": "No logo property on root ProfessionalService block",
+          "title": "Blog posts missing image on BlogPosting",
           "severity": "Medium",
-          "description": "Google's Knowledge Panel uses the logo property. Without it, Google must guess, leading to inconsistent display.",
-          "recommendation": "Add logo: { '@type': 'ImageObject', 'url': 'https://pinexadigital.com/logo.png', 'width': 512, 'height': 512 }."
-        },
-        {
-          "title": "No sameAs links to social profiles",
-          "severity": "Medium",
-          "description": "sameAs is the primary mechanism for Google's Knowledge Graph to connect the entity to external identity signals.",
-          "recommendation": "Add sameAs array with LinkedIn, Twitter/X, Clutch, and Google Business Profile URLs once created."
-        },
-        {
-          "title": "No WebSite schema with SearchAction",
-          "severity": "Medium",
-          "description": "Missing WebSite schema for Knowledge Panel brand entity association.",
-          "recommendation": "Add @type: WebSite block alongside ProfessionalService using @graph to group both."
-        },
-        {
-          "title": "Blog listing has no Blog or ItemList schema; blog post pages don't exist yet",
-          "severity": "Medium",
-          "description": "Blog listing renders 6 post cards with titles, excerpts, dates — all data needed for ItemList. No structured data emitted.",
-          "recommendation": "Add ItemList to blog listing now. Add BlogPosting schema per post when routes are built."
-        },
-        {
-          "title": "FAQPage schema absent from pricing page — Info level, SERP value is zero",
-          "severity": "Info",
-          "description": "FAQPage schema lost Google SERP rich result support on May 7, 2026. No SERP benefit. Still useful for AI/GEO citation if that is a priority.",
-          "recommendation": "Optional: add FAQPage for AI citation benefit only. Do not expect SERP rich results."
+          "description": "Post type in blog-data.ts has no image field, so BlogPosting JSON-LD can't populate one — needed for Article rich results.",
+          "recommendation": "Add a 1200x630 image field to each post and include it in the JSON-LD."
         }
       ]
     },
     {
-      "name": "Performance (CWV)",
-      "score": 60,
+      "name": "Performance (Core Web Vitals)",
+      "score": 85,
       "weight": 0.10,
       "what_works": [
-        "next/image for automatic WebP/AVIF conversion and lazy loading",
-        "next/font/google — zero render-blocking requests, font-display: swap",
-        "Next.js App Router SSR for inner pages (not homepage)",
-        "Minimal third-party scripts (no tag managers, chat widgets, or ad pixels detected)"
+        "CLS measured at 0 across all pages/profiles — next/image consistently emits explicit width/height",
+        "INP proxy (TBT) is Good — no long main-thread tasks, no third-party analytics scripts found",
+        "Vercel edge caching functioning (X-Vercel-Cache: HIT), TTFB in 180-310ms lab range",
+        "Fonts preloaded via next/font/google with display:swap — no FOIT/CLS risk"
       ],
       "findings": [
         {
-          "title": "Hero image likely missing priority prop — LCP risk",
+          "title": "Mobile LCP is borderline at the Good threshold",
           "severity": "Medium",
-          "description": "next/image lazy-loads by default. If the above-the-fold hero image has no priority prop, LCP will be delayed. The main Unsplash image in the Why Us section uses priority but is below the fold.",
-          "recommendation": "Add priority prop to the hero section's largest above-the-fold image. Verify LCP after fix using PageSpeed Insights."
+          "description": "Simulated mobile LCP measured 2.7s, right at the 2.5s cutoff; desktop LCP is excellent (1.1s). Lab-only estimate, no CrUX field data available.",
+          "recommendation": "Add fetchpriority=high on the hero/LCP image, avoid loading=lazy on it, confirm appropriately-capped resolution for mobile."
         },
         {
-          "title": "Homepage fully Client-Side Rendered — INP risk on mobile",
-          "severity": "Medium",
-          "description": "Entire homepage is a Client Component with Framer Motion animations. Heavy hydration on mid-range Android devices can push INP above 200ms threshold.",
-          "recommendation": "Split homepage into Server + Client Components. Use dynamic imports with { ssr: false } for heavy animation components. Run next build and check route chunk sizes."
-        },
-        {
-          "title": "External Unsplash images — CDN dependency and stock photo trust issue",
+          "title": "~48 KiB of estimated unused JavaScript",
           "severity": "Low",
-          "description": "Homepage and about page use Unsplash stock images. Next.js caches them but CDN performance depends on Unsplash uptime. Stock photos also reduce perceived authenticity.",
-          "recommendation": "Replace with genuine agency/team photos for E-E-A-T benefit. If stock is kept, download and self-host in /public to eliminate the external CDN dependency."
+          "description": "Lighthouse flagged unused JS in first-party chunks, a minor contributor to mobile TBT.",
+          "recommendation": "Audit chunk composition for unused code paths; confirm route-level code-splitting."
+        },
+        {
+          "title": "No CrUX/PageSpeed API key configured",
+          "severity": "Info",
+          "description": "All figures are single-run lab simulations, not real Chrome UX Report field data.",
+          "recommendation": "Configure a PageSpeed Insights API key once traffic accumulates for authoritative field-data validation."
         }
       ]
     },
     {
-      "name": "AI Search Readiness",
-      "score": 21,
+      "name": "AI Search Readiness (GEO)",
+      "score": 32,
       "weight": 0.10,
       "what_works": [
-        "Pricing page has structured, specific data — most citable page on the site",
-        "Process enumerated in numbered steps — AI-extractable format",
-        "Blog post titles target high-intent question queries — topic selection is correct",
-        "ProfessionalService JSON-LD present site-wide"
+        "llms.txt now exists and is well-formed (new since prior audit)",
+        "/services, /pricing, /about substantially expanded with genuine FAQ-style Q&A and self-contained direct-answer passages",
+        "All pages are server-rendered (is_spa: False) — technical crawlability is not the bottleneck once robots.txt is fixed",
+        "Blog post opening passages are legitimately extractable AI-citation content"
       ],
       "findings": [
         {
-          "title": "robots.txt blocks all AI crawlers — site invisible to GPTBot, ClaudeBot, PerplexityBot",
+          "title": "robots.txt still blocks every AI crawler — unresolved",
           "severity": "Critical",
-          "description": "Disallow: / blocks GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended. Site cannot be cited by any AI search engine.",
-          "recommendation": "Fix robots.txt first. This single change unlocks all AI crawler access."
+          "description": "GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, and Google-Extended are all blocked by the same Disallow:/ rule as regular search engines. Nothing else in this category matters until this is fixed.",
+          "recommendation": "Same fix as Technical SEO #1: allow crawling. Estimated impact: +35-40 pts to this category alone."
         },
         {
-          "title": "No llms.txt — AI agents cannot discover site structure",
+          "title": "sameAs entity links point to non-existent profiles (404s)",
           "severity": "Critical",
-          "description": "llms.txt is absent. AI agents have no machine-readable declaration of content availability or permissions.",
-          "recommendation": "Create /public/llms.txt with site name, description, key URL list, and AI usage declarations."
+          "description": "Both LinkedIn and Twitter/X sameAs URLs in the ProfessionalService schema return HTTP 404 and aren't linked anywhere in visible HTML — a false structured-data claim, worse than no signal at all.",
+          "recommendation": "Create and verify both profiles before relying on them, or remove sameAs entirely until real profiles exist."
         },
         {
-          "title": "Blog posts return 404 — highest-citability content type is broken",
-          "severity": "Critical",
-          "description": "Blog post titles match high-volume AI-answerable queries but every URL 404s.",
-          "recommendation": "Publish blog posts with 600-800+ words, author names, cited statistics, and self-contained answer blocks in each H2."
-        },
-        {
-          "title": "Zero named authorship — AI citation systems deprioritise anonymous content",
+          "title": "Headline stats remain unsourced and undated",
           "severity": "High",
-          "description": "No page attributes content to a named human. AI citation systems apply E-E-A-T signals; anonymous content is systematically deprioritized.",
-          "recommendation": "Add named founder/author with bio and LinkedIn. Add Person schema linked from Article schema on blog posts."
+          "description": "+127% growth, 50+ businesses, 5.0 stars, 40% traffic lift, 98% satisfaction all lack methodology, date range, or verifiable link.",
+          "recommendation": "Add one sentence of provenance per stat, or link the rating claim to an external, checkable review platform."
         },
         {
-          "title": "Content passages too short for AI citation (40-90 words vs 134-167 word optimum)",
+          "title": "No FAQPage schema despite existing FAQ content",
           "severity": "High",
-          "description": "Every section on the site falls below the optimal passage length for AI extraction. No self-contained answer blocks exist.",
-          "recommendation": "Expand service cards and process steps to 150+ words. Open each section with a direct answer sentence."
+          "description": "Genuine Q&A content exists on /services and /pricing but is not wrapped in FAQPage JSON-LD anywhere.",
+          "recommendation": "Add FAQPage schema mirroring the existing on-page Q&A; low effort since content already exists."
         },
         {
-          "title": "+91 phone number creates entity classification as Indian business",
+          "title": "+91 phone number contradicts areaServed: United States",
           "severity": "High",
-          "description": "AI systems use contact geography as a trust signal for local relevance. The Indian number undermines US entity classification.",
-          "recommendation": "Replace with a US virtual number and update schema."
-        },
-        {
-          "title": "No brand signals on YouTube, Reddit, LinkedIn, or Clutch",
-          "severity": "High",
-          "description": "YouTube mentions correlate at ~0.737 with AI citation frequency. Zero off-site brand presence means near-zero AI citation probability.",
-          "recommendation": "Priority: YouTube channel (3-5 Q&A videos), then Reddit participation, then Clutch.co profile with verified reviews."
-        },
-        {
-          "title": "No FAQ schema or question-based headings",
-          "severity": "Medium",
-          "description": "All headings are statements ('Our Services', 'Why Choose Us'). AI Overviews preferentially surface question-structured content.",
-          "recommendation": "Add FAQ sections to homepage, pricing, and each service page. Use question-format headings and FAQPage schema."
+          "description": "Same contact-geography mismatch as flagged in Content Quality, relevant here for AI entity-resolution trust scoring.",
+          "recommendation": "Provision a US virtual number and update the schema telephone field."
         }
       ]
     },
     {
       "name": "Images",
-      "score": 50,
+      "score": 70,
       "weight": 0.05,
       "what_works": [
-        "next/image used for all images — automatic optimization, lazy loading",
-        "Alt text present on visible images ('PinexaDigital team at work', 'Design process')",
-        "priority prop used on main hero image in Why Us section"
+        "next/image serves WebP/AVIF automatically with responsive srcSet and explicit width/height on every image found — 0 CLS risk measured across all pages/viewports",
+        "Lazy-loading confirmed on below-fold images"
       ],
       "findings": [
         {
-          "title": "OG image /og-image.jpg missing",
-          "severity": "Critical",
-          "description": "Referenced in OG and Twitter card metadata but file does not exist in /public. All social sharing will show no image.",
-          "recommendation": "Create 1200×630px branded JPEG at /public/og-image.jpg."
+          "title": "Portfolio page has essentially no real project images (cross-ref Content Quality)",
+          "severity": "High",
+          "description": "Only 1 image (the logo) renders on /portfolio despite it being the site's dedicated visual-proof page.",
+          "recommendation": "Add real screenshots for each portfolio entry — see Content Quality Critical #2."
         },
         {
-          "title": "Only 2 images on homepage — image-light for SEO and engagement",
+          "title": "Homepage relies on generic stock photography",
           "severity": "Medium",
-          "description": "Homepage has one team photo and one process thumbnail. Very image-sparse for a design agency whose primary product is visual.",
-          "recommendation": "Add portfolio screenshots, before/after website examples, or team photos. Each with descriptive alt text targeting relevant keywords."
+          "description": "Unsplash-sourced 'team at work' / 'design process' images rather than real team or project photography — a credibility risk for a trust-dependent purchase.",
+          "recommendation": "Replace with real team/work photos or niche-specific custom photography."
         },
         {
-          "title": "Stock photos from Unsplash reduce authenticity signals",
-          "severity": "Low",
-          "description": "Unsplash stock images are recognizable to repeat visitors and quality raters. Design agencies are expected to showcase real work.",
-          "recommendation": "Replace with genuine photos of the workspace, team, or client project screenshots."
+          "title": "No dedicated alt-text audit performed",
+          "severity": "Info",
+          "description": "This pass focused on technical image delivery (format/sizing/CLS) rather than a full alt-text quality review across all images.",
+          "recommendation": "Run a follow-up alt-text-specific pass once portfolio imagery is added."
         }
       ]
+    }
+  ],
+  "additional_categories": [
+    {
+      "name": "Sitemap Structure",
+      "score": 52,
+      "note": "Findings folded into Technical SEO and On-Page SEO above; full detail in findings/sitemap.md"
+    },
+    {
+      "name": "Visual / Mobile UX",
+      "score": 90,
+      "note": "Strong above-the-fold execution; findings/visual.md has full screenshot-based detail"
+    },
+    {
+      "name": "Search Experience (SXO)",
+      "score": 56,
+      "note": "SERP-backwards keyword analysis; findings folded into On-Page SEO above; full detail in findings/sxo.md"
+    },
+    {
+      "name": "Backlinks / Authority",
+      "score": 5,
+      "note": "New site, no measurable backlink profile yet via Common Crawl (Tier 0, no Moz/Bing/DataForSEO configured). This is a baseline, not a defect — excluded from the weighted health score. Full detail in findings/backlinks.md"
     }
   ],
   "action_plan": {
     "phases": [
       {
-        "name": "Phase 1: Unblock the Site",
-        "timeframe": "Day 1 (before enabling indexing)",
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Today (Week 1)",
         "items": [
-          "Fix robots.txt — replace Disallow: / with Allow: /",
-          "Remove robots: { index: false } from layout.tsx",
-          "Obtain US virtual phone number and update site-config.ts + schema",
-          "Create /public/og-image.jpg (1200×630px branded card)",
-          "Add founder/team name and bio to About page",
-          "Add Privacy Policy (/privacy-policy) and Terms of Service (/terms) pages",
-          "Create /api/contact route handler (contact form is currently broken)"
+          "Fix src/app/robots.ts: change disallow:\"/\" to allow:\"/\" and redeploy — the single highest-priority item on this entire audit",
+          "Fix SITE.rootDomain in src/lib/site-config.ts to 'www.pinexadigital.com' to resolve the canonical/sitemap/OG host mismatch",
+          "Remove or fix the site-wide AggregateRating/Review schema (self-serving review policy risk)",
+          "Fix or remove the broken sameAs LinkedIn/Twitter links",
+          "After deploy: verify robots.txt live, submit for re-crawl in Google Search Console and Bing Webmaster Tools"
         ]
       },
       {
-        "name": "Phase 2: Fix Critical Content Gaps",
-        "timeframe": "Week 1-2",
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
         "items": [
-          "Build /src/app/blog/[slug]/page.tsx dynamic route",
-          "Write 1,500+ word content for top 3 blog posts with author name and BlogPosting schema",
-          "Publish one 2026-dated blog post to reset freshness signal",
-          "Split homepage into Server Component (page.tsx) + Client Component (HomeClient.tsx) to enable metadata export",
-          "Upgrade testimonials to full name + company link (or link to Google Business Profile)"
+          "Add real portfolio screenshots (replace the logo-only placeholder page)",
+          "Add named human authorship (founder/team bio + Person schema on blog posts)",
+          "Replace the +91 phone number with a US-based number sitewide",
+          "Add the 6 blog posts to sitemap.ts dynamically",
+          "Add FAQPage schema to /services/web-design, /services/seo, and /pricing",
+          "Fix duplicate title tags on services/seo and services/maintenance",
+          "Add a comparison/'why us' content block to the homepage and /services/web-design",
+          "Add an SEO monthly retainer price to /pricing and /services/seo"
         ]
       },
       {
-        "name": "Phase 3: Schema and On-Page Improvements",
-        "timeframe": "Weeks 3-4",
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
         "items": [
-          "Add BreadcrumbList JSON-LD to Breadcrumb component",
-          "Add AggregateRating + Review schema to root JSON-LD",
-          "Fix areaServed: remove 'IN', use { '@type': 'Country', 'name': 'United States' }",
-          "Add Service + Offer schema to each service page",
-          "Add PriceSpecification / ItemList schema to pricing page",
-          "Add WebSite @type with @id to layout JSON-LD",
-          "Add logo property to ProfessionalService schema",
-          "Add security headers to next.config.ts",
-          "Create /public/llms.txt",
-          "Expand services overview page to 1,000+ words",
-          "Update sitemap.xml to use dynamic app/sitemap.ts"
+          "Source and date the homepage headline stats (+127%, 50+, 5.0, 40%, 98%)",
+          "Add a trust-signal strip (ratings/testimonials) directly on /pricing",
+          "Expand /pricing content depth with a post-purchase process narrative",
+          "Add Content-Security-Policy header",
+          "Replace generic stock photography with real team/project imagery",
+          "Fix mobile nav tap-target sizing (32px → 44px+)",
+          "Add fetchpriority=high to the homepage hero/LCP image",
+          "Correct non-chronological blog post publish dates",
+          "Add a CSP header and IndexNow key file"
         ]
       },
       {
-        "name": "Phase 4: Authority and AI Visibility",
-        "timeframe": "Month 2+",
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
         "items": [
-          "Create and verify Google Business Profile — collect first 5 real reviews",
-          "Build Clutch.co profile (verified B2B review platform, AI systems cite it)",
-          "Launch YouTube channel with 3-5 short videos targeting blog post queries",
-          "Add sameAs to schema linking to GBP, LinkedIn, Clutch, YouTube",
-          "Add portfolio case studies with real client URLs, screenshots, and measurable outcomes",
-          "Participate in r/smallbusiness and r/entrepreneur — answer questions authentically",
-          "Expand all service sub-pages to 800-1,200 words with FAQ sections",
-          "Add FAQ schema to homepage and each service page",
-          "Set up Google Search Console and submit corrected sitemap"
+          "Once real traffic accumulates, configure a PageSpeed Insights API key to validate LCP against real CrUX field data",
+          "Build off-site authority signals: verified LinkedIn/Twitter profiles, Google Business Profile, Clutch.co listing",
+          "Configure Moz or Bing Webmaster API keys to unlock real backlink discovery beyond Common Crawl's quarterly snapshot",
+          "Re-run this audit after Phase 1 ships to confirm indexation recovery and re-baseline all category scores"
         ]
       }
     ]
-  },
-  "scoring_breakdown": {
-    "technical_seo": { "score": 28, "weight": 0.22, "weighted": 6.16 },
-    "content_quality": { "score": 28, "weight": 0.23, "weighted": 6.44 },
-    "on_page_seo": { "score": 55, "weight": 0.20, "weighted": 11.0 },
-    "schema": { "score": 18, "weight": 0.10, "weighted": 1.8 },
-    "performance_cwv": { "score": 60, "weight": 0.10, "weighted": 6.0 },
-    "ai_search_readiness": { "score": 21, "weight": 0.10, "weighted": 2.1 },
-    "images": { "score": 50, "weight": 0.05, "weighted": 2.5 },
-    "total": 36
   },
   "artifacts": {
     "findings_dir": "findings/",

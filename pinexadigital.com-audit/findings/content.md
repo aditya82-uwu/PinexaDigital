@@ -1,139 +1,89 @@
 # Content Quality & E-E-A-T Findings — pinexadigital.com
-**Score: 28/100** | Audit date: 2026-06-29
+**Score: 48/100** | Audit date: 2026-07-04
+**Note:** Written directly by the audit orchestrator after the delegated content-quality subagent failed to complete three times in a row (stalled mid-task without writing this file). Data below is drawn from direct fetches of all 11 sitemap pages plus one live blog post, via render_page.py + parse_html.py.
 
 ---
 
-## E-E-A-T Breakdown
+## Summary
 
-| Dimension | Score | Weight | Notes |
-|-----------|-------|--------|-------|
-| Experience | 4/20 | 20% | Testimonials unverifiable, fictional dashboard, no real project screenshots |
-| Expertise | 7/25 | 25% | Competent service copy, but zero author attribution anywhere |
-| Authoritativeness | 3/25 | 25% | No press, no third-party reviews, no social footprint, currently noindexed |
-| Trustworthiness | 14/30 | 30% | Transparent pricing ✓, but Indian phone on US site, no Privacy Policy |
+Content depth has improved substantially since the 2026-06-29 audit (was 28/100): most pages now carry solid word counts, the blog is live with real long-form posts (previously all 404), and pricing is transparent. The remaining gaps are almost entirely E-E-A-T (trust/authority) issues rather than thin-content issues: unverifiable testimonials embedded in schema, zero named human authorship anywhere, a portfolio page with no actual project images, and a US-targeting site whose footer phone number is Indian (+91 78198 32001, live `tel:` link on every page).
 
 ---
 
-## Word Count vs. Minimums
+## Word Counts (via parse_html.py, live 2026-07-04)
 
-| Page | Words | Minimum | Status |
-|------|-------|---------|--------|
-| Homepage | ~850 | 500 | Pass (marginal) |
-| Services overview | ~285 | 800 | **FAIL — 64% under** |
-| About | ~375 | 500 | **FAIL — 25% under** |
-| Pricing | ~450 | 500 | Borderline |
-| Service sub-pages | ~350-400 each | 800 | **FAIL — 50% under** |
-| Blog posts | 0 (404) | 1,500 | **FAIL — content does not exist** |
+| Page | Words | Assessment |
+|---|---|---|
+| Homepage | 468 | Adequate |
+| /about | 787 | Good |
+| /services | 1,001 | Good |
+| /services/web-design | 804 | Good |
+| /services/seo | 868 | Good |
+| /services/ecommerce | 828 | Good |
+| /services/maintenance | 722 | Good |
+| /pricing | 250 | **Thin** — just tier cards, no supporting narrative |
+| /portfolio | 335 | **Thin**, and see Critical #2 below |
+| /blog (index) | 263 | Adequate for a listing page |
+| /contact | 88 | Fine for a contact page |
+| /blog/seo-for-small-business-us (sample post) | 903 | Good — real long-form content, `article:published_time` present |
 
 ---
 
 ## What Works
 
-- Transparent fixed pricing published openly ($997/$2,497/Custom) with payment split terms
-- Clear site architecture with breadcrumbs on all inner pages
-- Service sub-pages have numbered process steps and feature inclusion lists
-- FAQ section on pricing page is structurally ready
-- Page-level metadata correctly implemented on all inner pages
+- Blog posts are real, substantive (900+ words sampled), dated, and carry `BlogPosting`/`BreadcrumbList` schema (cross-ref `schema.md`) — the prior audit's "blog is 404" finding is fully resolved.
+- Transparent, specific pricing ($997 / $2,497 / Custom tiers) with FAQ block — rare and valuable trust signal for a service business.
+- Service sub-pages are well-differentiated (700-1000 words each, not template-duplicated) with numbered process steps.
+- Clean breadcrumb navigation and consistent metadata (title/description/OG/canonical) present on every page checked.
 
 ---
 
 ## Critical
 
-### 1. Indian phone number (+91) on a US-targeted site
-**File:** `src/lib/site-config.ts:5`
+### 1. Site-wide testimonials/reviews are unverifiable and schema-embedded as fact
+Homepage displays 3 testimonials (Sarah M., James R., Diana L. — first name + last initial only, no company, no photo, no link) that are simultaneously asserted as structured `Review`/`AggregateRating` data (5.0★, 3 reviews) in `layout.tsx`'s site-wide JSON-LD. There is no third-party verification path (no Google/Clutch/Trustpilot review source) for any of them. This is the single biggest authoritativeness/trustworthiness gap on the site — a reader (or Google) has no way to confirm these clients or results exist.
+**Recommendation:** Replace with real, attributable client reviews (full name + company + link, or embedded from a verified platform like Google Business Profile or Clutch) or drop the `Review`/`AggregateRating` schema entirely until real reviews exist — false review markup risks a Google manual action.
 
-`phone: "+91 78198 32001"` — an Indian mobile number — appears on the contact page and in the JSON-LD schema `telephone` field. A US prospect clicking "Call us" reaches an international line. A quality rater checking the schema finds a +91 number on a site claiming "US market expertise." This is the most damaging single trust signal on the site.
-
-**Fix:** Obtain a US virtual number (Google Voice — free, OpenPhone ~$13/mo, Grasshopper ~$26/mo). Update `site-config.ts:5`. The change auto-propagates to contact page and schema.
-
----
-
-### 2. All 6 blog posts return 404
-The blog listing displays 6 articles (March–June 2025) but `/app/blog/[slug]/page.tsx` doesn't exist. Every link goes to a 404. The most recent post is 13 months old as of June 2026. For an agency selling SEO services, a broken blog is a credibility disaster.
-
-**Fix:** Build the dynamic route and write real content before enabling indexing. Minimum 1,500 words per post. At least one post dated 2026.
+### 2. Portfolio page has essentially no actual project imagery
+`parse_html.py` found exactly **one** `<img>` on `/portfolio` — the site logo. A page whose entire purpose is visual proof-of-work ("See exactly what we build") ships with no screenshots of actual client sites. This directly undercuts the "Experience" pillar of E-E-A-T and was independently flagged by the SXO subagent as the top proof-page failure.
+**Recommendation:** Add real screenshots (or high-quality mockups clearly labeled as such) for each of the portfolio entries.
 
 ---
 
 ## High
 
-### 3. About page has no named humans
-**File:** `src/app/about/page.tsx`
+### 3. Zero named human authorship anywhere on the site
+Blog posts use `"author": {"@type": "Organization", "name": "PinexaDigital"}` — no byline, no bio, no headshot, on any of the 6 posts. `/about` describes "a focused team" in the abstract with no named team members. For an agency selling expertise, this is a significant Expertise-signal gap; Google's E-E-A-T guidance specifically rewards identifiable, credentialed authors for advice content (e.g., the SEO and pricing-strategy blog posts).
+**Recommendation:** Add at least one named author with a short bio/credentials to `/about` and attribute blog posts to that person (or a real team member).
 
-No founder name, no team names, no photos, no credentials, no LinkedIn links. The origin story ("We started because we saw too many bad websites") matches a common AI-generated agency template. US clients spending $997–$2,497 cannot determine who they are paying.
-
-**Fix:** Add a founder/team section with: real full name, 2-3 sentence bio covering professional background, headshot, and LinkedIn profile URL.
-
----
-
-### 4. Services overview page is critically thin (~285 words)
-**File:** `src/app/services/page.tsx`
-
-Four service cards with 30–50 words each. Less than 35% of the 800-word minimum for a commercial service page. Google's quality systems evaluate whether a page demonstrates genuine expertise — four short blurbs do not.
-
-**Fix:** Expand each service section to 200+ words covering: the specific problem it solves, what differentiates the agency's approach, a relevant outcome metric, and a mini-FAQ. Target 1,000+ total words on this page.
-
----
-
-### 5. Testimonials are completely unverifiable
-**File:** `src/app/page.tsx:222-247`
-
-Sarah M. / Austin Property Group, James R. / Pacific Wellness Studio, Diana L. / Brooklyn Home Goods — all use initials-only avatars, no headshots, no company URLs, no review platform links. A 4th avatar ("TK") in the hero strip has no corresponding testimonial — implies a fabricated client.
-
-**Fix:** Upgrade to full name + company name linked to their website. Add a Google Business Profile or Clutch review link per testimonial. Remove the "TK" placeholder or add a real corresponding testimonial.
-
----
-
-### 6. Homepage stats are unverified claims
-**File:** `src/app/page.tsx:202-207`
-
-50+ projects, 98% satisfaction, 21 days avg delivery, 100% 5-star reviews — no third-party verification. The animated hero dashboard displays fictional "+127% Growth," "8.4% Conv. Rate," and "99/100 PageSpeed" as if they are real client results. These are hardcoded UI elements.
-
-**Fix:**
-- Add source attribution ("Based on 52 completed projects, Jan 2024–Jun 2026")
-- Link the 5-star claim to a Google Business Profile or Clutch
-- Replace fictional dashboard with a real client screenshot (with permission) or remove it
-
----
-
-### 7. Blog last updated 13 months ago
-Most recent post: June 1, 2025. Current date: June 29, 2026. Two post titles include "2025" in the heading. For an agency selling SEO services, a stale blog signals operational abandon.
-
-**Fix:** Publish at least one substantive post in 2026 before enabling indexing. Update year-dated titles when content is published.
-
----
-
-### 8. No Privacy Policy or Terms of Service
-The contact form collects name, email, and message. No Privacy Policy, no cookie notice, no ToS linked anywhere on the site. This is a CCPA/CAN-SPAM compliance gap and a Google quality rater trust flag.
-
-**Fix:** Add `/privacy-policy` and `/terms` pages. Link both from the footer. Generate base content from a reputable generator (iubenda, Termly), then customize.
+### 4. US-targeting site displays an Indian phone number sitewide
+`+91 78198 32001` appears as a live `tel:` link in the footer of every page (confirmed on home, about, contact, blog, portfolio, pricing, services*) while `areaServed` in schema and all page copy explicitly target "US businesses" / "US customers." A US visitor calling this number pays international rates and gets a signal that undercuts "we understand US customers" positioning stated in testimonials.
+**Recommendation:** Get a US-based number (Google Voice, a VoIP US number, or a toll-free 800 number) for the public-facing footer/contact page, even if the operating team is based in India.
 
 ---
 
 ## Medium
 
-### 9. No author bylines on blog listing
-No author name attributed to any blog post. No human identity attached to any content on this site.
+### 5. /pricing is thin relative to purchase-decision weight
+250 words is low for a page that has to carry an entire buying decision. No case studies, no "what's included in each phase" narrative, no risk-reversal/guarantee language beyond the tier cards + FAQ.
+**Recommendation:** Add a short "what happens after you pay" process narrative and at least one linked case study per tier.
 
-**Fix:** Add author field to each post in `blog/page.tsx`. Create author bio pages linked from each post page once built.
-
----
-
-### 10. No Google Business Profile or third-party review profile
-"100% 5-star reviews" claim with no verification path.
-
-**Fix:** Create and verify a Google Business Profile. Also create a Clutch.co profile (standard for US web agencies, AI systems treat it as credible citation source).
+### 6. No dedicated author/team page or bios
+Related to #3 — there's no `/team` or `/about#team` section with individual bios, which would reinforce both Expertise and Experience pillars simultaneously.
+**Recommendation:** Low-effort addition: a 3-4 person "who we are" grid on `/about` with real names/roles/photos.
 
 ---
 
 ## Low
 
-### 11. Blog titles reference "2025"
-"How much does a website cost in 2025?" and "Web design trends US businesses should use in 2025." — stale before a word of content is written.
+### 7. Blog post dates are not chronological / span a wide range
+`article:published_time: 2025-05-15` on the sampled post — cross-ref SXO finding that post dates aren't in chronological order, which can read as backdated/batch-published content rather than an ongoing publishing cadence.
+**Recommendation:** Verify and correct publish dates to reflect actual chronology; consider adding an `updated` date for evergreen posts refreshed later.
 
-**Fix:** Update to "2026" or use evergreen titles with a "Last updated" byline.
+---
 
-### 12. No city/vertical targeting
-"US clients" framing is too broad to rank for localized commercial queries. The existing testimonial personas (Austin property, Pacific wellness, Brooklyn home goods) hint at viable verticals.
+## Data Source & Confidence
 
-**Fix:** After indexing is live, add landing pages for specific verticals or US cities where clients are concentrated.
+Direct HTTP fetch of all 11 sitemap URLs + 1 sample blog post via `render_page.py --mode never --output` (raw HTML) piped through `parse_html.py` for word counts, schema, and image inventory, plus targeted `grep` checks for phone number and author markup. High confidence — this is live, current-state data as of 2026-07-04, not an estimate.
+
+Cross-reference: `schema.md` for the AggregateRating/Review schema-policy risk, `sxo.md` for the portfolio-page proof gap from a searcher-intent angle, `geo.md` for the same testimonial/stat-sourcing gap from an AI-citability angle, `technical.md` for the indexability blockers that make all of this invisible to search/AI crawlers regardless of quality.

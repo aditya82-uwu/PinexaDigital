@@ -34,9 +34,9 @@ const values = [
 ];
 
 const stats = [
-  { num: "50+", label: "Projects delivered" },
-  { num: "3 wk", label: "Avg. delivery time" },
-  { num: "98%", label: "Client satisfaction" },
+  { num: "2–3 wk", label: "Delivery time" },
+  { num: "24 hr", label: "Response time" },
+  { num: "Fixed", label: "Transparent pricing" },
   { num: "US", label: "Primary market focus" },
 ];
 

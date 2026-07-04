@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const tiers = [
   {
     name: "Starter",
-    price: "$997",
+    price: "$299",
     period: "one-time",
     description: "For small businesses launching their first professional website.",
     features: [
@@ -30,7 +30,7 @@ const tiers = [
   },
   {
     name: "Growth",
-    price: "$2,497",
+    price: "$499",
     period: "one-time",
     description: "For businesses serious about generating leads and growing online.",
     features: [
@@ -97,12 +97,12 @@ const pricingJsonLd = {
         "@type": "Offer",
         name: "Starter",
         description: "For small businesses launching their first professional website. Up to 5 pages, 2-week delivery.",
-        price: "997",
+        price: "299",
         priceCurrency: "USD",
         url: siteUrl("/pricing"),
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: "997",
+          price: "299",
           priceCurrency: "USD",
           unitText: "one-time",
         },
@@ -115,12 +115,12 @@ const pricingJsonLd = {
         "@type": "Offer",
         name: "Growth",
         description: "For businesses serious about generating leads. Up to 12 pages, advanced SEO, 3-week delivery.",
-        price: "2497",
+        price: "499",
         priceCurrency: "USD",
         url: siteUrl("/pricing"),
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: "2497",
+          price: "499",
           priceCurrency: "USD",
           unitText: "one-time",
         },

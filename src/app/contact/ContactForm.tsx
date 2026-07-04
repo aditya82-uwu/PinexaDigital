@@ -62,7 +62,7 @@ export default function ContactForm() {
         <select name="service" required className={`${inputCls} cursor-pointer`}>
           <option value="">Select a service…</option>
           <option value="web-design">Web Design &amp; Development</option>
-          <option value="seo">SEO &amp; Digital Marketing</option>
+          <option value="crm-automation">CRM Automation &amp; Integration</option>
           <option value="ecommerce">E-commerce</option>
           <option value="maintenance">Website Maintenance</option>
           <option value="other">Other / Not sure</option>

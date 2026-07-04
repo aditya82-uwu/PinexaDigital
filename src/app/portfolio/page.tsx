@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Portfolio & Live Demos — See Our Work",
-  description: `Browse ${SITE.brandName}'s live website demos and client results. See real websites built for gyms, restaurants, hotels, clinics, law firms, and more.`,
+  description: `Browse ${SITE.brandName}'s live website demos across industries — gyms, restaurants, hotels, clinics, law firms, and more.`,
   alternates: { canonical: siteUrl("/portfolio") },
 };
 
@@ -251,30 +251,32 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Client results strip */}
-      <section className="bg-card py-20 px-6 border-t border-line">
-        <div className="max-w-350 mx-auto">
-          <div className="text-center mb-12">
-            <p className="eyebrow mb-3">Client Results</p>
-            <h2 className="display-lg text-title">Real projects, real numbers.</h2>
-          </div>
+      {/* Client results strip (hidden until we have real, verifiable client results) */}
+      {false && (
+        <section className="bg-card py-20 px-6 border-t border-line">
+          <div className="max-w-350 mx-auto">
+            <div className="text-center mb-12">
+              <p className="eyebrow mb-3">Client Results</p>
+              <h2 className="display-lg text-title">Real projects, real numbers.</h2>
+            </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {results.map(({ title, result, category }) => (
-              <div key={title} className="bg-surface rounded-xl p-5 shadow-card flex items-start gap-4">
-                <div className="w-9 h-9 rounded-lg bg-link/10 flex items-center justify-center shrink-0 mt-0.5">
-                  <TrendingUp size={15} className="text-link" />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {results.map(({ title, result, category }) => (
+                <div key={title} className="bg-surface rounded-xl p-5 shadow-card flex items-start gap-4">
+                  <div className="w-9 h-9 rounded-lg bg-link/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <TrendingUp size={15} className="text-link" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-semibold tracking-widest uppercase text-faint block mb-1">{category}</span>
+                    <p className="text-[14px] font-semibold text-title leading-tight mb-1">{title}</p>
+                    <p className="text-[13px] font-medium text-link">{result}</p>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-[10px] font-semibold tracking-widest uppercase text-faint block mb-1">{category}</span>
-                  <p className="text-[14px] font-semibold text-title leading-tight mb-1">{title}</p>
-                  <p className="text-[13px] font-medium text-link">{result}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="bg-invert py-20 px-6 text-center">

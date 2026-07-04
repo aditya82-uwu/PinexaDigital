@@ -30,7 +30,7 @@ export const posts: Post[] = [
     content: [
       {
         t: "p",
-        v: "Websites can cost anywhere from $0 on a free DIY plan to $100,000 for a complex enterprise platform. For most US small businesses, a professionally built custom website runs between $997 and $5,000 — and understanding what drives that range is the first step to budgeting smartly.",
+        v: "Websites can cost anywhere from $0 on a free DIY plan to $100,000 for a complex enterprise platform. For most US small businesses, a professionally built custom website runs between $299 and $5,000 — and understanding what drives that range is the first step to budgeting smartly.",
       },
       {
         t: "h2",
@@ -50,7 +50,7 @@ export const posts: Post[] = [
       },
       {
         t: "h2",
-        v: "Option 2 — Freelancers and template shops ($500–$2,000)",
+        v: "Option 2 — Freelancers and template shops ($300–$2,000)",
       },
       {
         t: "p",
@@ -58,15 +58,15 @@ export const posts: Post[] = [
       },
       {
         t: "h2",
-        v: "Option 3 — Custom web design agencies ($997–$10,000+)",
+        v: "Option 3 — Custom web design agencies ($299–$10,000+)",
       },
       {
         t: "p",
-        v: "A proper agency builds your site from a strategy brief, not a template. At PinexaDigital, the Starter package starts at $997 for a 5-page custom site with SEO setup and 2-week delivery. The Growth package at $2,497 covers up to 12 pages, a custom design system, advanced SEO, and a blog setup ready for content. Enterprise projects with e-commerce, custom integrations, or large page counts are quoted individually.",
+        v: "A proper agency builds your site from a strategy brief, not a template — and pricing here varies enormously depending on the agency's overhead and process. At PinexaDigital, the Starter package starts at $299 for a 5-page custom site with SEO setup and 2-week delivery — priced right alongside freelancers, but with a strategy brief, custom design, and full technical SEO included instead of skipped. The Growth package at $499 covers up to 12 pages, a custom design system, advanced SEO, and a blog setup ready for content. Enterprise projects with e-commerce, custom integrations, or large page counts are quoted individually.",
       },
       {
         t: "note",
-        v: "PinexaDigital pricing: Starter $997 (5 pages, 2 weeks) · Growth $2,497 (12 pages, 3 weeks) · Enterprise custom — all one-time, no hidden fees.",
+        v: "PinexaDigital pricing: Starter $299 (5 pages, 2 weeks) · Growth $499 (12 pages, 3 weeks) · Enterprise custom — all one-time, no hidden fees.",
       },
       {
         t: "h2",
@@ -89,7 +89,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "Consider a service business getting 500 website visitors per month with an average project value of $3,000. A generic DIY site might convert 0.5% — that's 2-3 new clients per month. A conversion-optimized custom site converting at 2.5% is 12-13 new clients. The difference — roughly 10 additional clients per month at $3,000 each — is $30,000 in monthly revenue. A $2,497 website pays for itself with one new client. The return is not on the website — it's on what the website enables.",
+        v: "Consider a service business getting 500 website visitors per month with an average project value of $3,000. A generic DIY site might convert 0.5% — that's 2-3 new clients per month. A conversion-optimized custom site converting at 2.5% is 12-13 new clients. The difference — roughly 10 additional clients per month at $3,000 each — is $30,000 in monthly revenue. A $299 website pays for itself many times over with a single new client. The return is not on the website — it's on what the website enables.",
       },
       {
         t: "h2",
@@ -99,7 +99,7 @@ export const posts: Post[] = [
         t: "ul",
         v: [
           "Testing an idea, pre-revenue stage → DIY builder is fine for now",
-          "Local business needing a basic digital presence → freelancer or $997 starter",
+          "Local business needing a basic digital presence → freelancer or $299 starter",
           "Service business competing for Google searches → custom site with SEO setup",
           "E-commerce, lead generation, or appointment booking → Growth package or above",
           "High-traffic, complex requirements → Enterprise quote",
@@ -434,7 +434,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "A service business generating $15,000/month from its website at a 1.5% conversion rate is converting 1.5 out of every 100 visitors. Improving load time from 5 seconds to 1.5 seconds — with no other changes — can realistically push that to 3.5%. That's more than doubling revenue from the same traffic. A $2,497 website rebuild that achieves this pays for itself in the first month. Speed isn't a technical detail. It's a business decision.",
+        v: "A service business generating $15,000/month from its website at a 1.5% conversion rate is converting 1.5 out of every 100 visitors. Improving load time from 5 seconds to 1.5 seconds — with no other changes — can realistically push that to 3.5%. That's more than doubling revenue from the same traffic. A $499 website rebuild that achieves this pays for itself in the first month. Speed isn't a technical detail. It's a business decision.",
       },
     ],
   },

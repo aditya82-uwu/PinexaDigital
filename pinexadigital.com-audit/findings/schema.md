@@ -1,257 +1,188 @@
 # Schema / Structured Data Findings — pinexadigital.com
-**Score: 18/100** | Audit date: 2026-06-29
+**Score: 78/100** | Audit date: 2026-07-04 (re-audit; previous score was 18/100 on 2026-06-29)
 
 ---
 
-## Existing Schema (layout.tsx, site-wide)
+## Summary
 
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "PinexaDigital",
-  "url": "https://pinexadigital.com",
-  "description": "Professional web design and development agency...",
-  "telephone": "+91 78198 32001",
-  "email": "contact@pinexadigital.com",
-  "priceRange": "$$",
-  "areaServed": ["US", "IN"],
-  "serviceType": ["Web Design", "Web Development", "SEO", "E-commerce"]
-}
-```
+Since the last audit (2026-06-29), the site has been substantially rebuilt. Nearly every gap previously flagged (`BreadcrumbList`, per-service `Service` schema, `WebSite`/`Organization` graph, `logo`, `sameAs`, `AggregateRating`, `Blog`/`ItemList`) has been implemented, and all JSON-LD is confirmed **server-rendered** (present in raw HTML with Playwright disabled — verified via `render_page.py --mode never`), so it is fully crawlable by Google. This is a well-instrumented site for structured data. The remaining issues are: (1) a real Google review-policy risk around the site-wide `AggregateRating`/`Review` block, (2) a type-appropriateness question (`ProfessionalService` vs `Organization`) given the business has no physical address, (3) missing `image` on blog posts, and (4) a few low-priority/optional additions (FAQPage for AI/GEO only, portfolio ItemList).
 
-**Validation:** `@context`, `@type`, and core fields pass. Missing `@id`, `address`, `logo`, `sameAs`. `areaServed` including "IN" conflicts with US-only positioning. `telephone` is an Indian number.
+All 11 fetched URLs returned 200 and are `is_spa: False` (fully static/SSR — no client-only rendering risk for crawlers).
 
 ---
 
-## What Works
+## What's Implemented (per page, validated against live HTML)
 
-- `ProfessionalService` @type is semantically appropriate for an agency
-- `@context` uses https (not deprecated http)
-- Core identity fields present: name, url, description, telephone, email, priceRange
-- `serviceType` array communicates offering scope
-- JSON-LD format used (correct choice over Microdata or RDFa)
-- `siteUrl()` helper centralises domain — no URL drift risk
+| Page | JSON-LD present | Validation |
+|---|---|---|
+| `/` | `@graph`: `WebSite` + `ProfessionalService` (incl. `aggregateRating`, 3 `Review`s, `logo`, `sameAs`) | ✅ Valid types/properties, `https://schema.org` context, absolute URLs. ⚠️ See Critical #1 (review risk) and Medium #1 (type choice). |
+| `/services` | `WebSite`+`ProfessionalService` (inherited) + `BreadcrumbList` | ✅ Pass |
+| `/services/web-design` | + `Service` + `BreadcrumbList` | ✅ Pass. `Service.provider` correctly references the org; `Offer`/`UnitPriceSpecification` well-formed. |
+| `/services/seo` | + `Service` + `BreadcrumbList` | ✅ Pass (no `offers` — SEO is retainer-based, acceptable to omit) |
+| `/services/ecommerce` | + `Service` + `BreadcrumbList` | ✅ Pass (no `offers` — variable pricing, acceptable) |
+| `/services/maintenance` | + `Service` (with `Offer`, $97/mo) + `BreadcrumbList` | ✅ Pass |
+| `/pricing` | + `ItemList` of 3 `Offer`s + `BreadcrumbList` | ✅ Pass. Good use of `ItemList`+`Offer` for tiered pricing (no native Google rich-result for pricing tables, but strong AI/LLM signal). |
+| `/portfolio` | `WebSite`+`ProfessionalService` (inherited) + `BreadcrumbList` only | ⚠️ No item-level schema for the 8 demo sites (see Missing #4) |
+| `/about` | inherited + `BreadcrumbList` | ✅ Pass (no page-specific schema needed) |
+| `/contact` | inherited + `BreadcrumbList` | ✅ Pass |
+| `/blog` | + `Blog` + `BreadcrumbList` | ✅ Pass — correct use of `Blog` (not `BlogPosting`) for the index |
+| `/blog/[slug]` | + `BlogPosting` + `BreadcrumbList` | ⚠️ Valid types/dates (`datePublished` ISO 8601) but **missing `image`** — see Missing #3 |
+
+**BreadcrumbList** is implemented once, centrally, in `src/components/ui/Breadcrumb.tsx` and reused everywhere `<Breadcrumb crumbs={...}>` is rendered — correctly encodes nested paths (e.g. Home > Services > Web Design). No changes needed.
+
+**Service schema** is implemented on all four service pages — this was the #1 prior recommendation and is now done correctly, including `provider`, `areaServed`, and `Offer`/`priceSpecification` where pricing is fixed.
+
+Format/context checklist across all blocks: `@context: "https://schema.org"` (not http) ✅, JSON-LD (not Microdata/RDFa) ✅, absolute URLs via `siteUrl()` helper ✅, ISO 8601 dates (`2026-06-15` etc.) ✅, no placeholder text ✅, no deprecated types (`HowTo`, `SpecialAnnouncement`, `CourseInfo` etc. — none used) ✅.
 
 ---
 
 ## Critical
 
-### 1. Global noindex renders all schema inert
-Google does not show rich results for noindexed pages. Fix the indexing issue (see `findings/technical.md`) before investing time in schema improvements — everything below is blocked until indexing is enabled.
+### 1. Site-wide `AggregateRating`/`Review` is a self-serving, unverifiable review — rich-result policy risk
+**File:** `src/app/layout.tsx` (lines 100-129)
 
----
+The `ProfessionalService` node carries `aggregateRating` (5.0 / 3 reviews) and 3 embedded `Review` objects (Sarah M., James R., Diana L.). These reviews:
+- Are authored/hosted entirely by the business itself, with no link to a third-party review platform (Google Business Profile, Trustpilot, Clutch, G2) for verification.
+- Have no `datePublished` on any `Review`.
+- Use generic first-name + last-initial identities that can't be independently verified.
 
-## High
+Google's structured data guidelines for review snippets explicitly prohibit "self-serving" reviews — testimonials the business itself writes/curates and marks up as if they were independent reviews — and Google can take manual action / withhold star-rating rich results for markup that appears to be gaming review signals. This is a policy compliance risk, not just a quality nitpick. (Note: the reviews *do* match visibly-displayed testimonial content in `HomeClient.tsx`, so there's no "hidden content" violation — that's a mitigating factor, but doesn't resolve the self-serving-source problem.)
 
-### 2. No BreadcrumbList schema
-**File:** `src/components/ui/Breadcrumb.tsx`
-
-The `Breadcrumb` component renders correct visual breadcrumbs on all inner pages but emits zero structured data. The `crumbs` prop already contains all the data needed to generate BreadcrumbList JSON-LD.
-
-**Fix:** Add JSON-LD inside the Breadcrumb component built from the crumbs prop:
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pinexadigital.com" },
-    { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://pinexadigital.com/services" },
-    { "@type": "ListItem", "position": 3, "name": "Web Design", "item": "https://pinexadigital.com/services/web-design" }
-  ]
-}
-```
-This is a high-impact, low-effort win — the data already exists, only the JSON-LD output is missing.
-
----
-
-### 3. No Service schema on any of the four service pages
-
-Each service page (`/services/web-design`, `/services/seo`, `/services/ecommerce`, `/services/maintenance`) describes a distinct offering with name, description, deliverables, and pricing — but no Service schema.
-
-**Fix per service page:**
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Web Design & Development",
-  "description": "Custom websites built for speed, SEO, and US audiences. Starting from $997.",
-  "url": "https://pinexadigital.com/services/web-design",
-  "provider": {
-    "@type": "ProfessionalService",
-    "name": "PinexaDigital",
-    "url": "https://pinexadigital.com"
-  },
-  "areaServed": { "@type": "Country", "name": "United States" },
-  "offers": {
-    "@type": "Offer",
-    "price": "997",
-    "priceCurrency": "USD",
-    "priceSpecification": {
-      "@type": "UnitPriceSpecification",
-      "price": "997",
-      "priceCurrency": "USD",
-      "unitText": "one-time"
-    }
-  }
-}
-```
-
----
-
-### 4. No PriceSpecification or Offer schema on pricing page
-**File:** `src/app/pricing/page.tsx`
-
-Three tiers ($997, $2,497, Custom) with full feature lists — zero structured data. Google and LLMs must infer pricing from raw text.
-
-**Fix:**
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "PinexaDigital Web Design Packages",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "item": {
-        "@type": "Offer",
-        "name": "Starter",
-        "description": "For small businesses launching their first professional website.",
-        "price": "997",
-        "priceCurrency": "USD",
-        "url": "https://pinexadigital.com/pricing"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Offer",
-        "name": "Growth",
-        "price": "2497",
-        "priceCurrency": "USD",
-        "url": "https://pinexadigital.com/pricing"
-      }
-    }
-  ]
-}
-```
-
----
-
-### 5. No AggregateRating schema despite explicit 5-star claims
-**File:** `src/app/page.tsx:222-247` (testimonials) + HeroVisual
-
-Homepage displays "5.0 Stars / Client avg." badge, five filled stars on 3 testimonial cards, and "100% 5-Star Reviews" in the stats band. This is exactly what `AggregateRating` captures — and it's the data that produces star ratings in SERPs.
-
-**Fix:** Add to root ProfessionalService block:
-```json
-"aggregateRating": {
-  "@type": "AggregateRating",
-  "ratingValue": "5.0",
-  "reviewCount": "3",
-  "bestRating": "5",
-  "worstRating": "1"
-},
-"review": [
-  {
-    "@type": "Review",
-    "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-    "author": { "@type": "Person", "name": "Sarah M." },
-    "reviewBody": "PinexaDigital delivered a stunning website in 3 weeks..."
-  }
-]
-```
-**Important:** Only use the review count matching the number of testimonials actually shown on the page. Google's review policy requires genuine reviews.
+**Recommended fix (pick one):**
+- **Safest:** Remove `aggregateRating`/`review` from the site-wide `Organization`/`ProfessionalService` node entirely and keep testimonials as plain page content (no schema). Rich star-rating snippets aren't worth the manual-action risk on 3 unverifiable reviews.
+- **If keeping ratings:** Source them from a verifiable third party (Google Business Profile via Google's own review count, Clutch, Trustpilot) and link `sameAs`/`url` to that profile so the claim is externally checkable, and add `datePublished` to each `Review`.
 
 ---
 
 ## Medium
 
-### 6. areaServed includes "IN" (India)
-All site copy targets US businesses exclusively. Including India in `areaServed` sends a conflicting signal to Google's entity graph.
+### 2. `ProfessionalService` vs `Organization` — type appropriateness
+**File:** `src/app/layout.tsx`
 
-**Fix:**
+`ProfessionalService` is a subtype of `LocalBusiness`, which schema.org and Google's own guidance model as a physical-location or defined-service-area business (Google's LocalBusiness rich-result features expect `address`/`geo`). PinexaDigital is described as a remote-only agency serving US clients from an India-based team with no storefront — and indeed no `address` is present in the markup. Since `Organization` supports every property currently used (`telephone`, `email`, `areaServed`, `logo`, `sameAs`, `aggregateRating`, `review`) without implying a physical/local-business presence, it is the more semantically accurate type here and avoids sending a "local business" signal Google can't verify (no address) or misapply.
+
+**Recommended fix:**
 ```json
-"areaServed": { "@type": "Country", "name": "United States" }
-```
-
----
-
-### 7. No logo property
-Google's Knowledge Panel uses `logo` from Organization schema.
-
-**Fix:**
-```json
-"logo": {
-  "@type": "ImageObject",
-  "url": "https://pinexadigital.com/logo.png",
-  "width": 512,
-  "height": 512
+{
+  "@type": "Organization",
+  "@id": "https://www.pinexadigital.com/#organization",
+  "name": "PinexaDigital",
+  "url": "https://www.pinexadigital.com",
+  "description": "Professional web design and development agency helping US businesses grow online with high-converting websites, SEO, and e-commerce solutions.",
+  "email": "contact@pinexadigital.com",
+  "areaServed": { "@type": "Country", "name": "United States" },
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.pinexadigital.com/logo.png",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/pinexadigital",
+    "https://twitter.com/pinexadigital"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91 78198 32001",
+    "contactType": "customer service",
+    "areaServed": "US",
+    "email": "contact@pinexadigital.com"
+  }
 }
 ```
-Create the logo file at `/public/logo.png` (512×512px minimum per Google spec).
+Note: `priceRange` is a `LocalBusiness`-only property and has no defined meaning on `Organization` — drop it if you switch types (pricing is already well-represented via the `Service`/`Offer` schema on service pages and the `ItemList` on `/pricing`).
 
----
+### 3. Blog posts missing `image` on `BlogPosting`
+**File:** `src/app/blog/[slug]/page.tsx`, `src/lib/blog-data.ts`
 
-### 8. No sameAs social profile links
-`sameAs` is the primary mechanism for Google's Knowledge Graph to connect the entity to external identity signals.
+`Post` has no `image` field, so `blogPostingJsonLd` can't populate one. `image` is a required/near-required property for Google's Article/BlogPosting rich results (large/enhanced link previews, Top Stories eligibility) and for good AI-citation previews.
 
-**Fix:** Once profiles exist:
+**Fix:** Add an `image` field to each post in `blog-data.ts` (1200×630 min, matching the OG image convention already used elsewhere) and include it in the JSON-LD:
 ```json
-"sameAs": [
-  "https://www.linkedin.com/company/pinexadigital",
-  "https://twitter.com/pinexadigital",
-  "https://www.clutch.co/profile/pinexadigital"
-]
+{
+  "@type": "BlogPosting",
+  "headline": "How much does a website cost in 2026?",
+  "image": ["https://www.pinexadigital.com/blog/how-much-does-a-website-cost-og.jpg"],
+  "datePublished": "2026-06-15",
+  "dateModified": "2026-06-15",
+  "author": { "@type": "Organization", "name": "PinexaDigital", "url": "https://www.pinexadigital.com" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PinexaDigital",
+    "url": "https://www.pinexadigital.com",
+    "logo": { "@type": "ImageObject", "url": "https://www.pinexadigital.com/logo.png" }
+  },
+  "mainEntityOfPage": "https://www.pinexadigital.com/blog/how-much-does-a-website-cost"
+}
 ```
 
 ---
 
-### 9. No WebSite schema
-Missing for Knowledge Panel brand entity association.
+## Low / Optional
 
-**Fix:** Use `@graph` to group WebSite + ProfessionalService in layout.tsx:
+### 4. Portfolio page has no item-level schema
+**File:** `src/app/portfolio/page.tsx`
+
+The 8 tiles (gym, restaurant, hotel, travel, clinic, etc.) are illustrative demo templates, not documented client case studies — so `Product`/`Review`-bearing schema would be inappropriate. A light-touch `ItemList` of `CreativeWork` entries is a reasonable, low-risk addition since these are legitimate portfolio/demo works:
 ```json
 {
   "@context": "https://schema.org",
-  "@graph": [
+  "@type": "ItemList",
+  "name": "PinexaDigital Portfolio",
+  "itemListElement": [
     {
-      "@type": "WebSite",
-      "@id": "https://pinexadigital.com/#website",
-      "url": "https://pinexadigital.com",
-      "name": "PinexaDigital",
-      "publisher": { "@id": "https://pinexadigital.com/#organization" }
-    },
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://pinexadigital.com/#organization",
-      "name": "PinexaDigital"
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "CreativeWork",
+        "name": "Gym & Fitness demo",
+        "url": "https://gym.pinexadigital.com",
+        "about": "High-energy fitness studio website demo — class schedules, memberships, trainer profiles.",
+        "creator": { "@type": "Organization", "name": "PinexaDigital", "url": "https://www.pinexadigital.com" }
+      }
     }
   ]
 }
 ```
 
----
-
-### 10. No Blog or ItemList schema on blog listing
-
-**Fix:** Add to `src/app/blog/page.tsx`:
+### 5. `FAQPage` — content exists, no schema (optional, AI/GEO only)
+FAQ sections exist on `/services/web-design`, `/services/seo`, `/services/ecommerce`, `/services/maintenance`, and `/pricing` with zero `FAQPage` markup. Per current Google policy, FAQ rich results are retired for all sites (May 7, 2026) — **adding this provides no SERP benefit**, so it is optional. If GEO/AI-citation visibility is a goal, it's low-risk to add since the FAQ arrays already exist in each page's source:
 ```json
 {
   "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": "PinexaDigital Blog",
-  "url": "https://pinexadigital.com/blog",
-  "publisher": { "@type": "ProfessionalService", "name": "PinexaDigital" }
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the difference between your Starter and Growth packages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Starter package ($997) covers up to 5 pages... Growth ($2,497) covers up to 12 pages, includes a custom design system, advanced SEO, and a blog setup."
+      }
+    }
+  ]
 }
 ```
-When blog post pages are built, add `BlogPosting` schema per post with `headline`, `datePublished`, `dateModified`, `author`, `publisher`, and `url`.
+Do not expect/report a SERP rich-result impact from this addition.
 
 ---
 
-## Info
+## Validation Checklist Summary
 
-### 11. FAQPage schema — no SERP value as of May 2026
-FAQPage schema lost Google SERP rich result support for all sites on May 7, 2026. Adding FAQPage markup provides no SERP enhancement. It may still assist LLM/AI citation. Do not add for SEO benefit.
+| Check | Result |
+|---|---|
+| `@context` is `https://schema.org` | ✅ Pass everywhere |
+| `@type` valid, not deprecated | ✅ Pass (no `HowTo`, `SpecialAnnouncement`, `CourseInfo`, etc.) |
+| Required properties present | ⚠️ Mostly pass; `BlogPosting.image` missing |
+| Property value types correct | ✅ Pass |
+| No placeholder text | ✅ Pass |
+| URLs absolute | ✅ Pass (`siteUrl()` helper) |
+| Dates ISO 8601 | ✅ Pass |
+| Reviews genuine/verifiable | ❌ Fail — see Critical #1 |
+| LocalBusiness/Organization type matches business model | ⚠️ Borderline — see Medium #2 |
+
+---
+
+## Score Rationale: 78/100
+
+Up from 18/100 (2026-06-29). Deductions: −12 for the self-serving/unverifiable `AggregateRating`+`Review` policy risk (Critical #1), −5 for the `ProfessionalService`/no-address type mismatch (Medium #2), −5 for missing `BlogPosting.image` across all posts (Medium #3). Remaining minor deductions for the optional portfolio/FAQPage opportunities left on the table. Everything else — `BreadcrumbList` site-wide, `Service` on every service page, `WebSite`+`Organization` graph, `Blog`/`BlogPosting`, `ItemList`/`Offer` pricing — is implemented correctly and confirmed server-rendered on the live site.

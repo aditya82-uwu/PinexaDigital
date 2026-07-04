@@ -6,7 +6,7 @@ const cols = [
     label: "SERVICES",
     links: [
       { label: "Web Design",  href: "/services/web-design" },
-      { label: "SEO",         href: "/services/seo" },
+      { label: "CRM Automation", href: "/services/crm-automation" },
       { label: "E-commerce",  href: "/services/ecommerce" },
       { label: "Maintenance", href: "/services/maintenance" },
     ],

@@ -61,10 +61,10 @@ export default function Navbar() {
           <Image
             src={!mounted || resolvedTheme === "dark" ? "/logo-light.png" : "/logo-dark.png"}
             alt={SITE.brandName}
-            width={140}
-            height={32}
-            className="h-8 w-auto"
-            priority
+            width={488}
+            height={183}
+            className="h-8 w-auto object-contain"
+            preload
           />
         </Link>
 

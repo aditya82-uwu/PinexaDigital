@@ -27,7 +27,7 @@ const platforms = [
   {
     name: "Shopify",
     bestFor: "Product-based businesses launching fast",
-    desc: "Ideal for businesses that want to go live quickly and don't need complex customisation. Shopify handles hosting, security, and updates — you focus on your products. Built-in US payment processing via Shopify Payments means no extra gateway configuration. The app ecosystem covers most US-specific needs (reviews, loyalty, multi-channel selling). Starter stores can be live within 1–2 weeks.",
+    desc: "Ideal for businesses that want to go live quickly and don't need complex customisation. Shopify handles hosting, security, and updates, so you focus on your products. Built-in US payment processing via Shopify Payments means no extra gateway configuration. The app ecosystem covers most US-specific needs (reviews, loyalty, multi-channel selling). Starter stores can be live within 1–2 weeks.",
     gradient: "from-green-500 to-emerald-500",
     pros: ["Fastest launch time", "No technical maintenance", "Built-in US payments", "Excellent mobile app"],
     cons: ["Monthly fees ($39–$399)", "Less customisation flexibility", "Platform lock-in"],
@@ -35,7 +35,7 @@ const platforms = [
   {
     name: "WooCommerce",
     bestFor: "WordPress businesses wanting full ownership",
-    desc: "The right choice if you're already on WordPress or you want to own your infrastructure completely. WooCommerce is free — you pay only for hosting and any premium plugins you add. No transaction fees, unlimited product types, and full control over every aspect of the experience. Requires more technical management but gives you complete ownership and flexibility.",
+    desc: "The right choice if you're already on WordPress or you want to own your infrastructure completely. WooCommerce is free: you pay only for hosting and any premium plugins you add. No transaction fees, unlimited product types, and full control over every aspect of the experience. Requires more technical management but gives you complete ownership and flexibility.",
     gradient: "from-violet-500 to-purple-500",
     pros: ["No transaction fees", "Full ownership and control", "Deep WordPress integration", "Unlimited customisation"],
     cons: ["Requires WordPress management", "Performance needs optimisation", "Plugin costs add up"],
@@ -52,7 +52,7 @@ const platforms = [
 
 const features = [
   "US payment gateway integration (Stripe, PayPal, Apple Pay, Shop Pay)",
-  "Mobile-optimised checkout flow — built for US buying patterns",
+  "Mobile-optimised checkout flow, built for US buying patterns",
   "Product filtering, search, and sorting for large catalogs",
   "Inventory and order management setup",
   "Abandoned cart recovery configuration",
@@ -63,7 +63,7 @@ const features = [
 
 const faqs = [
   {
-    q: "Which platform should I choose — Shopify or WooCommerce?",
+    q: "Which platform should I choose: Shopify or WooCommerce?",
     a: "If you want to launch quickly, don't have a developer, and primarily sell physical products: Shopify. If you're already on WordPress, want full ownership, or have a tight ongoing budget: WooCommerce. If you have complex requirements, unique checkout flows, or sell at high volume where transaction fees are significant: custom Next.js. We'll give you an honest recommendation during our initial call.",
   },
   {
@@ -72,15 +72,15 @@ const faqs = [
   },
   {
     q: "Do you handle product photography or copywriting?",
-    a: "We specialise in development and SEO — not photography or copywriting. For product photography, we can recommend professional services. For product copy, we can provide guidelines for writing effective descriptions, or we'll work with copy you provide.",
+    a: "We specialise in development and SEO, not photography or copywriting. For product photography, we can recommend professional services. For product copy, we can provide guidelines for writing effective descriptions, or we'll work with copy you provide.",
   },
   {
     q: "How do you handle US sales tax?",
-    a: "US sales tax is complex — different rates across 50 states, plus product-specific exemptions. For Shopify, we configure Shopify Tax or TaxJar integration. For WooCommerce, we set up TaxJar or Avalara. We don't provide tax advice, but we ensure your store's technical tax calculation is properly configured.",
+    a: "US sales tax is complex, with different rates across 50 states, plus product-specific exemptions. For Shopify, we configure Shopify Tax or TaxJar integration. For WooCommerce, we set up TaxJar or Avalara. We don't provide tax advice, but we ensure your store's technical tax calculation is properly configured.",
   },
   {
     q: "Will my store be optimised for mobile?",
-    a: "Absolutely — mobile is non-negotiable for US e-commerce. Over 70% of US online shopping browsing happens on mobile. Every store we build is mobile-first: large tap targets, simplified navigation, a streamlined checkout that minimises friction on small screens.",
+    a: "Absolutely. Mobile is non-negotiable for US e-commerce. Over 70% of US online shopping browsing happens on mobile. Every store we build is mobile-first: large tap targets, simplified navigation, a streamlined checkout that minimises friction on small screens.",
   },
   {
     q: "What about ongoing support after launch?",
@@ -103,10 +103,10 @@ export default function EcommercePage() {
           <p className="eyebrow mb-3">E-commerce</p>
           <h1 className="display-xl text-title mb-4 max-w-2xl">Online stores built to sell to US customers.</h1>
           <p className="text-[18px] leading-7 text-prose max-w-xl mb-5">
-            E-commerce experiences optimised for the US market — fast checkout, familiar payment methods, and mobile-first design that converts browsers into buyers.
+            E-commerce experiences optimised for the US market: fast checkout, familiar payment methods, and mobile-first design that converts browsers into buyers.
           </p>
           <p className="text-[16px] leading-7 text-prose max-w-2xl mb-8">
-            US shoppers have high expectations: they expect Apple Pay or PayPal at checkout, they abandon if the mobile experience is clunky, and they won&apos;t return if the site is slow. We build stores that meet these expectations from day one — on the platform that best fits your product, budget, and long-term plans. Every store includes US payment gateway integration, SEO-optimised product pages, and Google Analytics 4 e-commerce tracking.
+            US shoppers have high expectations: they expect Apple Pay or PayPal at checkout, they abandon if the mobile experience is clunky, and they won&apos;t return if the site is slow. We build stores that meet these expectations from day one, on the platform that best fits your product, budget, and long-term plans. Every store includes US payment gateway integration, SEO-optimised product pages, and Google Analytics 4 e-commerce tracking.
           </p>
           <Link href="/contact" className="h-12 px-7 inline-flex items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-[#171717] text-[15px] font-medium hover:opacity-85 transition-opacity">
             Discuss your store

@@ -6,8 +6,8 @@ import Breadcrumb from "@/components/ui/Breadcrumb";
 import { posts } from "@/lib/blog-data";
 
 export const metadata: Metadata = {
-  title: "Blog — Web Design & Business Growth Tips",
-  description: `${SITE.brandName}'s blog — actionable tips on web design, SEO, e-commerce, and growing your business online in the US market.`,
+  title: "Blog | Web Design & Business Growth Tips",
+  description: `${SITE.brandName}'s blog offers actionable tips on web design, SEO, e-commerce, and growing your business online in the US market.`,
   alternates: { canonical: siteUrl("/blog") },
 };
 
@@ -16,7 +16,7 @@ const blogJsonLd = {
   "@type": "Blog",
   name: "PinexaDigital Blog",
   url: siteUrl("/blog"),
-  description: `${SITE.brandName}'s blog — actionable tips on web design, SEO, e-commerce, and growing your business online in the US market.`,
+  description: `${SITE.brandName}'s blog offers actionable tips on web design, SEO, e-commerce, and growing your business online in the US market.`,
   publisher: {
     "@type": "ProfessionalService",
     name: SITE.brandName,
@@ -38,7 +38,7 @@ export default function BlogPage() {
           <p className="eyebrow mb-3">Blog</p>
           <h1 className="display-xl text-title mb-4">Insights for growing businesses.</h1>
           <p className="text-[18px] leading-7 text-prose max-w-lg mx-auto">
-            Actionable tips on web design, SEO, and digital growth — written for US business owners.
+            Actionable tips on web design, SEO, and digital growth, written for US business owners.
           </p>
         </div>
       </section>

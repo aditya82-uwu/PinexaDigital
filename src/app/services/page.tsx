@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
   title: "Web Design, SEO & E-commerce Services for US Businesses",
-  description: `Explore ${SITE.brandName}'s full range of services — custom web design, SEO, e-commerce development, and monthly maintenance. Fixed pricing, fast delivery, built for US businesses.`,
+  description: `Explore ${SITE.brandName}'s full range of services: custom web design, SEO, e-commerce development, and monthly maintenance. Fixed pricing, fast delivery, built for US businesses.`,
   alternates: { canonical: siteUrl("/services") },
 };
 
@@ -14,9 +14,9 @@ const services = [
   {
     icon: Code2,
     title: "Web Design & Development",
-    shortDesc: "Custom websites built from scratch — pixel-perfect design, fast load times, and conversion-focused layouts.",
+    shortDesc: "Custom websites built from scratch, with pixel-perfect design, fast load times, and conversion-focused layouts.",
     fullDesc:
-      "A well-designed website is your highest-leverage sales tool. We don't use templates — every site starts from a brief, informed by your business goals and your target customer. We handle everything from strategy and design through to development, performance optimisation, and launch. Sites are built with Next.js for PageSpeed scores of 90–99, structured data for Google, and mobile-first layouts that meet US user expectations. Most Starter projects (up to 5 pages) are delivered in 2 weeks. Growth projects (up to 12 pages with blog setup) in 3 weeks.",
+      "A well-designed website is your highest-leverage sales tool. We don't use templates. Every site starts from a brief, informed by your business goals and your target customer. We handle everything from strategy and design through to development, performance optimisation, and launch. Sites are built with Next.js for PageSpeed scores of 90–99, structured data for Google, and mobile-first layouts that meet US user expectations. Most Starter projects (up to 5 pages) are delivered in 2 weeks. Growth projects (up to 12 pages with blog setup) in 3 weeks.",
     href: "/services/web-design",
     tags: ["Next.js", "React", "WordPress", "Webflow"],
     gradient: "from-blue-500 to-cyan-500",
@@ -31,15 +31,15 @@ const services = [
   },
   {
     icon: Workflow,
-    title: "CRM Automation & Integration",
+    title: "CRM Automation Setup & Integration",
     shortDesc: "Automate your sales and support workflows so leads get followed up and data stays in sync.",
     fullDesc:
-      "Most businesses lose leads and time to disconnected tools and manual data entry — a form submission that sits unread, a spreadsheet that's always a day out of date, a follow-up that never happens because someone forgot. We set up your CRM and build the automation layer around it using n8n, Zapier, and Make: lead routing, follow-up sequences, and integrations with the tools you already use. Simple, single-workflow automations start at $200–$300. For custom, multi-system integrations, we scope it with you first and follow up with a fixed quote — no hourly billing, no surprises.",
+      "Most businesses lose leads and time to disconnected tools and manual data entry: a form submission that sits unread, a spreadsheet that's always a day out of date, a follow-up that never happens because someone forgot. We set up your CRM and build the automation layer around it using n8n, Zapier, and Make: lead routing, follow-up sequences, and integrations with the tools you already use. Simple, single-workflow automations start at $200–$300. For custom, multi-system integrations, we scope it with you first and follow up with a fixed quote, with no hourly billing and no surprises.",
     href: "/services/crm-automation",
     tags: ["n8n", "Zapier", "Make", "CRM Setup"],
     gradient: "from-violet-500 to-purple-500",
     includes: [
-      "CRM setup and pipeline configuration",
+      "CRM automation setup and pipeline configuration",
       "Lead routing and data sync automation",
       "Email and SMS follow-up sequences",
       "Third-party tool integrations",
@@ -70,7 +70,7 @@ const services = [
     title: "Website Maintenance",
     shortDesc: "Monthly plans to keep your site fast, secure, and always up to date.",
     fullDesc:
-      "A website launched and left unattended degrades — plugins go outdated, security vulnerabilities emerge, performance drifts as the web evolves. Our maintenance plans keep your site in the condition it was on launch day, and better. The Basic plan covers all updates, daily backups, uptime monitoring, and security scanning. The Pro plan adds 2 hours of content edits per month and a monthly performance review. The Agency plan adds a dedicated communication channel, 5 hours of edits, and a monthly strategy call. Every plan includes a direct line to the team that built your site — not a generic support ticket queue.",
+      "A website launched and left unattended degrades: plugins go outdated, security vulnerabilities emerge, performance drifts as the web evolves. Our maintenance plans keep your site in the condition it was on launch day, and better. The Basic plan covers all updates, daily backups, uptime monitoring, and security scanning. The Pro plan adds 2 hours of content edits per month and a monthly performance review. The Agency plan adds a dedicated communication channel, 5 hours of edits, and a monthly strategy call. Every plan includes a direct line to the team that built your site, not a generic support ticket queue.",
     href: "/services/maintenance",
     tags: ["Updates", "Backups", "Monitoring", "Support"],
     gradient: "from-emerald-500 to-teal-500",
@@ -92,7 +92,7 @@ const faqs = [
   },
   {
     q: "Can I hire you for just one service, or do I need to use all of them?",
-    a: "Absolutely — each service is available individually. Many clients start with a website and add SEO or maintenance later. We'll tell you honestly which combination makes the most sense for your situation.",
+    a: "Absolutely. Each service is available individually. Many clients start with a website and add SEO or maintenance later. We'll tell you honestly which combination makes the most sense for your situation.",
   },
   {
     q: "What do you need from me to get started?",
@@ -100,7 +100,7 @@ const faqs = [
   },
   {
     q: "How is your pricing structured?",
-    a: "Web design and e-commerce projects are fixed-price, one-time fees — Starter from $299, Growth from $499. Maintenance is a monthly retainer, and CRM automation starts at $200–$300 for simple workflows, with custom integrations quoted individually. All pricing is transparent with no hidden fees.",
+    a: "Web design and e-commerce projects are fixed-price, one-time fees: Starter from $299, Growth from $499. Maintenance is a monthly retainer, and CRM automation starts at $200–$300 for simple workflows, with custom integrations quoted individually. All pricing is transparent with no hidden fees.",
   },
 ];
 
@@ -114,10 +114,10 @@ export default function ServicesPage() {
           <p className="eyebrow mb-3">Services</p>
           <h1 className="display-xl text-title mb-4">Everything you need to grow online.</h1>
           <p className="text-[18px] leading-7 text-prose max-w-xl mx-auto mb-4">
-            From first impression to ongoing growth — we cover every part of your web presence, built specifically for the US market.
+            From first impression to ongoing growth, we cover every part of your web presence, built specifically for the US market.
           </p>
           <p className="text-[16px] leading-7 text-prose max-w-2xl mx-auto">
-            Most US businesses we work with have one of two problems: their website doesn't exist yet, or it exists but isn't generating business. We solve both — with transparent pricing, fast delivery, and work that's built to perform on Google and convert visitors into customers.
+            Most US businesses we work with have one of two problems: their website doesn't exist yet, or it exists but isn't generating business. We solve both, with transparent pricing, fast delivery, and work that's built to perform on Google and convert visitors into customers.
           </p>
         </div>
       </section>
@@ -171,13 +171,13 @@ export default function ServicesPage() {
           <div>
             <h2 className="display-lg text-title mb-5">Why businesses choose us.</h2>
             <p className="text-[16px] leading-7 text-prose mb-5">
-              There are a lot of web agencies. Here is the honest version of what makes us different — and what doesn&apos;t.
+              There are a lot of web agencies. Here is the honest version of what makes us different, and what doesn&apos;t.
             </p>
             <p className="text-[16px] leading-7 text-prose mb-5">
               We don&apos;t have a large team of account managers and project coordinators that add billing hours without adding value. The people you talk to are the people who build your site. That means fewer misunderstandings, faster iteration, and someone who can explain every technical decision in plain language.
             </p>
             <p className="text-[16px] leading-7 text-prose">
-              We specialise in the US market. Not because we can&apos;t work with other markets — but because being deeply focused makes us better at this specific thing. Our design patterns, our SEO strategies, and our conversion frameworks are all built around what works for US audiences and US search behaviour.
+              We specialise in the US market, not because we can&apos;t work with other markets, but because being deeply focused makes us better at this specific thing. Our design patterns, our SEO strategies, and our conversion frameworks are all built around what works for US audiences and US search behaviour.
             </p>
           </div>
           <div>

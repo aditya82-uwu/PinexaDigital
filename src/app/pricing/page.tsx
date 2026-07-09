@@ -5,7 +5,7 @@ import { SITE, siteUrl } from "@/lib/site-config";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Pricing — Transparent Web Design Packages",
+  title: "Pricing | Transparent Web Design Packages",
   description: `Simple, transparent pricing for professional web design and development. No hidden fees. ${SITE.brandName} serves US clients with fixed-price packages.`,
   alternates: { canonical: siteUrl("/pricing") },
 };
@@ -68,7 +68,7 @@ const tiers = [
 const faqs = [
   {
     q: "Do you offer payment plans?",
-    a: "Yes — we split all projects 50% upfront and 50% on delivery. Enterprise projects can be split into 3 milestones.",
+    a: "Yes, we split all projects 50% upfront and 50% on delivery. Enterprise projects can be split into 3 milestones.",
   },
   {
     q: "What's included after launch?",
@@ -80,7 +80,7 @@ const faqs = [
   },
   {
     q: "Do you work with US businesses only?",
-    a: "We work with businesses worldwide but specialise in the US market — our designs, copy guidance, and SEO strategies are tailored for US audiences.",
+    a: "We work with businesses worldwide but specialise in the US market, so our designs, copy guidance, and SEO strategies are tailored for US audiences.",
   },
 ];
 

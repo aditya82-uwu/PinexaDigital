@@ -5,7 +5,7 @@ import Breadcrumb from "@/components/ui/Breadcrumb";
 import { SITE, siteUrl } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Website Maintenance & Support Plans | PinexaDigital",
+  title: "Website Maintenance & Support Plans",
   description: `Keep your website fast, secure, and up to date with ${SITE.brandName}'s monthly maintenance plans. Starting at $97/month. Updates, backups, monitoring, and priority support.`,
   alternates: { canonical: siteUrl("/services/maintenance") },
 };
@@ -14,7 +14,7 @@ const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Website Maintenance & Support",
-  description: "Monthly website maintenance plans — security, updates, backups, and support. Starting at $97/month.",
+  description: "Monthly website maintenance plans: security, updates, backups, and support. Starting at $97/month.",
   url: siteUrl("/services/maintenance"),
   provider: {
     "@type": "ProfessionalService",
@@ -94,7 +94,7 @@ const whyMaintenance = [
   },
   {
     title: "Downtime costs you money.",
-    desc: "The average cost of website downtime for a small business is hundreds of dollars per hour in lost leads and revenue. Our 24/7 uptime monitoring catches issues immediately — often before you or your customers notice anything.",
+    desc: "The average cost of website downtime for a small business is hundreds of dollars per hour in lost leads and revenue. Our 24/7 uptime monitoring catches issues immediately, often before you or your customers notice anything.",
   },
 ];
 
@@ -109,11 +109,11 @@ const faqs = [
   },
   {
     q: "Can I cancel or change plans at any time?",
-    a: "Yes. All plans are month-to-month with no contracts. You can upgrade, downgrade, or cancel with 30 days' notice. We don't lock you in — we earn your business each month by being useful.",
+    a: "Yes. All plans are month-to-month with no contracts. You can upgrade, downgrade, or cancel with 30 days' notice. We don't lock you in. We earn your business each month by being useful.",
   },
   {
     q: "What happens if my site gets hacked?",
-    a: "Site security incidents are covered under all plans — we'll work to restore your site from a clean backup, identify the entry point, and patch the vulnerability. If a site is compromised due to an update we applied, remediation is completely at our cost.",
+    a: "Site security incidents are covered under all plans: we'll work to restore your site from a clean backup, identify the entry point, and patch the vulnerability. If a site is compromised due to an update we applied, remediation is completely at our cost.",
   },
   {
     q: "Is the monthly strategy call on the Agency plan a sales call?",
@@ -139,7 +139,7 @@ export default function MaintenancePage() {
             Monthly plans so you never worry about security patches, plugin updates, performance drift, or broken features again.
           </p>
           <p className="text-[16px] leading-7 text-prose max-w-2xl mb-8">
-            A website is not a one-time project — it&apos;s an ongoing business asset that needs care to stay valuable. Software updates, security patches, performance monitoring, and regular content freshness aren&apos;t optional for a site that represents your business to thousands of potential customers. Our maintenance plans handle all of it, so you can focus on running your business.
+            A website is not a one-time project. It&apos;s an ongoing business asset that needs care to stay valuable. Software updates, security patches, performance monitoring, and regular content freshness aren&apos;t optional for a site that represents your business to thousands of potential customers. Our maintenance plans handle all of it, so you can focus on running your business.
           </p>
           <Link href="/contact" className="h-12 px-7 inline-flex items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-[#171717] text-[15px] font-medium hover:opacity-85 transition-opacity">
             View plans

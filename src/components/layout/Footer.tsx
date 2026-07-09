@@ -32,7 +32,7 @@ const cols = [
     links: [
       { label: SITE.emailContact, href: `mailto:${SITE.emailContact}` },
       { label: SITE.emailSales,   href: `mailto:${SITE.emailSales}` },
-      { label: SITE.phone,        href: `tel:${SITE.phone.replace(/\s/g, "")}` },
+      { label: SITE.phone,        href: `https://wa.me/${SITE.phone.replace(/[^\d]/g, "")}` },
     ],
   },
 ];
@@ -50,6 +50,8 @@ export default function Footer() {
                   <li key={l.href}>
                     <Link
                       href={l.href}
+                      target={l.href.startsWith("http") ? "_blank" : undefined}
+                      rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
                       className="text-[14px] text-prose hover:text-title transition-colors"
                     >
                       {l.label}

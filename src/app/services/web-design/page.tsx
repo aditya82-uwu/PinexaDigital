@@ -36,7 +36,7 @@ const serviceJsonLd = {
 };
 
 const steps = [
-  { n: "01", title: "Discovery call.", desc: "We learn about your business, goals, and target audience. We'll recommend the right approach and scope — no proposal until we understand the problem." },
+  { n: "01", title: "Discovery call.", desc: "We learn about your business, goals, and target audience. We'll recommend the right approach and scope: no proposal until we understand the problem." },
   { n: "02", title: "Design sprint.", desc: "Full design mockups within 5 business days. We iterate on your feedback until every detail is right. You approve before we write a line of code." },
   { n: "03", title: "Build & test.", desc: "We develop on a staging environment, run cross-browser and mobile testing, optimise Core Web Vitals, and set up analytics." },
   { n: "04", title: "Launch & handoff.", desc: "We go live, submit your sitemap to Google, complete technical SEO setup, and give you full ownership of the codebase." },
@@ -54,7 +54,7 @@ const includes = [
 ];
 
 const whoFor = [
-  { label: "Service businesses", desc: "Law firms, consultants, contractors, agencies, healthcare practices — any professional service that needs a credible web presence to win clients." },
+  { label: "Service businesses", desc: "Law firms, consultants, contractors, agencies, healthcare practices: any professional service that needs a credible web presence to win clients." },
   { label: "B2B companies", desc: "Businesses selling to other businesses, where the website is part of a longer sales process and needs to establish trust and expertise." },
   { label: "Local businesses", desc: "Brick-and-mortar and service-area businesses that need to rank in local Google searches and convert nearby visitors into calls and bookings." },
   { label: "New ventures", desc: "Founders and entrepreneurs launching their first professional web presence and wanting to do it right the first time." },
@@ -63,7 +63,7 @@ const whoFor = [
 const faqs = [
   {
     q: "What's the difference between your Starter and Growth packages?",
-    a: "The Starter package ($299) covers up to 5 pages and is designed for businesses that need a clean, professional website quickly — homepage, about, services, contact, and one more. The Growth package ($499) covers up to 12 pages, includes a custom design system, advanced SEO, and a blog setup ready for content marketing. If you plan to publish content or need more than 5 pages, Growth is the right choice.",
+    a: "The Starter package ($299) covers up to 5 pages and is designed for businesses that need a clean, professional website quickly: homepage, about, services, contact, and one more. The Growth package ($499) covers up to 12 pages, includes a custom design system, advanced SEO, and a blog setup ready for content marketing. If you plan to publish content or need more than 5 pages, Growth is the right choice.",
   },
   {
     q: "Do you use templates or build from scratch?",
@@ -71,11 +71,11 @@ const faqs = [
   },
   {
     q: "Will my website rank on Google?",
-    a: "We handle all technical SEO setup on every project — structured data, meta tags, sitemap, canonical URLs, Core Web Vitals performance, and Google Analytics. This gives your site the right foundation to rank. Achieving and maintaining top positions for competitive keywords requires ongoing SEO work, which we offer as a separate service.",
+    a: "We handle all technical SEO setup on every project: structured data, meta tags, sitemap, canonical URLs, Core Web Vitals performance, and Google Analytics. This gives your site the right foundation to rank. Achieving and maintaining top positions for competitive keywords requires ongoing SEO work, which we offer as a separate service.",
   },
   {
     q: "Can I update the website myself after launch?",
-    a: "Yes. If you choose a WordPress build, you get a full CMS and can update content, add pages, and manage your blog without touching code. For Next.js builds, we hand over the full codebase and documentation — any developer can work on it. We also offer monthly maintenance plans if you'd rather have us handle updates.",
+    a: "Yes. If you choose a WordPress build, you get a full CMS and can update content, add pages, and manage your blog without touching code. For Next.js builds, we hand over the full codebase and documentation, so any developer can work on it. We also offer monthly maintenance plans if you'd rather have us handle updates.",
   },
   {
     q: "What do I need to provide to get started?",
@@ -105,7 +105,7 @@ export default function WebDesignPage() {
             Custom websites that look professional, load fast, and are built specifically for US audiences. From a clean 5-page business site to a full content-driven growth platform.
           </p>
           <p className="text-[16px] leading-7 text-prose max-w-2xl mb-8">
-            We build with Next.js — the framework used by some of the fastest sites on the web — for PageSpeed scores of 90–99 on mobile. Every site includes complete technical SEO setup, structured data, and a Google Analytics integration. You own the code. No platform lock-in, no recurring platform fees, no builder subscriptions.
+            We build with Next.js, the framework used by some of the fastest sites on the web, for PageSpeed scores of 90–99 on mobile. Every site includes complete technical SEO setup, structured data, and a Google Analytics integration. You own the code. No platform lock-in, no recurring platform fees, no builder subscriptions.
           </p>
           <Link href="/contact" className="h-12 px-7 inline-flex items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-[#171717] text-[15px] font-medium hover:opacity-85 transition-opacity">
             Get a free quote

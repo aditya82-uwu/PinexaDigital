@@ -24,14 +24,14 @@ const sections = [
     title: "2. How we use your information",
     body: [
       "Contact form submissions are used solely to respond to your inquiry. We will reply to your message, discuss your project, and send project-related communications. We do not add contact form submitters to marketing lists without explicit consent.",
-      "Analytics data is used to understand how visitors use our site — which pages are most helpful, where visitors come from, and how to improve the experience — and is not used to identify individual visitors.",
+      "Analytics data is used to understand how visitors use our site: which pages are most helpful, where visitors come from, and how to improve the experience. It is not used to identify individual visitors.",
     ],
   },
   {
     title: "3. How we share your information",
     body: [
       "We do not sell, rent, or trade your personal information to third parties.",
-      "We may share information with service providers who help us operate our business — for example, an email service to deliver your message to our team, or an analytics provider to process anonymised site usage data. These providers are contractually required to handle your information only as directed by us and in accordance with applicable privacy laws.",
+      "We may share information with service providers who help us operate our business: for example, an email service to deliver your message to our team, or an analytics provider to process anonymised site usage data. These providers are contractually required to handle your information only as directed by us and in accordance with applicable privacy laws.",
       "We will disclose information if required to do so by law or in response to valid legal process.",
     ],
   },
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
         <p className="text-[14px] text-faint mb-12">Last updated: {lastUpdated}</p>
 
         <p className="text-[16px] leading-7 text-prose mb-10">
-          {SITE.brandName} (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates the website at pinexadigital.com. This privacy policy explains what information we collect, how we use it, and your rights regarding your information. We keep this simple and honest — no legal jargon beyond what the law requires.
+          {SITE.brandName} (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates the website at {SITE.rootDomain}. This privacy policy explains what information we collect, how we use it, and your rights regarding your information. We keep this simple and honest: no legal jargon beyond what the law requires.
         </p>
 
         <div className="space-y-10">

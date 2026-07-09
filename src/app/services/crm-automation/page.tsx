@@ -5,16 +5,16 @@ import Breadcrumb from "@/components/ui/Breadcrumb";
 import { SITE, siteUrl } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "CRM Automation & Integration Services | PinexaDigital",
-  description: `Automate your sales and support workflows with ${SITE.brandName}. CRM setup, n8n and Zapier automation, and tool integrations for US businesses. Starting at $200.`,
+  title: "CRM Automation Setup & Integration Services",
+  description: `Professional CRM automation setup for US businesses. ${SITE.brandName} handles workflow automation, lead routing, and n8n, Zapier, and Make integrations. Starting at $200.`,
   alternates: { canonical: siteUrl("/services/crm-automation") },
 };
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "CRM Automation & Integration",
-  description: "CRM setup, workflow automation, and third-party tool integration using n8n, Zapier, and Make for US businesses.",
+  name: "CRM Automation Setup & Integration",
+  description: "CRM automation setup, workflow automation, and third-party tool integration using n8n, Zapier, and Make for US businesses.",
   url: siteUrl("/services/crm-automation"),
   provider: {
     "@type": "ProfessionalService",
@@ -26,12 +26,12 @@ const serviceJsonLd = {
 
 const deliverables = [
   {
-    title: "CRM setup & configuration.",
-    desc: "We set up and configure your CRM — pipelines, custom fields, deal stages, and permissions — so it actually matches how your team sells, instead of forcing your process to fit a generic template.",
+    title: "CRM automation setup & configuration.",
+    desc: "We set up and configure your CRM, including pipelines, custom fields, deal stages, and permissions, so it actually matches how your team sells, instead of forcing your process to fit a generic template.",
   },
   {
     title: "Workflow automation.",
-    desc: "Using n8n, Zapier, or Make, we build automations that move data between your tools without manual entry — new leads routed instantly, follow-ups triggered on schedule, deals updated automatically as status changes.",
+    desc: "Using n8n, Zapier, or Make, we build automations that move data between your tools without manual entry: new leads routed instantly, follow-ups triggered on schedule, deals updated automatically as status changes.",
   },
   {
     title: "Lead routing & data sync.",
@@ -39,11 +39,11 @@ const deliverables = [
   },
   {
     title: "Email & SMS sequences.",
-    desc: "Automated follow-up sequences triggered by customer behaviour — new inquiry, abandoned quote, missed call — so leads don't go cold while your team is busy.",
+    desc: "Automated follow-up sequences triggered by customer behaviour, such as a new inquiry, an abandoned quote, or a missed call, so leads don't go cold while your team is busy.",
   },
   {
     title: "Third-party integrations.",
-    desc: "We connect your CRM to the tools you already use — Stripe, Google Sheets, Slack, WhatsApp, calendars, invoicing software — so information flows in one direction without double entry.",
+    desc: "We connect your CRM to the tools you already use, such as Stripe, Google Sheets, Slack, WhatsApp, calendars, and invoicing software, so information flows in one direction without double entry.",
   },
   {
     title: "Monitoring & support.",
@@ -62,11 +62,11 @@ const whoFor = [
 const faqs = [
   {
     q: "Which CRMs and tools do you work with?",
-    a: "We work with the tools most US small and mid-sized businesses already use — HubSpot, Pipedrive, GoHighLevel, Salesforce, Zoho, and Airtable — and build the automation layer on top with n8n, Zapier, or Make, depending on complexity and budget.",
+    a: "We work with the tools most US small and mid-sized businesses already use, including HubSpot, Pipedrive, GoHighLevel, Salesforce, Zoho, and Airtable, and build the automation layer on top with n8n, Zapier, or Make, depending on complexity and budget.",
   },
   {
     q: "How does pricing work?",
-    a: "Simple, single-workflow automations — like routing form leads into your CRM or triggering a follow-up sequence — typically start at $200–$300. Anything involving multiple systems, custom logic, or a full CRM setup is scoped individually. Tell us what you're trying to automate and we'll get back to you with a fair, fixed quote before any work starts.",
+    a: "Simple, single-workflow automations, like routing form leads into your CRM or triggering a follow-up sequence, typically start at $200–$300. Anything involving multiple systems, custom logic, or a full CRM automation setup is scoped individually. Tell us what you're trying to automate and we'll get back to you with a fair, fixed quote before any work starts.",
   },
   {
     q: "Do I need to already have a CRM?",
@@ -74,7 +74,7 @@ const faqs = [
   },
   {
     q: "How long does an automation project take?",
-    a: "Simple automations are usually live within a few days. Full CRM setups with multiple integrations typically take 1–3 weeks depending on scope, which we'll confirm upfront once we understand what you need.",
+    a: "Simple automations are usually live within a few days. Full CRM automation setups with multiple integrations typically take 1–3 weeks depending on scope, which we'll confirm upfront once we understand what you need.",
   },
   {
     q: "What do you need from me to get started?",
@@ -93,14 +93,14 @@ export default function CRMAutomationPage() {
       {/* ── Hero ── */}
       <section className="bg-card pt-20 pb-16 px-6 border-b border-line">
         <div className="max-w-350 mx-auto">
-          <Breadcrumb crumbs={[{ label: "Services", href: "/services" }, { label: "CRM Automation & Integration" }]} />
-          <p className="eyebrow mb-3">CRM Automation & Integration</p>
-          <h1 className="display-xl text-title mb-4 max-w-2xl">Stop losing leads to manual busywork.</h1>
+          <Breadcrumb crumbs={[{ label: "Services", href: "/services" }, { label: "CRM Automation Setup & Integration" }]} />
+          <p className="eyebrow mb-3">CRM Automation Setup & Integration</p>
+          <h1 className="display-xl text-title mb-4 max-w-2xl">CRM automation setup that stops leads slipping through the cracks.</h1>
           <p className="text-[18px] leading-7 text-prose max-w-xl mb-5">
-            We set up your CRM and automate the workflows around it — using n8n, Zapier, and Make — so leads get followed up, data stays in sync, and your team spends less time on data entry.
+            Our CRM automation setup connects your tools and automates the workflows around them, using n8n, Zapier, and Make, so leads get followed up, data stays in sync, and your team spends less time on data entry.
           </p>
           <p className="text-[16px] leading-7 text-prose max-w-2xl mb-8">
-            Simple automations start at $200–$300. For custom, multi-system integrations, tell us what you&apos;re trying to connect and we&apos;ll follow up with a fixed quote before any work begins — no hourly billing, no surprises.
+            Simple automations start at $200–$300. For custom, multi-system integrations, tell us what you&apos;re trying to connect and we&apos;ll follow up with a fixed quote before any work begins, with no hourly billing and no surprises.
           </p>
           <Link href="/contact" className="h-12 px-7 inline-flex items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-[#171717] text-[15px] font-medium hover:opacity-85 transition-opacity">
             Get a free quote
@@ -113,7 +113,7 @@ export default function CRMAutomationPage() {
         <div className="max-w-350 mx-auto">
           <h2 className="display-lg text-title mb-4 text-center">What we deliver.</h2>
           <p className="text-[16px] leading-7 text-prose max-w-xl mx-auto text-center mb-12">
-            From a single automation to a fully connected CRM — we scope it to what you actually need.
+            From a single automation to a fully connected CRM, we scope it to what you actually need.
           </p>
           <div className="grid md:grid-cols-3 gap-4">
             {deliverables.map(({ title, desc }) => (
@@ -150,13 +150,13 @@ export default function CRMAutomationPage() {
             <h3 className="display-md text-title mb-4">What to expect.</h3>
             <div className="space-y-4 text-[14px] leading-6 text-prose">
               <p>
-                We start with a short call to understand your current tools and where things break down — a missed lead, a manual export, a step someone forgets to do.
+                We start with a short call to understand your current tools and where things break down: a missed lead, a manual export, a step someone forgets to do.
               </p>
               <p>
                 For simple, well-defined automations, we quote a fixed price upfront (typically $200–$300) and get it live within days. For anything involving multiple systems or custom logic, we scope it with you first and follow up with a fixed quote before starting.
               </p>
               <p>
-                You own everything we build. If you ever move on, the CRM setup and automations stay with you.
+                You own everything we build. If you ever move on, the CRM automation setup stays with you.
               </p>
             </div>
           </div>
@@ -182,7 +182,7 @@ export default function CRMAutomationPage() {
       <section className="bg-invert py-20 px-6 text-center">
         <div className="max-w-350 mx-auto">
           <h2 className="display-lg text-on-invert mb-4">Ready to automate your workflow?</h2>
-          <p className="text-[18px] text-[#888] mb-8">Tell us what you&apos;re trying to connect or automate — we&apos;ll follow up with a fixed quote.</p>
+          <p className="text-[18px] text-[#888] mb-8">Tell us what you&apos;re trying to connect or automate, and we&apos;ll follow up with a fixed quote.</p>
           <Link href="/contact" className="h-12 px-8 inline-flex items-center rounded-full bg-white text-[#171717] text-[16px] font-medium hover:bg-[#f0f0f0] transition-colors">
             Get a free quote
           </Link>

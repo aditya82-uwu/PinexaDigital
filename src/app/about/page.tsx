@@ -5,8 +5,8 @@ import { SITE, siteUrl } from "@/lib/site-config";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "About PinexaDigital — Web Agency for US Businesses",
-  description: `Learn about ${SITE.brandName} — a web design and development agency focused on helping US businesses grow online with professional, high-converting websites, SEO, and e-commerce solutions.`,
+  title: "About Us | Web Agency for US Businesses",
+  description: `Learn about ${SITE.brandName}, a web design and development agency focused on helping US businesses grow online with professional, high-converting websites, SEO, and e-commerce solutions.`,
   alternates: { canonical: siteUrl("/about") },
 };
 
@@ -14,22 +14,22 @@ const values = [
   {
     icon: Globe,
     title: "US-market focus.",
-    desc: "Everything we build is tailored to what US audiences expect — familiar navigation patterns, fast load times on American infrastructure, clear pricing, and calls-to-action that match how US buyers make decisions. We don't apply generic templates and hope they work; we design specifically for the market you're competing in.",
+    desc: "Everything we build is tailored to what US audiences expect: familiar navigation patterns, fast load times on American infrastructure, clear pricing, and calls-to-action that match how US buyers make decisions. We don't apply generic templates and hope they work; we design specifically for the market you're competing in.",
   },
   {
     icon: MessageSquare,
     title: "Transparency first.",
-    desc: "Fixed pricing, honest timelines, clear communication at every step. You'll know your total cost before we start, receive updates without having to chase them, and never encounter a surprise invoice. We've seen too many clients burned by agencies that bill by the hour with no ceiling — we won't do that to you.",
+    desc: "Fixed pricing, honest timelines, clear communication at every step. You'll know your total cost before we start, receive updates without having to chase them, and never encounter a surprise invoice. We've seen too many clients burned by agencies that bill by the hour with no ceiling, and we won't do that to you.",
   },
   {
     icon: BarChart3,
     title: "Results over aesthetics.",
-    desc: "A beautiful website that doesn't generate leads is expensive art. We design for both — sites that look credible and professional to US audiences, and that are built specifically to convert visitors into inquiries. Every design decision we make traces back to a conversion or ranking objective.",
+    desc: "A beautiful website that doesn't generate leads is expensive art. We design for both: sites that look credible and professional to US audiences, and that are built specifically to convert visitors into inquiries. Every design decision we make traces back to a conversion or ranking objective.",
   },
   {
     icon: ShieldCheck,
     title: "Long-term partnership.",
-    desc: "We're not a one-and-done project shop. Our monthly maintenance plans keep us invested in your success after launch — when something breaks, we fix it. When you want to add a page or update your services, we're available. We measure our success by whether your business grows, not by how many projects we close.",
+    desc: "We're not a one-and-done project shop. Our monthly maintenance plans keep us invested in your success after launch: when something breaks, we fix it. When you want to add a page or update your services, we're available. We measure our success by whether your business grows, not by how many projects we close.",
   },
 ];
 
@@ -51,7 +51,7 @@ const process = [
     icon: Target,
     step: "02",
     title: "Strategy and design",
-    desc: "We research your competitors, map the user journey, and build a site architecture designed to convert your specific target customer. Full design mockups are delivered within 5 business days. We iterate on feedback until every detail is right — you approve the design before we write a line of code.",
+    desc: "We research your competitors, map the user journey, and build a site architecture designed to convert your specific target customer. Full design mockups are delivered within 5 business days. We iterate on feedback until every detail is right, and you approve the design before we write a line of code.",
   },
   {
     icon: Zap,
@@ -62,12 +62,12 @@ const process = [
 ];
 
 const whyUs = [
-  "Fixed pricing — you know your total cost before we start",
+  "Fixed pricing, so you know your total cost before we start",
   "2–3 week delivery for most projects",
   "Built with Next.js for PageSpeed scores of 90–99",
   "SEO setup included on every project",
   "30-day post-launch support at no extra charge",
-  "You own the code — no platform lock-in",
+  "You own the code, with no platform lock-in",
 ];
 
 export default function AboutPage() {
@@ -81,10 +81,10 @@ export default function AboutPage() {
             <p className="eyebrow mb-3">About</p>
             <h1 className="display-xl text-title mb-6">We build the web for ambitious US businesses.</h1>
             <p className="text-[18px] leading-7 text-prose mb-4">
-              {SITE.brandName} is a web design and development agency specialising in US markets. We help businesses — from solo founders to established companies — build the professional web presence they need to compete and grow online.
+              {SITE.brandName} is a web design and development agency specialising in US markets. We help businesses, from solo founders to established companies, build the professional web presence they need to compete and grow online.
             </p>
             <p className="text-[16px] leading-7 text-prose mb-4">
-              We built this agency because the web design market is full of a predictable pattern: overpriced projects, missed deadlines, agencies that disappear after launch, and websites that look nice but don't generate business. We decided to do the opposite — fixed prices, honest timelines, measurable outcomes, and genuine accountability for results.
+              We built this agency because the web design market is full of a predictable pattern: overpriced projects, missed deadlines, agencies that disappear after launch, and websites that look nice but don't generate business. We decided to do the opposite: fixed prices, honest timelines, measurable outcomes, and genuine accountability for results.
             </p>
             <p className="text-[16px] leading-7 text-prose">
               Every site we build is engineered specifically for the US market: fast on American infrastructure, designed to meet US consumer expectations, and optimised for Google's US search results. We are not a general-purpose digital agency. We are focused on one thing: high-converting web presence for US businesses.
@@ -107,7 +107,7 @@ export default function AboutPage() {
           <div>
             <h2 className="display-lg text-title mb-5">Who we work with.</h2>
             <p className="text-[16px] leading-7 text-prose mb-5">
-              Our clients are US business owners who take their web presence seriously. They've often had a website for years that isn't generating the leads it should. Or they're launching something new and want to do it right the first time. They value quality, are willing to invest in it, and want a partner who gives them straight answers — not an agency that tells them what they want to hear and then over-bills.
+              Our clients are US business owners who take their web presence seriously. They've often had a website for years that isn't generating the leads it should. Or they're launching something new and want to do it right the first time. They value quality, are willing to invest in it, and want a partner who gives them straight answers, not an agency that tells them what they want to hear and then over-bills.
             </p>
             <p className="text-[16px] leading-7 text-prose mb-6">
               We work with service businesses (law firms, agencies, consultants, contractors), e-commerce brands, real estate and property businesses, health and wellness practices, and B2B companies across the US. If your business needs a web presence that competes at a national or local level, we're equipped to build it.

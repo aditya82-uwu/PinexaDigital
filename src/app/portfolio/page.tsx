@@ -5,8 +5,8 @@ import { SITE, siteUrl } from "@/lib/site-config";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Portfolio & Live Demos — See Our Work",
-  description: `Browse ${SITE.brandName}'s live website demos across industries — gyms, restaurants, hotels, clinics, law firms, and more.`,
+  title: "Portfolio & Live Demos | See Our Work",
+  description: `Browse ${SITE.brandName}'s live website demos across industries, including gyms, restaurants, hotels, clinics, law firms, and more.`,
   alternates: { canonical: siteUrl("/portfolio") },
 };
 
@@ -227,7 +227,7 @@ export default function PortfolioPage() {
           <p className="eyebrow mb-3">Live Demo Showcase</p>
           <h1 className="display-xl text-title mb-4">See exactly what we build.</h1>
           <p className="text-[18px] leading-7 text-prose max-w-lg mx-auto">
-            Click any card to preview a live website we&apos;ve built for that industry — then imagine your brand in its place.
+            Click any card to preview a live website we&apos;ve built for that industry, then imagine your brand in its place.
           </p>
         </div>
       </section>
@@ -282,7 +282,7 @@ export default function PortfolioPage() {
       <section className="bg-invert py-20 px-6 text-center">
         <div className="max-w-350 mx-auto">
           <h2 className="display-lg text-on-invert mb-4">Want a site like these for your business?</h2>
-          <p className="text-[18px] text-[#888] mb-8 max-w-md mx-auto">Tell us your industry and goals — we&apos;ll build something better than the demo.</p>
+          <p className="text-[18px] text-[#888] mb-8 max-w-md mx-auto">Tell us your industry and goals, and we&apos;ll build something better than the demo.</p>
           <Link href="/contact" className="h-12 px-8 inline-flex items-center gap-2 rounded-full bg-white text-[#171717] text-[16px] font-medium hover:bg-[#f0f0f0] transition-colors">
             Start your project <ArrowRight size={16} />
           </Link>

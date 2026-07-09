@@ -38,13 +38,13 @@ const sections = [
     title: "4. Client responsibilities",
     body: [
       "You agree to provide all required materials (brand assets, copy, images, credentials) within the timeframes agreed in the project schedule. Delays caused by late delivery of required materials may extend the project timeline; we are not responsible for deadline slippage caused by client delays.",
-      "You confirm that all materials you provide — including text, images, logos, and other content — are either owned by you or licensed for use. You indemnify PinexaDigital against any claims arising from intellectual property infringement in materials you provide.",
+      "You confirm that all materials you provide, including text, images, logos, and other content, are either owned by you or licensed for use. You indemnify PinexaDigital against any claims arising from intellectual property infringement in materials you provide.",
     ],
   },
   {
     title: "5. Intellectual property",
     body: [
-      "Upon receipt of final payment, you receive full ownership of all custom work created for your project — design files, code, and content. You are free to modify, transfer, or use the deliverables in any way you choose.",
+      "Upon receipt of final payment, you receive full ownership of all custom work created for your project: design files, code, and content. You are free to modify, transfer, or use the deliverables in any way you choose.",
       "We retain the right to display completed work in our portfolio and use it for promotional purposes (website, case studies, social media) unless you request in writing that we do not.",
       "Third-party components used in your project (open-source libraries, licensed fonts, stock imagery) are subject to their respective licenses. We will notify you of any third-party components with significant licensing restrictions.",
     ],
@@ -52,7 +52,7 @@ const sections = [
   {
     title: "6. Post-launch support",
     body: [
-      "All fixed-price projects include 30 days of complimentary bug fixing after launch. A 'bug' is defined as a functional error in work we delivered — not new feature requests, design changes, or content updates.",
+      "All fixed-price projects include 30 days of complimentary bug fixing after launch. A 'bug' is defined as a functional error in work we delivered. It does not include new feature requests, design changes, or content updates.",
       "After the 30-day support period, ongoing support and changes are provided through our monthly maintenance plans or quoted separately.",
     ],
   },

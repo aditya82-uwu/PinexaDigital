@@ -4,6 +4,7 @@ import "./globals.css";
 import { SITE, siteUrl } from "@/lib/site-config";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import FloatingContact from "@/components/layout/FloatingContact";
 import ThemeProvider from "./ThemeProvider";
 
 const jost = Jost({
@@ -23,7 +24,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
   title: {
-    default: `${SITE.brandName} — Web Design & Development Agency`,
+    default: `${SITE.brandName} | Web Design & Development Agency`,
     template: `%s | ${SITE.brandName}`,
   },
   description: SITE.description,
@@ -44,13 +45,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl(),
     siteName: SITE.brandName,
-    title: `${SITE.brandName} — Web Design & Development Agency`,
+    title: `${SITE.brandName} | Web Design & Development Agency`,
     description: SITE.description,
-    images: [{ url: "/logo.png", width: 512, height: 512, alt: `${SITE.brandName} — Web Agency` }],
+    images: [{ url: "/logo.png", width: 512, height: 512, alt: `${SITE.brandName} Web Agency` }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.brandName} — Web Design & Development Agency`,
+    title: `${SITE.brandName} | Web Design & Development Agency`,
     description: SITE.description,
     images: ["/logo.png"],
   },
@@ -100,8 +101,8 @@ const jsonLd = {
         "https://www.linkedin.com/in/pinexa-digital-064059420",
         "https://www.instagram.com/pinexadigital/",
       ],
-      // aggregateRating and review removed until we have real, verifiable client reviews —
-      // fabricated review schema violates Google's structured data policy and FTC endorsement guides.
+      // aggregateRating and review removed until we have real, verifiable client reviews.
+      // Fabricated review schema violates Google's structured data policy and FTC endorsement guides.
     },
   ],
 };
@@ -120,6 +121,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
+          <FloatingContact />
         </ThemeProvider>
       </body>
     </html>

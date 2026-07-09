@@ -206,16 +206,16 @@ const stats = [
 ];
 
 const whyUs = [
-  { icon: Zap,          title: "Lightning Fast Delivery",  desc: "From kickoff to live site in 3 weeks — without cutting corners.",                   color: "bg-blue-500/10 text-blue-500" },
+  { icon: Zap,          title: "Lightning Fast Delivery",  desc: "From kickoff to live site in 3 weeks, without cutting corners.",                   color: "bg-blue-500/10 text-blue-500" },
   { icon: Globe,        title: "US Market Expertise",      desc: "We know what American customers expect and design specifically for that.",            color: "bg-violet-500/10 text-violet-500" },
-  { icon: BarChart3,    title: "Results-Focused",          desc: "Every decision traces back to traffic, leads, and revenue — not just looks.",        color: "bg-emerald-500/10 text-emerald-500" },
+  { icon: BarChart3,    title: "Results-Focused",          desc: "Every decision traces back to traffic, leads, and revenue, not just looks.",        color: "bg-emerald-500/10 text-emerald-500" },
   { icon: MessageSquare,title: "Clear Communication",      desc: "No agency jargon. You're always in the loop with clear, honest updates.",            color: "bg-orange-500/10 text-orange-500" },
 ];
 
 const steps = [
   { n: "01", title: "Discovery call",  desc: "We learn your goals, audience, and vision and recommend the right approach before we touch a pixel.", icon: MessageSquare, gradient: "from-blue-500 to-cyan-500" },
   { n: "02", title: "Design sprint",   desc: "Full mockups delivered within 5 business days. Iterate until every detail is right.",                  icon: Layers,        gradient: "from-violet-500 to-purple-500" },
-  { n: "03", title: "Build & launch",  desc: "We develop, test, optimise, and go live — then submit your sitemap to Google on day one.",             icon: Zap,           gradient: "from-orange-500 to-amber-500" },
+  { n: "03", title: "Build & launch",  desc: "We develop, test, optimise, and go live, then submit your sitemap to Google on day one.",             icon: Zap,           gradient: "from-orange-500 to-amber-500" },
 ];
 
 const testimonials = [
@@ -228,7 +228,7 @@ const testimonials = [
     accent: "from-blue-500 to-cyan-400",
   },
   {
-    body: "They understood exactly what US customers expect. Clean, professional, loads incredibly fast — we couldn't be happier.",
+    body: "They understood exactly what US customers expect. Clean, professional, loads incredibly fast. We couldn't be happier.",
     name: "James R.",
     role: "CEO, Pacific Wellness Studio",
     initials: "JR",
@@ -298,7 +298,7 @@ export default function HomeClient() {
             <motion.div variants={stagger(0.2)} className="flex items-center gap-2">
               <ShieldCheck size={16} className="text-emerald-500 shrink-0" />
               <p className="text-[12px] text-faint">
-                <span className="text-title font-semibold">Fixed-price projects</span> — no hourly billing, no surprises
+                <span className="text-title font-semibold">Fixed-price projects</span>: no hourly billing, no surprises
               </p>
             </motion.div>
           </motion.div>
@@ -349,7 +349,7 @@ export default function HomeClient() {
               <span className="eyebrow text-blue-600 dark:text-blue-400">What we build</span>
             </div>
             <h2 className="display-lg text-title mb-3">Everything your business needs online.</h2>
-            <p className="text-prose max-w-xl mx-auto">From first impression to final conversion — we handle every digital touchpoint.</p>
+            <p className="text-prose max-w-xl mx-auto">From first impression to final conversion, we handle every digital touchpoint.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -459,7 +459,7 @@ export default function HomeClient() {
             </div>
             <h2 className="display-lg text-title mb-4">We&apos;re not just another web agency.</h2>
             <p className="text-prose text-[16px] leading-7 mb-8">
-              We&apos;re a focused team obsessed with one thing: measurable results for US businesses. No bloat, no fluff — just clean, fast, conversion-optimized digital products.
+              We&apos;re a focused team obsessed with one thing: measurable results for US businesses. No bloat, no fluff. Just clean, fast, conversion-optimized digital products.
             </p>
             <div className="space-y-5">
               {whyUs.map(({ icon: Icon, title, desc, color }, i) => (

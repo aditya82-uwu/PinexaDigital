@@ -1,6 +1,6 @@
 export const SITE = {
   brandName: "PinexaDigital",
-  rootDomain: "pinexadigital.com",
+  rootDomain: "www.pinexadigital.com",
   emailContact: "contact@pinexadigital.com",
   emailSales: "sales@pinexadigital.com",
   phone: "+91 78198 32001",

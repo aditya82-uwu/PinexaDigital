@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Mail, Phone, Clock } from "lucide-react";
+import { Mail, MessageCircle, Clock } from "lucide-react";
 import { SITE, siteUrl } from "@/lib/site-config";
 import ContactForm from "./ContactForm";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 
 export const metadata: Metadata = {
-  title: "Contact Us — Get a Free Quote",
+  title: "Contact Us | Get a Free Quote",
   description: `Get in touch with ${SITE.brandName}. Tell us about your project and we'll respond within 24 hours with a free, no-obligation quote.`,
   alternates: { canonical: siteUrl("/contact") },
 };
 
 const info = [
-  { icon: Mail,  label: "Email",         value: SITE.emailSales,  href: `mailto:${SITE.emailSales}` },
-  { icon: Phone, label: "Phone",         value: SITE.phone,        href: `tel:${SITE.phone.replace(/\s/g,"")}` },
-  { icon: Clock, label: "Response time", value: "Within 24 hours, Mon–Sat", href: null },
+  { icon: Mail,          label: "Email",         value: SITE.emailSales,  href: `mailto:${SITE.emailSales}` },
+  { icon: MessageCircle, label: "WhatsApp",      value: SITE.phone,        href: `https://wa.me/${SITE.phone.replace(/[^\d]/g, "")}` },
+  { icon: Clock,         label: "Response time", value: "Within 24 hours, Mon–Sat", href: null },
 ];
 
 export default function ContactPage() {
@@ -38,7 +38,16 @@ export default function ContactPage() {
                 <div>
                   <p className="eyebrow mb-1">{label}</p>
                   {href
-                    ? <a href={href} className="text-[15px] text-link hover:underline">{value}</a>
+                    ? (
+                      <a
+                        href={href}
+                        target={href.startsWith("http") ? "_blank" : undefined}
+                        rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="text-[15px] text-link hover:underline"
+                      >
+                        {value}
+                      </a>
+                    )
                     : <p className="text-[15px] text-prose">{value}</p>}
                 </div>
               </div>

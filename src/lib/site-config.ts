@@ -1,6 +1,8 @@
 export const SITE = {
   brandName: "PinexaDigital",
   rootDomain: "www.pinexadigital.com",
+  /** Apex domain (no "www."), used for demo subdomains like roofing.pinexadigital.com */
+  baseDomain: "pinexadigital.com",
   emailContact: "contact@pinexadigital.com",
   emailSales: "sales@pinexadigital.com",
   phone: "+91 78198 32001",

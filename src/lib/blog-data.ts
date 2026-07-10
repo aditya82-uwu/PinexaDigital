@@ -10,6 +10,10 @@ export interface Post {
   slug: string;
   title: string;
   excerpt: string;
+  /** Optional SEO-specific <title>, kept short (~50-60 chars incl. "| PinexaDigital"). Falls back to `title`. */
+  seoTitle?: string;
+  /** Optional SEO-specific meta description (~150-160 chars). Falls back to `excerpt`. */
+  seoDescription?: string;
   date: string;
   readTime: string;
   category: string;
@@ -18,6 +22,159 @@ export interface Post {
 }
 
 export const posts: Post[] = [
+  {
+    slug: "ai-search-optimization-aeo-geo-guide",
+    title: "AI search is changing SEO: how to get cited by ChatGPT and Google AI Overviews in 2026.",
+    excerpt:
+      "Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO), explained: how AI search actually picks what to cite, and the steps US businesses need to take now.",
+    seoTitle: "AEO & GEO: How to Get Cited by AI Search",
+    seoDescription:
+      "Learn how AEO and GEO help your business get cited by ChatGPT, Perplexity, and Google AI Overviews in 2026. Actionable steps for US small businesses.",
+    date: "2026-07-11",
+    readTime: "7 min read",
+    category: "AI Search",
+    accent: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400",
+    content: [
+      {
+        t: "p",
+        v: "AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) are the practices of structuring your website so AI systems, Google AI Overviews, ChatGPT, Perplexity, Copilot, can find, understand, and cite it as a source. Traditional SEO earns you a blue link. AEO and GEO earn you a mention inside the answer itself, often with no click at all. For US small businesses, that shift is no longer optional to ignore.",
+      },
+      {
+        t: "h2",
+        v: "How AEO and GEO differ from traditional SEO",
+      },
+      {
+        t: "p",
+        v: "Traditional SEO optimizes for ranking position on a results page: you compete for the #1 spot, and the searcher clicks through to your site. AEO and GEO optimize for something different: being the source an AI model pulls from when it composes an answer directly on the results page or inside a chat interface. The searcher may never visit your site, yet your brand name gets said out loud, and that citation still drives awareness, trust, and eventually direct traffic. The two disciplines overlap heavily (both reward genuine expertise, clear structure, and technical crawlability) but GEO adds a layer traditional SEO never had to think about: writing in a way a language model can lift a clean, accurate, self-contained answer out of your page.",
+      },
+      {
+        t: "h2",
+        v: "Why this matters for your business right now",
+      },
+      {
+        t: "p",
+        v: "Zero-click searches, where the user gets their answer without visiting any website, already account for the majority of Google searches, and AI Overviews have pushed that further by inserting a generated summary above the traditional results for most informational queries. Gartner has predicted that traditional search engine volume will fall meaningfully by 2026 as more people default to AI assistants for research. If your business's information (services, pricing logic, service area, expertise) only exists in a format AI systems can't parse cleanly, you become invisible in exactly the moment more of your customers are looking.",
+      },
+      {
+        t: "h2",
+        v: "How AI engines actually decide what to cite",
+      },
+      {
+        t: "p",
+        v: "AI answer engines aren't ranking pages the way Google's classic algorithm does. They're retrieving passages and judging which ones are trustworthy and extractable enough to summarize. The signals that matter:",
+      },
+      {
+        t: "ul",
+        v: [
+          "Crawlability: the page must be reachable by the AI's crawler and rendered content must be present in the HTML, not locked behind client-side JavaScript the crawler can't execute",
+          "Clear, self-contained passages: a paragraph that answers one question fully in a few sentences is easy to lift; a paragraph that depends on three other paragraphs of context is not",
+          "Corroboration across the web: AI models weigh confidence higher when the same fact appears consistently across multiple independent sources, not just your own site",
+          "Freshness and specificity: dated, vague content loses to content with clear numbers, dates, and named specifics",
+          "E-E-A-T signals: demonstrated experience and expertise still matter, arguably more, since AI models are explicitly trained to prefer trustworthy sources over generic content",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Step 1: make your content machine-readable",
+      },
+      {
+        t: "p",
+        v: "Before an AI system can cite you, it has to be able to parse you cleanly. This is the technical foundation everything else sits on.",
+      },
+      {
+        t: "ul",
+        v: [
+          "Use semantic HTML: real <h1>-<h6> headings, real lists, real tables, not divs styled to look like them",
+          "Server-render your critical content (Next.js does this by default) so it's present in the initial HTML, not injected later by JavaScript",
+          "Add Schema.org structured data (Organization, Service, Article) so AI systems get an unambiguous, machine-readable summary of who you are and what you offer",
+          "Keep one clear topic per page. Pages that try to answer five unrelated questions dilute the passage-level clarity AI retrieval depends on",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Step 2: write answer-first, extractable content",
+      },
+      {
+        t: "p",
+        v: "The single highest-leverage change most businesses can make is restructuring how they open a section. Bury the answer under three sentences of throat-clearing and an AI model has to work to extract it, or skips your page for a competitor's cleaner passage. Lead with the direct answer in the first sentence, then support it.",
+      },
+      {
+        t: "h3",
+        v: "Before and after",
+      },
+      {
+        t: "ul",
+        v: [
+          "Before: \"There are a lot of factors that go into how much a website costs, and it really depends on your specific needs, but generally speaking...\"",
+          "After: \"A professional US small business website typically costs $299–$5,000 depending on page count and features. Here's what drives that range.\"",
+        ],
+      },
+      {
+        t: "p",
+        v: "The second version is a complete, quotable answer on its own. That's the sentence a search engine's AI summary or a ChatGPT response is most likely to lift verbatim, with your brand attached.",
+      },
+      {
+        t: "h2",
+        v: "Step 3: build topical authority with content clusters",
+      },
+      {
+        t: "p",
+        v: "AI systems weigh a site's overall depth on a subject, not just the single page being cited. A business with one thin blog post about web design pricing is a weaker source than one with a genuine cluster: pricing, timelines, platform comparisons, and process, all linked together and all specific. Build out the two or three topics your business is genuinely expert in and cover them thoroughly rather than spreading thin across everything.",
+      },
+      {
+        t: "h2",
+        v: "Step 4: let AI crawlers in",
+      },
+      {
+        t: "p",
+        v: "None of this matters if your robots.txt blocks the crawlers that feed these systems. Check that GPTBot, ClaudeBot, PerplexityBot, and Google-Extended are explicitly allowed, not caught by an old blanket disallow rule. Many sites accidentally block AI crawlers years ago while trying to stop scrapers, and never revisited the file. Adding an llms.txt file at your root, a plain-text summary of your site's key pages and purpose, is an emerging convention several AI platforms already reference to understand a site faster.",
+      },
+      {
+        t: "note",
+        v: "Audit your robots.txt today. A single overly broad \"Disallow: /\" rule combined with a wildcard user-agent silently blocks every AI crawler and makes you invisible to AI search regardless of how good your content is.",
+      },
+      {
+        t: "h2",
+        v: "Step 5: earn mentions beyond your own website",
+      },
+      {
+        t: "p",
+        v: "GEO leans harder on third-party corroboration than classic SEO ever did. AI models trust a fact more when it's repeated consistently across independent sources: review platforms, industry directories, local press, Reddit threads, comparison sites. This is the same groundwork as local SEO citation building and digital PR, but now it directly feeds whether an AI assistant recommends your business by name when someone asks for a recommendation in your category.",
+      },
+      {
+        t: "h2",
+        v: "How to know if it's working",
+      },
+      {
+        t: "p",
+        v: "AI citations don't show up cleanly in standard analytics yet, so you have to check a few places directly.",
+      },
+      {
+        t: "ul",
+        v: [
+          "Check your analytics referral sources for traffic from chatgpt.com, perplexity.ai, and copilot.microsoft.com, this traffic is growing fast and easy to miss if you're not filtering for it",
+          "Watch for an increase in direct or branded search, people who saw your name in an AI answer often Google you by name afterward",
+          "Manually ask ChatGPT, Perplexity, and Google AI Overview the questions your customers ask, and see whether your business appears in the answer",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What to avoid",
+      },
+      {
+        t: "p",
+        v: "Don't chase this by publishing generic, keyword-stuffed AI-generated filler. AI raters and AI answer models are both explicitly trained to penalize exactly that pattern, low specificity, no first-hand experience, repetitive structure, and it now hurts you in classic Google rankings and AI citations alike.",
+      },
+      {
+        t: "note",
+        v: "Google retired FAQ rich results in search for all sites as of May 2026, so FAQPage schema no longer earns you extra space on a Google results page. It's still worth keeping well-written Q&A content on your site, that format remains genuinely useful for AI citation, just don't expect it to change how you look in classic Google search anymore.",
+      },
+      {
+        t: "p",
+        v: "AI search isn't replacing SEO, it's adding a second surface you need to earn a place on. The businesses that win both are the ones that were already doing SEO honestly: clear, specific, genuinely expert content, published by a business that's easy to verify is real. If your site isn't structured for that yet, that's exactly the kind of technical and content work we build into every project.",
+      },
+    ],
+  },
   {
     slug: "how-much-does-a-website-cost",
     title: "How much does a website cost in 2026?",

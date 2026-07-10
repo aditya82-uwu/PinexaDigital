@@ -18,14 +18,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
+  const metaTitle = post.seoTitle ?? post.title;
+  const metaDescription = post.seoDescription ?? post.excerpt;
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: metaTitle,
+    description: metaDescription,
     alternates: { canonical: siteUrl(`/blog/${post.slug}`) },
     openGraph: {
       type: "article",
-      title: post.title,
-      description: post.excerpt,
+      title: metaTitle,
+      description: metaDescription,
       url: siteUrl(`/blog/${post.slug}`),
       publishedTime: post.date,
     },

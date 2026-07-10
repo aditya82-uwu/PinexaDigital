@@ -32,13 +32,13 @@
   color-scheme: light;
   --bg-surface:    #fafafa;
   --bg-card:       #ffffff;
-  --bg-invert:     #171717;
-  --fg-title:      #171717;
+  --bg-invert:     #1A1A1A;
+  --fg-title:      #1A1A1A;
   --fg-prose:      #4d4d4d;
   --fg-faint:      #888888;
   --fg-on-invert:  #ffffff;
   --border-line:   #ebebeb;
-  --accent-link:   #0070f3;
+  --accent-link:   #0F4C3A;
 }
 
 /* ── Dark mode ── */
@@ -52,7 +52,7 @@
   --fg-faint:      #575757;
   --fg-on-invert:  #ffffff;
   --border-line:   #2a2a2a;
-  --accent-link:   #60a5fa;
+  --accent-link:   #4ADE80;
 }
 
 /* ── Base styles ── */
@@ -132,10 +132,10 @@ h1, h2, h3, h4, h5, h6 {
 /* ── Mesh gradient (hero backdrop) ── */
 .mesh-gradient {
   background:
-    radial-gradient(ellipse 80% 60% at 20% -5%,  rgba(0,124,240,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 5%,   rgba(0,223,216,0.14) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 55% at 50% -10%, rgba(121,40,202,0.12) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 40% at 75% 15%,  rgba(255,0,128,0.09) 0%, transparent 50%);
+    radial-gradient(ellipse 80% 60% at 20% -5%,  rgba(15,76,58,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 5%,   rgba(34,197,94,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 55% at 50% -10%, rgba(74,222,128,0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 75% 15%,  rgba(22,101,52,0.09) 0%, transparent 50%);
 }
 
 /* ── Eyebrow label style ── */

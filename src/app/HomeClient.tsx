@@ -53,12 +53,12 @@ function HeroVisual() {
       className="relative w-full max-w-130 mx-auto"
     >
       {/* Ambient glow */}
-      <div className="absolute -inset-10 rounded-full bg-linear-to-tr from-blue-500/15 via-violet-500/10 to-emerald-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute -inset-10 rounded-full bg-linear-to-tr from-[#0F4C3A]/15 via-emerald-500/12 to-teal-400/8 blur-3xl pointer-events-none" />
 
       {/* Main card */}
       <div className="relative rounded-2xl overflow-hidden border border-line shadow-card-lg bg-card">
         {/* Gradient header with bar chart */}
-        <div className="px-5 pt-5 pb-4" style={{ background: "linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)" }}>
+        <div className="px-5 pt-5 pb-4" style={{ background: "linear-gradient(135deg, #0F4C3A 0%, #22C55E 100%)" }}>
           <div className="flex justify-between items-center mb-4">
             <div>
               <p className="text-white/60 text-[11px] font-medium uppercase tracking-wide">Site Performance</p>
@@ -84,8 +84,8 @@ function HeroVisual() {
         <div className="grid grid-cols-3 divide-x divide-line">
           {[
             { label: "Load Time", val: "1.2s", color: "text-emerald-500" },
-            { label: "Uptime", val: "99.9%", color: "text-blue-500" },
-            { label: "PageSpeed", val: "99/100", color: "text-violet-500" },
+            { label: "Uptime", val: "99.9%", color: "text-[#0F4C3A] dark:text-emerald-400" },
+            { label: "PageSpeed", val: "99/100", color: "text-teal-600 dark:text-teal-400" },
           ].map(({ label, val, color }) => (
             <div key={label} className="py-3 text-center">
               <div className={`text-[15px] font-bold ${color}`}>{val}</div>
@@ -97,10 +97,10 @@ function HeroVisual() {
         {/* Active projects grid */}
         <div className="p-4 bg-surface grid grid-cols-2 gap-2">
           {[
-            { Icon: Globe, label: "New Website", status: "Live ✓", iconBg: "bg-blue-500", statusColor: "text-emerald-500" },
-            { Icon: Workflow, label: "CRM Automation", status: "Active", iconBg: "bg-violet-500", statusColor: "text-blue-500" },
+            { Icon: Globe, label: "New Website", status: "Live ✓", iconBg: "bg-[#0F4C3A]", statusColor: "text-emerald-500" },
+            { Icon: Workflow, label: "CRM Automation", status: "Active", iconBg: "bg-emerald-500", statusColor: "text-[#0F4C3A]" },
             { Icon: ShoppingBag, label: "E-commerce", status: "Live ✓", iconBg: "bg-orange-500", statusColor: "text-emerald-500" },
-            { Icon: BarChart3, label: "Analytics", status: "Tracking", iconBg: "bg-emerald-500", statusColor: "text-violet-500" },
+            { Icon: BarChart3, label: "Analytics", status: "Tracking", iconBg: "bg-emerald-500", statusColor: "text-teal-600" },
           ].map(({ Icon, label, status, iconBg, statusColor }) => (
             <div key={label} className="bg-card rounded-lg p-2.5 flex items-center gap-2.5 border border-line">
               <div className={`w-7 h-7 rounded-md ${iconBg} flex items-center justify-center shrink-0`}>
@@ -154,8 +154,8 @@ function HeroVisual() {
         transition={{ delay: 1.3, duration: 0.5 }}
         className="absolute -top-5 right-[20%] bg-card border border-line rounded-xl shadow-card-lg px-3 py-2 flex items-center gap-2"
       >
-        <div className="w-6 h-6 rounded-full bg-blue-500/10 flex items-center justify-center">
-          <Clock size={11} className="text-blue-500" />
+        <div className="w-6 h-6 rounded-full bg-[#0F4C3A]/10 flex items-center justify-center">
+          <Clock size={11} className="text-[#0F4C3A]" />
         </div>
         <p className="text-[12px] font-bold text-title">2-Week Delivery</p>
       </motion.div>
@@ -170,16 +170,16 @@ const services = [
     title: "Web Design & Development",
     desc: "Custom, high-converting websites built for speed, SEO, and your US audience.",
     href: "/services/web-design",
-    gradient: "from-blue-500 to-cyan-400",
-    accentColor: "text-blue-600 dark:text-blue-400",
+    gradient: "from-[#0F4C3A] to-[#22C55E]",
+    accentColor: "text-[#0F4C3A] dark:text-emerald-400",
   },
   {
     icon: Workflow,
     title: "CRM Automation & Integration",
     desc: "Automate your sales workflows with n8n, Zapier, and Make so no lead falls through.",
     href: "/services/crm-automation",
-    gradient: "from-violet-500 to-purple-400",
-    accentColor: "text-violet-600 dark:text-violet-400",
+    gradient: "from-[#1A1A1A] to-[#22C55E]",
+    accentColor: "text-neutral-700 dark:text-emerald-400",
   },
   {
     icon: ShoppingBag,
@@ -206,15 +206,15 @@ const stats = [
 ];
 
 const whyUs = [
-  { icon: Zap,          title: "Lightning Fast Delivery",  desc: "From kickoff to live site in 3 weeks, without cutting corners.",                   color: "bg-blue-500/10 text-blue-500" },
-  { icon: Globe,        title: "US Market Expertise",      desc: "We know what American customers expect and design specifically for that.",            color: "bg-violet-500/10 text-violet-500" },
+  { icon: Zap,          title: "Lightning Fast Delivery",  desc: "From kickoff to live site in 3 weeks, without cutting corners.",                   color: "bg-emerald-500/10 text-emerald-500" },
+  { icon: Globe,        title: "US Market Expertise",      desc: "We know what American customers expect and design specifically for that.",            color: "bg-[#0F4C3A]/10 text-[#0F4C3A]" },
   { icon: BarChart3,    title: "Results-Focused",          desc: "Every decision traces back to traffic, leads, and revenue, not just looks.",        color: "bg-emerald-500/10 text-emerald-500" },
   { icon: MessageSquare,title: "Clear Communication",      desc: "No agency jargon. You're always in the loop with clear, honest updates.",            color: "bg-orange-500/10 text-orange-500" },
 ];
 
 const steps = [
-  { n: "01", title: "Discovery call",  desc: "We learn your goals, audience, and vision and recommend the right approach before we touch a pixel.", icon: MessageSquare, gradient: "from-blue-500 to-cyan-500" },
-  { n: "02", title: "Design sprint",   desc: "Full mockups delivered within 5 business days. Iterate until every detail is right.",                  icon: Layers,        gradient: "from-violet-500 to-purple-500" },
+  { n: "01", title: "Discovery call",  desc: "We learn your goals, audience, and vision and recommend the right approach before we touch a pixel.", icon: MessageSquare, gradient: "from-[#0F4C3A] to-[#22C55E]" },
+  { n: "02", title: "Design sprint",   desc: "Full mockups delivered within 5 business days. Iterate until every detail is right.",                  icon: Layers,        gradient: "from-[#1A1A1A] to-[#22C55E]" },
   { n: "03", title: "Build & launch",  desc: "We develop, test, optimise, and go live, then submit your sitemap to Google on day one.",             icon: Zap,           gradient: "from-orange-500 to-amber-500" },
 ];
 
@@ -224,16 +224,16 @@ const testimonials = [
     name: "Sarah M.",
     role: "Founder, Austin Property Group",
     initials: "SM",
-    gradient: "from-blue-500 to-cyan-500",
-    accent: "from-blue-500 to-cyan-400",
+    gradient: "from-[#0F4C3A] to-[#22C55E]",
+    accent: "from-[#0F4C3A] to-emerald-400",
   },
   {
     body: "They understood exactly what US customers expect. Clean, professional, loads incredibly fast. We couldn't be happier.",
     name: "James R.",
     role: "CEO, Pacific Wellness Studio",
     initials: "JR",
-    gradient: "from-violet-500 to-purple-500",
-    accent: "from-violet-500 to-purple-400",
+    gradient: "from-[#1A1A1A] to-[#22C55E]",
+    accent: "from-[#1A1A1A] to-emerald-400",
   },
   {
     body: "Our e-commerce revenue doubled in the first month after launch. Best investment we've made for our online store.",
@@ -251,7 +251,7 @@ export default function HomeClient() {
     <>
       {/* ──── Hero ──── */}
       <section className="relative bg-card overflow-hidden pt-20 pb-28 px-6">
-        <div className="absolute -top-32 right-0 w-175 h-175 rounded-full bg-linear-to-bl from-blue-500/12 via-violet-500/8 to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute -top-32 right-0 w-175 h-175 rounded-full bg-linear-to-bl from-[#0F4C3A]/12 via-emerald-500/8 to-transparent blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-32 w-125 h-125 rounded-full bg-linear-to-tr from-emerald-500/8 to-transparent blur-3xl pointer-events-none" />
 
         <div className="relative max-w-350 mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -259,17 +259,17 @@ export default function HomeClient() {
           <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.1 } } }}>
             <motion.div
               variants={stagger(0)}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-linear-to-r from-blue-500/10 to-violet-500/10 border border-blue-500/20 mb-6"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-linear-to-r from-[#0F4C3A]/10 to-emerald-500/10 border border-emerald-500/20 mb-6"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-[11px] font-semibold tracking-wide uppercase text-blue-600 dark:text-blue-400">
+              <span className="text-[11px] font-semibold tracking-wide uppercase text-[#0F4C3A] dark:text-emerald-400">
                 Now taking US clients
               </span>
             </motion.div>
 
             <motion.h1 variants={stagger(0.05)} className="display-xl text-title mb-5">
               We build websites that{" "}
-              <span className="bg-linear-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[#0F4C3A] to-emerald-600 bg-clip-text text-transparent">
                 win US clients.
               </span>
             </motion.h1>
@@ -281,8 +281,8 @@ export default function HomeClient() {
             <motion.div variants={stagger(0.15)} className="flex flex-wrap gap-3 mb-10">
               <Link
                 href="/contact"
-                className="h-12 px-7 flex items-center gap-2 rounded-full text-white text-[15px] font-medium hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/20"
-                style={{ background: "linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)" }}
+                className="h-12 px-7 flex items-center gap-2 rounded-full text-white text-[15px] font-medium hover:opacity-90 transition-opacity shadow-lg shadow-emerald-500/20"
+                style={{ background: "linear-gradient(135deg, #0F4C3A 0%, #22C55E 100%)" }}
               >
                 Start your project <ArrowRight size={16} />
               </Link>
@@ -313,7 +313,7 @@ export default function HomeClient() {
       {/* ──── Stats band ──── */}
       <section
         className="relative py-14 px-6"
-        style={{ background: "linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)" }}
+        style={{ background: "linear-gradient(135deg, #0F4C3A 0%, #22C55E 100%)" }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
@@ -345,8 +345,8 @@ export default function HomeClient() {
       <section className="bg-surface py-24 px-6">
         <div className="max-w-350 mx-auto">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/8 border border-blue-500/15 mb-4">
-              <span className="eyebrow text-blue-600 dark:text-blue-400">What we build</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/8 border border-emerald-500/15 mb-4">
+              <span className="eyebrow text-emerald-700 dark:text-emerald-400">What we build</span>
             </div>
             <h2 className="display-lg text-title mb-3">Everything your business needs online.</h2>
             <p className="text-prose max-w-xl mx-auto">From first impression to final conversion, we handle every digital touchpoint.</p>
@@ -387,7 +387,7 @@ export default function HomeClient() {
 
       {/* ──── Why Us ──── */}
       <section className="bg-card py-24 px-6 relative overflow-hidden">
-        <div className="absolute top-1/2 -translate-y-1/2 right-0 w-150 h-150 rounded-full bg-linear-to-l from-violet-500/6 to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 -translate-y-1/2 right-0 w-150 h-150 rounded-full bg-linear-to-l from-[#0F4C3A]/6 to-transparent blur-3xl pointer-events-none" />
         <div className="relative max-w-350 mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Left: photo mosaic */}
@@ -454,8 +454,8 @@ export default function HomeClient() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/8 border border-violet-500/15 mb-5">
-              <span className="eyebrow text-violet-600 dark:text-violet-400">Why Pinexa Digital</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0F4C3A]/8 border border-[#0F4C3A]/15 mb-5">
+              <span className="eyebrow text-[#0F4C3A] dark:text-emerald-400">Why Pinexa Digital</span>
             </div>
             <h2 className="display-lg text-title mb-4">We&apos;re not just another web agency.</h2>
             <p className="text-prose text-[16px] leading-7 mb-8">
@@ -529,7 +529,7 @@ export default function HomeClient() {
       {/* ──── Testimonials (hidden until we have real, verifiable client testimonials) ──── */}
       {false && (
         <section className="bg-card py-24 px-6 relative overflow-hidden">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-225 h-[350px] rounded-full bg-linear-to-t from-violet-500/6 to-transparent blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-225 h-[350px] rounded-full bg-linear-to-t from-[#0F4C3A]/6 to-transparent blur-3xl pointer-events-none" />
           <div className="relative max-w-350 mx-auto">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/8 border border-emerald-500/15 mb-4">
@@ -576,10 +576,10 @@ export default function HomeClient() {
       )}
 
       {/* ──── CTA ──── */}
-      <section className="py-24 px-6 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0f0c29 0%, #171717 50%, #0a0e27 100%)" }}>
+      <section className="py-24 px-6 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0F4C3A 0%, #1A1A1A 50%, #0F4C3A 100%)" }}>
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute -top-24 left-1/4 w-96 h-96 rounded-full bg-blue-600/20 blur-3xl" />
-          <div className="absolute -bottom-24 right-1/4 w-96 h-96 rounded-full bg-violet-600/20 blur-3xl" />
+          <div className="absolute -top-24 left-1/4 w-96 h-96 rounded-full bg-emerald-500/20 blur-3xl" />
+          <div className="absolute -bottom-24 right-1/4 w-96 h-96 rounded-full bg-[#0F4C3A]/30 blur-3xl" />
         </div>
         <div className="relative max-w-350 mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 mb-6">
@@ -588,7 +588,7 @@ export default function HomeClient() {
           </div>
           <h2 className="display-lg text-white mb-4">
             Let&apos;s build something{" "}
-            <span className="bg-linear-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-emerald-300 to-teal-400 bg-clip-text text-transparent">
               extraordinary.
             </span>
           </h2>
@@ -598,8 +598,8 @@ export default function HomeClient() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               href="/contact"
-              className="h-12 px-8 flex items-center gap-2 rounded-full text-white text-[16px] font-medium hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/25"
-              style={{ background: "linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)" }}
+              className="h-12 px-8 flex items-center gap-2 rounded-full text-white text-[16px] font-medium hover:opacity-90 transition-opacity shadow-lg shadow-emerald-500/25"
+              style={{ background: "linear-gradient(135deg, #0F4C3A 0%, #22C55E 100%)" }}
             >
               Get a free quote <ArrowRight size={16} />
             </Link>

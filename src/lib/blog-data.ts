@@ -23,6 +23,245 @@ export interface Post {
 
 export const posts: Post[] = [
   {
+    slug: "crm-automation-small-business-guide",
+    title: "CRM automation for small businesses: how to stop leads slipping through the cracks.",
+    excerpt:
+      "A practical guide to CRM automation for US small businesses: which workflows to automate first, which tools to use, and what it realistically costs.",
+    seoTitle: "CRM Automation Guide for Small Businesses",
+    seoDescription:
+      "How CRM automation stops leads slipping through the cracks: the workflows to build first, HubSpot vs Pipedrive vs GoHighLevel, and realistic 2026 pricing.",
+    date: "2026-07-12",
+    readTime: "6 min read",
+    category: "Automation",
+    accent: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
+    content: [
+      {
+        t: "p",
+        v: "CRM automation means connecting your customer relationship management system to the other tools you use, your website, email, calendar, invoicing, so leads and data move between them without anyone manually copying and pasting. For a small business, the highest-value automation is almost always the simplest one: getting a new lead into the CRM and followed up with automatically, the moment they submit a form, not whenever someone remembers to check.",
+      },
+      {
+        t: "h2",
+        v: "The real cost of manual lead follow-up",
+      },
+      {
+        t: "p",
+        v: "Research from Harvard Business Review and InsideSales found that businesses contacting a lead within 5 minutes of submission are roughly 21 times more likely to qualify that lead than businesses that wait 30 minutes. Most small businesses aren't losing deals to competitors with a better product, they're losing them to competitors who simply responded first. If your leads sit in an inbox until someone has time, or worse, live only in a spreadsheet someone updates once a day, you are actively losing winnable business to slower follow-up, not worse service.",
+      },
+      {
+        t: "h2",
+        v: "What CRM automation actually means",
+      },
+      {
+        t: "p",
+        v: "A CRM (HubSpot, Pipedrive, GoHighLevel, Salesforce, Zoho) is the system of record: it stores your contacts, deals, and pipeline stages. Automation tools (n8n, Zapier, Make) sit on top and move data between the CRM and everything else, your [contact form](/blog/contact-form-conversion-tips), email, Slack, invoicing software, without a human touching it. You need both pieces. A CRM without automation is just a fancier spreadsheet someone still has to update by hand.",
+      },
+      {
+        t: "h2",
+        v: "The five automations worth building first",
+      },
+      {
+        t: "ul",
+        v: [
+          "Instant lead routing: a website form submission creates a CRM contact and assigns it to the right person within seconds, not at the next check-in",
+          "Automated follow-up sequences: a scheduled email or SMS sequence triggers the moment a lead comes in, so nobody goes cold while your team is busy",
+          "Deal stage sync: when a deal moves stages in the CRM, connected tools (invoicing, project boards, Slack) update automatically instead of needing a second manual step",
+          "Duplicate detection and enrichment: incoming leads are checked against existing contacts and enriched with basic company data before a human ever sees them",
+          "Missed-call and no-show recovery: a missed call or a no-show appointment automatically triggers a text or email instead of quietly disappearing",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Choosing the right CRM before you automate anything",
+      },
+      {
+        t: "p",
+        v: "Automating a CRM that doesn't fit how you actually sell just makes the wrong process happen faster. Pick the platform first.",
+      },
+      {
+        t: "ul",
+        v: [
+          "HubSpot: strong free tier, excellent for businesses that also want marketing and content tools in one place",
+          "Pipedrive: simple, visual pipeline, a good fit for straightforward sales-only teams that don't need marketing features",
+          "GoHighLevel: built for agencies and service businesses managing multiple clients or locations from one dashboard",
+          "Salesforce: the most powerful and the most complex, worth it once your team and process outgrow simpler tools",
+          "Zoho or Airtable: budget-friendly, flexible options for businesses with a smaller lead volume or a highly custom process",
+        ],
+      },
+      {
+        t: "h2",
+        v: "n8n vs. Zapier vs. Make",
+      },
+      {
+        t: "p",
+        v: "The three main automation platforms differ mostly in cost structure and flexibility, not core capability.",
+      },
+      {
+        t: "ul",
+        v: [
+          "Zapier: the easiest to learn, huge app library, pricing scales quickly once you need more than a few thousand tasks a month",
+          "Make: more visual and flexible than Zapier for complex, branching logic, generally cheaper at higher volume",
+          "n8n: open-source and self-hostable, the most cost-effective at scale, but benefits from technical setup help to configure correctly",
+        ],
+      },
+      {
+        t: "h2",
+        v: "A realistic first project",
+      },
+      {
+        t: "p",
+        v: "A typical starting automation looks like this: a visitor submits your website's contact form. Within seconds, a new contact is created in your CRM, assigned to the right team member based on the service they selected, a Slack notification alerts your team, and an automated email confirms receipt and sets expectations for response time. That single workflow, buildable in a few days, closes the exact gap the 5-minute response research points to, and it's usually the first automation we build for a new client.",
+      },
+      {
+        t: "h2",
+        v: "What it actually costs",
+      },
+      {
+        t: "p",
+        v: "Simple, single-workflow automations, like the lead routing example above, typically run $200–$300 as a one-time setup cost. Multi-system integrations with custom logic, such as syncing a CRM, invoicing platform, and project management tool together, are scoped individually and usually land between $500 and $2,000 depending on complexity. There's rarely an ongoing monthly fee beyond what the CRM and automation platform themselves charge, since the automation logic itself is a one-time build.",
+      },
+      {
+        t: "note",
+        v: "Automations fail silently. A connected app changes its API, a field gets renamed, and a workflow that worked for months quietly stops routing leads, often for weeks before anyone notices. Set up error alerts on every automation you build, or have whoever built it monitor it for you.",
+      },
+      {
+        t: "h2",
+        v: "The ROI math",
+      },
+      {
+        t: "p",
+        v: "Consider a service business getting 40 website leads a month at a 25% close rate and a $2,000 average deal size. Improving response time from same-day to instant, based on the 21x qualification research, realistically pushes close rate up by even a few percentage points. A single additional closed deal at $2,000 pays for a $200–$300 automation build many times over in the first month, and the automation keeps working every month after that without additional cost.",
+      },
+      {
+        t: "h2",
+        v: "Common mistakes",
+      },
+      {
+        t: "ul",
+        v: [
+          "Automating a broken process instead of fixing it first, speed doesn't help if the underlying workflow is wrong",
+          "Skipping monitoring, so a silent failure goes unnoticed for weeks",
+          "Over-automating on day one instead of starting with the highest-impact workflow and expanding from there",
+          "Choosing a CRM based on features you might need someday instead of the process you actually run today",
+        ],
+      },
+      {
+        t: "p",
+        v: "CRM automation isn't about replacing your team, it's about making sure a lead never waits on a human who's simply busy with something else. Start with one workflow, the one costing you the most missed leads today, and expand from there. If you want a fixed quote on [connecting your specific tools](/services/crm-automation), tell us what you're working with and we'll follow up honestly, including if a simpler fix would solve it first.",
+      },
+    ],
+  },
+  {
+    slug: "schema-markup-small-business-guide",
+    title: "Schema markup for small business websites: what to add (and what to skip) in 2026.",
+    excerpt:
+      "A practical guide to Schema.org structured data: the JSON-LD types worth adding, the deprecated ones to avoid, and why schema now matters for AI search too.",
+    seoTitle: "Schema Markup Guide for Small Business Sites",
+    seoDescription:
+      "Which Schema.org structured data types to add in 2026, which ones Google deprecated, and how JSON-LD helps both Google rankings and AI search citations.",
+    date: "2026-07-13",
+    readTime: "6 min read",
+    category: "Schema",
+    accent: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
+    content: [
+      {
+        t: "p",
+        v: "Schema markup is a standardized code format, usually JSON-LD, that tells search engines exactly what your content means, not just what it says. A page can say \"Open Mon-Fri, 9-5\" in plain text and a crawler has to guess whether that's your hours or a quote from a customer. Schema removes the guessing: it labels that text as openingHours on a LocalBusiness entity, unambiguously. Content with proper schema has roughly 2.5x higher odds of being pulled into AI-generated answers, according to data Google and Microsoft have both confirmed, which makes this less optional than it used to be.",
+      },
+      {
+        t: "h2",
+        v: "What schema markup actually does",
+      },
+      {
+        t: "p",
+        v: "Schema doesn't change how your page looks to a human visitor. It's invisible markup sitting in a <script type=\"application/ld+json\"> tag, read only by machines: Google's crawler, Bing's crawler, and increasingly the retrieval systems behind ChatGPT, Perplexity, and Google's AI Overviews. Done well, it can earn you rich results (star ratings, breadcrumbs, sitelinks in search) and, more importantly in 2026, it's how AI systems verify facts about your business before citing you as a source.",
+      },
+      {
+        t: "h2",
+        v: "The types worth adding today",
+      },
+      {
+        t: "ul",
+        v: [
+          "Organization or ProfessionalService: your business name, logo, contact info, and social profiles, the foundational entity everything else references",
+          "LocalBusiness: for any business with a physical location or service area, name, address, phone, hours, geo coordinates, priceRange",
+          "Service: what you offer, who provides it, and what area it covers",
+          "Article or BlogPosting: headline, author, publish date, and publisher for every blog post, exactly what powers this post's own markup",
+          "BreadcrumbList: the navigation path to a page, cheap to add and genuinely useful for both crawlers and rich results",
+          "Product and Offer: for e-commerce, pricing, availability, and SKU data that feeds Google Shopping",
+          "Review and AggregateRating: only when the reviews are real and verifiable. Fabricated review schema violates Google's structured data policies and FTC endorsement guidance, and it's easy to get caught",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What to skip",
+      },
+      {
+        t: "p",
+        v: "Not every schema type still earns its keep. A few common ones are worth avoiding or retiring:",
+      },
+      {
+        t: "ul",
+        v: [
+          "HowTo: Google removed how-to rich results back in September 2023. Adding this schema today does nothing for your SERP appearance",
+          "FAQPage for the sake of a rich result: Google fully retired FAQ rich results for every site on May 7, 2026. It no longer changes how you appear in classic search",
+          "Any schema with placeholder text left in from a template (\"[Business Name]\", \"[City]\"). This actively damages trust signals and can trigger manual review",
+          "Duplicate or conflicting schema blocks on the same page describing the same entity differently, this confuses crawlers more than having no schema at all",
+        ],
+      },
+      {
+        t: "note",
+        v: "FAQPage schema is still worth keeping if you already have it, and still worth adding if AI visibility is your goal rather than a Google rich result. AI Overviews and AI Mode use structured data for entity resolution during answer synthesis, so accurate FAQ markup can lift your odds of being cited by an AI assistant even though it no longer earns SERP real estate.",
+      },
+      {
+        t: "h2",
+        v: "LocalBusiness schema if you serve a specific area",
+      },
+      {
+        t: "p",
+        v: "If your business serves customers in specific cities, LocalBusiness schema is one of the highest-leverage additions you can make, alongside the Google Business Profile work covered in our [local SEO guide](/blog/seo-for-small-business-us). Include your exact NAP (name, address, phone) matching what's on your GBP listing, your service area, and your hours. Inconsistency between your schema and your GBP listing sends a mild distrust signal to Google, so keep them identical.",
+      },
+      {
+        t: "h2",
+        v: "Schema is now an AI search signal too",
+      },
+      {
+        t: "p",
+        v: "Structured data used to be purely a Google SERP play. That's changed. As covered in our [guide to AEO and GEO](/blog/ai-search-optimization-aeo-geo-guide), AI systems retrieve and verify facts using structured data during answer generation, it's one of the clearest, lowest-effort signals you can give a language model about who you are and what you do. A business with clean Organization and Service schema is simply easier for an AI system to describe accurately than one with none.",
+      },
+      {
+        t: "h2",
+        v: "How to add schema without hiring a developer",
+      },
+      {
+        t: "ol",
+        v: [
+          "Identify the entity type that matches your page (Organization, LocalBusiness, Service, Article, Product)",
+          "Write the JSON-LD block by hand or generate it with a schema generator tool, filling in only real, verifiable data",
+          "Add it inside a <script type=\"application/ld+json\"> tag in your page's <head> or body",
+          "Test it in Google's Rich Results Test and the Schema.org validator before publishing",
+          "Re-test after any redesign, since schema is easy to lose silently when a template changes",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Common mistakes that undo the benefit",
+      },
+      {
+        t: "ul",
+        v: [
+          "Relative URLs instead of absolute (https://yoursite.com/page, not /page)",
+          "Dates not in ISO 8601 format (2026-07-13, not \"July 13\")",
+          "Schema describing something the visible page doesn't actually say, Google calls this a mismatch and can ignore or penalize it",
+          "Only adding schema to the homepage and forgetting service and blog pages, where it matters just as much",
+        ],
+      },
+      {
+        t: "p",
+        v: "Schema markup is a few hours of careful, unglamorous work that pays off every time a crawler or an AI model tries to understand your site. It won't rescue thin content or a slow page, but layered on top of a site that's already solid, it's one of the cheapest ways to make sure both Google and AI search describe your business correctly. It's part of the technical SEO we build into every site from day one, not bolted on after launch.",
+      },
+    ],
+  },
+  {
     slug: "ai-search-optimization-aeo-geo-guide",
     title: "AI search is changing SEO: how to get cited by ChatGPT and Google AI Overviews in 2026.",
     excerpt:
@@ -86,7 +325,7 @@ export const posts: Post[] = [
         v: [
           "Use semantic HTML: real <h1>-<h6> headings, real lists, real tables, not divs styled to look like them",
           "Server-render your critical content (Next.js does this by default) so it's present in the initial HTML, not injected later by JavaScript",
-          "Add Schema.org structured data (Organization, Service, Article) so AI systems get an unambiguous, machine-readable summary of who you are and what you offer",
+          "[Add Schema.org structured data](/blog/schema-markup-small-business-guide) (Organization, Service, Article) so AI systems get an unambiguous, machine-readable summary of who you are and what you offer",
           "Keep one clear topic per page. Pages that try to answer five unrelated questions dilute the passage-level clarity AI retrieval depends on",
         ],
       },
@@ -167,7 +406,7 @@ export const posts: Post[] = [
       },
       {
         t: "note",
-        v: "Google retired FAQ rich results in search for all sites as of May 2026, so FAQPage schema no longer earns you extra space on a Google results page. It's still worth keeping well-written Q&A content on your site, that format remains genuinely useful for AI citation, just don't expect it to change how you look in classic Google search anymore.",
+        v: "Google retired FAQ rich results in search for all sites as of May 2026, so FAQPage schema no longer earns you extra space on a Google results page. It's still worth keeping well-written Q&A content on your site, that format remains genuinely useful for AI citation, just don't expect it to change how you look in classic Google search anymore. See our [schema markup guide](/blog/schema-markup-small-business-guide) for the full breakdown of what to add and what to retire.",
       },
       {
         t: "p",
@@ -195,7 +434,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "When a web agency quotes you a price, the fee covers far more than just making something look nice. You're paying for conversion architecture: the strategic decisions about layout, copy flow, and calls-to-action that determine whether visitors contact you or leave. You're paying for development quality: code that loads fast, doesn't break on different devices, and won't need a rebuild in 18 months. You're paying for SEO setup: structured data, meta tags, Core Web Vitals performance, and a sitemap submitted to Google on day one. And you're paying for communication: someone who answers questions, explains decisions, and delivers without surprises.",
+        v: "When a web agency quotes you a price, the fee covers far more than just making something look nice. You're paying for conversion architecture: the strategic decisions about layout, copy flow, and calls-to-action that determine whether visitors contact you or leave. You're paying for development quality: code that loads fast, doesn't break on different devices, and won't need a rebuild in 18 months. You're paying for SEO setup: [structured data](/blog/schema-markup-small-business-guide), meta tags, Core Web Vitals performance, and a sitemap submitted to Google on day one. And you're paying for communication: someone who answers questions, explains decisions, and delivers without surprises.",
       },
       {
         t: "h2",
@@ -331,7 +570,7 @@ export const posts: Post[] = [
         v: [
           "Include your city and state in your homepage H1 or title tag: \"Web Design Services in Austin, TX\"",
           "Create a dedicated Contact page with your full address, phone, and embedded Google Map",
-          "Add LocalBusiness schema markup to your homepage (name, address, phone, hours, geo coordinates)",
+          "[Add LocalBusiness schema markup](/blog/schema-markup-small-business-guide) to your homepage (name, address, phone, hours, geo coordinates)",
           "If you serve multiple cities, create individual city landing pages, not one page with all cities listed",
           "Include the city name naturally in your service descriptions, not just in headings",
         ],
@@ -736,7 +975,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "These five changes take less than two hours to implement and cost nothing. Combined, cutting from six fields to three, rewriting placeholder text, changing the button copy, adding a process-focused testimonial, and setting up an auto-reply, routinely doubles contact form conversion rates. If your site gets 1,000 visitors per month and your form currently converts at 1.5%, you're getting 15 leads. The same traffic with a 3% conversion rate is 30 leads, without spending another dollar on ads or SEO. Optimize what you already have first.",
+        v: "These five changes take less than two hours to implement and cost nothing. Combined, cutting from six fields to three, rewriting placeholder text, changing the button copy, adding a process-focused testimonial, and setting up an auto-reply, routinely doubles contact form conversion rates. If your site gets 1,000 visitors per month and your form currently converts at 1.5%, you're getting 15 leads. The same traffic with a 3% conversion rate is 30 leads, without spending another dollar on ads or SEO. Optimize what you already have first, then look at [what happens to a lead after they submit](/blog/crm-automation-small-business-guide), since a great form feeding a slow follow-up process still loses the deal.",
       },
     ],
   },
@@ -744,4 +983,13 @@ export const posts: Post[] = [
 
 export function getPost(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug);
+}
+
+/** Same-category posts first (most recent first), backfilled with other recent posts. */
+export function getRelatedPosts(slug: string, limit = 3): Post[] {
+  const current = getPost(slug);
+  if (!current) return [];
+  const sameCategory = posts.filter((p) => p.slug !== slug && p.category === current.category);
+  const others = posts.filter((p) => p.slug !== slug && p.category !== current.category);
+  return [...sameCategory, ...others].slice(0, limit);
 }

@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import { getPost, posts, type Block } from "@/lib/blog-data";
+import { getPost, getRelatedPosts, posts, type Block } from "@/lib/blog-data";
 import { SITE, siteUrl } from "@/lib/site-config";
 import Breadcrumb from "@/components/ui/Breadcrumb";
+import PostCard from "@/components/ui/PostCard";
 
 export async function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -34,6 +36,31 @@ export async function generateMetadata({
   };
 }
 
+/** Parses `[label](/internal/path)` markdown-style links inside block text into clickable internal links. */
+function renderInline(text: string): ReactNode[] {
+  const linkPattern = /\[([^\]]+)\]\((\/[a-z0-9-/]+)\)/g;
+  const parts: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+
+  while ((match = linkPattern.exec(text)) !== null) {
+    if (match.index > lastIndex) parts.push(text.slice(lastIndex, match.index));
+    parts.push(
+      <Link
+        key={`link-${key++}`}
+        href={match[2]}
+        className="text-link underline underline-offset-2 decoration-link/40 hover:decoration-link"
+      >
+        {match[1]}
+      </Link>
+    );
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) parts.push(text.slice(lastIndex));
+  return parts;
+}
+
 function BlockRenderer({ blocks }: { blocks: Block[] }) {
   return (
     <div className="prose-content">
@@ -54,7 +81,7 @@ function BlockRenderer({ blocks }: { blocks: Block[] }) {
           case "p":
             return (
               <p key={i} className="text-[16px] leading-7 text-prose mb-5">
-                {block.v}
+                {renderInline(block.v)}
               </p>
             );
           case "ul":
@@ -63,7 +90,7 @@ function BlockRenderer({ blocks }: { blocks: Block[] }) {
                 {block.v.map((item, j) => (
                   <li key={j} className="flex items-start gap-2.5 text-[15px] leading-6 text-prose">
                     <span className="text-link mt-1 shrink-0 text-[12px]">▸</span>
-                    <span>{item}</span>
+                    <span>{renderInline(item)}</span>
                   </li>
                 ))}
               </ul>
@@ -76,7 +103,7 @@ function BlockRenderer({ blocks }: { blocks: Block[] }) {
                     <span className="shrink-0 w-6 h-6 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[12px] font-bold flex items-center justify-center mt-0.5">
                       {j + 1}
                     </span>
-                    <span>{item}</span>
+                    <span>{renderInline(item)}</span>
                   </li>
                 ))}
               </ol>
@@ -84,7 +111,7 @@ function BlockRenderer({ blocks }: { blocks: Block[] }) {
           case "note":
             return (
               <div key={i} className="bg-blue-500/8 border border-blue-500/20 rounded-xl px-5 py-4 mb-5">
-                <p className="text-[14px] leading-6 text-prose font-medium">{block.v}</p>
+                <p className="text-[14px] leading-6 text-prose font-medium">{renderInline(block.v)}</p>
               </div>
             );
           default:
@@ -103,6 +130,8 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();
+
+  const related = getRelatedPosts(slug);
 
   const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
     year: "numeric",
@@ -193,6 +222,21 @@ export default async function BlogPostPage({
           </div>
         </div>
       </section>
+
+      {/* ── Related articles ── */}
+      {related.length > 0 && (
+        <section className="bg-surface py-16 px-6 border-t border-line">
+          <div className="max-w-350 mx-auto">
+            <p className="eyebrow mb-3">Keep reading</p>
+            <h2 className="display-lg text-title mb-8">Related articles.</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {related.map((p) => (
+                <PostCard key={p.slug} post={p} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Back + CTA ── */}
       <section className="bg-surface py-16 px-6 border-t border-line">

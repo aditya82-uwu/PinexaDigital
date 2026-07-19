@@ -23,6 +23,404 @@ export interface Post {
 
 export const posts: Post[] = [
   {
+    slug: "n8n-vs-zapier-vs-make-comparison",
+    title: "n8n vs. Zapier vs. Make: which automation tool is right for your small business?",
+    excerpt:
+      "A real pricing and capability comparison of n8n, Zapier, and Make for small business CRM automation, and how to pick without overpaying or overbuilding.",
+    seoTitle: "n8n vs Zapier vs Make: 2026 Comparison",
+    seoDescription:
+      "n8n vs Zapier vs Make compared for small business automation: real pricing at typical volume, ease of use, and which tool fits which CRM workflow.",
+    date: "2026-07-19",
+    readTime: "7 min read",
+    category: "Automation",
+    accent: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
+    content: [
+      {
+        t: "p",
+        v: "Zapier is the easiest to learn and the most expensive at scale, Make offers more power for complex branching logic at a mid-range price, and n8n is the cheapest option at high volume but expects more technical comfort since it's self-hosted. All three connect your CRM to the other tools you use and move data between them without manual entry, the question covered in our [CRM automation guide](/blog/crm-automation-small-business-guide), the real difference between them is cost structure and how much technical setup you're willing to take on.",
+      },
+      {
+        t: "h2",
+        v: "The one-line difference between all three",
+      },
+      {
+        t: "p",
+        v: "All three platforms do the same core job: trigger, then action. Something happens in one app (a form is submitted, a deal moves stage), and that triggers an action in another (a CRM contact is created, a Slack message is sent). Where they differ is pricing model, how much complexity you can build before it gets unwieldy, and whether you're running the tool on your own infrastructure or paying someone else to host it.",
+      },
+      {
+        t: "h2",
+        v: "Zapier: the easiest on-ramp",
+      },
+      {
+        t: "ul",
+        v: [
+          "Pros: the largest app library of the three, genuinely easy for a non-technical team member to build and maintain simple workflows, excellent documentation and community support",
+          "Cons: pricing is based on \"tasks\" (each action counts), and costs climb fast once you're past a few thousand tasks a month, complex multi-step branching logic gets awkward",
+          "Best for: a business running a handful of straightforward automations and wants the lowest setup effort, not the lowest long-term cost",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Make: more power without the full technical overhead",
+      },
+      {
+        t: "ul",
+        v: [
+          "Pros: a visual, flowchart-style builder that handles branching and multi-path logic more naturally than Zapier, generally cheaper per operation at moderate-to-high volume",
+          "Cons: the visual builder has a steeper learning curve than Zapier's linear step format, still a paid SaaS tool with usage-based limits",
+          "Best for: a business with workflows that branch, if this, do A, if that, do B, and wants more headroom than Zapier before costs spike",
+        ],
+      },
+      {
+        t: "h2",
+        v: "n8n: maximum control, lowest cost at scale",
+      },
+      {
+        t: "ul",
+        v: [
+          "Pros: open-source, self-hostable, no per-task pricing ceiling once it's running on your own server, the most cost-effective option at real volume",
+          "Cons: self-hosting means you (or whoever set it up) are responsible for uptime and updates, meaningfully more technical to configure correctly than Zapier or Make",
+          "Best for: a business already running enough automation volume that Zapier or Make's usage-based pricing has become expensive, and that has (or hires) the technical support to run it properly",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Real pricing at typical small-business volume",
+      },
+      {
+        t: "p",
+        v: "At roughly 2,000 automation runs a month, a realistic volume for a small business routing leads and syncing a CRM, the gap becomes clear:",
+      },
+      {
+        t: "ul",
+        v: [
+          "Zapier: typically lands in its mid-tier plan, often $70-$115/month at this volume depending on how many separate Zaps (workflows) you're running",
+          "Make: usually cheaper at the same volume, often $30-$60/month, since its operations-based pricing is more efficient than Zapier's task-based model",
+          "n8n (self-hosted): a small VPS running n8n costs roughly $10-$20/month in hosting regardless of volume, the cost that scales is technical setup and maintenance time, not the tool itself",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Which one fits your situation",
+      },
+      {
+        t: "ul",
+        v: [
+          "Non-technical team, a handful of simple automations, willing to pay for convenience → Zapier",
+          "Workflows with real branching logic, moderate volume, want more headroom than Zapier → Make",
+          "High volume, cost-sensitive, have (or can hire) technical support → n8n",
+          "Not sure yet how much you'll actually automate → start on Zapier or Make, since both are faster to prototype in, and move to n8n later once volume justifies it",
+        ],
+      },
+      {
+        t: "h2",
+        v: "The mistake: picking the tool before the workflow",
+      },
+      {
+        t: "p",
+        v: "The platform matters less than most businesses assume at the start. The workflow itself, what actually needs to trigger, what data needs to move where, what a human still needs to review, is the real design work. Pick any of the three and a poorly designed workflow will cause the same problem: leads misrouted, data out of sync, an automation nobody remembers building. Map the workflow first. The tool choice becomes obvious once you know what you're actually trying to automate.",
+      },
+      {
+        t: "note",
+        v: "You don't have to commit to one platform forever. It's common, and reasonable, to start on Zapier for speed, then migrate specific high-volume workflows to n8n once the task-based pricing starts to hurt, while leaving simple ones where they are.",
+      },
+      {
+        t: "p",
+        v: "Whichever tool you choose, it's only doing its job well if it's built around the [five automations worth building first](/blog/crm-automation-small-business-guide): instant lead routing, follow-up sequences, deal stage sync, duplicate detection, and missed-call recovery. If you'd rather we scope the right tool and workflow for your specific setup, [tell us what you're trying to connect](/services/crm-automation) and we'll recommend the platform that actually fits, not just the one we'd rather sell.",
+      },
+    ],
+  },
+  {
+    slug: "website-accessibility-ada-compliance-guide",
+    title: "Website ADA compliance: what small businesses actually need to do in 2026.",
+    excerpt:
+      "What ADA website compliance really requires, why demand letters target small business sites specifically, and a practical WCAG 2.2 fix-it checklist that doesn't rely on an overlay widget.",
+    seoTitle: "ADA Website Compliance Guide (2026)",
+    seoDescription:
+      "What ADA website compliance actually requires for small business sites in 2026: WCAG 2.2 basics, real legal risk, and a practical fix-it checklist.",
+    date: "2026-07-17",
+    readTime: "7 min read",
+    category: "Accessibility",
+    accent: "bg-rose-500/10 text-rose-600 dark:text-rose-400",
+    content: [
+      {
+        t: "p",
+        v: "ADA website compliance means building your site so people using screen readers, keyboard-only navigation, or other assistive technology can actually use it, measured against the WCAG 2.2 Level AA standard that courts consistently reference in web accessibility lawsuits. The ADA itself never mentions websites, it was written in 1990, but federal courts have repeatedly ruled that business websites count as \"places of public accommodation\" under Title III, and thousands of demand letters go out to small and mid-size business websites every year. The good news: most of the fixes are concrete, well-documented, and don't require rebuilding your site.",
+      },
+      {
+        t: "h2",
+        v: "Does the ADA actually apply to your website?",
+      },
+      {
+        t: "p",
+        v: "There's no small-business size exemption written into how courts have applied Title III to websites. Any business open to the public, selling online, or offering services through its site has been found liable in various circuit courts, regardless of company size. The Department of Justice's 2024 rule formally adopting WCAG 2.2 AA applies directly to state and local government sites (Title II), but it also confirmed the standard courts already treat as the practical benchmark for private business websites under Title III. Risk correlates loosely with traffic and visibility, a well-trafficked local business site is a more attractive target than an obscure one, but visibility isn't a legal shield either way.",
+      },
+      {
+        t: "h2",
+        v: "What a demand letter actually looks like",
+      },
+      {
+        t: "p",
+        v: "Most ADA web cases never reach a courtroom. A firm representing a plaintiff sends a demand letter citing specific WCAG failures found on your site, often via an automated scan, and offers to settle for somewhere between $5,000 and $20,000 to avoid litigation. Industry tracking from firms like Seyfarth Shaw and UsableNet has documented several thousand of these federal lawsuits filed per year for over a decade, with small and mid-size businesses making up a large share of targets precisely because they're less likely to have addressed accessibility already. Ignoring the letter is almost always more expensive than fixing the underlying issues.",
+      },
+      {
+        t: "h2",
+        v: "The core WCAG 2.2 AA fixes that cover most real risk",
+      },
+      {
+        t: "ul",
+        v: [
+          "Meaningful alt text on every image that conveys information, empty alt on purely decorative ones",
+          "Text contrast of at least 4.5:1 against its background, a common automated-scan failure",
+          "Full keyboard navigation, every interactive element reachable and usable without a mouse",
+          "Visible focus indicators, so a keyboard user can see where they are on the page",
+          "Descriptive link text (\"View pricing plans\", not \"click here\")",
+          "Form fields with properly associated labels, not just placeholder text",
+          "Captions or transcripts for video content",
+          "No content that flashes more than three times per second",
+          "Text that resizes up to 200% without breaking the layout",
+          "A skip-to-content link for keyboard and screen reader users",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What overlay widgets don't fix, and can make worse",
+      },
+      {
+        t: "p",
+        v: "A large category of vendors sell a one-line JavaScript widget promising instant ADA compliance. This is worth saying plainly even though it costs us an easy upsell: accessibility advocates, in an open letter signed by over 800 professionals and organizations, have specifically called out these overlay tools for failing to achieve real compliance and, in some cases, actively interfering with the assistive technology people already use. Several companies that relied solely on an overlay have still been sued, and courts have not treated the presence of a widget as a defense. An overlay can be one small part of a broader effort, but it is not a substitute for actually fixing the underlying HTML.",
+      },
+      {
+        t: "h2",
+        v: "A practical fix-it checklist",
+      },
+      {
+        t: "ol",
+        v: [
+          "Run an automated scanner (axe DevTools or WAVE) as a starting point, not a finish line, automated tools catch roughly 30-40% of real issues",
+          "Manually test your key pages using only a keyboard, no mouse, tab through every interactive element",
+          "Manually test with a screen reader (VoiceOver on Mac, NVDA on Windows) on your homepage, contact form, and highest-traffic pages",
+          "Work through the WCAG 2.2 AA fixes above on the pages that failed",
+          "Publish a plain-language accessibility statement describing your commitment and how to report an issue",
+          "[Retest accessibility every time you redesign](/blog/website-redesign-seo-checklist), it's exactly the kind of thing that silently breaks when a template changes",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Accessibility and SEO overlap more than people expect",
+      },
+      {
+        t: "p",
+        v: "Most of the work that makes a site accessible also makes it more crawlable and better ranking. Descriptive alt text feeds image search the same way it feeds a screen reader. A clean semantic heading structure supports both a keyboard user and the [structured data](/blog/schema-markup-small-business-guide) that helps AI search cite you accurately. A fast, keyboard-navigable page is close to identical to the [performant page](/blog/website-speed-optimization) Core Web Vitals already reward. Accessibility work is rarely wasted effort done for its own sake, it's overlapping investment in the same technical foundation that SEO already needs.",
+      },
+      {
+        t: "note",
+        v: "If you've already received a demand letter, don't rely on installing an overlay and calling it resolved. Document the specific fixes you make, keep dated records, and involve legal counsel for anything beyond routine remediation, this guide covers the technical side, not legal strategy.",
+      },
+      {
+        t: "p",
+        v: "Website accessibility isn't a one-time checkbox, it's an ongoing part of maintaining a site, the same way [security patches and performance monitoring](/blog/website-maintenance-guide) are. Most of the core fixes above are achievable in days, not months, and they reduce real legal exposure while genuinely improving the experience for a meaningful share of your visitors. If you want your site properly audited rather than patched with a widget, that's work we build into every [redesign and rebuild](/services/web-design), not sold separately as an afterthought.",
+      },
+    ],
+  },
+  {
+    slug: "website-redesign-seo-checklist",
+    title: "Website redesign SEO checklist: how to redesign your site without losing Google rankings.",
+    excerpt:
+      "A step-by-step checklist for redesigning or migrating a website without losing the rankings, traffic, and backlink equity your current site already earned.",
+    seoTitle: "Website Redesign SEO Checklist (2026)",
+    seoDescription:
+      "A step-by-step website redesign SEO checklist: preserve your rankings and existing backlink equity with proper 301 redirects, schema, and CWV testing.",
+    date: "2026-07-15",
+    readTime: "8 min read",
+    category: "SEO",
+    accent: "bg-violet-500/10 text-violet-600 dark:text-violet-400",
+    content: [
+      {
+        t: "p",
+        v: "Redesigning a website without losing Google rankings comes down to one core discipline: every URL, backlink, and ranking signal your current site has already earned needs to be carried forward to the new one, not rebuilt from zero. Studies of redesign projects consistently find organic traffic drops of 20-70% following a launch, and the overwhelming majority of that loss is preventable. It's caused by broken redirects, stripped structured data, and lost internal links, not by Google deciding your new design deserves less trust.",
+      },
+      {
+        t: "h2",
+        v: "Why redesigns tank rankings, and why it's usually avoidable",
+      },
+      {
+        t: "p",
+        v: "Google doesn't rank a domain. It ranks individual URLs, each one having earned trust through age, backlinks, internal links, and consistent content over time. A redesign that changes URL structure, drops old pages, or launches without redirects is effectively asking Google to start trusting a set of brand-new pages from scratch, while throwing away every signal the old ones had built up. The good news: this is entirely within your control. A technically clean migration preserves nearly all of it.",
+      },
+      {
+        t: "h2",
+        v: "Your backlinks are the asset most at risk",
+      },
+      {
+        t: "p",
+        v: "Every backlink pointing to your current site is pointing at a specific URL. If that URL disappears without a redirect, the backlink still exists on the other site, but it now leads to a 404, and every bit of authority it was passing to you evaporates. This is true whether you have 5 backlinks or 5,000: a clean 301 redirect map is how you keep the ranking power those links already earned, which matters most for smaller sites that can't easily replace lost backlink equity by building new links quickly.",
+      },
+      {
+        t: "h2",
+        v: "The pre-launch checklist",
+      },
+      {
+        t: "ol",
+        v: [
+          "Crawl and export every live URL on your current site, including ones with little traffic, before anything changes",
+          "Pull your top-performing pages from Google Search Console by clicks and impressions, these are non-negotiable to preserve",
+          "Build a 1:1 redirect map from every old URL to its new equivalent, don't leave any old URL unmapped",
+          "Keep your URL structure the same where possible; every URL you change is one more redirect that can go wrong",
+          "Recreate your [structured data](/blog/schema-markup-small-business-guide) type by type on the new site rather than copy-pasting old JSON-LD that may reference outdated fields",
+          "Carry over title tags and meta descriptions deliberately, improve them intentionally, don't let a new CMS auto-generate generic ones",
+          "Preserve your internal linking structure and anchor text, internal links distribute the ranking power your best pages have earned",
+          "Test Core Web Vitals on staging before launch, not after, using the same [performance benchmarks](/blog/website-speed-optimization) you'd hold any live page to",
+          "Re-verify your robots.txt allows both search and AI crawlers, staging environments are often blocked by default and that block sometimes ships to production by accident",
+          "[Re-test accessibility](/blog/website-accessibility-ada-compliance-guide) (keyboard navigation, alt text, contrast) on the new templates before launch, a redesign is exactly when WCAG violations quietly slip back in",
+          "If local search matters to your business, keep your NAP and [LocalBusiness schema](/blog/seo-for-small-business-us) byte-for-byte identical to what's on your Google Business Profile",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Launch day checklist",
+      },
+      {
+        t: "ol",
+        v: [
+          "Implement 301 (permanent) redirects, never 302 (temporary), a 302 tells Google not to transfer ranking signals yet",
+          "Submit a change of address in Google Search Console if you've also changed domains",
+          "Submit your new XML sitemap immediately and remove or update the old one",
+          "Manually request indexing for your highest-priority pages rather than waiting for a natural recrawl",
+          "Spot-check that robots.txt on the live domain isn't still carrying a staging-environment \"Disallow: /\"",
+          "Test every form, tracking pixel, and analytics tag on the live site, not just staging",
+        ],
+      },
+      {
+        t: "h2",
+        v: "The redirect mistake that causes the most damage",
+      },
+      {
+        t: "p",
+        v: "The single most common and most costly mistake is redirecting every old URL to the new homepage instead of to its actual equivalent page. It feels like a shortcut, but Google treats a mass of unrelated pages all redirecting to one destination as a soft-404 signal: the old page didn't move, it effectively disappeared. This one shortcut alone accounts for a large share of the worst post-redesign traffic collapses we've seen. Every redirect needs a genuinely relevant destination, even if that means a slightly longer spreadsheet before launch.",
+      },
+      {
+        t: "note",
+        v: "Redirect chains hurt too: URL A redirecting to B redirecting to C wastes crawl budget and dilutes signal with every hop. Always redirect directly from the old URL to its final new destination, never through an intermediate.",
+      },
+      {
+        t: "h2",
+        v: "Post-launch monitoring: the first 30, 60, and 90 days",
+      },
+      {
+        t: "ul",
+        v: [
+          "Check Google Search Console's coverage report daily for the first week, catch crawl errors and unexpected noindex tags immediately",
+          "Track rankings for your top 20 pages weekly, not daily, a short dip in the first 1-2 weeks is normal as Google reprocesses the site",
+          "Fix any 404s the moment you spot them in Search Console, don't let a redirect gap sit for weeks",
+          "Re-run your structured data through Google's Rich Results Test on every major page template",
+          "Compare organic traffic at the 30, 60, and 90-day marks against your pre-launch baseline, full recovery and growth typically takes 60-90 days even on a clean migration",
+        ],
+      },
+      {
+        t: "h2",
+        v: "The bottom line",
+      },
+      {
+        t: "p",
+        v: "A redesign doesn't have to cost you rankings, and it especially can't afford to for a small business that doesn't have hundreds of backlinks to fall back on. The businesses that come out of a redesign stronger are the ones that treated the migration itself as an SEO project, not an afterthought bolted on after the new design was already built. If you're planning a [redesign or rebuild](/services/web-design), we build the full redirect map and technical migration checklist into every project, so the switch to a better site doesn't cost you the rankings the old one already earned.",
+      },
+    ],
+  },
+  {
+    slug: "website-maintenance-guide",
+    title: "Website maintenance: what it actually includes, and why launch day isn't the finish line.",
+    excerpt:
+      "What a real website maintenance plan covers, why unmaintained sites quietly lose security, speed, and rankings over time, and what it should realistically cost.",
+    seoTitle: "Website Maintenance: What's Actually Included",
+    seoDescription:
+      "What website maintenance plans actually include, why unmaintained sites lose security and speed over time, and realistic monthly pricing for US businesses.",
+    date: "2026-07-14",
+    readTime: "6 min read",
+    category: "Maintenance",
+    accent: "bg-teal-500/10 text-teal-600 dark:text-teal-400",
+    content: [
+      {
+        t: "p",
+        v: "Website maintenance is the ongoing work that keeps a site secure, fast, and accurate after launch: software updates, backups, uptime monitoring, and periodic content fixes. Most business owners treat launch day as the finish line. It isn't. A website is a piece of software running on the open internet, and like any software, it degrades quietly if nobody keeps it up to date, usually not with a dramatic crash, but with slow erosion: a security patch missed, a plugin conflict, a page that got slower every month until nobody remembers it used to load instantly.",
+      },
+      {
+        t: "h2",
+        v: "Why a website isn't a set-it-and-forget-it asset",
+      },
+      {
+        t: "p",
+        v: "A brochure gets printed once and stays accurate until you reprint it. A website is different: the CMS it runs on, the plugins it depends on, and the browsers rendering it are all changing constantly, whether you touch your site or not. A theme that was secure at launch can have a critical vulnerability disclosed six months later. A third-party script you added for analytics can silently start slowing every page load after a vendor update. None of this requires you to have done anything wrong. It just requires nobody to have kept up with it.",
+      },
+      {
+        t: "h2",
+        v: "What happens to an unmaintained site over time",
+      },
+      {
+        t: "ul",
+        v: [
+          "Security exposure grows: unpatched CMS platforms and plugins are the most common entry point for site compromises, and vulnerabilities are disclosed continuously",
+          "Performance drifts down: as covered in our [website speed guide](/blog/website-speed-optimization), a site that scores 95 on PageSpeed at launch can quietly fall below 70 within a year as content, plugins, and scripts accumulate",
+          "Content goes stale: outdated pricing, old team photos, and dead links erode the trust signals that convert visitors, and stale content is one of the quieter E-E-A-T signals search engines weigh",
+          "Integrations break silently: a payment gateway, booking widget, or CRM connection can stop working after an unrelated update, and often nobody notices until a customer complains",
+          "Backups don't exist when you finally need one: the businesses that get hit hardest by a hack or bad update are the ones with no recent, tested backup to restore from",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What a real maintenance plan should include",
+      },
+      {
+        t: "p",
+        v: "Maintenance is often sold vaguely. A plan worth paying for should include specific, named deliverables, not just \"we'll keep an eye on it.\"",
+      },
+      {
+        t: "ul",
+        v: [
+          "Regular CMS, plugin, and theme updates, applied on a schedule, not reactively after something breaks",
+          "Automated backups with real retention (30 days minimum) stored somewhere separate from the live site",
+          "24/7 uptime monitoring with alerts, so downtime is caught in minutes, not discovered by a customer",
+          "Periodic security scanning to catch vulnerabilities before they're exploited",
+          "Performance monitoring against Core Web Vitals, not just a one-time launch check",
+          "[Periodic accessibility spot-checks](/blog/website-accessibility-ada-compliance-guide), since new content and pages can introduce fresh WCAG violations long after launch",
+          "A defined support response time, so you know how fast an issue actually gets addressed",
+        ],
+      },
+      {
+        t: "h2",
+        v: "DIY vs. a maintenance plan",
+      },
+      {
+        t: "p",
+        v: "If you're comfortable applying your own updates, testing them before pushing live, monitoring uptime, and maintaining a real backup rotation, you can do this yourself for the cost of your time. Most business owners underestimate that time cost, and more importantly, underestimate the judgment required: knowing which update is safe to apply immediately versus which one needs testing on staging first is exactly the kind of decision that goes wrong quietly. A maintenance plan isn't about doing something you couldn't technically do yourself. It's about it happening reliably every month whether or not you remembered to think about it.",
+      },
+      {
+        t: "h2",
+        v: "What it realistically costs",
+      },
+      {
+        t: "p",
+        v: "US maintenance plans for a small business site typically range from $50 to $400 a month depending on scope. Basic plans covering updates, backups, and uptime monitoring sit at the lower end, often $75–$150. Mid-tier plans that add performance reporting and a couple of hours of content edits each month run $150–$250. Higher tiers with dedicated support channels, strategy calls, and more edit hours land at $300–$400. At PinexaDigital, plans start at $97/month for the basics and go up to $397/month for a dedicated partner tier with 5 hours of edits and monthly strategy included.",
+      },
+      {
+        t: "note",
+        v: "If you only budget for one line item, make it backups. A bad update, a hack, or a hosting failure without a recent, tested backup means rebuilding from scratch. With one, it means restoring in under an hour.",
+      },
+      {
+        t: "h2",
+        v: "The real cost of skipping it",
+      },
+      {
+        t: "p",
+        v: "The average cost of website downtime for a small business runs into the hundreds of dollars per hour in lost leads and abandoned carts, and that's before counting the reputational cost of a hacked or defaced site showing up in a customer's search results. A $97-a-month plan is cheap insurance against an outage or breach that costs far more in a single afternoon than a full year of maintenance would have.",
+      },
+      {
+        t: "p",
+        v: "A website is a business asset, not a one-time deliverable. If nobody's responsible for keeping yours secure, fast, and current, treat that as an open risk, not a cost you're cleverly avoiding. If you want a straight answer on what your specific site needs, [tell us what you're running](/services/maintenance) and we'll assess it honestly, including if it's already in good enough shape that a lighter plan is all you need.",
+      },
+    ],
+  },
+  {
     slug: "crm-automation-small-business-guide",
     title: "CRM automation for small businesses: how to stop leads slipping through the cracks.",
     excerpt:
@@ -93,7 +491,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "The three main automation platforms differ mostly in cost structure and flexibility, not core capability.",
+        v: "The three main automation platforms differ mostly in cost structure and flexibility, not core capability. See our [full n8n vs. Zapier vs. Make comparison](/blog/n8n-vs-zapier-vs-make-comparison) for real pricing at typical small-business volume.",
       },
       {
         t: "ul",
@@ -239,7 +637,7 @@ export const posts: Post[] = [
           "Write the JSON-LD block by hand or generate it with a schema generator tool, filling in only real, verifiable data",
           "Add it inside a <script type=\"application/ld+json\"> tag in your page's <head> or body",
           "Test it in Google's Rich Results Test and the Schema.org validator before publishing",
-          "Re-test after any redesign, since schema is easy to lose silently when a template changes",
+          "[Re-test after any redesign](/blog/website-redesign-seo-checklist), since schema is easy to lose silently when a template changes",
         ],
       },
       {
@@ -830,7 +1228,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "A service business generating $15,000/month from its website at a 1.5% conversion rate is converting 1.5 out of every 100 visitors. Improving load time from 5 seconds to 1.5 seconds, with no other changes, can realistically push that to 3.5%. That's more than doubling revenue from the same traffic. A $499 website rebuild that achieves this pays for itself in the first month. Speed isn't a technical detail. It's a business decision.",
+        v: "A service business generating $15,000/month from its website at a 1.5% conversion rate is converting 1.5 out of every 100 visitors. Improving load time from 5 seconds to 1.5 seconds, with no other changes, can realistically push that to 3.5%. That's more than doubling revenue from the same traffic. A $499 website rebuild that achieves this pays for itself in the first month. Speed isn't a technical detail. It's a business decision, and one that erodes on its own if nobody's [maintaining the site](/blog/website-maintenance-guide) after launch.",
       },
     ],
   },
@@ -985,11 +1383,17 @@ export function getPost(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug);
 }
 
+/** All posts sorted newest-first by date. Source array order in `posts` does not need to be chronological. */
+export function getAllPosts(): Post[] {
+  return [...posts].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+}
+
 /** Same-category posts first (most recent first), backfilled with other recent posts. */
 export function getRelatedPosts(slug: string, limit = 3): Post[] {
   const current = getPost(slug);
   if (!current) return [];
-  const sameCategory = posts.filter((p) => p.slug !== slug && p.category === current.category);
-  const others = posts.filter((p) => p.slug !== slug && p.category !== current.category);
+  const rest = getAllPosts().filter((p) => p.slug !== slug);
+  const sameCategory = rest.filter((p) => p.category === current.category);
+  const others = rest.filter((p) => p.category !== current.category);
   return [...sameCategory, ...others].slice(0, limit);
 }

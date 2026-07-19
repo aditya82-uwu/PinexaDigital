@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { SITE, siteUrl } from "@/lib/site-config";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import PostCard from "@/components/ui/PostCard";
-import { posts } from "@/lib/blog-data";
+import { getAllPosts } from "@/lib/blog-data";
 
 export const metadata: Metadata = {
   title: "Blog | Web Design & Business Growth Tips",
@@ -26,6 +26,7 @@ const blogJsonLd = {
 };
 
 export default function BlogPage() {
+  const posts = getAllPosts();
   return (
     <>
       <script

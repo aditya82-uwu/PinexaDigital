@@ -23,6 +23,312 @@ export interface Post {
 
 export const posts: Post[] = [
   {
+    slug: "does-my-business-need-a-blog",
+    title: "Do you actually need a blog? Content marketing ROI for small businesses in 2026.",
+    excerpt:
+      "Blogging pays off for some small businesses and wastes real time for others. How to tell which one you are, and what it actually takes to make content work.",
+    seoTitle: "Does Your Small Business Need a Blog? (2026)",
+    seoDescription:
+      "Whether blogging is worth it for your small business in 2026: when content marketing pays off, when it's wasted effort, and realistic ROI timelines.",
+    date: "2026-07-30",
+    readTime: "6 min read",
+    category: "Content",
+    accent: "bg-lime-500/10 text-lime-600 dark:text-lime-400",
+    content: [
+      {
+        t: "p",
+        v: "A blog is worth building if your customers research before they buy and if you're willing to publish consistently for at least six months before expecting real traffic. It's a waste of time if your business runs on urgent, local, decision-in-the-moment searches, where nobody is reading a 1,500-word guide before calling. Most small businesses fall into the first category more than they think, but plenty genuinely don't need one, and building content nobody was going to read is a worse outcome than not building it at all.",
+      },
+      {
+        t: "h2",
+        v: "The honest case for blogging",
+      },
+      {
+        t: "p",
+        v: "A blog is the only part of a website that keeps earning new rankings after launch. Your homepage and service pages target a handful of core keywords and are essentially done once they're built. A blog post targets a specific question, and every new post is another door someone can walk through from a Google search, an AI Overview, or a ChatGPT citation they'd never have found otherwise. Done consistently, it compounds: a post from eight months ago keeps bringing in traffic today with zero additional cost, and it's exactly the kind of depth [AI answer engines weigh](/blog/ai-search-optimization-aeo-geo-guide) when deciding which business to cite as a source.",
+      },
+      {
+        t: "h2",
+        v: "When a blog is a waste of your time",
+      },
+      {
+        t: "p",
+        v: "If your business lives on \"emergency plumber near me\" or \"locksmith open now,\" nobody in that moment is reading a blog post, they're calling the first legitimate-looking result in the Map Pack. For that kind of business, the ROI on content marketing is genuinely low, and the same hours are far better spent on [Google Business Profile optimization and local citations](/blog/seo-for-small-business-us), which is what actually drives those searches. A blog isn't a universal requirement. It's a fit for businesses with a consideration period, where someone researches, compares, and decides over days or weeks, not minutes.",
+      },
+      {
+        t: "h2",
+        v: "What separates content that ranks from content that doesn't",
+      },
+      {
+        t: "ul",
+        v: [
+          "Genuine first-hand specificity: real numbers, real examples, real opinions, not the generic restated-Wikipedia version of the topic every competitor already published",
+          "One clear question answered per post, not five loosely related topics stitched together to hit a word count",
+          "Demonstrated expertise, an author who plausibly knows the subject, not an anonymous byline on obviously outsourced content",
+          "Proper [Article schema and clean semantic structure](/blog/schema-markup-small-business-guide), so both Google and AI crawlers can actually parse what the post says",
+          "Internal links to related posts and service pages, building the topical depth that signals real authority rather than a single orphaned article",
+        ],
+      },
+      {
+        t: "h2",
+        v: "The real time cost, so you can decide honestly",
+      },
+      {
+        t: "ul",
+        v: [
+          "Research and outlining a genuinely useful post: 1–2 hours if you know the topic cold",
+          "Writing a full draft (1,000–1,800 words): 2–4 hours, longer if it's outside your core expertise",
+          "Editing, fact-checking, and adding real examples or data: 1 hour",
+          "Formatting, adding schema, internal links, and publishing: 30–60 minutes",
+          "Realistic total: 4–7 hours per post, or a comparable cost if you're paying someone to write it for you",
+        ],
+      },
+      {
+        t: "h2",
+        v: "How long until it actually pays off",
+      },
+      {
+        t: "ul",
+        v: [
+          "First 1–2 months: little to no measurable traffic, this is normal, not a sign it's failing",
+          "3–4 months: early posts start appearing for long-tail, lower-competition search terms",
+          "6–9 months: a consistent cluster of 10–15 posts starts pulling in steady organic traffic and occasional AI citations",
+          "12+ months: older posts compound, and the blog becomes a meaningful, low-cost lead source instead of a cost center",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Common mistakes that waste the effort",
+      },
+      {
+        t: "ul",
+        v: [
+          "Publishing generic, AI-generated filler with no specificity, both Google and AI raters are explicitly trained to deprioritize exactly this pattern",
+          "Posting three times in an enthusiastic first month, then going quiet for a year, consistency matters more than volume",
+          "Writing about what you want to say instead of what your actual customers are searching for",
+          "Never linking blog posts back to your service pages, leaving all that earned traffic with nowhere useful to go",
+        ],
+      },
+      {
+        t: "note",
+        v: "If you're not sure you can sustain a blog, start smaller than you think: one genuinely good, specific post a month for six months will outperform twelve rushed, generic ones every time.",
+      },
+      {
+        t: "p",
+        v: "The question isn't \"should every business blog,\" it's \"does your business have a consideration period a blog can influence.\" If it does, it's one of the highest-leverage, lowest-cost marketing investments available, and every [Growth-tier site we build](/blog/how-much-does-a-website-cost) ships with a blog already set up and ready for content, not bolted on as an afterthought once you decide you need one.",
+      },
+    ],
+  },
+  {
+    slug: "website-security-small-business-guide",
+    title: "Website security for small businesses: what actually protects you (and what's snake oil).",
+    excerpt:
+      "A practical look at what actually stops small business websites from getting hacked, the protections worth paying for, and what a real incident costs.",
+    seoTitle: "Website Security for Small Business (2026)",
+    seoDescription:
+      "What actually protects a small business website from hacks in 2026: real defenses vs. snake oil, WordPress-specific risks, and realistic incident costs.",
+    date: "2026-07-26",
+    readTime: "7 min read",
+    category: "Security",
+    accent: "bg-red-500/10 text-red-600 dark:text-red-400",
+    content: [
+      {
+        t: "p",
+        v: "Most small business websites aren't hacked by a person who targeted them specifically. They're hacked by automated bots that scan millions of sites a day for one specific, unpatched vulnerability, and it doesn't matter whether you're a five-page local business site or a national brand, the bot doesn't know or care. That's actually good news: it means the defenses that matter most are unglamorous and mostly automatable, not an arms race against a determined attacker.",
+      },
+      {
+        t: "h2",
+        v: "What a real hack actually costs",
+      },
+      {
+        t: "p",
+        v: "The direct cleanup cost, removing malware, restoring from backup, resetting credentials, typically runs a few hundred to a couple thousand dollars if you have a clean recent backup, and considerably more without one. The bigger cost is usually indirect: Google blacklisting a compromised site removes it from search results entirely until it's cleaned and reviewed, which can take days, and a \"This site may be hacked\" warning in search results or a browser interstitial does real damage to trust even after the fix. Businesses that get hit hardest are almost always the ones with no recent, tested backup to restore from.",
+      },
+      {
+        t: "h2",
+        v: "The protections that actually matter",
+      },
+      {
+        t: "ul",
+        v: [
+          "HTTPS/SSL on every page, non-negotiable, both for basic encryption and because browsers now flag non-HTTPS sites as \"Not Secure\" directly in the address bar",
+          "A disciplined patch cadence: CMS core, plugins, and themes updated on a schedule, not reactively after something breaks",
+          "Strong, unique admin credentials with two-factor authentication on every account with publishing or admin access",
+          "Login attempt limiting or rate limiting, so automated brute-force scripts get locked out instead of allowed unlimited guesses",
+          "A web application firewall (WAF), which filters malicious traffic before it ever reaches your site, most managed hosts and platforms like Cloudflare offer one",
+          "Automated, offsite backups with real retention, stored somewhere separate from the live site, so a compromised server can't take the backup down with it",
+          "Least-privilege user accounts: nobody has admin access who only needs to edit content",
+        ],
+      },
+      {
+        t: "h2",
+        v: "SSL doesn't mean \"secure\"",
+      },
+      {
+        t: "p",
+        v: "This is one of the most common misunderstandings small business owners have. The padlock icon in the browser bar means your connection to the site is encrypted, nothing more. It says nothing about whether your CMS has an unpatched vulnerability, whether your admin password is \"admin123,\" or whether a plugin you installed three years ago has a known exploit. A site can have a perfectly valid SSL certificate and still get compromised in the same afternoon. Treat SSL as one item on the checklist, not the checklist itself.",
+      },
+      {
+        t: "h2",
+        v: "WordPress-specific risk, since so many small business sites run on it",
+      },
+      {
+        t: "p",
+        v: "WordPress itself is reasonably secure when kept current, but its plugin ecosystem is the far more common attack surface. New vulnerabilities in popular plugins are disclosed continuously, and a site running 20-30 plugins, common for small business sites built incrementally over years, has that many more potential entry points. If you're on WordPress, audit your plugin list at least twice a year and remove anything you're not actually using, every inactive plugin is still a liability sitting on your server, disabled or not.",
+      },
+      {
+        t: "h2",
+        v: "Signs your site may already be compromised",
+      },
+      {
+        t: "ul",
+        v: [
+          "Unfamiliar admin users or unexpected changes to pages you didn't make",
+          "A sudden, unexplained drop in organic traffic, sometimes the first sign of a Google security blacklist",
+          "Strange redirects, especially on mobile, that send visitors to an unrelated site",
+          "Search results showing spammy or unrelated content for your domain (\"Google, is this site hacked\" is worth checking directly)",
+          "Your hosting provider emailing you about unusual outbound traffic or resource usage",
+        ],
+      },
+      {
+        t: "h2",
+        v: "If you get hacked: the first 24 hours",
+      },
+      {
+        t: "ol",
+        v: [
+          "Take the site offline or into maintenance mode immediately, to stop further damage and protect visitors",
+          "Change every credential with access to the site: CMS admin, hosting, FTP/SFTP, database",
+          "Restore from your most recent clean backup rather than trying to manually remove malware from a live, compromised install",
+          "Update everything, CMS core, plugins, themes, before bringing the site back online, the vulnerability that let the attacker in is still open otherwise",
+          "Request a security review through Google Search Console if the site was flagged, so the warning gets lifted once you're actually clean",
+        ],
+      },
+      {
+        t: "note",
+        v: "If you only do one thing from this list, make it backups. Every other protection reduces the odds of a hack; a tested, offsite backup is what determines whether recovery takes an hour or means rebuilding from scratch.",
+      },
+      {
+        t: "h2",
+        v: "Where security fits into a maintenance budget",
+      },
+      {
+        t: "p",
+        v: "Security isn't a separate line item from general upkeep, it's one of the core reasons [ongoing maintenance](/blog/website-maintenance-guide) exists in the first place. Patch cadence, backup retention, and monitoring are exactly the deliverables a real maintenance plan should include by default, not an upsell bolted on after something already went wrong. A site that's actively maintained is, almost by definition, a site that's been kept current on the fixes that close off the vulnerabilities bots are scanning for.",
+      },
+      {
+        t: "p",
+        v: "None of this requires being a security expert. It requires discipline: patch on a schedule, back up automatically, use real credentials, and know what to do in the first hour if something goes wrong. If you'd rather this be handled reliably instead of hoping nobody notices the plugin you never updated, [tell us what you're running](/services/maintenance) and we'll tell you honestly where the real gaps are.",
+      },
+    ],
+  },
+  {
+    slug: "landing-page-vs-homepage-ppc",
+    title: "Landing pages vs. your homepage: when Google Ads spend actually needs a dedicated page.",
+    excerpt:
+      "Why sending paid traffic to your homepage quietly wastes ad spend, what message match actually means, and when a dedicated landing page is worth building.",
+    seoTitle: "Landing Pages vs. Homepage for Google Ads (2026)",
+    seoDescription:
+      "Why paid traffic converts worse landing on a homepage than a dedicated landing page: message match, Quality Score impact, and when you actually need one.",
+    date: "2026-07-22",
+    readTime: "6 min read",
+    category: "Conversion",
+    accent: "bg-pink-500/10 text-pink-600 dark:text-pink-400",
+    content: [
+      {
+        t: "p",
+        v: "If you're running Google Ads and sending clicks to your homepage, you're almost certainly paying more per lead than you need to. A homepage has to serve every visitor, first-time browsers, returning customers, job seekers, people who forgot your address, at once. A landing page serves exactly one kind of visitor: the person who just clicked a specific ad for a specific offer. That mismatch is quiet, it doesn't show up as an error anywhere, it just shows up as a worse conversion rate and a higher cost per lead every single day the campaign runs.",
+      },
+      {
+        t: "h2",
+        v: "Why a homepage underperforms for paid traffic",
+      },
+      {
+        t: "p",
+        v: "A homepage is built for exploration: multiple links, multiple sections, multiple possible next steps, because a homepage visitor could be there for any reason. Someone who just clicked an ad for \"emergency AC repair\" doesn't want to explore, they want confirmation, in the first two seconds, that they landed in the right place, followed by one obvious way to act. Every extra link on the page is an exit ramp away from the thing you paid for them to do. A homepage isn't broken, it's just built for a different job than converting a paid click.",
+      },
+      {
+        t: "h2",
+        v: "What \"message match\" actually means",
+      },
+      {
+        t: "p",
+        v: "Message match is the principle that the headline someone lands on should echo, almost word for word, the ad they just clicked. It sounds obvious, but most homepages fail it badly.",
+      },
+      {
+        t: "ul",
+        v: [
+          "Ad: \"Emergency Water Heater Repair — Same Day Service\" → Homepage headline: \"Welcome to Johnson Plumbing, Serving the Metro Area Since 2004\"",
+          "Ad: \"Emergency Water Heater Repair — Same Day Service\" → Landing page headline: \"Same-Day Water Heater Repair. Call Now or Request a Callback.\"",
+        ],
+      },
+      {
+        t: "p",
+        v: "The second version confirms the visitor is in exactly the right place before they've had a chance to doubt it. That single moment of confirmation is worth more to your conversion rate than almost any other design decision on the page.",
+      },
+      {
+        t: "h2",
+        v: "What a converting landing page needs that a homepage doesn't",
+      },
+      {
+        t: "ul",
+        v: [
+          "A headline that mirrors the ad's exact offer, not your company tagline",
+          "One call-to-action, repeated, not competing with a full navigation menu of other options",
+          "Removed or minimized navigation, every link out of the page is a reason not to convert",
+          "Proof specific to that offer: a testimonial or number relevant to this exact service, not a generic homepage review",
+          "A form or phone number positioned above the fold, so acting doesn't require scrolling to find it",
+          "Fast load time, since [paid traffic is even less patient than organic traffic](/blog/website-speed-optimization), you already paid for the click, a slow page burns it",
+        ],
+      },
+      {
+        t: "h2",
+        v: "When your homepage is genuinely enough",
+      },
+      {
+        t: "p",
+        v: "If you run one campaign, for one offer, and your homepage already leads with that exact offer, a dedicated landing page adds less value. Very small campaigns, under a few hundred dollars a month, also often don't justify the build cost yet. The decision point is usually: are you running more than one campaign or ad group with different offers or audiences? If so, a shared homepage can't message-match all of them at once, and you're leaving conversions on the table for every campaign except the one your homepage happens to already reflect.",
+      },
+      {
+        t: "h2",
+        v: "The Quality Score connection most businesses miss",
+      },
+      {
+        t: "p",
+        v: "Google Ads factors landing page experience directly into Quality Score, which factors directly into your cost per click. A focused, fast, relevant landing page can meaningfully lower what you pay per click compared to sending the same ad to a generic, slow, unrelated homepage. This means a dedicated landing page isn't just a conversion-rate play, it can genuinely lower your cost per click on the exact same ad spend, which compounds with the conversion lift on top.",
+      },
+      {
+        t: "h2",
+        v: "What it costs to build one",
+      },
+      {
+        t: "p",
+        v: "A single, focused landing page is a fraction of the cost of a full site build, typically $150–$500 depending on complexity and whether it needs custom copy or a booking/quote integration. For a business running multiple ad groups, a small set of landing pages, one per offer, usually pays for itself within the first month through lower cost-per-click alone, before even counting the conversion rate improvement.",
+      },
+      {
+        t: "note",
+        v: "Don't confuse a landing page with a second homepage. It should have no navigation to the rest of your site, one goal, and nothing that gives the visitor a reason to leave before converting.",
+      },
+      {
+        t: "h2",
+        v: "Common mistakes",
+      },
+      {
+        t: "ul",
+        v: [
+          "Reusing one generic landing page across every campaign instead of matching each one to its specific ad",
+          "Leaving full site navigation on the page, giving the visitor an easy way out",
+          "Burying the phone number or form below several sections of unrelated content",
+          "Forgetting to test the page on mobile, where most paid search traffic actually lands",
+        ],
+      },
+      {
+        t: "p",
+        v: "If you're spending real money on Google Ads and sending it to a page built for a completely different job, the fix is usually smaller and cheaper than the ad spend it's currently wasting. If you want a landing page built to match a specific campaign, [tell us what you're running](/services/web-design) and we'll tell you honestly whether your homepage already does the job or whether a dedicated page will actually move the needle.",
+      },
+    ],
+  },
+  {
     slug: "n8n-vs-zapier-vs-make-comparison",
     title: "n8n vs. Zapier vs. Make: which automation tool is right for your small business?",
     excerpt:

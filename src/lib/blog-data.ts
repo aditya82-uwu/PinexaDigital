@@ -1062,7 +1062,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "AI systems weigh a site's overall depth on a subject, not just the single page being cited. A business with one thin blog post about web design pricing is a weaker source than one with a genuine cluster: pricing, timelines, platform comparisons, and process, all linked together and all specific. Build out the two or three topics your business is genuinely expert in and cover them thoroughly rather than spreading thin across everything.",
+        v: "AI systems weigh a site's overall depth on a subject, not just the single page being cited. A business with one thin blog post about web design pricing is a weaker source than one with a genuine cluster: [pricing](/blog/how-much-does-a-website-cost), timelines, platform comparisons, and process, all linked together and all specific. Build out the two or three topics your business is genuinely expert in and cover them thoroughly rather than spreading thin across everything.",
       },
       {
         t: "h2",
@@ -1114,7 +1114,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "AI search isn't replacing SEO, it's adding a second surface you need to earn a place on. The businesses that win both are the ones that were already doing SEO honestly: clear, specific, genuinely expert content, published by a business that's easy to verify is real. If your site isn't structured for that yet, that's exactly the kind of technical and content work we build into every project.",
+        v: "AI search isn't replacing SEO, it's adding a second surface you need to earn a place on. The businesses that win both are the ones that were already doing SEO honestly: clear, specific, genuinely expert content, published by a business that's easy to verify is real. If your site isn't structured for that yet, that's exactly the kind of technical and content work [we build into every project](/services/web-design).",
       },
     ],
   },
@@ -1146,7 +1146,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "Wix, Squarespace, and similar platforms let you launch quickly with drag-and-drop tools. For a brand-new business testing whether there's demand, they're a reasonable starting point. But they have hard ceilings: generic templates that look like a thousand other sites, performance limitations that hurt Google rankings, and customization walls you'll hit the moment you need anything non-standard. Most businesses using these platforms find themselves rebuilding on a real platform within two years anyway, paying twice.",
+        v: "Wix, Squarespace, and similar platforms let you launch quickly with drag-and-drop tools. For a brand-new business testing whether there's demand, they're a reasonable starting point. But they have hard ceilings: generic templates that look like a thousand other sites, [performance limitations that hurt Google rankings](/blog/website-speed-optimization), and customization walls you'll hit the moment you need anything non-standard. Most businesses using these platforms find themselves rebuilding on a real platform within two years anyway, paying twice.",
       },
       {
         t: "h2",
@@ -1207,7 +1207,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "The best website is the one that matches your current stage and has room to grow. If you're unsure, get a free quote and we'll recommend the right fit for your situation honestly, even if it's not us.",
+        v: "The best website is the one that matches your current stage and has room to grow. For a deeper walkthrough of budgeting before you start collecting quotes, see [our full pricing guide](/blog/small-business-website-pricing-guide). If you're unsure which tier fits, [get a free quote](/contact) and we'll recommend the right fit for your situation honestly, even if it's not us.",
       },
     ],
   },
@@ -1305,7 +1305,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "A backlink from a relevant local source, such as a local newspaper, Chamber of Commerce, community organization, or complementary business, is worth far more than a generic directory link. Ways to earn local backlinks: sponsor a local event and ask for a link on their site; join your local Chamber of Commerce (most list member websites); write a guest post for a local business publication; partner with a complementary business (a web designer and a photographer referring each other, for example) and exchange portfolio links.",
+        v: "A backlink from a relevant local source, such as a local newspaper, Chamber of Commerce, community organization, or complementary business, is worth far more than a generic directory link. Ways to earn local backlinks: sponsor a local event and ask for a link on their site; join your local Chamber of Commerce (most list member websites); write a guest post for a local business publication; partner with a complementary business (a web designer and a photographer referring each other, for example) and exchange portfolio links. This same kind of consistent, independent corroboration is exactly what [AI search engines weigh when deciding who to cite](/blog/ai-search-optimization-aeo-geo-guide), so local citation work now pays off on two fronts at once.",
       },
       {
         t: "h2",
@@ -1323,7 +1323,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "Local SEO compounds over time. A business that starts today and works consistently for 12 months will be nearly impossible for a brand-new competitor to displace quickly. Start now.",
+        v: "Local SEO compounds over time. A business that starts today and works consistently for 12 months will be nearly impossible for a brand-new competitor to displace quickly. Start now. If you want an honest read on why you're not showing up in the Map Pack yet, [tell us what you've tried](/services/web-design) and we'll tell you what's actually missing.",
       },
     ],
   },
@@ -1347,7 +1347,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "Shopify is a fully hosted SaaS platform: you pay a monthly fee and Shopify handles hosting, security, updates, and uptime. WooCommerce is an open-source plugin for WordPress: you install it on your own hosting account and manage everything yourself. Neither is universally better. The right choice depends on your technical comfort, budget priorities, and how much control you want.",
+        v: "Shopify is a fully hosted SaaS platform: you pay a monthly fee and Shopify handles hosting, security, updates, and uptime. WooCommerce is an open-source plugin for WordPress: you install it on your own hosting account and manage everything yourself. Neither is universally better. The right choice depends on your technical comfort, budget priorities, and how much control you want, and if you'd rather skip the feature table and jump straight to [which platform fits your specific situation](/blog/shopify-vs-woocommerce-which-is-right-for-you), we've mapped that out separately.",
       },
       {
         t: "h2",
@@ -1434,7 +1434,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "For businesses with unique requirements, such as subscription boxes, complex configurators, digital product delivery, or B2B pricing tiers, neither Shopify nor WooCommerce may be the right fit. A custom Next.js storefront with Stripe handling payment gives you maximum performance (sub-second load times), zero platform fees, and a build tailored exactly to your specifications. The upfront investment is higher ($3,000–$10,000), but the ongoing cost is just hosting ($20–$50/month). For high-revenue stores, the ROI is typically reached within 12–18 months.",
+        v: "For businesses with unique requirements, such as subscription boxes, complex configurators, digital product delivery, or B2B pricing tiers, neither Shopify nor WooCommerce may be the right fit. A custom Next.js storefront with Stripe handling payment gives you maximum performance, [sub-second load times built the same way we approach any Core Web Vitals problem](/blog/website-speed-optimization), zero platform fees, and a build tailored exactly to your specifications. The upfront investment is higher ($3,000–$10,000), but the ongoing cost is just hosting ($20–$50/month). For high-revenue stores, the ROI is typically reached within 12–18 months.",
       },
       {
         t: "h2",
@@ -1452,7 +1452,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "If you're still unsure, tell us about your products and goals and we'll give you an honest recommendation, including whether you even need us or whether Shopify's own setup wizard will serve you perfectly well.",
+        v: "If you're still unsure, [tell us about your products and goals](/services/ecommerce) and we'll give you an honest recommendation, including whether you even need us or whether Shopify's own setup wizard will serve you perfectly well.",
       },
     ],
   },
@@ -1534,7 +1534,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "A service business generating $15,000/month from its website at a 1.5% conversion rate is converting 1.5 out of every 100 visitors. Improving load time from 5 seconds to 1.5 seconds, with no other changes, can realistically push that to 3.5%. That's more than doubling revenue from the same traffic. A $499 website rebuild that achieves this pays for itself in the first month. Speed isn't a technical detail. It's a business decision, and one that erodes on its own if nobody's [maintaining the site](/blog/website-maintenance-guide) after launch.",
+        v: "A service business generating $15,000/month from its website at a 1.5% conversion rate is converting 1.5 out of every 100 visitors. Improving load time from 5 seconds to 1.5 seconds, with no other changes, can realistically push that to 3.5%. That's more than doubling revenue from the same traffic. A $499 website rebuild that achieves this pays for itself in the first month. Speed isn't a technical detail. It's a business decision, and one that erodes on its own if nobody's [maintaining the site](/blog/website-maintenance-guide) after launch. If your PageSpeed score is already working against you, [tell us what you're running](/services/web-design) and we'll show you exactly what's slowing it down.",
       },
     ],
   },
@@ -1566,7 +1566,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "Your call-to-action button needs to be the most visually dominant element on the page, not one of five competing buttons. Blue, green, and orange buttons on light backgrounds consistently outperform subtle, on-brand alternatives in A/B tests. Button copy matters as much as color: \"Get a free quote\" converts better than \"Learn more,\" which converts better than \"Submit.\" On mobile, buttons should be at least 44×44 pixels for reliable thumb tapping. Anything smaller adds friction to every conversion.",
+        v: "Your call-to-action button needs to be the most visually dominant element on the page, not one of five competing buttons. Blue, green, and orange buttons on light backgrounds consistently outperform subtle, on-brand alternatives in A/B tests. Button copy matters as much as color: \"Get a free quote\" converts better than \"Learn more,\" which converts better than \"Submit,\" the same specificity principle behind [the contact form tweaks that double lead volume](/blog/contact-form-conversion-tips). On mobile, buttons should be at least 44×44 pixels for reliable thumb tapping. Anything smaller adds friction to every conversion.",
       },
       {
         t: "h2",
@@ -1590,7 +1590,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "Users don't consciously think \"this site is fast.\" They feel the confidence it creates, or the hesitation when it isn't. In 2026, a sub-2-second load time on mobile is a table stake, not a differentiator. Sites built on legacy infrastructure or overloaded with tracking scripts simply cannot compete. If you're running a site on shared WordPress hosting from 2020, your competitors on modern stacks are winning the speed comparison before a visitor reads a single word.",
+        v: "Users don't consciously think \"this site is fast.\" They feel the confidence it creates, or the hesitation when it isn't. In 2026, a sub-2-second load time on mobile is a table stake, not a differentiator. Sites built on legacy infrastructure or overloaded with tracking scripts simply cannot compete. If you're running a site on shared WordPress hosting from 2020, your competitors on modern stacks are [winning the speed comparison](/blog/website-speed-optimization) before a visitor reads a single word.",
       },
       {
         t: "h2",
@@ -1603,6 +1603,10 @@ export const posts: Post[] = [
       {
         t: "note",
         v: "One thing that hasn't changed: the fundamentals still outperform trends. Clear headline → specific value proposition → proof → CTA. A site that nails this in plain HTML will outconvert a visually stunning site with a muddled message.",
+      },
+      {
+        t: "p",
+        v: "None of this matters if the site underneath it is dated enough that visitors notice before they read a word. If you're not sure whether yours has crossed that line, [here are the signs worth checking](/blog/signs-your-website-needs-a-redesign), or [tell us what you're running](/services/web-design) and we'll give you a straight answer.",
       },
     ],
   },
@@ -1679,7 +1683,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "These five changes take less than two hours to implement and cost nothing. Combined, cutting from six fields to three, rewriting placeholder text, changing the button copy, adding a process-focused testimonial, and setting up an auto-reply, routinely doubles contact form conversion rates. If your site gets 1,000 visitors per month and your form currently converts at 1.5%, you're getting 15 leads. The same traffic with a 3% conversion rate is 30 leads, without spending another dollar on ads or SEO. Optimize what you already have first, then look at [what happens to a lead after they submit](/blog/crm-automation-small-business-guide), since a great form feeding a slow follow-up process still loses the deal.",
+        v: "These five changes take less than two hours to implement and cost nothing. Combined, cutting from six fields to three, rewriting placeholder text, changing the button copy, adding a process-focused testimonial, and setting up an auto-reply, routinely doubles contact form conversion rates. If your site gets 1,000 visitors per month and your form currently converts at 1.5%, you're getting 15 leads. The same traffic with a 3% conversion rate is 30 leads, without spending another dollar on ads or SEO. Optimize what you already have first, then look at [what happens to a lead after they submit](/blog/crm-automation-small-business-guide), since a great form feeding a slow follow-up process still loses the deal. If the form itself needs more than a copy pass, [tell us what you're working with](/services/web-design) and we'll fix the surrounding page, not just the five fields.",
       },
     ],
   },

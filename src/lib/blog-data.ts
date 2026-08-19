@@ -1683,6 +1683,498 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "how-to-choose-a-web-design-agency",
+    title: "How to Choose a Web Design Agency: 7 Questions to Ask Before You Hire.",
+    excerpt:
+      "Every agency's portfolio looks polished by the time you see it. Seven questions that actually separate a good agency from a bad one, and what a good answer sounds like.",
+    seoTitle: "How to Choose a Web Design Agency (2026)",
+    seoDescription:
+      "7 questions to ask before hiring a web design agency in 2026: process, ownership, SEO, and pricing, plus the red flags that should end the conversation.",
+    date: "2026-08-03",
+    readTime: "6 min read",
+    category: "Web Design",
+    accent: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+    content: [
+      {
+        t: "p",
+        v: "Every web design agency's portfolio looks polished by the time a prospective client sees it, that's the whole point of a portfolio. It tells you almost nothing about how the agency will actually treat your project: who's assigned to it, what happens when a deadline slips, or whether you own the site you're paying for. The seven questions below are the ones that actually separate a good agency from a bad one, and each comes with what a good answer, and a red-flag answer, actually sounds like.",
+      },
+      {
+        t: "h2",
+        v: "Why the portfolio isn't the differentiator you think it is",
+      },
+      {
+        t: "p",
+        v: "A portfolio shows you the best few projects out of however many the agency has shipped, often built by a senior designer who's no longer there, for a client with an unusually generous budget and timeline. It's a reasonable filter for baseline design taste, but it tells you nothing about process, communication, or what happens when your project is the average one instead of the showcase one. Use it to get past a first screen, then move to questions that actually predict your experience.",
+      },
+      {
+        t: "h2",
+        v: "Question 1: Who exactly will be working on my project?",
+      },
+      {
+        t: "p",
+        v: "Agencies range from a single freelancer operating under a company name to a large studio that assigns junior staff to smaller accounts while senior talent works the portfolio pieces. Neither is automatically wrong, but you should know which one you're hiring. Ask for the specific name and role of who will design, build, and manage your project, not just \"our team.\" A good answer names a person. A vague answer, \"you'll be assigned a dedicated specialist,\" is worth pushing on.",
+      },
+      {
+        t: "h2",
+        v: "Question 2: What does your process look like, week by week?",
+      },
+      {
+        t: "ul",
+        v: [
+          "Good sign: a specific sequence with named deliverables, e.g. \"week 1 is a strategy call and sitemap, week 2 is a homepage design for your approval, weeks 3-4 are build and revisions\"",
+          "Red flag: a vague answer like \"we'll get started and keep you updated,\" with no defined checkpoints or approval stages",
+          "Good sign: a stated number of revision rounds included in the price, so you know where the line is before you're billed extra",
+          "Red flag: unlimited revisions promised with no scope boundary, which usually means the timeline is unlimited too",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Question 3: Will I actually own the website when it's done?",
+      },
+      {
+        t: "p",
+        v: "This question catches more businesses off guard than any other on this list. Some agencies build on a proprietary or locked-down platform, so \"finishing\" the project doesn't mean you can take the files and leave, it means you're now dependent on that agency for every future change. Ask directly: if we part ways in a year, do I keep the code, the domain, the hosting account, and the CMS access? A legitimate agency answers yes without hesitation. One that hedges, or that builds exclusively on a platform only they can edit, is selling you a rental, not an asset.",
+      },
+      {
+        t: "h2",
+        v: "Question 4: Is SEO actually included, or is it an upsell after the fact?",
+      },
+      {
+        t: "p",
+        v: "\"SEO-friendly\" on a proposal can mean anything from full [technical SEO and schema markup](/blog/schema-markup-small-business-guide) built in from day one, to literally nothing beyond the site technically being crawlable. Ask what specific SEO work is included at the price quoted: meta tags, structured data, sitemap submission, Core Web Vitals targets, and whether ongoing optimization is a separate retainer. A precise answer with named deliverables is a good sign. \"We build everything with SEO best practices in mind,\" with no specifics, usually means none of it was actually budgeted.",
+      },
+      {
+        t: "h2",
+        v: "Question 5: What happens the day after launch?",
+      },
+      {
+        t: "p",
+        v: "Launch day is often treated as the finish line by both sides, which is exactly backwards, a site is a piece of software that needs [ongoing maintenance](/blog/website-maintenance-guide) to stay secure and fast. Ask what support is included after launch and for how long, whether there's a maintenance plan, and what a bug reported in month two actually costs to fix. An agency with a clear, priced answer has thought about this. One that seems surprised by the question probably treats every project as a one-and-done transaction.",
+      },
+      {
+        t: "h2",
+        v: "Question 6: Can I talk to a current client, not just read a testimonial?",
+      },
+      {
+        t: "p",
+        v: "A written testimonial is curated and, occasionally, entirely fabricated. A 15-minute call with a real, current client tells you things a quote never will: did the project finish on time, did communication stay good after the deposit cleared, would they hire the agency again. Most legitimate agencies can arrange this for at least one reference. Reluctance to connect you with any actual client, ever, is worth taking seriously.",
+      },
+      {
+        t: "h2",
+        v: "Question 7: What's actually included at the price you quoted?",
+      },
+      {
+        t: "p",
+        v: "The number on a proposal means little without knowing its scope. Get [a detailed budget breakdown](/blog/small-business-website-pricing-guide) before you sign anything: page count, revision rounds, stock vs. custom photography, copywriting, and whether SEO and post-launch support are bundled or billed separately. Two agencies quoting \"$1,500 for a website\" can be describing completely different scopes of work, and the cheaper number often has more left out of it, not less work involved.",
+      },
+      {
+        t: "note",
+        v: "If an agency can't answer at least five of these seven questions specifically and without hesitation, treat that as your answer. A good agency has these answers ready because they've been asked before, and because they actually run their business this way.",
+      },
+      {
+        t: "h2",
+        v: "Red flags that should end the conversation",
+      },
+      {
+        t: "ul",
+        v: [
+          "Pressure to sign or pay a deposit before you've seen a proposal in writing",
+          "No clear answer on who owns the code, domain, or CMS after the project ends",
+          "A price dramatically below every other quote you've gotten for the same scope, with no explanation for the gap",
+          "Reluctance to name a specific person who'll be working on your project",
+          "No mention of what happens after launch, as if the relationship ends the moment the site goes live",
+        ],
+      },
+      {
+        t: "p",
+        v: "Choosing an agency is less about finding the most impressive portfolio and more about finding one you can trust to answer these seven questions honestly, including the parts of the answer that aren't flattering. If you want to see how we answer all seven, [get a free quote](/contact) and ask us directly, we'd rather you compare us against a real standard than take a polished pitch at face value.",
+      },
+    ],
+  },
+  {
+    slug: "signs-your-website-needs-a-redesign",
+    title: "10 Signs Your Small Business Website Needs a Redesign.",
+    excerpt:
+      "A website doesn't announce that it's costing you customers. Ten concrete signs it's time for a redesign, and which ones to fix first.",
+    seoTitle: "10 Signs Your Website Needs a Redesign (2026)",
+    seoDescription:
+      "10 concrete signs your small business website needs a redesign in 2026: outdated design, slow load times, poor mobile experience, and more.",
+    date: "2026-08-07",
+    readTime: "6 min read",
+    category: "Web Design",
+    accent: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+    content: [
+      {
+        t: "p",
+        v: "A website rarely announces that it's costing you business. There's no error message when a visitor bounces because the site looks a decade old, or leaves because it took nine seconds to load on their phone. The signs are quieter than that, and most business owners who need a redesign have been staring at them for months without naming them. Here are ten worth taking seriously, roughly in order of how much they're actually costing you.",
+      },
+      {
+        t: "h2",
+        v: "The ten signs",
+      },
+      {
+        t: "ul",
+        v: [
+          "Your site hasn't been redesigned in 3+ years and it shows, [design expectations shift](/blog/web-design-trends-us-2026) even when your business hasn't changed",
+          "It takes more than 3 seconds to load on a phone, [costing you over half your mobile visitors](/blog/website-speed-optimization) before they see anything",
+          "You're embarrassed to send the link to a new prospect, if you hesitate before sharing it, so will they",
+          "Your competitors' sites now look noticeably more current or trustworthy than yours",
+          "The contact form gets almost no submissions relative to your traffic, [often a friction problem, not a traffic problem](/blog/contact-form-conversion-tips)",
+          "It's not built mobile-first, and most of your traffic is on a phone",
+          "You can't easily update pricing, hours, or services yourself without calling a developer",
+          "Your site has no clear path to conversion, no obvious next step for a visitor who's ready to act",
+          "It wasn't built with SEO in mind and you're invisible for searches you should be winning",
+          "You've outgrown what it was built for, new services, new locations, or e-commerce that was bolted on afterward",
+        ],
+      },
+      {
+        t: "h2",
+        v: "The two signs that cost the most, and the ones to fix first",
+      },
+      {
+        t: "p",
+        v: "Not all ten carry equal weight. Load time and mobile experience compound: a slow, non-mobile-first site loses visitors before they ever see your message, so nothing else on this list can compensate for it. If you can only prioritize two, prioritize those. A beautifully redesigned site that still loads in 6 seconds on a phone is fixing the wrong problem first.",
+      },
+      {
+        t: "h2",
+        v: "\"It still works fine\" is not the same as \"it's not costing you anything\"",
+      },
+      {
+        t: "p",
+        v: "A website that technically functions, forms submit, pages load eventually, can still be quietly losing you leads to a competitor with a faster, clearer, more current-feeling site. The cost isn't a dramatic failure, it's a slow leak: a percentage of visitors who would have contacted you on a better site and instead clicked back to Google. That percentage is invisible in your analytics unless you're specifically tracking bounce rate against load time and design age, which most small businesses aren't.",
+      },
+      {
+        t: "h2",
+        v: "How to tell if it's a redesign or a smaller fix",
+      },
+      {
+        t: "ul",
+        v: [
+          "If the core structure and message are still solid but performance and a few pages are dated, a targeted refresh may be enough",
+          "If the design, mobile experience, and conversion path are all working against you at once, a full redesign is usually the more efficient path, patching a fundamentally outdated site rarely closes the gap",
+          "If your business itself has changed, new services, new positioning, a merger, a rebrand, a redesign is close to unavoidable regardless of how the current site performs technically",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What it costs, and what it protects",
+      },
+      {
+        t: "p",
+        v: "A redesign is [an investment with a range that depends heavily on scope](/blog/small-business-website-pricing-guide), but the more important number is usually what a redesign done carelessly can lose you: rankings, if migration isn't handled with a [proper SEO checklist](/blog/website-redesign-seo-checklist), and existing backlink equity if old URLs aren't redirected correctly. A good redesign should be a net gain on both design and search visibility, not a rankings reset that happens to also look nicer.",
+      },
+      {
+        t: "note",
+        v: "A redesign is also the moment WCAG violations quietly creep back in on a new template. If accessibility matters to your business, or you've had past concerns, build [a re-audit](/blog/website-accessibility-ada-compliance-guide) into the redesign scope rather than assuming the old site's fixes carried over.",
+      },
+      {
+        t: "h2",
+        v: "Choosing who does the redesign",
+      },
+      {
+        t: "p",
+        v: "The same standard applies to a redesign as to a first build: [ask the same seven questions](/blog/how-to-choose-a-web-design-agency) about process, ownership, and what's included, since a redesign carries the same risks as a new build, plus the added risk of losing ground you've already earned if the migration is handled carelessly.",
+      },
+      {
+        t: "p",
+        v: "If more than three of the ten signs above sound familiar, that's rarely a coincidence, it usually means the site has quietly fallen behind on more than one front at once. [Tell us what you're working with](/services/web-design) and we'll give you an honest read on whether it needs a full redesign or a smaller, cheaper fix.",
+      },
+    ],
+  },
+  {
+    slug: "small-business-website-pricing-guide",
+    title: "How Much Does a Website Cost for a Small Business in 2026? (Full Pricing Guide)",
+    excerpt:
+      "Not another price range. A practical guide to building an accurate budget, reading a quote correctly, and spotting the costs that don't show up on the sticker price.",
+    seoTitle: "Small Business Website Pricing Guide (2026)",
+    seoDescription:
+      "A full website pricing guide for small businesses: how to budget accurately, what quotes should break down, hidden costs, and red flags to watch for.",
+    date: "2026-08-11",
+    readTime: "7 min read",
+    category: "Pricing",
+    accent: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400",
+    content: [
+      {
+        t: "p",
+        v: "The honest answer to \"how much does a website cost\" is a range, [and we've broken that range down by platform elsewhere](/blog/how-much-does-a-website-cost). The more useful question, and the one this guide actually answers, is how to build an accurate budget before you start collecting quotes, so you're not comparing a $499 quote against a $3,000 one without understanding why they're different prices for what looks like the same thing on paper.",
+      },
+      {
+        t: "h2",
+        v: "The quick-reference range",
+      },
+      {
+        t: "ul",
+        v: [
+          "DIY builder: $0-$40/month, fine for testing an idea, hits a ceiling fast",
+          "Freelancer or template shop: $300-$2,000, functional but SEO and support are often thin",
+          "Custom agency, small business tier: $299-$2,500, a real strategy brief and technical SEO included",
+          "Custom agency, growth tier or e-commerce: $2,500-$10,000+, custom design systems and integrations",
+          "For the full breakdown of what each tier actually includes, [see our platform-by-platform comparison](/blog/how-much-does-a-website-cost)",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What's usually missing from the sticker price",
+      },
+      {
+        t: "ul",
+        v: [
+          "Hosting and domain registration, often $10-$50/month, sometimes bundled, often not",
+          "Stock photography licensing or custom photography, $0 if you supply your own, $200-$1,500 if not",
+          "Copywriting, some quotes include it, many expect you to supply final copy yourself",
+          "Ongoing SEO beyond the initial technical setup, a separate monthly retainer at most agencies",
+          "E-commerce payment processing and transaction fees, which live outside the build cost entirely",
+          "Content migration if you're redesigning an existing site, moving old pages and data over cleanly takes real time",
+          "Post-launch edits beyond the included revision rounds, priced hourly or per-request at most shops",
+        ],
+      },
+      {
+        t: "h2",
+        v: "How to build an accurate budget before you request quotes",
+      },
+      {
+        t: "ol",
+        v: [
+          "List every page and feature you actually need, not the ones you might want someday, scope creep before you've even hired anyone inflates every quote you get",
+          "Decide upfront whether you're supplying copy and photos or need the agency to produce them, this single decision swings quotes by hundreds to thousands of dollars",
+          "Set a realistic timeline, rush jobs cost more and rushed sites often need earlier rework",
+          "Separate your one-time build budget from your ongoing monthly budget (hosting, maintenance, SEO), businesses that only budget for the build are routinely surprised by month two",
+          "Decide your ceiling before you start requesting quotes, not after seeing the first number, anchoring on the first quote you see is a common and avoidable mistake",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What a legitimate quote should break down",
+      },
+      {
+        t: "ul",
+        v: [
+          "Number of pages included, and the cost per additional page beyond that",
+          "Number of revision rounds included before extra rounds are billed",
+          "Whether SEO setup is included, and specifically what that covers",
+          "Whether copywriting and photography are included, supplied by you, or billed separately",
+          "Timeline with named milestones, not just a final delivery date",
+          "What happens after launch, and whether ongoing support is bundled or separate",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Financing and payment structures",
+      },
+      {
+        t: "p",
+        v: "Most small agencies work on a deposit-plus-milestone structure, commonly 50% to start and 50% on delivery, sometimes split into three payments across a longer project. A few offer monthly payment plans that spread a larger build over several months, useful for cash-flow-sensitive businesses but worth checking for interest or fees before committing. At PinexaDigital, pricing is one-time with no hidden fees, [Starter and Growth tiers are fixed](/blog/how-much-does-a-website-cost), so what's quoted is what's billed.",
+      },
+      {
+        t: "h2",
+        v: "Red flags in a quote",
+      },
+      {
+        t: "ul",
+        v: [
+          "A price dramatically below every other quote for the same scope, with no explanation for the gap, [worth pairing with the other agency red flags here](/blog/how-to-choose-a-web-design-agency)",
+          "No line-item breakdown, just a single total with no way to see what's actually included",
+          "\"Unlimited revisions\" with no defined process, which usually means an undefined timeline too",
+          "SEO listed as a bullet point with no specifics behind it",
+          "Ownership of code, domain, or CMS access left unaddressed in the proposal",
+        ],
+      },
+      {
+        t: "note",
+        v: "The lowest quote and the best value are frequently not the same quote. A $600 site missing SEO setup, mobile optimization, and post-launch support can cost more than a $1,500 site that includes all three, once you account for what you'd otherwise pay to add them later.",
+      },
+      {
+        t: "h2",
+        v: "A simple worksheet",
+      },
+      {
+        t: "ol",
+        v: [
+          "Write down your must-have pages and features (not nice-to-haves)",
+          "Note whether you're supplying copy and photos, or need them produced",
+          "Set your one-time build ceiling and your separate monthly ceiling for hosting and maintenance",
+          "Request three quotes using the same scope document, so you're comparing like for like",
+          "Score each quote against the line-item checklist above, not just the total at the bottom",
+        ],
+      },
+      {
+        t: "p",
+        v: "Getting an accurate number starts with an accurate scope, not a better guess at the range. If you want a quote built against a real scope document instead of a vague back-and-forth, [tell us what you need](/pricing) and we'll give you a fixed, itemized number, no surprises in month two.",
+      },
+    ],
+  },
+  {
+    slug: "shopify-vs-woocommerce-which-is-right-for-you",
+    title: "Shopify vs. WooCommerce: Which Is Right for Your Small Business Store?",
+    excerpt:
+      "Not another feature table. Five real business scenarios and which platform actually fits each one, plus what switching later really costs.",
+    seoTitle: "Shopify vs WooCommerce: Which Fits Your Store? (2026)",
+    seoDescription:
+      "Shopify vs WooCommerce for small business, matched to five real scenarios: first store, existing WordPress site, high SKU count, scaling revenue, and more.",
+    date: "2026-08-15",
+    readTime: "6 min read",
+    category: "E-commerce",
+    accent: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
+    content: [
+      {
+        t: "p",
+        v: "[We've already broken down Shopify and WooCommerce feature by feature, with full pricing tables](/blog/shopify-vs-woocommerce-2026). This guide skips the table and answers a more useful question directly: which platform fits your specific situation. Read through the five scenarios below and find the one closest to yours.",
+      },
+      {
+        t: "h2",
+        v: "Scenario 1: You're launching your first store, no developer on staff",
+      },
+      {
+        t: "p",
+        v: "Shopify. The entire platform is built for someone without technical support to go from zero to a live, functioning store in days, not weeks. Hosting, security, and uptime are handled for you, which matters most when there's no one on your team equipped to handle them if something breaks.",
+      },
+      {
+        t: "h2",
+        v: "Scenario 2: You already run WordPress for your site or blog",
+      },
+      {
+        t: "p",
+        v: "WooCommerce, most of the time. If your content, SEO history, and blog already live on WordPress, adding WooCommerce keeps everything under one roof instead of splitting your site and store across two platforms with two logins, two sets of analytics, and two things that can go out of sync with each other.",
+      },
+      {
+        t: "h2",
+        v: "Scenario 3: You sell high-SKU or highly configurable products",
+      },
+      {
+        t: "p",
+        v: "This is where WooCommerce's flexibility tends to win. Complex product variants, custom configurators, and unusual catalog structures are more naturally handled through WordPress's plugin ecosystem and direct code access than through Shopify's more opinionated, template-driven structure. Shopify can be forced to handle complexity like this, but it usually means fighting the platform rather than working with it.",
+      },
+      {
+        t: "h2",
+        v: "Scenario 4: You're scaling past $50k/month in revenue",
+      },
+      {
+        t: "p",
+        v: "Run the transaction fee math before deciding. Shopify's per-transaction fees, if you're not using Shopify Payments, and its higher-tier monthly plans start to add up meaningfully at real volume, while WooCommerce's zero-transaction-fee model starts to pull ahead. [The full three-year cost comparison](/blog/shopify-vs-woocommerce-2026) covers this in detail, but the short version: the gap narrows or reverses in WooCommerce's favor as volume climbs.",
+      },
+      {
+        t: "h2",
+        v: "Scenario 5: Neither platform really fits what you're building",
+      },
+      {
+        t: "p",
+        v: "Subscription boxes with complex billing logic, digital product delivery, B2B pricing tiers, or a highly custom checkout flow can outgrow both platforms at once. In that case, [a custom Next.js storefront with Stripe](/blog/shopify-vs-woocommerce-2026) is worth evaluating: higher upfront cost, but no platform fees and a build matched exactly to your requirements instead of bent to fit a template.",
+      },
+      {
+        t: "h2",
+        v: "What switching later actually costs",
+      },
+      {
+        t: "ul",
+        v: [
+          "Product data, images, and descriptions can usually be exported and re-imported, but formatting rarely transfers cleanly and needs manual cleanup",
+          "Customer accounts and order history are the hardest thing to migrate without loss, plan for some data gap",
+          "SEO takes a hit if URL structure changes during the move, [the same redirect discipline that applies to any redesign](/blog/website-redesign-seo-checklist) applies here too",
+          "Realistic migration cost: $500-$2,500 depending on catalog size and how much custom logic needs rebuilding on the new platform",
+        ],
+      },
+      {
+        t: "note",
+        v: "If you're genuinely unsure which scenario fits, that uncertainty is itself useful information: it usually means your business hasn't yet hit the volume or complexity where the choice matters much, and either platform will serve you fine to start.",
+      },
+      {
+        t: "p",
+        v: "The right platform is the one that fits your actual business today, not the one with the longer feature list. If you want a straight recommendation based on your specific catalog and volume, [tell us what you're selling](/services/ecommerce) and we'll tell you honestly which platform we'd build on, including if it's not the one we usually recommend.",
+      },
+    ],
+  },
+  {
+    slug: "whats-included-in-a-maintenance-plan",
+    title: "What's Included in a Website Maintenance Plan? (And Why It's Worth It)",
+    excerpt:
+      "A concrete, tier-by-tier answer to what you're actually paying for in a maintenance plan, and a simple way to decide whether it's worth it for your site.",
+    seoTitle: "What's Included in Website Maintenance? (2026)",
+    seoDescription:
+      "What's actually included in a website maintenance plan at each pricing tier, what included edits really means, and a simple way to decide if it's worth it.",
+    date: "2026-08-19",
+    readTime: "6 min read",
+    category: "Maintenance",
+    accent: "bg-teal-500/10 text-teal-600 dark:text-teal-400",
+    content: [
+      {
+        t: "p",
+        v: "\"We'll keep an eye on it\" is not a maintenance plan, it's a sentence designed to sound like one. [We've covered why unmaintained sites quietly degrade over time elsewhere](/blog/website-maintenance-guide); this guide answers the more concrete question: what should actually be listed on the invoice, tier by tier, and how to tell if it's worth paying for.",
+      },
+      {
+        t: "h2",
+        v: "The baseline every plan should include, regardless of tier",
+      },
+      {
+        t: "ul",
+        v: [
+          "CMS, plugin, and theme updates applied on a schedule, not reactively",
+          "Automated backups with at least 30 days of retention, stored somewhere separate from the live site",
+          "Uptime monitoring with real alerts, so downtime is caught in minutes, not by a customer calling to ask if the site is broken",
+          "Basic security scanning to catch vulnerabilities before they're exploited",
+          "A stated support response time, in writing, not \"we'll get to it\"",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What separates a basic plan from a mid-tier plan",
+      },
+      {
+        t: "p",
+        v: "Basic plans, typically $75-$150/month, cover the baseline above and little else, you're paying for the unglamorous work of keeping the site from decaying. Mid-tier plans, usually $150-$250/month, add ongoing performance monitoring against Core Web Vitals rather than a one-time launch check, and a small number of included content edit hours each month, so small updates don't require a separate invoice every time.",
+      },
+      {
+        t: "h2",
+        v: "What separates mid-tier from a dedicated or partner tier",
+      },
+      {
+        t: "p",
+        v: "Higher tiers, $300-$400/month, add a genuinely different kind of value: a defined support channel instead of a shared inbox, a monthly strategy check-in, and enough included edit hours, often 5+, that the plan functions less like a maintenance contract and more like having a part-time web team on retainer. At PinexaDigital, that's the difference between the $97/month Basic tier and the $397/month Partner tier: more hours, faster response, and someone proactively flagging issues instead of you having to notice them first.",
+      },
+      {
+        t: "h2",
+        v: "What \"included edits\" actually means in practice",
+      },
+      {
+        t: "ul",
+        v: [
+          "Small content changes: updating hours, pricing, staff bios, adding a new testimonial",
+          "Minor bug fixes: a broken link, a form field acting up, a layout issue on a specific device",
+          "Not usually included: new page builds, major design changes, or new feature development, these are typically scoped and quoted separately even under a maintenance plan",
+          "Ask specifically how unused hours are handled, some plans roll them over, most don't, and that difference matters if your update needs are seasonal",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Is it worth it? A simple way to think about the math",
+      },
+      {
+        t: "p",
+        v: "A $97/month plan costs $1,164 a year. The average cost of even a few hours of website downtime, in lost leads or abandoned checkouts, routinely exceeds that for a business generating real traffic, and that's before counting what a hack or a broken integration costs to fix without a recent backup. The math tends to favor a plan the moment your site is doing real business for you, generating leads, taking orders, or serving as a customer's first impression of whether you're a legitimate operation.",
+      },
+      {
+        t: "h2",
+        v: "When you can honestly skip it",
+      },
+      {
+        t: "ul",
+        v: [
+          "A brand-new, pre-revenue site where downtime for a day genuinely costs you nothing yet",
+          "A very simple static site with no CMS, no forms, and nothing that needs regular updates",
+          "You have real in-house technical capacity and the discipline to actually use it consistently, most businesses that think this describes them are wrong about the discipline part",
+        ],
+      },
+      {
+        t: "note",
+        v: "If you're not sure which tier fits, start with Basic. It's easier to upgrade once you see how much you're actually using the support than to overpay for a Partner tier and use a fraction of the included hours.",
+      },
+      {
+        t: "p",
+        v: "A maintenance plan isn't an upsell tacked onto a website project, it's what keeps everything else you paid for, [the security](/blog/website-security-small-business-guide), the speed, the rankings, from quietly eroding after launch day. [See what's included at each of our tiers](/services/maintenance) and pick the one that actually matches how much you'll use it, not the most expensive one on the page.",
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string): Post | undefined {

@@ -20,7 +20,11 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          // Page the visitor was on right before landing here — tells sales what prompted the inquiry.
+          cameFrom: document.referrer || "Direct visit (no referrer)",
+        }),
       });
       setStatus(res.ok ? "sent" : "error");
       if (res.ok) form.reset();

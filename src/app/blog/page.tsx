@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { SITE, siteUrl } from "@/lib/site-config";
+import { SITE, siteUrl, pageMetadata } from "@/lib/site-config";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import PostCard from "@/components/ui/PostCard";
+import Eyebrow from "@/components/ui/Eyebrow";
 import { getAllPosts } from "@/lib/blog-data";
 
-export const metadata: Metadata = {
-  title: "Blog | Web Design & Business Growth Tips",
+export const metadata: Metadata = pageMetadata({
+  title: "Blog – Web Design & Business Growth Tips",
   description: `${SITE.brandName}'s blog offers actionable tips on web design, SEO, e-commerce, and growing your business online in the US market.`,
-  alternates: { canonical: siteUrl("/blog") },
-};
+  path: "/blog",
+});
 
 const blogJsonLd = {
   "@context": "https://schema.org",
@@ -37,7 +38,7 @@ export default function BlogPage() {
       <section className="bg-card pt-20 pb-16 px-6 text-center border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Blog" }]} />
-          <p className="eyebrow mb-3">Blog</p>
+          <div className="flex justify-center"><Eyebrow className="mb-3">Blog</Eyebrow></div>
           <h1 className="display-xl text-title mb-4">Insights for growing businesses.</h1>
           <p className="text-[18px] leading-7 text-prose max-w-lg mx-auto">
             Actionable tips on web design, SEO, and digital growth, written for US business owners.

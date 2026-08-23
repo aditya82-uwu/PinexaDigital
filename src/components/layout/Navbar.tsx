@@ -55,7 +55,7 @@ export default function Navbar() {
         scrolled ? "shadow-card border-b border-line" : "border-b border-transparent"
       }`}
     >
-      <nav className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
@@ -74,7 +74,7 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-[14px] text-prose px-3 py-2 rounded-full hover:text-title hover:bg-surface transition-colors"
+              className="text-[14px] font-medium text-prose px-3 py-2 rounded-full hover:text-title hover:bg-surface transition-colors"
             >
               {l.label}
             </Link>
@@ -86,7 +86,7 @@ export default function Navbar() {
           <ThemeToggle />
           <Link
             href="/contact"
-            className="h-8 px-4 flex items-center text-[13px] font-medium bg-[#171717] text-white dark:bg-white dark:text-[#171717] rounded-md hover:opacity-85 transition-opacity"
+            className="h-10 px-5 flex items-center text-[14px] font-semibold bg-accent-solid text-white rounded-full hover:opacity-90 transition-opacity"
           >
             Get a quote
           </Link>
@@ -107,7 +107,7 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="md:hidden absolute inset-x-0 top-16 bg-card border-b border-line px-6 py-4 flex flex-col gap-1 shadow-card-lg">
+        <div className="md:hidden absolute inset-x-0 top-20 bg-card border-b border-line px-6 py-4 flex flex-col gap-1 shadow-card-lg">
           {links.map((l) => (
             <Link
               key={l.href}
@@ -122,7 +122,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="h-11 w-full flex items-center justify-center text-[14px] font-medium bg-[#171717] text-white dark:bg-white dark:text-[#171717] rounded-lg"
+              className="h-11 w-full flex items-center justify-center text-[14px] font-semibold bg-accent-solid text-white rounded-full"
             >
               Get a quote
             </Link>

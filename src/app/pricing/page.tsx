@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { SITE, siteUrl } from "@/lib/site-config";
+import { SITE, siteUrl, pageMetadata } from "@/lib/site-config";
 import Breadcrumb from "@/components/ui/Breadcrumb";
+import Eyebrow from "@/components/ui/Eyebrow";
+import { faqPageJsonLd } from "@/lib/faq-schema";
 
-export const metadata: Metadata = {
-  title: "Pricing | Transparent Web Design Packages",
+export const metadata: Metadata = pageMetadata({
+  title: "Pricing – Transparent Web Design Packages",
   description: `Simple, transparent pricing for professional web design and development. No hidden fees. ${SITE.brandName} serves US clients with fixed-price packages.`,
-  alternates: { canonical: siteUrl("/pricing") },
-};
+  path: "/pricing",
+});
 
 const tiers = [
   {
@@ -146,10 +148,14 @@ export default function PricingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd(faqs)) }}
+      />
       <section className="bg-card pt-20 pb-16 px-6 text-center border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Pricing" }]} />
-          <p className="eyebrow mb-3">Pricing</p>
+          <div className="flex justify-center"><Eyebrow className="mb-3">Pricing</Eyebrow></div>
           <h1 className="display-xl text-title mb-4">Simple, transparent pricing.</h1>
           <p className="text-[18px] leading-7 text-prose max-w-lg mx-auto">
             Fixed-price packages. No hourly billing. No surprises.

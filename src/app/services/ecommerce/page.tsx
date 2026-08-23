@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Breadcrumb from "@/components/ui/Breadcrumb";
-import { SITE, siteUrl } from "@/lib/site-config";
+import Eyebrow from "@/components/ui/Eyebrow";
+import DoodleArrow from "@/components/ui/DoodleArrow";
+import FAQAccordion from "@/components/ui/FAQAccordion";
+import { faqPageJsonLd } from "@/lib/faq-schema";
+import ServicesSidebarNav from "@/components/ui/ServicesSidebarNav";
+import { SITE, siteUrl, pageMetadata } from "@/lib/site-config";
 
-export const metadata: Metadata = {
-  title: "E-commerce Development Services for US Businesses",
+export const metadata: Metadata = pageMetadata({
+  title: "E-commerce Development Services",
   description: `Custom e-commerce stores built for US markets. ${SITE.brandName} builds Shopify, WooCommerce, and custom Next.js stores that convert visitors into buyers. Get a free quote.`,
-  alternates: { canonical: siteUrl("/services/ecommerce") },
-};
+  path: "/services/ecommerce",
+});
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
@@ -22,6 +28,8 @@ const serviceJsonLd = {
   },
   areaServed: { "@type": "Country", name: "United States" },
 };
+
+const tags = ["Shopify", "WooCommerce", "Custom", "Payments"];
 
 const platforms = [
   {
@@ -95,20 +103,34 @@ export default function EcommercePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd(faqs)) }}
+      />
 
       {/* ── Hero ── */}
       <section className="bg-card pt-20 pb-16 px-6 border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Services", href: "/services" }, { label: "E-commerce" }]} />
-          <p className="eyebrow mb-3">E-commerce</p>
+          <Eyebrow className="mb-3">E-commerce</Eyebrow>
           <h1 className="display-xl text-title mb-4 max-w-2xl">Online stores built to sell to US customers.</h1>
           <p className="text-[18px] leading-7 text-prose max-w-xl mb-5">
             E-commerce experiences optimised for the US market: fast checkout, familiar payment methods, and mobile-first design that converts browsers into buyers.
           </p>
-          <p className="text-[16px] leading-7 text-prose max-w-2xl mb-8">
-            US shoppers have high expectations: they expect Apple Pay or PayPal at checkout, they abandon if the mobile experience is clunky, and they won&apos;t return if the site is slow. We build stores that meet these expectations from day one, on the platform that best fits your product, budget, and long-term plans. Every store includes US payment gateway integration, SEO-optimised product pages, and Google Analytics 4 e-commerce tracking.
-          </p>
-          <Link href="/contact" className="h-12 px-7 inline-flex items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-[#171717] text-[15px] font-medium hover:opacity-85 transition-opacity">
+          <div className="grid lg:grid-cols-2 gap-10 items-start mb-8">
+            <DoodleArrow className="w-20 h-24 text-faint" />
+            <div>
+              <p className="text-[16px] leading-7 text-prose mb-6">
+                US shoppers have high expectations: they expect Apple Pay or PayPal at checkout, they abandon if the mobile experience is clunky, and they won&apos;t return if the site is slow. We build stores that meet these expectations from day one, on the platform that best fits your product, budget, and long-term plans.
+              </p>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+                {tags.map((tag) => (
+                  <span key={tag} className="text-[14px] font-medium text-title">+ {tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <Link href="/contact" className="h-12 px-7 inline-flex items-center rounded-full bg-accent-solid text-white text-[15px] font-semibold hover:opacity-90 transition-opacity">
             Discuss your store
           </Link>
         </div>
@@ -170,17 +192,34 @@ export default function EcommercePage() {
         </div>
       </section>
 
-      {/* ── FAQ ── */}
+      {/* ── FAQ + sidebar ── */}
       <section className="bg-card py-20 px-6">
-        <div className="max-w-190 mx-auto">
-          <h2 className="display-lg text-title mb-12 text-center">Frequently asked questions.</h2>
-          <div className="flex flex-col divide-y divide-line">
-            {faqs.map(({ q, a }) => (
-              <div key={q} className="py-6">
-                <p className="text-[16px] font-semibold text-title mb-2">{q}</p>
-                <p className="text-[14px] leading-6 text-prose">{a}</p>
-              </div>
-            ))}
+        <div className="max-w-350 mx-auto grid lg:grid-cols-3 gap-12 items-start">
+          <div className="lg:col-span-2">
+            <div className="rounded-3xl overflow-hidden mb-16">
+              <Image
+                src="/images/services/ecommerce.webp"
+                alt="Customer completing checkout in a retail store"
+                width={1400}
+                height={1000}
+                className="w-full object-cover"
+              />
+            </div>
+            <h2 className="display-lg text-title mb-8">Frequently asked questions.</h2>
+            <FAQAccordion items={faqs} />
+          </div>
+
+          <div className="lg:sticky lg:top-24 flex flex-col gap-8">
+            <ServicesSidebarNav currentHref="/services/ecommerce" />
+            <div className="bg-invert rounded-xl p-8 shadow-card-lg">
+              <h3 className="display-sm text-on-invert mb-3">Ready to launch your store?</h3>
+              <p className="text-[14px] leading-6 text-[#888] mb-6">
+                Tell us about your products and we&apos;ll recommend the best platform and approach.
+              </p>
+              <Link href="/contact" className="h-12 w-full flex items-center justify-center rounded-full bg-white text-[#171717] text-[15px] font-medium hover:bg-[#f0f0f0] transition-colors">
+                Start your store
+              </Link>
+            </div>
           </div>
         </div>
       </section>

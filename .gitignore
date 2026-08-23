@@ -42,3 +42,9 @@ next-env.d.ts
 
 # Claude Code internal
 .claude/
+.agents/
+
+# local audit/tooling artifacts, not app code
+pinexa-local-dev-audit/
+.audit-home.json
+skills-lock.json

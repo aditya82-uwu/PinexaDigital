@@ -2,13 +2,21 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import {
-  Code2, Workflow, ShoppingBag, ShieldCheck, ArrowRight, Star,
-  TrendingUp, Clock, BarChart3, Zap, Globe,
-  MessageSquare, Layers, ChevronRight,
+  Code2, Workflow, ShoppingBag, ShieldCheck, ArrowRight, ArrowUpRight,
+  Clock, BarChart3, Zap, Globe, MessageSquare, Layers, ChevronDown, Check,
 } from "lucide-react";
+import Eyebrow from "@/components/ui/Eyebrow";
+import CircleArrowLink from "@/components/ui/CircleArrowLink";
+import StatCard from "@/components/ui/StatCard";
+import MarqueeText from "@/components/ui/MarqueeText";
+import DottedWaveBackground from "@/components/ui/DottedWaveBackground";
+import Tabs from "@/components/ui/Tabs";
+import PostCard from "@/components/ui/PostCard";
+import { getAllPosts } from "@/lib/blog-data";
+import { SITE } from "@/lib/site-config";
 
 /* ─── Animation helper ─── */
 const stagger = (delay = 0) => ({
@@ -20,182 +28,40 @@ const stagger = (delay = 0) => ({
   },
 });
 
-/* ─── Animated number counter ─── */
-function AnimatedNumber({ to, suffix = "" }: { to: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
+const reveal = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] } },
+};
 
-  useEffect(() => {
-    if (!inView || !ref.current) return;
-    const el = ref.current;
-    const duration = 1500;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * to) + suffix;
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [inView, to, suffix]);
-
-  return <span ref={ref}>0{suffix}</span>;
-}
-
-/* ─── Hero visual (analytics dashboard) ─── */
-function HeroVisual() {
-  const chartBars = [35, 52, 41, 60, 55, 70, 65, 80, 74, 87, 80, 95];
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.94, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="relative w-full max-w-130 mx-auto"
-    >
-      {/* Ambient glow */}
-      <div className="absolute -inset-10 rounded-full bg-linear-to-tr from-[#0F4C3A]/15 via-emerald-500/12 to-teal-400/8 blur-3xl pointer-events-none" />
-
-      {/* Main card */}
-      <div className="relative rounded-2xl overflow-hidden border border-line shadow-card-lg bg-card">
-        {/* Gradient header with bar chart */}
-        <div className="px-5 pt-5 pb-4" style={{ background: "linear-gradient(135deg, #0F4C3A 0%, #22C55E 100%)" }}>
-          <div className="flex justify-between items-center mb-4">
-            <div>
-              <p className="text-white/60 text-[11px] font-medium uppercase tracking-wide">Site Performance</p>
-              <p className="text-white text-xl font-bold mt-0.5">Built for Speed</p>
-            </div>
-            <div className="px-2.5 py-1 rounded-full bg-white/20 text-white text-[11px] font-semibold">This month</div>
-          </div>
-          <div className="flex items-end gap-1 h-14">
-            {chartBars.map((h, i) => (
-              <motion.div
-                key={i}
-                style={{ height: `${h}%`, transformOrigin: "bottom" }}
-                className="flex-1 rounded-t bg-white/30"
-                initial={{ scaleY: 0 }}
-                animate={{ scaleY: 1 }}
-                transition={{ delay: 0.6 + i * 0.06, duration: 0.4, ease: "easeOut" }}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Metric strip */}
-        <div className="grid grid-cols-3 divide-x divide-line">
-          {[
-            { label: "Load Time", val: "1.2s", color: "text-emerald-500" },
-            { label: "Uptime", val: "99.9%", color: "text-[#0F4C3A] dark:text-emerald-400" },
-            { label: "PageSpeed", val: "99/100", color: "text-teal-600 dark:text-teal-400" },
-          ].map(({ label, val, color }) => (
-            <div key={label} className="py-3 text-center">
-              <div className={`text-[15px] font-bold ${color}`}>{val}</div>
-              <div className="text-[10px] text-faint mt-0.5">{label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Active projects grid */}
-        <div className="p-4 bg-surface grid grid-cols-2 gap-2">
-          {[
-            { Icon: Globe, label: "New Website", status: "Live ✓", iconBg: "bg-[#0F4C3A]", statusColor: "text-emerald-500" },
-            { Icon: Workflow, label: "CRM Automation", status: "Active", iconBg: "bg-emerald-500", statusColor: "text-[#0F4C3A]" },
-            { Icon: ShoppingBag, label: "E-commerce", status: "Live ✓", iconBg: "bg-orange-500", statusColor: "text-emerald-500" },
-            { Icon: BarChart3, label: "Analytics", status: "Tracking", iconBg: "bg-emerald-500", statusColor: "text-teal-600" },
-          ].map(({ Icon, label, status, iconBg, statusColor }) => (
-            <div key={label} className="bg-card rounded-lg p-2.5 flex items-center gap-2.5 border border-line">
-              <div className={`w-7 h-7 rounded-md ${iconBg} flex items-center justify-center shrink-0`}>
-                <Icon size={12} className="text-white" />
-              </div>
-              <div className="min-w-0">
-                <div className="text-[11px] font-semibold text-title truncate">{label}</div>
-                <div className={`text-[10px] font-semibold ${statusColor}`}>{status}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Floating badge: traffic */}
-      <motion.div
-        initial={{ opacity: 0, x: -24 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.0, duration: 0.5 }}
-        className="absolute -left-10 top-[30%] bg-card border border-line rounded-2xl shadow-card-lg px-3.5 py-3 flex items-center gap-3"
-      >
-        <div className="w-9 h-9 rounded-full bg-emerald-500/10 flex items-center justify-center">
-          <TrendingUp size={15} className="text-emerald-500" />
-        </div>
-        <div>
-          <p className="text-[13px] font-bold text-title leading-none">90+ Score</p>
-          <p className="text-[11px] text-faint mt-0.5">PageSpeed rating</p>
-        </div>
-      </motion.div>
-
-      {/* Floating badge: pricing */}
-      <motion.div
-        initial={{ opacity: 0, x: 24 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.15, duration: 0.5 }}
-        className="absolute -right-10 bottom-[25%] bg-card border border-line rounded-2xl shadow-card-lg px-3.5 py-3 flex items-center gap-3"
-      >
-        <div className="w-9 h-9 rounded-full bg-amber-500/10 flex items-center justify-center">
-          <ShieldCheck size={15} className="text-amber-500" />
-        </div>
-        <div>
-          <p className="text-[13px] font-bold text-title leading-none">$299 Starter</p>
-          <p className="text-[11px] text-faint mt-0.5">One-time price</p>
-        </div>
-      </motion.div>
-
-      {/* Floating badge: delivery */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.3, duration: 0.5 }}
-        className="absolute -top-5 right-[20%] bg-card border border-line rounded-xl shadow-card-lg px-3 py-2 flex items-center gap-2"
-      >
-        <div className="w-6 h-6 rounded-full bg-[#0F4C3A]/10 flex items-center justify-center">
-          <Clock size={11} className="text-[#0F4C3A]" />
-        </div>
-        <p className="text-[12px] font-bold text-title">2-Week Delivery</p>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-/* ─── Data ─── */
+/* ─── Data (all real, kept in sync with services/pricing/portfolio pages) ─── */
 const services = [
   {
     icon: Code2,
     title: "Web Design & Development",
     desc: "Custom, high-converting websites built for speed, SEO, and your US audience.",
     href: "/services/web-design",
-    gradient: "from-[#0F4C3A] to-[#22C55E]",
-    accentColor: "text-[#0F4C3A] dark:text-emerald-400",
+    pastel: "bg-amber-100 dark:bg-amber-950/25",
   },
   {
     icon: Workflow,
     title: "CRM Automation & Integration",
     desc: "Automate your sales workflows with n8n, Zapier, and Make so no lead falls through.",
     href: "/services/crm-automation",
-    gradient: "from-[#1A1A1A] to-[#22C55E]",
-    accentColor: "text-neutral-700 dark:text-emerald-400",
+    pastel: "bg-sky-100 dark:bg-sky-950/25",
   },
   {
     icon: ShoppingBag,
     title: "E-commerce Solutions",
     desc: "Shopify, WooCommerce, and custom stores optimised for US shoppers.",
     href: "/services/ecommerce",
-    gradient: "from-orange-500 to-amber-400",
-    accentColor: "text-orange-600 dark:text-orange-400",
+    pastel: "bg-emerald-100 dark:bg-emerald-950/25",
   },
   {
     icon: ShieldCheck,
     title: "Website Maintenance",
     desc: "Monthly plans to keep your site fast, secure, and always up to date.",
     href: "/services/maintenance",
-    gradient: "from-emerald-500 to-teal-400",
-    accentColor: "text-emerald-600 dark:text-emerald-400",
+    pastel: "bg-rose-100 dark:bg-rose-950/25",
   },
 ];
 
@@ -206,213 +72,150 @@ const stats = [
 ];
 
 const whyUs = [
-  { icon: Zap,          title: "Lightning Fast Delivery",  desc: "From kickoff to live site in 3 weeks, without cutting corners.",                   color: "bg-emerald-500/10 text-emerald-500" },
-  { icon: Globe,        title: "US Market Expertise",      desc: "We know what American customers expect and design specifically for that.",            color: "bg-[#0F4C3A]/10 text-[#0F4C3A]" },
-  { icon: BarChart3,    title: "Results-Focused",          desc: "Every decision traces back to traffic, leads, and revenue, not just looks.",        color: "bg-emerald-500/10 text-emerald-500" },
-  { icon: MessageSquare,title: "Clear Communication",      desc: "No agency jargon. You're always in the loop with clear, honest updates.",            color: "bg-orange-500/10 text-orange-500" },
+  { icon: Zap,           title: "Lightning Fast Delivery", desc: "From kickoff to live site in 3 weeks, without cutting corners." },
+  { icon: Globe,         title: "US Market Expertise",     desc: "We know what American customers expect and design specifically for that." },
+  { icon: BarChart3,     title: "Results-Focused",         desc: "Every decision traces back to traffic, leads, and revenue, not just looks." },
+  { icon: MessageSquare, title: "Clear Communication",     desc: "No agency jargon. You're always in the loop with clear, honest updates." },
 ];
 
 const steps = [
-  { n: "01", title: "Discovery call",  desc: "We learn your goals, audience, and vision and recommend the right approach before we touch a pixel.", icon: MessageSquare, gradient: "from-[#0F4C3A] to-[#22C55E]" },
-  { n: "02", title: "Design sprint",   desc: "Full mockups delivered within 5 business days. Iterate until every detail is right.",                  icon: Layers,        gradient: "from-[#1A1A1A] to-[#22C55E]" },
-  { n: "03", title: "Build & launch",  desc: "We develop, test, optimise, and go live, then submit your sitemap to Google on day one.",             icon: Zap,           gradient: "from-orange-500 to-amber-500" },
+  {
+    n: "01",
+    title: "Discovery call",
+    desc: "We learn your goals, audience, and vision and recommend the right approach before we touch a pixel.",
+    icon: MessageSquare,
+    pastel: "bg-sky-100 dark:bg-sky-950/25",
+    photo: "/images/home/process-discovery.webp",
+    stats: [
+      { num: "30 Min", label: "Discovery call" },
+      { num: "24 Hr",  label: "Response time" },
+    ],
+  },
+  {
+    n: "02",
+    title: "Design sprint",
+    desc: "Full mockups delivered within 5 business days. Iterate until every detail is right.",
+    icon: Layers,
+    pastel: "bg-rose-100 dark:bg-rose-950/25",
+    photo: "/images/home/process-design.webp",
+    stats: [
+      { num: "5 Days", label: "Mockup delivery" },
+      { num: "3",      label: "Rounds of revision" },
+    ],
+  },
+  {
+    n: "03",
+    title: "Build & launch",
+    desc: "We develop, test, optimise, and go live, then submit your sitemap to Google on day one.",
+    icon: Zap,
+    pastel: "bg-emerald-100 dark:bg-emerald-950/25",
+    photo: "/images/home/process-launch.webp",
+    stats: [
+      { num: "2 Week", label: "Average delivery" },
+      { num: "90+",    label: "PageSpeed score" },
+    ],
+  },
 ];
 
-const testimonials = [
-  {
-    body: "PinexaDigital delivered a stunning website in 3 weeks. Organic traffic is up 40% and we're closing quality leads every single week.",
-    name: "Sarah M.",
-    role: "Founder, Austin Property Group",
-    initials: "SM",
-    gradient: "from-[#0F4C3A] to-[#22C55E]",
-    accent: "from-[#0F4C3A] to-emerald-400",
-  },
-  {
-    body: "They understood exactly what US customers expect. Clean, professional, loads incredibly fast. We couldn't be happier.",
-    name: "James R.",
-    role: "CEO, Pacific Wellness Studio",
-    initials: "JR",
-    gradient: "from-[#1A1A1A] to-[#22C55E]",
-    accent: "from-[#1A1A1A] to-emerald-400",
-  },
-  {
-    body: "Our e-commerce revenue doubled in the first month after launch. Best investment we've made for our online store.",
-    name: "Diana L.",
-    role: "Owner, Brooklyn Home Goods",
-    initials: "DL",
-    gradient: "from-orange-500 to-amber-500",
-    accent: "from-orange-500 to-amber-400",
-  },
+const pricingTiers = [
+  { name: "Starter",    price: "$299",  period: "one-time", desc: "For small businesses launching their first professional website.", featured: false },
+  { name: "Growth",     price: "$499",  period: "one-time", desc: "For businesses serious about generating leads and growing online.", featured: true },
+  { name: "Enterprise", price: "Custom", period: "project",  desc: "For large projects, e-commerce, and ongoing partnerships.",         featured: false },
+];
+
+const workSamples = [
+  { title: "Gym & Fitness",  category: "Health & Fitness", url: `https://gym.${SITE.baseDomain}`,       accent: "from-orange-500 to-amber-400" },
+  { title: "Law Firm",       category: "Legal Services",   url: `https://lawyer.${SITE.baseDomain}`,     accent: "from-yellow-600 to-amber-500" },
+  { title: "Real Estate",    category: "Property",         url: `https://realestate.${SITE.baseDomain}`, accent: "from-emerald-500 to-teal-400" },
+];
+
+const trustPoints = [
+  "Fixed pricing, so you know your total cost before we start",
+  "2–3 week delivery for most projects",
+  "30-day post-launch support at no extra charge",
 ];
 
 /* ─── Page ─── */
 export default function HomeClient() {
+  const router = useRouter();
+  const posts = getAllPosts().slice(0, 3);
+
   return (
     <>
-      {/* ──── Hero ──── */}
-      <section className="relative bg-card overflow-hidden pt-20 pb-28 px-6">
-        <div className="absolute -top-32 right-0 w-175 h-175 rounded-full bg-linear-to-bl from-[#0F4C3A]/12 via-emerald-500/8 to-transparent blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 -left-32 w-125 h-125 rounded-full bg-linear-to-tr from-emerald-500/8 to-transparent blur-3xl pointer-events-none" />
+      {/* ──── Hero: full-bleed photo ──── */}
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+        <Image
+          src="/images/home/hero-desk.webp"
+          alt="PinexaDigital team collaborating"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-black/85 via-black/60 to-black/30" />
+        <div
+          className="absolute inset-0 opacity-40 pointer-events-none"
+          style={{ clipPath: "polygon(55% 0, 100% 0, 100% 100%, 75% 100%)", background: "linear-gradient(135deg, rgba(59,130,246,0.35), transparent)" }}
+        />
 
-        <div className="relative max-w-350 mx-auto grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left copy */}
-          <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.1 } } }}>
-            <motion.div
-              variants={stagger(0)}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-linear-to-r from-[#0F4C3A]/10 to-emerald-500/10 border border-emerald-500/20 mb-6"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-[11px] font-semibold tracking-wide uppercase text-[#0F4C3A] dark:text-emerald-400">
-                Now taking US clients
-              </span>
+        <div className="relative max-w-350 mx-auto px-6 py-32 w-full">
+          <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.1 } } }} className="max-w-2xl">
+            <motion.div variants={stagger(0)}>
+              <Eyebrow tone="on-contrast" className="mb-6">Now taking US clients</Eyebrow>
             </motion.div>
 
-            <motion.h1 variants={stagger(0.05)} className="display-xl text-title mb-5">
-              We build websites that{" "}
-              <span className="bg-linear-to-r from-[#0F4C3A] to-emerald-600 bg-clip-text text-transparent">
-                win US clients.
-              </span>
+            <motion.h1 variants={stagger(0.05)} className="display-hero text-white mb-6">
+              We build websites that win US clients.
             </motion.h1>
 
-            <motion.p variants={stagger(0.1)} className="text-[18px] leading-7 text-prose mb-8 max-w-lg">
+            <motion.p variants={stagger(0.1)} className="text-[19px] leading-8 text-white/70 mb-10 max-w-lg">
               High-converting web design and development for businesses ready to grow online. Fast delivery, transparent pricing, real results.
             </motion.p>
 
-            <motion.div variants={stagger(0.15)} className="flex flex-wrap gap-3 mb-10">
-              <Link
-                href="/contact"
-                className="h-12 px-7 flex items-center gap-2 rounded-full text-white text-[15px] font-medium hover:opacity-90 transition-opacity shadow-lg shadow-emerald-500/20"
-                style={{ background: "linear-gradient(135deg, #0F4C3A 0%, #22C55E 100%)" }}
+            <motion.div variants={stagger(0.15)} className="relative max-w-md mb-6">
+              <select
+                aria-label="How can we help?"
+                defaultValue=""
+                onChange={(e) => { if (e.target.value) router.push(e.target.value); }}
+                className="w-full h-14 pl-6 pr-12 rounded-full bg-accent-solid text-white text-[15px] font-semibold appearance-none cursor-pointer hover:opacity-90 transition-opacity focus-visible:outline-2 focus-visible:outline-white"
               >
+                <option value="" disabled>How can we help?</option>
+                {services.map((s) => (
+                  <option key={s.href} value={s.href} className="text-title bg-card">{s.title}</option>
+                ))}
+              </select>
+              <ChevronDown size={20} className="absolute right-5 top-1/2 -translate-y-1/2 text-white pointer-events-none" />
+            </motion.div>
+
+            <motion.div variants={stagger(0.2)} className="flex flex-wrap gap-3">
+              <Link href="/contact" className="h-13 px-7 flex items-center gap-2 rounded-full bg-white text-[#171717] text-[15px] font-semibold hover:opacity-90 transition-opacity">
                 Start your project <ArrowRight size={16} />
               </Link>
-              <Link
-                href="/portfolio"
-                className="h-12 px-7 flex items-center rounded-full bg-surface border border-line text-title text-[15px] font-medium hover:bg-[#f0f0f0] dark:hover:bg-[#222] transition-colors"
-              >
+              <Link href="/portfolio" className="h-13 px-7 flex items-center rounded-full border border-white/30 text-white text-[15px] font-medium hover:bg-white/10 transition-colors">
                 See our work
               </Link>
             </motion.div>
-
-            {/* Trust signals */}
-            <motion.div variants={stagger(0.2)} className="flex items-center gap-2">
-              <ShieldCheck size={16} className="text-emerald-500 shrink-0" />
-              <p className="text-[12px] text-faint">
-                <span className="text-title font-semibold">Fixed-price projects</span>: no hourly billing, no surprises
-              </p>
-            </motion.div>
           </motion.div>
-
-          {/* Right visual */}
-          <div className="hidden lg:flex justify-center">
-            <HeroVisual />
-          </div>
         </div>
       </section>
 
-      {/* ──── Stats band ──── */}
-      <section
-        className="relative py-14 px-6"
-        style={{ background: "linear-gradient(135deg, #0F4C3A 0%, #22C55E 100%)" }}
-      >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 80% at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 70%)" }}
-        />
-        <div className="relative max-w-350 mx-auto grid grid-cols-3 gap-8">
-          {stats.map(({ num, suffix, label, Icon }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="text-center"
-            >
-              <div className="inline-flex w-12 h-12 rounded-xl bg-white/15 items-center justify-center mb-3">
-                <Icon size={20} className="text-white" />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-white mb-1">
-                <AnimatedNumber to={num} suffix={suffix} />
-              </div>
-              <div className="text-[13px] text-white/70">{label}</div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* ──── Services ──── */}
-      <section className="bg-surface py-24 px-6">
-        <div className="max-w-350 mx-auto">
-          <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/8 border border-emerald-500/15 mb-4">
-              <span className="eyebrow text-emerald-700 dark:text-emerald-400">What we build</span>
-            </div>
-            <h2 className="display-lg text-title mb-3">Everything your business needs online.</h2>
-            <p className="text-prose max-w-xl mx-auto">From first impression to final conversion, we handle every digital touchpoint.</p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {services.map(({ icon: Icon, title, desc, href, gradient, accentColor }, i) => (
-              <motion.div
-                key={href}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-                whileHover={{ y: -6 }}
-              >
-                <Link href={href} className="group flex flex-col h-full bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg transition-all">
-                  {/* Gradient icon header */}
-                  <div className={`bg-linear-to-br ${gradient} p-5 relative overflow-hidden`}>
-                    <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-white/10 -translate-y-8 translate-x-8" />
-                    <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center relative z-10">
-                      <Icon size={22} className="text-white" strokeWidth={1.8} />
-                    </div>
-                  </div>
-                  {/* Body */}
-                  <div className="p-5 flex flex-col flex-1">
-                    <h3 className="display-sm text-title mb-2">{title}</h3>
-                    <p className="text-[14px] leading-6 text-prose flex-1 mb-4">{desc}</p>
-                    <span className={`inline-flex items-center gap-1.5 text-[13px] font-semibold ${accentColor}`}>
-                      Learn more <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ──── Why Us ──── */}
+      {/* ──── About / why PinexaDigital ──── */}
       <section className="bg-card py-24 px-6 relative overflow-hidden">
-        <div className="absolute top-1/2 -translate-y-1/2 right-0 w-150 h-150 rounded-full bg-linear-to-l from-[#0F4C3A]/6 to-transparent blur-3xl pointer-events-none" />
-        <div className="relative max-w-350 mx-auto grid lg:grid-cols-2 gap-16 items-center">
-
-          {/* Left: photo mosaic */}
+        <div className="max-w-350 mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            initial="hidden" whileInView="show" viewport={{ once: true }} variants={reveal}
             className="relative pb-12 lg:pb-4"
           >
-            {/* Main image */}
             <div className="relative rounded-2xl overflow-hidden shadow-card-lg">
               <Image
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&h=500&q=80&fit=crop"
+                src="/images/home/about-team.webp"
                 alt="PinexaDigital team at work"
                 width={700}
                 height={500}
                 className="w-full object-cover"
-                priority
               />
-              {/* Bottom gradient fade */}
               <div className="absolute bottom-0 inset-x-0 h-2/5 bg-linear-to-t from-black/55 to-transparent pointer-events-none" />
-              {/* Glassmorphism stat overlay */}
               <div className="absolute bottom-5 left-5 flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-3">
-                <div className="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-full bg-accent-solid flex items-center justify-center shrink-0">
                   <ShieldCheck size={16} className="text-white" />
                 </div>
                 <div>
@@ -420,21 +223,19 @@ export default function HomeClient() {
                   <p className="text-white/70 text-[11px] mt-0.5">No hidden fees</p>
                 </div>
               </div>
-              {/* US-focused pill top-right */}
               <div className="absolute top-4 right-4 flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3 py-1.5">
                 <Globe size={12} className="text-white" />
                 <span className="text-white text-[11px] font-semibold">US-focused</span>
               </div>
             </div>
 
-            {/* Secondary floating image */}
             <motion.div
               animate={{ y: [0, -7, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
               className="absolute -bottom-4 -right-3 sm:-right-6 w-44 h-32 rounded-2xl overflow-hidden shadow-card-lg border-4 border-card hidden sm:block"
             >
               <Image
-                src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=300&h=220&q=80&fit=crop"
+                src="/images/home/about-sprint.webp"
                 alt="Design process"
                 width={300}
                 height={220}
@@ -447,168 +248,315 @@ export default function HomeClient() {
             </motion.div>
           </motion.div>
 
-          {/* Right: differentiators */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0F4C3A]/8 border border-[#0F4C3A]/15 mb-5">
-              <span className="eyebrow text-[#0F4C3A] dark:text-emerald-400">Why Pinexa Digital</span>
-            </div>
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={reveal}>
+            <Eyebrow className="mb-5">Why PinexaDigital</Eyebrow>
             <h2 className="display-lg text-title mb-4">We&apos;re not just another web agency.</h2>
             <p className="text-prose text-[16px] leading-7 mb-8">
               We&apos;re a focused team obsessed with one thing: measurable results for US businesses. No bloat, no fluff. Just clean, fast, conversion-optimized digital products.
             </p>
-            <div className="space-y-5">
-              {whyUs.map(({ icon: Icon, title, desc, color }, i) => (
+            <div className="grid sm:grid-cols-2 gap-5 mb-8">
+              {whyUs.map(({ icon: Icon, title, desc }, i) => (
                 <motion.div
                   key={title}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="flex items-start gap-4"
+                  transition={{ delay: i * 0.08, duration: 0.5 }}
+                  className="flex items-start gap-3"
                 >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5 ${color}`}>
-                    <Icon size={18} />
+                  <div className="w-9 h-9 rounded-lg bg-accent-solid/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <Icon size={16} className="text-accent-solid" />
                   </div>
                   <div>
-                    <h4 className="text-[15px] font-semibold text-title mb-1">{title}</h4>
-                    <p className="text-[14px] text-prose leading-6">{desc}</p>
+                    <h4 className="text-[14px] font-semibold text-title mb-0.5">{title}</h4>
+                    <p className="text-[13px] text-prose leading-5">{desc}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
-            <Link href="/about" className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-link mt-8 hover:gap-2.5 transition-all">
-              More about us <ChevronRight size={15} />
-            </Link>
+            <CircleArrowLink href="/about" label="More about us" />
           </motion.div>
         </div>
       </section>
 
-      {/* ──── Process ──── */}
-      <section className="bg-surface py-24 px-6">
+      {/* ──── Marquee ──── */}
+      <section className="bg-surface py-10 border-y border-line overflow-hidden">
+        <MarqueeText items={services.map((s) => s.title)} speed={30} />
+      </section>
+
+      {/* ──── Numbered service cards ──── */}
+      <section className="bg-surface py-24 px-6 overflow-hidden">
         <div className="max-w-350 mx-auto">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/8 border border-orange-500/15 mb-4">
-              <span className="eyebrow text-orange-600 dark:text-orange-400">How it works</span>
-            </div>
-            <h2 className="display-lg text-title">From idea to live site in weeks.</h2>
+            <div className="flex justify-center"><Eyebrow className="mb-4">What we build</Eyebrow></div>
+            <h2 className="display-lg text-title mb-3">Everything your business needs online.</h2>
+            <p className="text-prose max-w-xl mx-auto">From first impression to final conversion, we handle every digital touchpoint.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 relative">
-            <div className="hidden md:block absolute top-13 left-[calc(16.66%+2rem)] right-[calc(16.66%+2rem)]">
-              <div className="h-px border-t-2 border-dashed border-line" />
-            </div>
-
-            {steps.map(({ n, title, desc, icon: Icon, gradient }, i) => (
+          <div className="grid sm:grid-cols-2 gap-6">
+            {services.map(({ icon: Icon, title, desc, href, pastel }, i) => (
               <motion.div
-                key={n}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.55 }}
-                className="flex flex-col items-center text-center"
+                key={href}
+                initial={{ opacity: 0, rotate: i % 2 === 0 ? -7 : 7, y: 50 }}
+                whileInView={{ opacity: 1, rotate: 0, y: 0 }}
+                viewport={{ once: false, amount: 0.4 }}
+                transition={{ delay: i * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                style={{ transformOrigin: "bottom center" }}
+                className={`flex flex-col justify-between h-full min-h-90 rounded-[28px] p-10 ${pastel} transition-transform hover:-translate-y-1`}
               >
-                <div
-                  className={`w-26 h-26 rounded-2xl bg-linear-to-br ${gradient} flex flex-col items-center justify-center mb-6 shadow-lg relative z-10`}
-                >
-                  <span className="text-white/60 text-[10px] font-bold tracking-widest mb-1.5">{n}</span>
-                  <Icon size={28} className="text-white" strokeWidth={1.6} />
+                <div className="flex items-start justify-between mb-8">
+                  <div className="w-16 h-16 rounded-full bg-card shadow-card flex items-center justify-center">
+                    <Icon size={26} className="text-accent-solid" strokeWidth={1.6} />
+                  </div>
+                  <span className="font-display font-bold text-[15px] text-accent-solid">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                 </div>
-                <h3 className="display-sm text-title mb-2">{title}</h3>
-                <p className="text-[14px] leading-6 text-prose max-w-60">{desc}</p>
+
+                <div>
+                  <h3 className="display-sm text-title mb-3">{title}</h3>
+                  <p className="text-[14px] leading-6 text-prose mb-8 max-w-70">{desc}</p>
+                  <div className="border-t border-black/10 dark:border-white/10 pt-5">
+                    <CircleArrowLink href={href} label="Learn more" />
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ──── Testimonials (hidden until we have real, verifiable client testimonials) ──── */}
-      {false && (
-        <section className="bg-card py-24 px-6 relative overflow-hidden">
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-225 h-[350px] rounded-full bg-linear-to-t from-[#0F4C3A]/6 to-transparent blur-3xl pointer-events-none" />
-          <div className="relative max-w-350 mx-auto">
-            <div className="text-center mb-14">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/8 border border-emerald-500/15 mb-4">
-                <span className="eyebrow text-emerald-600 dark:text-emerald-400">Client results</span>
-              </div>
-              <h2 className="display-lg text-title">Real businesses. Real results.</h2>
+      {/* ──── Capabilities (dark) ──── */}
+      <section className="bg-contrast py-24 px-6 relative overflow-hidden">
+        <DottedWaveBackground />
+        <div className="relative max-w-350 mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={reveal} className="relative">
+            <div className="relative rounded-2xl overflow-hidden shadow-card-lg">
+              <Image
+                src="/images/home/capabilities-highfive.webp"
+                alt="PinexaDigital process and delivery"
+                width={700}
+                height={550}
+                className="w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
             </div>
+            <div className="absolute -bottom-6 -left-4 sm:-left-8 bg-card rounded-xl shadow-card-lg px-5 py-4 flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-accent-solid/10 flex items-center justify-center shrink-0">
+                <Clock size={18} className="text-accent-solid" />
+              </div>
+              <div>
+                <p className="text-title text-[16px] font-bold leading-none">24 Hr</p>
+                <p className="text-faint text-[11px] mt-0.5">Response Time</p>
+              </div>
+            </div>
+          </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-5">
-              {testimonials.map(({ body, name, role, initials, gradient, accent }, i) => (
-                <motion.div
-                  key={name}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.12, duration: 0.55 }}
-                  whileHover={{ y: -5 }}
-                  className="bg-surface rounded-2xl shadow-card hover:shadow-card-lg transition-all flex flex-col overflow-hidden"
-                >
-                  {/* Colored accent bar */}
-                  <div className={`h-1.5 bg-linear-to-r ${accent} shrink-0`} />
-                  <div className="p-7 flex flex-col gap-5 flex-1">
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: 5 }).map((_, s) => (
-                        <Star key={s} size={14} className="fill-amber-400 text-amber-400" />
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={reveal}>
+            <Eyebrow tone="on-contrast" className="mb-5">How we work</Eyebrow>
+            <h2 className="display-lg text-on-contrast mb-4">Capabilities built around your goals.</h2>
+            <p className="text-on-contrast-faint text-[16px] leading-7 mb-8">
+              Every engagement is scoped around measurable outcomes: traffic, leads, and revenue, backed by transparent process at every step.
+            </p>
+            <Tabs
+              tone="on-contrast"
+              tabs={whyUs.map(({ icon: Icon, title, desc }) => ({
+                label: title,
+                content: (
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-accent-solid/15 flex items-center justify-center shrink-0 mt-0.5">
+                      <Icon size={18} className="text-accent-solid" />
+                    </div>
+                    <p className="text-[15px] text-on-contrast-faint leading-7">{desc}</p>
+                  </div>
+                ),
+              }))}
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ──── Stats band (light) ──── */}
+      <section className="bg-card py-20 px-6 border-b border-line">
+        <div className="max-w-350 mx-auto grid grid-cols-3 gap-8">
+          {stats.map(({ num, suffix, label, Icon }, i) => (
+            <StatCard key={label} Icon={Icon} to={num} suffix={suffix} label={label} tone="default" delay={i * 0.1} />
+          ))}
+        </div>
+      </section>
+
+      {/* ──── Work samples teaser ──── */}
+      <section className="bg-surface py-24 px-6">
+        <div className="max-w-350 mx-auto">
+          <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
+            <div>
+              <Eyebrow className="mb-3">Our work</Eyebrow>
+              <h2 className="display-lg text-title">See exactly what we build.</h2>
+            </div>
+            <CircleArrowLink href="/portfolio" label="View all work" />
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {workSamples.map(({ title, category, url, accent }, i) => (
+              <motion.a
+                key={url}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
+                className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg transition-all block"
+              >
+                <div className={`h-48 bg-linear-to-br ${accent} relative flex items-end p-5`}>
+                  <span className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center transition-transform group-hover:rotate-45">
+                    <ArrowUpRight size={16} className="text-white" />
+                  </span>
+                  <span className="text-white/90 text-[11px] font-semibold uppercase tracking-wide">{category}</span>
+                </div>
+                <div className="p-5">
+                  <h3 className="display-sm text-title">{title}</h3>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ──── Process (sticky stacking cards) ──── */}
+      <section className="bg-card">
+        <div className="text-center pt-24 pb-10 px-6">
+          <div className="flex justify-center"><Eyebrow className="mb-4">How it works</Eyebrow></div>
+          <h2 className="display-lg text-title">From idea to live site in weeks.</h2>
+        </div>
+
+        {steps.map(({ n, title, desc, pastel, photo, stats }, i) => {
+          const isLast = i === steps.length - 1;
+          return (
+            <div
+              key={n}
+              className={`relative mb-6 md:mb-0 ${isLast ? "md:h-[calc(min(60vh,460px)+15vh)]" : "md:h-[calc(min(60vh,460px)+90vh)]"}`}
+            >
+              <div
+                className="md:sticky md:top-20 h-auto md:h-[min(60vh,460px)] flex items-center px-6"
+                style={{ zIndex: i + 1 }}
+              >
+                <div className={`relative w-full max-w-350 mx-auto md:h-full rounded-4xl ${pastel} shadow-2xl overflow-hidden grid md:grid-cols-2`}>
+                  <div className="p-8 sm:p-10 md:p-16 flex flex-col justify-center">
+                    <span className="inline-flex w-fit items-center px-4 py-1.5 rounded-full border border-black/15 dark:border-white/20 text-[12px] font-semibold text-title mb-6">
+                      Step {n}
+                    </span>
+                    <h3 className="display-lg text-title mb-4">{title}</h3>
+                    <p className="text-[16px] leading-7 text-prose mb-8 md:mb-10 max-w-md">{desc}</p>
+                    <div className="flex items-end gap-10">
+                      {stats.map((s) => (
+                        <div key={s.label}>
+                          <p className="text-[13px] text-faint mb-1">{s.label}</p>
+                          <p className="font-display font-bold text-[34px] leading-none text-title">{s.num}</p>
+                        </div>
                       ))}
                     </div>
-                    <p className="text-[15px] leading-7 text-prose flex-1">&ldquo;{body}&rdquo;</p>
-                    <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-full bg-linear-to-br ${gradient} flex items-center justify-center shrink-0`}>
-                        <span className="text-white text-[12px] font-bold">{initials}</span>
-                      </div>
-                      <div>
-                        <p className="text-[14px] font-semibold text-title leading-none">{name}</p>
-                        <p className="text-[12px] text-faint mt-0.5">{role}</p>
-                      </div>
-                    </div>
                   </div>
-                </motion.div>
-              ))}
+                  <div className="relative h-56 md:h-full min-h-70">
+                    <Image src={photo} alt={title} fill className="object-cover" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/15 to-transparent md:bg-linear-to-l md:from-black/10" />
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          );
+        })}
+      </section>
 
-      {/* ──── CTA ──── */}
-      <section className="py-24 px-6 relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0F4C3A 0%, #1A1A1A 50%, #0F4C3A 100%)" }}>
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute -top-24 left-1/4 w-96 h-96 rounded-full bg-emerald-500/20 blur-3xl" />
-          <div className="absolute -bottom-24 right-1/4 w-96 h-96 rounded-full bg-[#0F4C3A]/30 blur-3xl" />
-        </div>
-        <div className="relative max-w-350 mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/8 border border-white/15 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-[11px] font-semibold tracking-wide uppercase text-white/60">Ready to grow?</span>
+      {/* ──── Pricing teaser ──── */}
+      <section className="bg-surface py-24 px-6">
+        <div className="max-w-350 mx-auto">
+          <div className="text-center mb-14">
+            <div className="flex justify-center"><Eyebrow className="mb-4">Pricing</Eyebrow></div>
+            <h2 className="display-lg text-title mb-3">Simple, transparent pricing.</h2>
+            <p className="text-prose max-w-xl mx-auto">Fixed-price packages. No hourly billing. No surprises.</p>
           </div>
-          <h2 className="display-lg text-white mb-4">
-            Let&apos;s build something{" "}
-            <span className="bg-linear-to-r from-emerald-300 to-teal-400 bg-clip-text text-transparent">
-              extraordinary.
-            </span>
-          </h2>
-          <p className="text-[18px] text-white/55 mb-10 max-w-md mx-auto">
-            Tell us about your business and we&apos;ll get back to you within 24 hours.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link
-              href="/contact"
-              className="h-12 px-8 flex items-center gap-2 rounded-full text-white text-[16px] font-medium hover:opacity-90 transition-opacity shadow-lg shadow-emerald-500/25"
-              style={{ background: "linear-gradient(135deg, #0F4C3A 0%, #22C55E 100%)" }}
-            >
-              Get a free quote <ArrowRight size={16} />
-            </Link>
-            <Link
-              href="/pricing"
-              className="h-12 px-8 flex items-center rounded-full border border-white/20 text-white text-[16px] font-medium hover:bg-white/5 transition-colors"
-            >
-              View pricing
-            </Link>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {pricingTiers.map(({ name, price, period, desc, featured }, i) => (
+              <motion.div
+                key={name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className={`rounded-xl p-8 flex flex-col ${featured ? "bg-invert text-on-invert" : "bg-card shadow-card"}`}
+              >
+                <p className="eyebrow mb-3">{name}</p>
+                <div className="flex items-end gap-2 mb-3">
+                  <span className="display-md">{price}</span>
+                  <span className="text-[13px] text-faint mb-1">{period}</span>
+                </div>
+                <p className={`text-[13px] leading-6 mb-6 flex-1 ${featured ? "text-[#888]" : "text-prose"}`}>{desc}</p>
+                <Link
+                  href="/pricing"
+                  className={`h-11 flex items-center justify-center rounded-full text-[14px] font-semibold transition-colors ${
+                    featured ? "bg-white text-[#171717] hover:bg-[#f0f0f0]" : "bg-accent-solid text-white hover:opacity-90"
+                  }`}
+                >
+                  See full details
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ──── Contact CTA (dark split) ──── */}
+      <section className="relative bg-contrast overflow-hidden">
+        <DottedWaveBackground />
+        <div className="relative max-w-350 mx-auto grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial="hidden" whileInView="show" viewport={{ once: true }} variants={reveal}
+            className="relative h-72 lg:h-full min-h-100"
+          >
+            <Image
+              src="/images/home/contact-cta.webp"
+              alt="Let's talk about your project"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-linear-to-r from-transparent to-contrast lg:bg-linear-to-r" />
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={reveal} className="px-6 py-20 lg:pr-6 lg:pl-0">
+            <Eyebrow tone="on-contrast" className="mb-5">Get in touch</Eyebrow>
+            <h2 className="display-lg text-on-contrast mb-4">Let&apos;s build something great.</h2>
+            <p className="text-on-contrast-faint text-[16px] leading-7 mb-8 max-w-md">
+              Tell us about your project. We respond to every inquiry within 24 hours with honest feedback on whether and how we can help.
+            </p>
+            <ul className="flex flex-col gap-3 mb-10">
+              {trustPoints.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <Check size={15} className="text-emerald-400 mt-0.5 shrink-0" />
+                  <span className="text-[14px] leading-6 text-on-contrast-faint">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <CircleArrowLink href="/contact" label="Start a conversation" variant="button" tone="on-contrast" />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ──── Blog teaser ──── */}
+      <section className="bg-card py-24 px-6">
+        <div className="max-w-350 mx-auto">
+          <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
+            <div>
+              <Eyebrow className="mb-3">Blog and articles</Eyebrow>
+              <h2 className="display-lg text-title">Insights for growing businesses.</h2>
+            </div>
+            <CircleArrowLink href="/blog" label="View all posts" />
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {posts.map((post) => (
+              <PostCard key={post.slug} post={post} />
+            ))}
           </div>
         </div>
       </section>

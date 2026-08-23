@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import Breadcrumb from "@/components/ui/Breadcrumb";
-import { SITE, siteUrl } from "@/lib/site-config";
+import Eyebrow from "@/components/ui/Eyebrow";
+import DoodleArrow from "@/components/ui/DoodleArrow";
+import FAQAccordion from "@/components/ui/FAQAccordion";
+import { faqPageJsonLd } from "@/lib/faq-schema";
+import ServicesSidebarNav from "@/components/ui/ServicesSidebarNav";
+import { SITE, siteUrl, pageMetadata } from "@/lib/site-config";
 
-export const metadata: Metadata = {
-  title: "Web Design & Development Services for US Businesses",
+export const metadata: Metadata = pageMetadata({
+  title: "Web Design & Development Services",
   description: `Custom web design and development for US businesses. ${SITE.brandName} builds fast, high-converting websites that drive real results. Fixed pricing from $299. Get a free quote.`,
-  alternates: { canonical: siteUrl("/services/web-design") },
-};
+  path: "/services/web-design",
+});
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
@@ -41,6 +47,8 @@ const steps = [
   { n: "03", title: "Build & test.", desc: "We develop on a staging environment, run cross-browser and mobile testing, optimise Core Web Vitals, and set up analytics." },
   { n: "04", title: "Launch & handoff.", desc: "We go live, submit your sitemap to Google, complete technical SEO setup, and give you full ownership of the codebase." },
 ];
+
+const tags = ["Next.js", "React", "WordPress", "Webflow"];
 
 const includes = [
   "Custom design tailored to your brand and US audience",
@@ -94,31 +102,46 @@ export default function WebDesignPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd(faqs)) }}
+      />
 
       {/* ── Hero ── */}
       <section className="bg-card pt-20 pb-16 px-6 border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Services", href: "/services" }, { label: "Web Design & Development" }]} />
-          <p className="eyebrow mb-3">Web Design & Development</p>
+          <Eyebrow className="mb-3">Web Design & Development</Eyebrow>
           <h1 className="display-xl text-title mb-4 max-w-2xl">Websites built to convert US visitors into customers.</h1>
           <p className="text-[18px] leading-7 text-prose max-w-xl mb-5">
             Custom websites that look professional, load fast, and are built specifically for US audiences. From a clean 5-page business site to a full content-driven growth platform.
           </p>
-          <p className="text-[16px] leading-7 text-prose max-w-2xl mb-8">
-            We build with Next.js, the framework used by some of the fastest sites on the web, for PageSpeed scores of 90–99 on mobile. Every site includes complete technical SEO setup, structured data, and a Google Analytics integration. You own the code. No platform lock-in, no recurring platform fees, no builder subscriptions.
-          </p>
-          <Link href="/contact" className="h-12 px-7 inline-flex items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-[#171717] text-[15px] font-medium hover:opacity-85 transition-opacity">
+          <div className="grid lg:grid-cols-2 gap-10 items-start mb-8">
+            <DoodleArrow className="w-20 h-24 text-faint" />
+            <div>
+              <p className="text-[16px] leading-7 text-prose mb-6">
+                We build with Next.js, the framework used by some of the fastest sites on the web, for PageSpeed scores of 90–99 on mobile. Every site includes complete technical SEO setup, structured data, and a Google Analytics integration. You own the code. No platform lock-in, no recurring platform fees, no builder subscriptions.
+              </p>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+                {tags.map((tag) => (
+                  <span key={tag} className="text-[14px] font-medium text-title">+ {tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <Link href="/contact" className="h-12 px-7 inline-flex items-center rounded-full bg-accent-solid text-white text-[15px] font-semibold hover:opacity-90 transition-opacity">
             Get a free quote
           </Link>
         </div>
       </section>
 
-      {/* ── Includes + Pricing ── */}
+      {/* ── Main content + sidebar ── */}
       <section className="bg-surface py-20 px-6">
-        <div className="max-w-350 mx-auto grid md:grid-cols-2 gap-12 items-start">
-          <div>
+        <div className="max-w-350 mx-auto grid lg:grid-cols-3 gap-12 items-start">
+          {/* Main column */}
+          <div className="lg:col-span-2">
             <h2 className="display-lg text-title mb-8">What&apos;s included.</h2>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-3 mb-16">
               {includes.map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <Check size={15} className="text-link mt-0.5 shrink-0" />
@@ -126,31 +149,49 @@ export default function WebDesignPage() {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="bg-invert rounded-xl p-8 shadow-card-lg">
-            <p className="eyebrow text-[#555] mb-4">Starting from</p>
-            <p className="display-xl text-on-invert mb-1">$299</p>
-            <p className="text-[14px] text-[#888] mb-4">one-time, no hidden fees</p>
-            <div className="border-t border-[#333] pt-4 mb-6 space-y-2">
-              <div className="flex justify-between text-[13px]">
-                <span className="text-[#888]">Starter (5 pages)</span>
-                <span className="text-on-invert font-semibold">$299</span>
-              </div>
-              <div className="flex justify-between text-[13px]">
-                <span className="text-[#888]">Growth (12 pages)</span>
-                <span className="text-on-invert font-semibold">$499</span>
-              </div>
-              <div className="flex justify-between text-[13px]">
-                <span className="text-[#888]">Enterprise</span>
-                <span className="text-on-invert font-semibold">Custom</span>
-              </div>
+
+            <div className="rounded-3xl overflow-hidden mb-16">
+              <Image
+                src="/images/services/web-design.webp"
+                alt="Website design planning and wireframing"
+                width={1400}
+                height={1000}
+                className="w-full object-cover"
+              />
             </div>
-            <p className="text-[13px] leading-5 text-[#888] mb-8">
-              All projects: 50% upfront, 50% on delivery. No surprises.
-            </p>
-            <Link href="/contact" className="h-12 w-full flex items-center justify-center rounded-full bg-white text-[#171717] text-[15px] font-medium hover:bg-[#f0f0f0] transition-colors">
-              Start your project
-            </Link>
+
+            <h2 className="display-lg text-title mb-8">Frequently asked questions.</h2>
+            <FAQAccordion items={faqs} />
+          </div>
+
+          {/* Sidebar */}
+          <div className="lg:sticky lg:top-24 flex flex-col gap-8">
+            <ServicesSidebarNav currentHref="/services/web-design" />
+            <div className="bg-invert rounded-xl p-8 shadow-card-lg">
+              <p className="eyebrow text-[#555] mb-4">Starting from</p>
+              <p className="display-xl text-on-invert mb-1">$299</p>
+              <p className="text-[14px] text-[#888] mb-4">one-time, no hidden fees</p>
+              <div className="border-t border-[#333] pt-4 mb-6 space-y-2">
+                <div className="flex justify-between text-[13px]">
+                  <span className="text-[#888]">Starter (5 pages)</span>
+                  <span className="text-on-invert font-semibold">$299</span>
+                </div>
+                <div className="flex justify-between text-[13px]">
+                  <span className="text-[#888]">Growth (12 pages)</span>
+                  <span className="text-on-invert font-semibold">$499</span>
+                </div>
+                <div className="flex justify-between text-[13px]">
+                  <span className="text-[#888]">Enterprise</span>
+                  <span className="text-on-invert font-semibold">Custom</span>
+                </div>
+              </div>
+              <p className="text-[13px] leading-5 text-[#888] mb-8">
+                All projects: 50% upfront, 50% on delivery. No surprises.
+              </p>
+              <Link href="/contact" className="h-12 w-full flex items-center justify-center rounded-full bg-white text-[#171717] text-[15px] font-medium hover:bg-[#f0f0f0] transition-colors">
+                Start your project
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -183,21 +224,6 @@ export default function WebDesignPage() {
                 <p className="eyebrow mb-3">{n}</p>
                 <h3 className="display-sm text-title mb-2">{title}</h3>
                 <p className="text-[14px] leading-6 text-prose">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── FAQ ── */}
-      <section className="bg-card py-20 px-6">
-        <div className="max-w-190 mx-auto">
-          <h2 className="display-lg text-title mb-12 text-center">Frequently asked questions.</h2>
-          <div className="flex flex-col divide-y divide-line">
-            {faqs.map(({ q, a }) => (
-              <div key={q} className="py-6">
-                <p className="text-[16px] font-semibold text-title mb-2">{q}</p>
-                <p className="text-[14px] leading-6 text-prose">{a}</p>
               </div>
             ))}
           </div>

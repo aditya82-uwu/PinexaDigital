@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Code2, Workflow, ShoppingBag, ShieldCheck, ArrowRight, Check } from "lucide-react";
-import { SITE, siteUrl } from "@/lib/site-config";
+import { SITE, pageMetadata } from "@/lib/site-config";
 import Breadcrumb from "@/components/ui/Breadcrumb";
+import Eyebrow from "@/components/ui/Eyebrow";
+import { faqPageJsonLd } from "@/lib/faq-schema";
 
-export const metadata: Metadata = {
-  title: "Web Design, SEO & E-commerce Services for US Businesses",
+export const metadata: Metadata = pageMetadata({
+  title: "Web Design, SEO & E-commerce Services",
   description: `Explore ${SITE.brandName}'s full range of services: custom web design, SEO, e-commerce development, and monthly maintenance. Fixed pricing, fast delivery, built for US businesses.`,
-  alternates: { canonical: siteUrl("/services") },
-};
+  path: "/services",
+});
 
 const services = [
   {
@@ -107,11 +109,16 @@ const faqs = [
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd(faqs)) }}
+      />
+
       {/* ── Hero ── */}
       <section className="bg-card pt-20 pb-16 px-6 text-center border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Services" }]} />
-          <p className="eyebrow mb-3">Services</p>
+          <div className="flex justify-center"><Eyebrow className="mb-3">Services</Eyebrow></div>
           <h1 className="display-xl text-title mb-4">Everything you need to grow online.</h1>
           <p className="text-[18px] leading-7 text-prose max-w-xl mx-auto mb-4">
             From first impression to ongoing growth, we cover every part of your web presence, built specifically for the US market.
@@ -125,12 +132,15 @@ export default function ServicesPage() {
       {/* ── Services ── */}
       <section className="bg-surface py-20 px-6">
         <div className="max-w-350 mx-auto space-y-6">
-          {services.map(({ icon: Icon, title, shortDesc, fullDesc, href, tags, gradient, includes }) => (
+          {services.map(({ icon: Icon, title, shortDesc, fullDesc, href, tags, gradient, includes }, i) => (
             <div key={href} className="bg-card rounded-xl shadow-card overflow-hidden">
               <div className="grid md:grid-cols-[1fr_280px]">
                 {/* Left: content */}
-                <div className="p-8">
-                  <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${gradient} flex items-center justify-center mb-5`}>
+                <div className="relative p-8">
+                  <span className="absolute top-6 right-8 font-display font-bold text-[72px] leading-none text-accent-solid/10 select-none pointer-events-none">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className={`relative w-12 h-12 rounded-xl bg-linear-to-br ${gradient} flex items-center justify-center mb-5`}>
                     <Icon size={22} className="text-white" strokeWidth={1.8} />
                   </div>
                   <h2 className="display-md text-title mb-2">{title}</h2>

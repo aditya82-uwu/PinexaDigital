@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Jost, Outfit } from "next/font/google";
+import { Sora, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SITE, siteUrl } from "@/lib/site-config";
 import Navbar from "@/components/layout/Navbar";
@@ -7,17 +7,17 @@ import Footer from "@/components/layout/Footer";
 import FloatingContact from "@/components/layout/FloatingContact";
 import ThemeProvider from "./ThemeProvider";
 
-const jost = Jost({
-  variable: "--font-jost",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -109,7 +109,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${jost.variable} ${outfit.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${sora.variable} ${plusJakarta.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

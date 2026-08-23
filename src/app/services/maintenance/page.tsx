@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check } from "lucide-react";
+import Image from "next/image";
 import Breadcrumb from "@/components/ui/Breadcrumb";
-import { SITE, siteUrl } from "@/lib/site-config";
+import Eyebrow from "@/components/ui/Eyebrow";
+import DoodleArrow from "@/components/ui/DoodleArrow";
+import FAQAccordion from "@/components/ui/FAQAccordion";
+import { faqPageJsonLd } from "@/lib/faq-schema";
+import ServicesSidebarNav from "@/components/ui/ServicesSidebarNav";
+import { SITE, siteUrl, pageMetadata } from "@/lib/site-config";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Website Maintenance & Support Plans",
   description: `Keep your website fast, secure, and up to date with ${SITE.brandName}'s monthly maintenance plans. Starting at $97/month. Updates, backups, monitoring, and priority support.`,
-  alternates: { canonical: siteUrl("/services/maintenance") },
-};
+  path: "/services/maintenance",
+});
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
@@ -34,6 +40,8 @@ const serviceJsonLd = {
     },
   },
 };
+
+const tags = ["Updates", "Backups", "Monitoring", "Support"];
 
 const plans = [
   {
@@ -128,20 +136,34 @@ export default function MaintenancePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd(faqs)) }}
+      />
 
       {/* ── Hero ── */}
       <section className="bg-card pt-20 pb-16 px-6 border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Services", href: "/services" }, { label: "Maintenance" }]} />
-          <p className="eyebrow mb-3">Website Maintenance</p>
+          <Eyebrow className="mb-3">Website Maintenance</Eyebrow>
           <h1 className="display-xl text-title mb-4 max-w-2xl">Your website, always fast and always secure.</h1>
           <p className="text-[18px] leading-7 text-prose max-w-xl mb-5">
             Monthly plans so you never worry about security patches, plugin updates, performance drift, or broken features again.
           </p>
-          <p className="text-[16px] leading-7 text-prose max-w-2xl mb-8">
-            A website is not a one-time project. It&apos;s an ongoing business asset that needs care to stay valuable. Software updates, security patches, performance monitoring, and regular content freshness aren&apos;t optional for a site that represents your business to thousands of potential customers. Our maintenance plans handle all of it, so you can focus on running your business.
-          </p>
-          <Link href="/contact" className="h-12 px-7 inline-flex items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-[#171717] text-[15px] font-medium hover:opacity-85 transition-opacity">
+          <div className="grid lg:grid-cols-2 gap-10 items-start mb-8">
+            <DoodleArrow className="w-20 h-24 text-faint" />
+            <div>
+              <p className="text-[16px] leading-7 text-prose mb-6">
+                A website is not a one-time project. It&apos;s an ongoing business asset that needs care to stay valuable. Software updates, security patches, performance monitoring, and regular content freshness aren&apos;t optional for a site that represents your business to thousands of potential customers.
+              </p>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+                {tags.map((tag) => (
+                  <span key={tag} className="text-[14px] font-medium text-title">+ {tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <Link href="/contact" className="h-12 px-7 inline-flex items-center rounded-full bg-accent-solid text-white text-[15px] font-semibold hover:opacity-90 transition-opacity">
             View plans
           </Link>
         </div>
@@ -210,17 +232,50 @@ export default function MaintenancePage() {
         </div>
       </section>
 
-      {/* ── FAQ ── */}
+      {/* ── FAQ + sidebar ── */}
       <section className="bg-surface py-20 px-6">
-        <div className="max-w-190 mx-auto">
-          <h2 className="display-lg text-title mb-12 text-center">Frequently asked questions.</h2>
-          <div className="flex flex-col divide-y divide-line">
-            {faqs.map(({ q, a }) => (
-              <div key={q} className="py-6">
-                <p className="text-[16px] font-semibold text-title mb-2">{q}</p>
-                <p className="text-[14px] leading-6 text-prose">{a}</p>
+        <div className="max-w-350 mx-auto grid lg:grid-cols-3 gap-12 items-start">
+          <div className="lg:col-span-2">
+            <div className="rounded-3xl overflow-hidden mb-16">
+              <Image
+                src="/images/services/maintenance.webp"
+                alt="Server infrastructure we monitor for uptime"
+                width={1400}
+                height={1000}
+                className="w-full object-cover"
+              />
+            </div>
+            <h2 className="display-lg text-title mb-8">Frequently asked questions.</h2>
+            <FAQAccordion items={faqs} />
+          </div>
+
+          <div className="lg:sticky lg:top-24 flex flex-col gap-8">
+            <ServicesSidebarNav currentHref="/services/maintenance" />
+            <div className="bg-invert rounded-xl p-8 shadow-card-lg">
+              <p className="eyebrow text-[#555] mb-4">Starting from</p>
+              <p className="display-xl text-on-invert mb-1">$97</p>
+              <p className="text-[14px] text-[#888] mb-4">per month</p>
+              <div className="border-t border-[#333] pt-4 mb-6 space-y-2">
+                <div className="flex justify-between text-[13px]">
+                  <span className="text-[#888]">Basic</span>
+                  <span className="text-on-invert font-semibold">$97/mo</span>
+                </div>
+                <div className="flex justify-between text-[13px]">
+                  <span className="text-[#888]">Pro</span>
+                  <span className="text-on-invert font-semibold">$197/mo</span>
+                </div>
+                <div className="flex justify-between text-[13px]">
+                  <span className="text-[#888]">Agency</span>
+                  <span className="text-on-invert font-semibold">$397/mo</span>
+                </div>
               </div>
-            ))}
+              <p className="text-[13px] leading-5 text-[#888] mb-8">
+                Month-to-month. No contracts, cancel anytime.
+              </p>
+              <Link href="/contact" className="h-12 w-full flex items-center justify-center rounded-full bg-white text-[#171717] text-[15px] font-medium hover:bg-[#f0f0f0] transition-colors">
+                Get started
+              </Link>
+            </div>
           </div>
         </div>
       </section>

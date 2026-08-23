@@ -6,25 +6,31 @@
 /* ── Design tokens: theme-aware (light/dark) ── */
 @theme inline {
   /* Fonts */
-  --font-sans:    var(--font-outfit);
-  --font-display: var(--font-jost);
+  --font-sans:    var(--font-plus-jakarta);
+  --font-display: var(--font-sora);
 
   /* Surfaces */
   --color-surface: var(--bg-surface);
   --color-card:    var(--bg-card);
   --color-invert:  var(--bg-invert);
+  --color-contrast:   var(--bg-contrast);
+  --color-contrast-2: var(--bg-contrast-2);
 
   /* Text */
   --color-title:    var(--fg-title);
   --color-prose:    var(--fg-prose);
   --color-faint:    var(--fg-faint);
   --color-on-invert: var(--fg-on-invert);
+  --color-on-contrast:       var(--fg-on-contrast);
+  --color-on-contrast-faint: var(--fg-on-contrast-faint);
 
   /* Border */
   --color-line: var(--border-line);
+  --color-border-contrast: var(--border-contrast);
 
   /* Accent */
   --color-link: var(--accent-link);
+  --color-accent-solid: var(--accent-solid);
 }
 
 /* ── Light mode (default) ── */
@@ -39,6 +45,14 @@
   --fg-on-invert:  #ffffff;
   --border-line:   #ebebeb;
   --accent-link:   #0F4C3A;
+
+  /* Contrast sections (dark-tech navy bands: capabilities, contact CTA, footer) */
+  --bg-contrast:    #060B1F;
+  --bg-contrast-2:  #0E1B45;
+  --fg-on-contrast:       #F1F4FB;
+  --fg-on-contrast-faint: #8B97BF;
+  --border-contrast: rgba(255,255,255,0.10);
+  --accent-solid: #0B4FBF;
 }
 
 /* ── Dark mode ── */
@@ -53,42 +67,77 @@
   --fg-on-invert:  #ffffff;
   --border-line:   #2a2a2a;
   --accent-link:   #4ADE80;
+
+  /* Contrast sections (dark-tech navy bands: capabilities, contact CTA, footer) */
+  --bg-contrast:    #03060F;
+  --bg-contrast-2:  #081029;
+  --fg-on-contrast:       #F1F4FB;
+  --fg-on-contrast-faint: #7C8AB8;
+  --border-contrast: rgba(255,255,255,0.08);
+  --accent-solid: #3B82F6;
 }
 
 /* ── Base styles ── */
 * { box-sizing: border-box; }
 
+html { scroll-behavior: smooth; }
+
 body {
   background-color: var(--bg-surface);
   color: var(--fg-title);
-  font-family: var(--font-outfit, system-ui, sans-serif);
+  font-family: var(--font-plus-jakarta, system-ui, sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-jost, system-ui, sans-serif);
+  font-family: var(--font-sora, system-ui, sans-serif);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ── Focus visibility (keyboard navigation) ── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-link);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* ── Typography scale ── */
-.display-xl {
-  font-family: var(--font-jost, system-ui, sans-serif);
-  font-size: clamp(36px, 5vw, 56px);
-  font-weight: 700;
+.display-hero {
+  font-family: var(--font-sora, system-ui, sans-serif);
+  font-size: clamp(40px, 6.2vw, 84px);
+  font-weight: 600;
   line-height: 1.05;
-  letter-spacing: -0.04em;
-}
-
-.display-lg {
-  font-family: var(--font-jost, system-ui, sans-serif);
-  font-size: clamp(28px, 3.5vw, 40px);
-  font-weight: 700;
-  line-height: 1.1;
   letter-spacing: -0.03em;
 }
 
+.display-xl {
+  font-family: var(--font-sora, system-ui, sans-serif);
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.display-lg {
+  font-family: var(--font-sora, system-ui, sans-serif);
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
 .display-md {
-  font-family: var(--font-jost, system-ui, sans-serif);
+  font-family: var(--font-sora, system-ui, sans-serif);
   font-size: 24px;
   font-weight: 700;
   line-height: 1.2;
@@ -96,7 +145,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .display-sm {
-  font-family: var(--font-jost, system-ui, sans-serif);
+  font-family: var(--font-sora, system-ui, sans-serif);
   font-size: 20px;
   font-weight: 600;
   line-height: 1.3;
@@ -140,10 +189,26 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Eyebrow label style ── */
 .eyebrow {
-  font-family: var(--font-outfit, system-ui, sans-serif);
+  font-family: var(--font-plus-jakarta, system-ui, sans-serif);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--fg-faint);
+}
+
+/* ── Marquee ticker ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation-play-state: paused;
+  }
 }

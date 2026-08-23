@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 export const SITE = {
   brandName: "PinexaDigital",
   rootDomain: "www.pinexadigital.com",
@@ -13,4 +15,36 @@ export const SITE = {
 
 export function siteUrl(path: string = "") {
   return `https://${SITE.rootDomain}${path}`;
+}
+
+/** Per-page metadata with a real openGraph/twitter override, so a shared link preview reflects the actual page instead of falling back to the root layout's homepage defaults. */
+export function pageMetadata({
+  title,
+  description,
+  path,
+}: {
+  title: string;
+  description: string;
+  path: string;
+}): Metadata {
+  const url = siteUrl(path);
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "website",
+      url,
+      title,
+      description,
+      siteName: SITE.brandName,
+      images: [{ url: "/logo.png", width: 512, height: 512, alt: `${SITE.brandName} Web Agency` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/logo.png"],
+    },
+  };
 }

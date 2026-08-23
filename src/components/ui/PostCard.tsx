@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import type { Post } from "@/lib/blog-data";
 
@@ -6,8 +7,17 @@ export default function PostCard({ post }: { post: Post }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group bg-card rounded-xl p-6 shadow-card hover:shadow-card-lg transition-all flex flex-col"
+      className="group bg-card rounded-xl overflow-hidden shadow-card hover:shadow-card-lg transition-all flex flex-col"
     >
+      <div className="relative h-44 overflow-hidden">
+        <Image
+          src={post.image}
+          alt={post.title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+      <div className="p-6 flex flex-col flex-1">
       <div className="flex items-center gap-2 mb-4">
         <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${post.accent}`}>
           {post.category}
@@ -27,6 +37,7 @@ export default function PostCard({ post }: { post: Post }) {
           })}
         </p>
         <ArrowRight size={14} className="text-link group-hover:translate-x-1 transition-transform" />
+      </div>
       </div>
     </Link>
   );

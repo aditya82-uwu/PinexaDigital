@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site-config";
+import DottedWaveBackground from "@/components/ui/DottedWaveBackground";
 
 const cols = [
   {
@@ -39,12 +40,13 @@ const cols = [
 
 export default function Footer() {
   return (
-    <footer className="bg-card border-t border-line">
-      <div className="max-w-[1400px] mx-auto px-6 py-16">
+    <footer className="relative bg-contrast overflow-hidden">
+      <DottedWaveBackground />
+      <div className="relative max-w-[1400px] mx-auto px-6 py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {cols.map((col) => (
             <div key={col.label}>
-              <p className="eyebrow mb-4">{col.label}</p>
+              <p className="eyebrow mb-4 text-on-contrast-faint">{col.label}</p>
               <ul className="flex flex-col gap-2">
                 {col.links.map((l) => (
                   <li key={l.href}>
@@ -52,7 +54,7 @@ export default function Footer() {
                       href={l.href}
                       target={l.href.startsWith("http") ? "_blank" : undefined}
                       rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="text-[14px] text-prose hover:text-title transition-colors"
+                      className="text-[14px] text-on-contrast-faint hover:text-on-contrast transition-colors"
                     >
                       {l.label}
                     </Link>
@@ -63,9 +65,9 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-16 pt-8 border-t border-line flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <span className="font-display font-bold text-[15px] text-title">{SITE.brandName}</span>
-          <p className="text-[12px] text-faint">
+        <div className="mt-16 pt-8 border-t border-border-contrast flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <span className="font-display font-bold text-[15px] text-on-contrast">{SITE.brandName}</span>
+          <p className="text-[12px] text-on-contrast-faint">
             © {new Date().getFullYear()} {SITE.brandName}. All rights reserved.
           </p>
         </div>

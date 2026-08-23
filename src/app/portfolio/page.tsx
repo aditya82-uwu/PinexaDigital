@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ExternalLink, ArrowRight, TrendingUp } from "lucide-react";
-import { SITE, siteUrl } from "@/lib/site-config";
+import { ExternalLink, ArrowRight } from "lucide-react";
+import { SITE, pageMetadata } from "@/lib/site-config";
 import Breadcrumb from "@/components/ui/Breadcrumb";
+import Eyebrow from "@/components/ui/Eyebrow";
+import CircleArrowLink from "@/components/ui/CircleArrowLink";
 
-export const metadata: Metadata = {
-  title: "Portfolio & Live Demos | See Our Work",
+export const metadata: Metadata = pageMetadata({
+  title: "Portfolio & Live Demos – See Our Work",
   description: `Browse ${SITE.brandName}'s live website demos across industries, including gyms, restaurants, hotels, clinics, law firms, and more.`,
-  alternates: { canonical: siteUrl("/portfolio") },
-};
+  path: "/portfolio",
+});
 
 /* ── Demo sites ── */
 const demos = [
@@ -119,16 +121,6 @@ const demos = [
   },
 ];
 
-/* ── Past client results ── */
-const results = [
-  { title: "Austin Property Group",    result: "+40% organic traffic", category: "Real Estate" },
-  { title: "Pacific Wellness Studio",  result: "3× online bookings",   category: "Health" },
-  { title: "Brooklyn Home Goods",      result: "2× e-commerce revenue",category: "E-commerce" },
-  { title: "Coastal Legal Partners",   result: "#1 keyword ranking",   category: "Legal" },
-  { title: "Meridian Consulting",      result: "60% more demo requests",category: "B2B" },
-  { title: "Summit Outdoor Gear",      result: "PageSpeed 42 → 97",    category: "E-commerce" },
-];
-
 /* ── Browser-style preview card ── */
 function PreviewCard({ demo }: { demo: (typeof demos)[0] }) {
   return (
@@ -203,14 +195,7 @@ function PreviewCard({ demo }: { demo: (typeof demos)[0] }) {
         </div>
         <h3 className="display-sm text-title mb-3">{demo.title}</h3>
         <p className="text-[12px] leading-5 text-prose mb-4">{demo.desc}</p>
-        <a
-          href={demo.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-[13px] font-medium text-link hover:underline"
-        >
-          Open live demo <ExternalLink size={12} />
-        </a>
+        <CircleArrowLink href={demo.url} label="Open live demo" direction="up-right" external />
       </div>
     </div>
   );
@@ -224,7 +209,7 @@ export default function PortfolioPage() {
       <section className="bg-card pt-20 pb-16 px-6 text-center border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Portfolio" }]} />
-          <p className="eyebrow mb-3">Live Demo Showcase</p>
+          <div className="flex justify-center"><Eyebrow className="mb-3">Live Demo Showcase</Eyebrow></div>
           <h1 className="display-xl text-title mb-4">See exactly what we build.</h1>
           <p className="text-[18px] leading-7 text-prose max-w-lg mx-auto">
             Click any card to preview a live website we&apos;ve built for that industry, then imagine your brand in its place.
@@ -237,7 +222,7 @@ export default function PortfolioPage() {
         <div className="max-w-350 mx-auto">
           <div className="flex items-center justify-between mb-10">
             <div>
-              <p className="eyebrow mb-1">Industry Demos</p>
+              <Eyebrow className="mb-1">Industry Demos</Eyebrow>
               <h2 className="display-lg text-title">{demos.length} live websites, ready to preview.</h2>
             </div>
             <span className="hidden md:block text-[13px] text-faint">Hover a card → click Live Preview</span>
@@ -250,33 +235,6 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
-
-      {/* Client results strip (hidden until we have real, verifiable client results) */}
-      {false && (
-        <section className="bg-card py-20 px-6 border-t border-line">
-          <div className="max-w-350 mx-auto">
-            <div className="text-center mb-12">
-              <p className="eyebrow mb-3">Client Results</p>
-              <h2 className="display-lg text-title">Real projects, real numbers.</h2>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {results.map(({ title, result, category }) => (
-                <div key={title} className="bg-surface rounded-xl p-5 shadow-card flex items-start gap-4">
-                  <div className="w-9 h-9 rounded-lg bg-link/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <TrendingUp size={15} className="text-link" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-semibold tracking-widest uppercase text-faint block mb-1">{category}</span>
-                    <p className="text-[14px] font-semibold text-title leading-tight mb-1">{title}</p>
-                    <p className="text-[13px] font-medium text-link">{result}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* CTA */}
       <section className="bg-invert py-20 px-6 text-center">

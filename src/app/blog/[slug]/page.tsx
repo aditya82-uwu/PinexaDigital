@@ -202,7 +202,7 @@ export default async function BlogPostPage({
       />
 
       {/* ── Hero ── */}
-      <section className="bg-card pt-20 pb-10 px-6 border-b border-line">
+      <section className="bg-card pt-12 md:pt-20 pb-10 px-6 border-b border-line">
         <div className="max-w-350 mx-auto grid lg:grid-cols-[1fr_56px] gap-8">
           <div className="max-w-195">
             <Breadcrumb
@@ -233,12 +233,16 @@ export default async function BlogPostPage({
                   {formattedDate}
                 </p>
               </div>
-              {/* Mobile share row (rail is desktop-only) */}
-              <div className="flex lg:hidden items-center gap-2 ml-auto">
-                <ShareIcon href={shareLinks.x} label="Share on X" glyph="X" />
-                <ShareIcon href={shareLinks.linkedin} label="Share on LinkedIn" glyph="in" />
-                <ShareIcon href={shareLinks.facebook} label="Share on Facebook" glyph="f" />
-              </div>
+            </div>
+            {/*
+              Mobile share row (rail is desktop-only): on its own line, not right-aligned,
+              so it never lands in the same bottom-right screen corner as the fixed
+              FloatingContact button regardless of scroll position.
+            */}
+            <div className="flex lg:hidden items-center gap-2 mt-4">
+              <ShareIcon href={shareLinks.x} label="Share on X" glyph="X" />
+              <ShareIcon href={shareLinks.linkedin} label="Share on LinkedIn" glyph="in" />
+              <ShareIcon href={shareLinks.facebook} label="Share on Facebook" glyph="f" />
             </div>
           </div>
 

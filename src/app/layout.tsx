@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    apple: "/apple-touch-icon.png",
   },
   robots: {
     index: true,
@@ -81,14 +81,15 @@ const jsonLd = {
       publisher: { "@id": `${siteUrl()}/#organization` },
     },
     {
-      "@type": "ProfessionalService",
+      /* Organization (not ProfessionalService/LocalBusiness): PinexaDigital is a remote
+         agency with no physical address or defined local service area, so a LocalBusiness
+         subtype would misrepresent the business to search engines. */
+      "@type": "Organization",
       "@id": `${siteUrl()}/#organization`,
       name: SITE.brandName,
       url: siteUrl(),
       description: SITE.description,
-      telephone: SITE.phone,
       email: SITE.emailContact,
-      priceRange: "$$",
       areaServed: { "@type": "Country", name: "United States" },
       serviceType: ["Web Design", "Web Development", "CRM Automation", "E-commerce"],
       logo: {
@@ -101,6 +102,14 @@ const jsonLd = {
         "https://www.linkedin.com/in/pinexa-digital-064059420",
         "https://www.instagram.com/pinexadigital/",
       ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: SITE.phone,
+        contactType: "sales",
+        areaServed: "US",
+        availableLanguage: ["English"],
+        email: SITE.emailContact,
+      },
       // aggregateRating and review removed until we have real, verifiable client reviews.
       // Fabricated review schema violates Google's structured data policy and FTC endorsement guides.
     },

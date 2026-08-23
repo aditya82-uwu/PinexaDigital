@@ -1472,7 +1472,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "If you're still unsure, tell us about your products and goals and we'll give you an honest recommendation, including whether you even need us or whether Shopify's own setup wizard will serve you perfectly well.",
+        v: "If you'd rather work through a specific scenario than a full feature table, [we've also written up five real business situations and which platform fits each one](/blog/shopify-vs-woocommerce-which-is-right-for-you). And if you're still unsure, [tell us about your products and goals](/services/ecommerce) and we'll give you an honest recommendation, including whether you even need us or whether Shopify's own setup wizard will serve you perfectly well.",
       },
     ],
   },

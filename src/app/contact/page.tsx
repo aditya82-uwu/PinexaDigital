@@ -73,8 +73,10 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Right */}
-        <ContactForm />
+        {/* Right — shown first on mobile so the form doesn't require scrolling past the trust/contact info */}
+        <div className="order-first md:order-0">
+          <ContactForm />
+        </div>
       </div>
     </section>
   );

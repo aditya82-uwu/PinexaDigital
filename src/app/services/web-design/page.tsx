@@ -22,11 +22,7 @@ const serviceJsonLd = {
   name: "Web Design & Development",
   description: "Custom websites built for speed, SEO, and US audiences. Starting from $299.",
   url: siteUrl("/services/web-design"),
-  provider: {
-    "@type": "ProfessionalService",
-    name: SITE.brandName,
-    url: siteUrl(),
-  },
+  provider: { "@id": `${siteUrl()}/#organization` },
   areaServed: { "@type": "Country", name: "United States" },
   offers: {
     "@type": "Offer",
@@ -108,7 +104,7 @@ export default function WebDesignPage() {
       />
 
       {/* ── Hero ── */}
-      <section className="bg-card pt-20 pb-16 px-6 border-b border-line">
+      <section className="bg-card pt-12 md:pt-20 pb-16 px-6 border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Services", href: "/services" }, { label: "Web Design & Development" }]} />
           <Eyebrow className="mb-3">Web Design & Development</Eyebrow>

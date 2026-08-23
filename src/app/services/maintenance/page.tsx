@@ -22,11 +22,7 @@ const serviceJsonLd = {
   name: "Website Maintenance & Support",
   description: "Monthly website maintenance plans: security, updates, backups, and support. Starting at $97/month.",
   url: siteUrl("/services/maintenance"),
-  provider: {
-    "@type": "ProfessionalService",
-    name: SITE.brandName,
-    url: siteUrl(),
-  },
+  provider: { "@id": `${siteUrl()}/#organization` },
   areaServed: { "@type": "Country", name: "United States" },
   offers: {
     "@type": "Offer",
@@ -142,7 +138,7 @@ export default function MaintenancePage() {
       />
 
       {/* ── Hero ── */}
-      <section className="bg-card pt-20 pb-16 px-6 border-b border-line">
+      <section className="bg-card pt-12 md:pt-20 pb-16 px-6 border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Services", href: "/services" }, { label: "Maintenance" }]} />
           <Eyebrow className="mb-3">Website Maintenance</Eyebrow>

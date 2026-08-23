@@ -115,7 +115,7 @@ export default function ServicesPage() {
       />
 
       {/* ── Hero ── */}
-      <section className="bg-card pt-20 pb-16 px-6 text-center border-b border-line">
+      <section className="bg-card pt-12 md:pt-20 pb-16 px-6 text-center border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Services" }]} />
           <div className="flex justify-center"><Eyebrow className="mb-3">Services</Eyebrow></div>

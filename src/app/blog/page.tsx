@@ -19,11 +19,7 @@ const blogJsonLd = {
   name: "PinexaDigital Blog",
   url: siteUrl("/blog"),
   description: `${SITE.brandName}'s blog offers actionable tips on web design, SEO, e-commerce, and growing your business online in the US market.`,
-  publisher: {
-    "@type": "ProfessionalService",
-    name: SITE.brandName,
-    url: siteUrl(),
-  },
+  publisher: { "@id": `${siteUrl()}/#organization` },
 };
 
 export default function BlogPage() {
@@ -35,7 +31,7 @@ export default function BlogPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
       />
 
-      <section className="bg-card pt-20 pb-16 px-6 text-center border-b border-line">
+      <section className="bg-card pt-12 md:pt-20 pb-16 px-6 text-center border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Blog" }]} />
           <div className="flex justify-center"><Eyebrow className="mb-3">Blog</Eyebrow></div>

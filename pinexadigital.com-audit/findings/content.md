@@ -1,89 +1,86 @@
 # Content Quality & E-E-A-T Findings — pinexadigital.com
-**Score: 48/100** | Audit date: 2026-07-04
-**Note:** Written directly by the audit orchestrator after the delegated content-quality subagent failed to complete three times in a row (stalled mid-task without writing this file). Data below is drawn from direct fetches of all 11 sitemap pages plus one live blog post, via render_page.py + parse_html.py.
 
----
+**Score: 74/100** | Audit date: 2026-08-23
+**Note:** This supersedes the stale 2026-07-04 audit (which itself was a fallback write-up after three prior subagent runs stalled without saving). The site has been rebuilt since (git commit `f5cee20 "new website"`). This pass was done via direct fetch + trafilatura extraction of `/about`, all 4 service pages, `/pricing`, `/portfolio`, and 3 representative blog posts (`how-much-does-a-website-cost`, `how-to-choose-a-web-design-agency`, `seo-for-small-business-us`), plus a raw-HTML check for author/schema bylines.
 
 ## Summary
 
-Content depth has improved substantially since the 2026-06-29 audit (was 28/100): most pages now carry solid word counts, the blog is live with real long-form posts (previously all 404), and pricing is transparent. The remaining gaps are almost entirely E-E-A-T (trust/authority) issues rather than thin-content issues: unverifiable testimonials embedded in schema, zero named human authorship anywhere, a portfolio page with no actual project images, and a US-targeting site whose footer phone number is Indian (+91 78198 32001, live `tel:` link on every page).
+Content quality here is genuinely above average for an agency site: copy is specific, numeric, and low on marketing fluff (concrete pricing, PageSpeed numbers, delivery timelines, named tools like n8n/Zapier/HubSpot). Service pages don't read as templated boilerplate — each has distinct structure and depth (450–550 words) rather than one generic "we do X" paragraph copy-pasted four times. Blog posts sampled are substantial (900–1,225 words), structured for skimmability, and written with an opinionated, specific voice ("A written testimonial is curated and, occasionally, entirely fabricated") that reads as more trustworthy than generic AI-agency filler.
 
----
-
-## Word Counts (via parse_html.py, live 2026-07-04)
-
-| Page | Words | Assessment |
-|---|---|---|
-| Homepage | 468 | Adequate |
-| /about | 787 | Good |
-| /services | 1,001 | Good |
-| /services/web-design | 804 | Good |
-| /services/seo | 868 | Good |
-| /services/ecommerce | 828 | Good |
-| /services/maintenance | 722 | Good |
-| /pricing | 250 | **Thin** — just tier cards, no supporting narrative |
-| /portfolio | 335 | **Thin**, and see Critical #2 below |
-| /blog (index) | 263 | Adequate for a listing page |
-| /contact | 88 | Fine for a contact page |
-| /blog/seo-for-small-business-us (sample post) | 903 | Good — real long-form content, `article:published_time` present |
-
----
+The main weaknesses are all E-E-A-T / trust signals rather than writing quality: every page is authored by "PinexaDigital" the organization, never a named person; the `/portfolio` page explicitly frames its 8 site examples as demos to "imagine your brand in its place" rather than real client work, meaning there are currently **zero real case studies, client names, or testimonials** anywhere on the site; and the `/about` page's confident claims of experience and process carry no verifiable proof points (no client count, no years-in-business figure, no team size or names).
 
 ## What Works
 
-- Blog posts are real, substantive (900+ words sampled), dated, and carry `BlogPosting`/`BreadcrumbList` schema (cross-ref `schema.md`) — the prior audit's "blog is 404" finding is fully resolved.
-- Transparent, specific pricing ($997 / $2,497 / Custom tiers) with FAQ block — rare and valuable trust signal for a service business.
-- Service sub-pages are well-differentiated (700-1000 words each, not template-duplicated) with numbered process steps.
-- Clean breadcrumb navigation and consistent metadata (title/description/OG/canonical) present on every page checked.
+- Service pages (`/services/web-design`, `/crm-automation`, `/ecommerce`, `/maintenance`) are differentiated, not duplicated — each targets a distinct audience segment and includes its own FAQ, pricing anchor, and "who this is for" section
+- Concrete, checkable claims throughout: "$299 Starter / $499 Growth," "PageSpeed 90–99," "2–3 week delivery," "24hr response time" — far more specific and citable than typical agency copy
+- Blog content answers real buyer questions directly and structures answers for extraction (numbered questions, "good sign / red flag" pairs, decision tables) — strong AI-citation and featured-snippet shape
+- `/pricing` FAQ directly and honestly answers objection-handling questions (payment plans, post-launch support, "do you work with US businesses only?")
+- Voice is consistent and opinionated rather than generic ("A beautiful website that doesn't generate leads is expensive art") — reads as written by people who understand the business, not template-filled
 
----
+## Findings
 
-## Critical
+### 1. No named human authors anywhere on the site
+**Severity: High**
+Every blog post's `BlogPosting` schema (verified in raw HTML on `/blog/how-to-choose-a-web-design-agency`) sets `"author":{"@type":"Organization","name":"PinexaDigital"}` — never a `Person`. The `/about` page describes "we" throughout with no founder or team member named. For a site publishing advice that influences real purchasing decisions (web design pricing, agency selection, SEO strategy), Google's E-E-A-T guidance specifically rewards identifiable, credentialed authors. This is the single highest-leverage content fix available.
+**Recommendation:** Add at least one named author (real person, title, short bio, headshot) to blog posts and reference them in `BlogPosting.author` as `Person`. If the team genuinely prefers to stay faceless, at minimum add a founder/leadership bio to `/about` with a real name and credentials.
 
-### 1. Site-wide testimonials/reviews are unverifiable and schema-embedded as fact
-Homepage displays 3 testimonials (Sarah M., James R., Diana L. — first name + last initial only, no company, no photo, no link) that are simultaneously asserted as structured `Review`/`AggregateRating` data (5.0★, 3 reviews) in `layout.tsx`'s site-wide JSON-LD. There is no third-party verification path (no Google/Clutch/Trustpilot review source) for any of them. This is the single biggest authoritativeness/trustworthiness gap on the site — a reader (or Google) has no way to confirm these clients or results exist.
-**Recommendation:** Replace with real, attributable client reviews (full name + company + link, or embedded from a verified platform like Google Business Profile or Clutch) or drop the `Review`/`AggregateRating` schema entirely until real reviews exist — false review markup risks a Google manual action.
+### 2. Portfolio shows demo templates, not real client work — zero case studies or testimonials exist
+**Severity: High**
+`/portfolio` is explicitly framed as a "Live Demo Showcase" — 8 industry template previews with copy like "imagine your brand in its place," not completed client projects. This is honest (it doesn't misrepresent demos as real work), but it means the site currently has **no proof of actual outcomes**: no client names, no before/after results, no testimonial quotes, no case study with numbers. For a site whose own blog post argues "a written testimonial is curated... a 15-minute call with a real client tells you things a quote never will," the site doesn't yet hold itself to that same standard.
+**Recommendation:** As real client projects ship, add a genuine case-study section (client name or industry, problem, outcome, ideally a metric) separate from the demo showcase. Even 2-3 real examples meaningfully changes the trust profile.
 
-### 2. Portfolio page has essentially no actual project imagery
-`parse_html.py` found exactly **one** `<img>` on `/portfolio` — the site logo. A page whose entire purpose is visual proof-of-work ("See exactly what we build") ships with no screenshots of actual client sites. This directly undercuts the "Experience" pillar of E-E-A-T and was independently flagged by the SXO subagent as the top proof-page failure.
-**Recommendation:** Add real screenshots (or high-quality mockups clearly labeled as such) for each of the portfolio entries.
+### 3. About page makes unverified experience claims
+**Severity: Medium**
+`/about` asserts operational maturity ("We've seen too many clients burned by agencies that bill by the hour," established process, principles) without any backing numbers — no "X projects delivered," no founding year, no team size, no location/registration info beyond the phone number and email on `/contact`.
+**Recommendation:** Add concrete, verifiable specifics: years operating, number of projects/clients served, team size, or a founding story with a date. Even modest real numbers outperform confident-but-unverifiable claims.
 
----
+### 4. Process/approach section duplicated near-verbatim between `/about` and `/services/web-design`
+**Severity: Low**
+Both pages describe the same "Discovery call → Strategy/Design → Build, test, launch" sequence in very similar language (e.g., "Full design mockups within 5 business days... You approve before we write a line of code" appears almost identically on both). Not harmful for users (different contexts), but worth a light rewrite pass to avoid the two pages reading as copy-pasted for anyone comparing them directly.
+**Recommendation:** Keep `/about`'s version high-level/philosophical and `/services/web-design`'s version more tactical/specific to avoid near-duplicate phrasing.
 
-## High
+### 5. Blog byline/date is present but author expertise is never established beyond the org name
+**Severity: Info**
+`datePublished`/`dateModified` are correctly set per post (good freshness signal), and the org-level `sameAs` links to LinkedIn/Instagram exist — but nothing connects the content to a demonstrable subject-matter expert. This compounds Finding 1 rather than being a separate defect.
 
-### 3. Zero named human authorship anywhere on the site
-Blog posts use `"author": {"@type": "Organization", "name": "PinexaDigital"}` — no byline, no bio, no headshot, on any of the 6 posts. `/about` describes "a focused team" in the abstract with no named team members. For an agency selling expertise, this is a significant Expertise-signal gap; Google's E-E-A-T guidance specifically rewards identifiable, credentialed authors for advice content (e.g., the SEO and pricing-strategy blog posts).
-**Recommendation:** Add at least one named author with a short bio/credentials to `/about` and attribute blog posts to that person (or a real team member).
+## JSON Category Block
 
-### 4. US-targeting site displays an Indian phone number sitewide
-`+91 78198 32001` appears as a live `tel:` link in the footer of every page (confirmed on home, about, contact, blog, portfolio, pricing, services*) while `areaServed` in schema and all page copy explicitly target "US businesses" / "US customers." A US visitor calling this number pays international rates and gets a signal that undercuts "we understand US customers" positioning stated in testimonials.
-**Recommendation:** Get a US-based number (Google Voice, a VoIP US number, or a toll-free 800 number) for the public-facing footer/contact page, even if the operating team is based in India.
-
----
-
-## Medium
-
-### 5. /pricing is thin relative to purchase-decision weight
-250 words is low for a page that has to carry an entire buying decision. No case studies, no "what's included in each phase" narrative, no risk-reversal/guarantee language beyond the tier cards + FAQ.
-**Recommendation:** Add a short "what happens after you pay" process narrative and at least one linked case study per tier.
-
-### 6. No dedicated author/team page or bios
-Related to #3 — there's no `/team` or `/about#team` section with individual bios, which would reinforce both Expertise and Experience pillars simultaneously.
-**Recommendation:** Low-effort addition: a 3-4 person "who we are" grid on `/about` with real names/roles/photos.
-
----
-
-## Low
-
-### 7. Blog post dates are not chronological / span a wide range
-`article:published_time: 2025-05-15` on the sampled post — cross-ref SXO finding that post dates aren't in chronological order, which can read as backdated/batch-published content rather than an ongoing publishing cadence.
-**Recommendation:** Verify and correct publish dates to reflect actual chronology; consider adding an `updated` date for evergreen posts refreshed later.
-
----
-
-## Data Source & Confidence
-
-Direct HTTP fetch of all 11 sitemap URLs + 1 sample blog post via `render_page.py --mode never --output` (raw HTML) piped through `parse_html.py` for word counts, schema, and image inventory, plus targeted `grep` checks for phone number and author markup. High confidence — this is live, current-state data as of 2026-07-04, not an estimate.
-
-Cross-reference: `schema.md` for the AggregateRating/Review schema-policy risk, `sxo.md` for the portfolio-page proof gap from a searcher-intent angle, `geo.md` for the same testimonial/stat-sourcing gap from an AI-citability angle, `technical.md` for the indexability blockers that make all of this invisible to search/AI crawlers regardless of quality.
+```json
+{
+  "name": "Content Quality",
+  "score": 74,
+  "what_works": [
+    "Differentiated, non-boilerplate service page copy across all 4 service pages",
+    "Specific, checkable claims (pricing, PageSpeed scores, delivery timelines) instead of vague marketing language",
+    "Blog content structured for direct-answer extraction (numbered lists, decision tables, good-sign/red-flag framing)",
+    "Consistent, opinionated brand voice that reads as written by domain experts, not templated AI filler",
+    "Honest FAQ content on /pricing and service pages addressing real objections"
+  ],
+  "findings": [
+    {
+      "title": "No named human authors anywhere on the site",
+      "severity": "High",
+      "description": "BlogPosting.author and all page bylines use Organization type only, never Person, across all sampled blog posts and the /about page.",
+      "recommendation": "Add named author(s) with title/bio to blog posts and set BlogPosting.author to Person; add founder/leadership names to /about."
+    },
+    {
+      "title": "Portfolio shows demo templates, not real client work — no case studies or testimonials exist",
+      "severity": "High",
+      "description": "/portfolio explicitly presents 8 industry demo templates ('imagine your brand in its place'), and no other page has client names, testimonials, or outcome data.",
+      "recommendation": "Add a real case-study section as client projects ship, with client identity, problem, and measurable outcome."
+    },
+    {
+      "title": "About page makes unverified experience claims",
+      "severity": "Medium",
+      "description": "/about asserts process maturity and past client pain points without any concrete numbers (years operating, project count, team size).",
+      "recommendation": "Add specific, verifiable proof points to /about — founding year, project count, or team size."
+    },
+    {
+      "title": "Process description duplicated near-verbatim between /about and /services/web-design",
+      "severity": "Low",
+      "description": "The Discovery/Design/Build process narrative is repeated in very similar phrasing on both pages.",
+      "recommendation": "Differentiate tone/detail level between the two instances to reduce near-duplicate phrasing."
+    }
+  ]
+}
+```

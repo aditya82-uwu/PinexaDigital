@@ -108,7 +108,7 @@ export default function AboutPage() {
       />
 
       {/* ── Hero ── */}
-      <section className="bg-card pt-20 pb-16 px-6 border-b border-line">
+      <section className="bg-card pt-12 md:pt-20 pb-16 px-6 border-b border-line">
         <div className="max-w-350 mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div>
             <Breadcrumb crumbs={[{ label: "About" }]} />

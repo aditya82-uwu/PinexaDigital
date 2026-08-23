@@ -21,13 +21,13 @@ function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return <div className="w-8 h-8" />;
+  if (!mounted) return <div className="w-11 h-11" />;
 
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       aria-label="Toggle theme"
-      className="w-8 h-8 flex items-center justify-center rounded-full border border-line text-faint hover:text-title hover:border-title transition-colors"
+      className="w-11 h-11 flex items-center justify-center rounded-full border border-line text-faint hover:text-title hover:border-title transition-colors"
     >
       {theme === "dark"
         ? <Sun size={15} strokeWidth={1.8} className="text-amber-400" />
@@ -97,7 +97,7 @@ export default function Navbar() {
           <ThemeToggle />
           <button
             onClick={() => setOpen(!open)}
-            className="w-8 h-8 flex items-center justify-center text-title"
+            className="w-11 h-11 flex items-center justify-center text-title"
             aria-label="Toggle menu"
           >
             {open ? <X size={18} strokeWidth={1.8} /> : <Menu size={18} strokeWidth={1.8} />}

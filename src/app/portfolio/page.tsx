@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ExternalLink, ArrowRight } from "lucide-react";
-import { SITE, pageMetadata } from "@/lib/site-config";
+import { SITE, siteUrl, pageMetadata } from "@/lib/site-config";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Eyebrow from "@/components/ui/Eyebrow";
 import CircleArrowLink from "@/components/ui/CircleArrowLink";
@@ -202,11 +202,33 @@ function PreviewCard({ demo }: { demo: (typeof demos)[0] }) {
 }
 
 /* ── Page ── */
+const portfolioJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "PinexaDigital Industry Demos",
+  itemListElement: demos.map((demo, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "CreativeWork",
+      name: `${demo.title} demo`,
+      about: demo.desc,
+      url: demo.url,
+      creator: { "@id": `${siteUrl()}/#organization` },
+    },
+  })),
+};
+
 export default function PortfolioPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioJsonLd) }}
+      />
+
       {/* Header */}
-      <section className="bg-card pt-20 pb-16 px-6 text-center border-b border-line">
+      <section className="bg-card pt-12 md:pt-20 pb-16 px-6 text-center border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Portfolio" }]} />
           <div className="flex justify-center"><Eyebrow className="mb-3">Live Demo Showcase</Eyebrow></div>

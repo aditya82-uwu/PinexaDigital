@@ -1,188 +1,96 @@
 # Search Experience (SXO) Findings — pinexadigital.com
 
-**SXO Gap Score: 56/100** (separate from the SEO Health Score in `technical.md`) | Audit date: 2026-07-04
+**Score: 76/100** | Audit date: 2026-08-23
+**Note:** This supersedes the stale 2026-07-04 audit, which referenced a `/services/seo` page that no longer exists in the current site structure. Current service pages are: `/services`, `/services/web-design`, `/services/crm-automation`, `/services/ecommerce`, `/services/maintenance`, plus `/pricing` and `/portfolio`.
 
----
+## Method
 
-## Summary
+For each key commercial page, this reads the likely target keyword's SERP backwards: what page format/content does Google typically reward for that query, and does PinexaDigital's actual page match it? Analysis is based on full page content already extracted (see `content.md`) plus general knowledge of SERP patterns for these query types.
 
-PinexaDigital's commercial pages (`/`, `/services/web-design`, `/services/seo`, `/pricing`) are **structurally close** to the page types Google rewards for their target keywords — they already have process breakdowns, FAQs, tiered pricing, and testimonials, which many competitors lack. The gap is not "wrong page type," it is **thin proof and missing price anchors at the exact moments searchers compare options**:
+## Page-by-Page Analysis
 
-1. **Every one of the 4 keywords analyzed shows a directory/listicle ("Top 10 agencies", "Best SEO companies") competitor as a top-10 result** (40–70% of the SERP), yet the site has zero comparison or "why us vs. other agencies" content anywhere.
-2. **"SEO agency for small business" searchers see explicit monthly price anchors** (e.g. "$499/mo") in competing snippets — PinexaDigital shows no SEO retainer price at all, only one-time web-design package prices.
-3. **The Portfolio page — the site's proof-of-work page — contains no images of the work it describes.** Only the logo renders; the 8 "live demo" cards and 6 client-result stats are text-only.
-4. The site is currently **fully de-indexed** (robots.txt `Disallow: /` + global `noindex`, per `technical.md` items #1–#2). Every finding below is prospective — it describes what will matter once crawlability is fixed, not what is currently costing rankings, since there are currently no rankings to lose.
+### Homepage → "web design agency for small business" / "US web design agency"
+**What Google rewards:** Clear value prop above the fold, credibility signals (client logos, results, reviews), obvious next-step CTA, fast load.
+**User stories:** (1) "I'm a small business owner who typed this because my current site embarrasses me — I want to know fast if this agency 'gets' businesses like mine." (2) "I'm comparison-shopping 3 agencies in open tabs — I want pricing and process visible without a sales call."
+**Score: 8/10.** Headline ("We build websites that win US clients") and sub-copy answer story #1 directly. Pricing and "Fixed Price / No hidden fees" badges answer story #2 without gatekeeping behind a form. Gap: no visible social proof (logos, review count, "trusted by X businesses") above the fold — see content.md Finding #2 on the absence of real testimonials/case studies sitewide.
 
----
+### `/pricing` → "website design pricing" / "how much does a website cost"
+**What Google rewards:** Transparent numbers, tiered comparison, FAQ addressing objections (hidden fees, what's included, payment terms).
+**User stories:** "I want a number before I talk to anyone, and I want to know what's NOT included so I'm not surprised later."
+**Score: 9/10.** Three clear tiers with itemized inclusions, explicit "no hourly billing," and an FAQ directly answering payment plans and post-launch costs. This page matches the rewarded format closely — one of the strongest pages on the site.
 
-## Page Inventory & Type Classification (all 11 pages)
+### `/services/web-design` → "custom website design US business"
+**What Google rewards:** Specifics on tech stack/quality (not just "we design websites"), process transparency, who-it's-for segmentation.
+**User stories:** "I want to know if this agency actually builds fast, modern sites or just uses a template — and whether they're right for a service business like mine specifically."
+**Score: 8/10.** Names the tech stack (Next.js), gives a PageSpeed number (90-99), and explicitly segments by business type (service businesses, B2B, local businesses, new ventures). Matches intent well.
 
-| Page | Taxonomy Type | Word Count | Schema Present | Notes |
-|---|---|---|---|---|
-| `/` (Home) | Landing Page | 468 | WebSite, ProfessionalService, BreadcrumbList | Hero, trust strip, testimonials, process — good structural fit |
-| `/services` | Hybrid (Service + Content) | 1,001 | WebSite, ProfessionalService, BreadcrumbList | Hub page, no FAQ |
-| `/services/web-design` | Service Page | 804 | + Service | Process + FAQ + on-page price ($997) |
-| `/services/seo` | Service Page | 868 | + Service | Process + FAQ, no price shown |
-| `/services/ecommerce` | Service Page | 828 | + Service | Not deep-dived (out of scope for this pass) |
-| `/services/maintenance` | Service Page | 722 | + Service | Not deep-dived |
-| `/pricing` | Landing Page (pricing subtype) | 250 | + ItemList (Offer/price) | 3 tiers, FAQ, no testimonials |
-| `/portfolio` | Service Page (portfolio/proof) | 335 | WebSite, ProfessionalService, BreadcrumbList | **Zero images** despite being the proof page |
-| `/about` | Service Page (About/E-E-A-T) | 787 | WebSite, ProfessionalService, BreadcrumbList | No team photos/credentials found |
-| `/contact` | Landing Page (contact) | 88 | WebSite, ProfessionalService, BreadcrumbList | Minimal, appropriate for type |
-| `/blog` | Blog Post (index) | 263 | + Blog | 6 posts, dates non-chronological (see Finding #9) |
+### `/services/ecommerce` → "ecommerce website development" / "Shopify vs WooCommerce agency"
+**What Google rewards:** Platform-comparison honesty (agencies that only push one platform read as biased), clear "which is right for me" guidance.
+**User stories:** "I don't know if I need Shopify, WooCommerce, or custom — I want an honest comparison, not a sales pitch for whichever platform pays this agency more."
+**Score: 9/10.** The page gives an explicit strengths/trade-offs breakdown for all three options and closes with a direct "if X then Y" decision guide. This is exactly the trust-building format that performs well for comparison-intent queries — notably it structurally matches the two "Shopify vs WooCommerce" blog posts, reinforcing the same message (see cluster.md for the cannibalization risk between those two posts).
 
----
+### `/services/crm-automation` → "CRM automation for small business"
+**What Google rewards:** Naming specific tools (proves real expertise vs. generic "automation" claims), concrete use-case examples.
+**User stories:** "I'm drowning in manual lead follow-up and want to know if this is a $200 fix or a $10,000 project before I reach out."
+**Score: 8/10.** Names n8n/Zapier/Make and specific CRMs (HubSpot, Pipedrive, GoHighLevel, Salesforce, Zoho, Airtable) — strong expertise signal — and gives a concrete price anchor ($200-300 for simple automations). Matches intent well.
 
-## SERP-Backwards Analysis: 4 High-Intent Keywords
+### `/portfolio` → "web design agency portfolio" / brand-check visits
+**What Google rewards:** Real, verifiable work — actual client sites, results.
+**User stories:** "I've narrowed to 2-3 agencies and want to see real proof before I commit."
+**Score: 4/10.** This is the weakest page against intent. Visitors searching or clicking through to a portfolio page expect real client work; this page is explicitly industry demo templates ("imagine your brand in its place"). For the specific job this page needs to do (build final-stage trust before a purchase decision), it currently under-delivers — consistent with the content-quality finding on the absence of case studies sitewide.
 
-Data source: WebSearch (organic snippets/titles only — no PAA, ads, or featured-snippet capture available in this environment; see Limitations).
-
-### 1. Keyword: "web design agency" → mapped to Homepage
-
-- **SERP dominant type:** Landing Page / Service Page hybrid, ~70% confidence. Results: Coalition Technologies, DD.NYC, Americaneagle, e9digital, Big Orange Planet, Dupont Creative — all agency landing pages leading with social proof ("hundreds of clients have raved about Coalition's services on Clutch, Google, Facebook"), portfolio, and awards. Minority: directory/inspiration sites (Awwwards, Built In NYC, Dribbble).
-- **Target page type:** Landing Page — **ALIGNED** structurally (hero, "Trusted by 50+ US businesses," stats, 4-step process, 3 testimonials, CTA).
-- **Verdict:** ALIGNED / MEDIUM gap on authority signals — competitors cite independent, third-party review platforms (Clutch, Google, Facebook); PinexaDigital shows only an on-page schema rating (5.0 from 3 reviews) with no external badge.
-- **Intent-match score: 72/100**
-- **User stories:**
-  1. As a business owner comparing agencies, I want to see why this one beats "hundreds of similar businesses," because I've been burned by generic template sites before, but I'm blocked by the lack of verifiable third-party review badges — the homepage shows only 3 testimonials and a 5.0/3-review count. *(Source: competitor snippet "raved about... on Clutch, Google, Facebook")*
-  2. As a founder researching agencies, I want a credible visual portfolio, because a real screenshot builds more trust than copy, but I'm blocked because the homepage uses generic stock Unsplash photography ("team at work," "design process") instead of real project imagery. *(Source: parsed image alt-text audit)*
-
-### 2. Keyword: "small business website design" → `/services/web-design`
-
-- **SERP dominant type:** Mixed/fragmented (~50%), split between agency Service Pages (Straight North, Clutch Creative) and directory/listicle Comparison pages ("Top 10 Affordable Small Business Web Design Agencies," Clutch.co rankings, DesignRush city lists). Snippets surface concrete numbers: projects "start around $5,000," timeline "6–10 weeks."
-- **Target page type:** Service Page — matches half the SERP; **no comparison/differentiation content** to compete with the listicle half.
-- **Verdict:** MEDIUM mismatch — good process/FAQ/pricing structure, but missing competitive positioning and market-rate context.
-- **Intent-match score: 64/100**
-- **User stories:**
-  1. As a small business owner budgeting for a site, I want to see how PinexaDigital's price compares to typical market rates, because search results already told me "~$5,000, 6–10 weeks" before I clicked, but the page shows "$997 one-time" with no market-context framing, so I can't judge if it's a good deal. *(Source: competitor snippet "$5,000... 6–10 weeks")*
-  2. As a business owner who has already seen 3 "Top 10 agencies" ranked lists, I want a "why choose us" or comparison section, because that's the format Google is showing me at position 1–3, but I'm blocked by the total absence of comparison content anywhere on the site. *(Source: DesignRush/Clutch.co/ParallelHQ listicle dominance)*
-
-### 3. Keyword: "SEO agency for small business" → `/services/seo`
-
-- **SERP dominant type:** Comparison/listicle-leaning mix (~55%): DesignRush, Semrush agency directories, Thrive "11 Best SEO Companies," First Page Sage — alongside pricing-forward service pages ("Starting at $499/mo," "10+ years of results").
-- **Target page type:** Service Page — process, FAQ ("Do you guarantee first-page rankings? No —"), no pricing shown.
-- **Verdict:** HIGH mismatch — the page's most commercially decisive gap: **no SEO retainer price exists anywhere on the site**, and the one ranking-proof data point ("Coastal Legal Partners — #1 keyword ranking") lives only on `/portfolio`, unlinked from this page.
-- **Intent-match score: 52/100**
-- **User stories:**
-  1. As a budget-conscious business owner, I want to see a concrete monthly SEO price, because a competing result already anchored me at "$499/mo," but I'm blocked — neither `/services/seo` nor `/pricing` shows any recurring SEO price, only one-time web-design packages. *(Source: competitor snippet "Starting at $499/mo")*
-  2. As a skeptical owner who's been burned by SEO promises, I want proof of real ranking results, because competing listicles lead with "10+ years of results" and named case studies, but I'm blocked because `/services/seo` has zero embedded case studies — the one relevant proof point sits on `/portfolio` with no link from this page. *(Source: parsed `/services/seo` vs. `/portfolio` "Client Results" cross-check)*
-
-### 4. Keyword: "web design pricing packages" → `/pricing`
-
-- **SERP dominant type:** Mixed between agency pricing/package pages (Sprout Media, Foxxr, Nora Kramer — structurally similar tiered cards) and blog-style cost-breakdown guides (Clutch pricing guide, Knapsack Creative, Atomic Revenue) citing tiers: "$500–$2,000 basic," "$5,000–$20,000 semi-custom," "$30,000–$100,000+ custom."
-- **Target page type:** Landing Page (pricing subtype) — **ALIGNED** structurally (3 tiers, feature checklists, FAQ), a genuine strength since transparent pricing is rare in this vertical.
-- **Verdict:** MEDIUM mismatch — right format, but thin depth (250 words vs. the longer cost-guide norm) and **zero trust signals on the page at the moment of highest purchase anxiety** (no testimonials, guarantees, or client logos next to the price).
-- **Intent-match score: 61/100**
-- **User stories:**
-  1. As a first-time website buyer, I want to understand typical market rates ($500–$100k+ per search results) so I can judge if $997–$2,497 is fair, but I'm blocked because the pricing page presents its tiers in isolation with no market-context framing. *(Source: competitor snippet cost breakdown $500–$100,000+)*
-  2. As a cautious buyer about to commit 50% upfront, I want trust signals next to the price table, because that's when purchase anxiety peaks, but I'm blocked — `/pricing` has zero testimonials or guarantees, only feature bullets and a payment-terms FAQ. *(Source: parsed `/pricing` content — no testimonial component)*
-
----
-
-## Gap Analysis (SXO Gap Score: 56/100)
-
-| Dimension | Score | Evidence |
-|---|---|---|
-| Page Type (0–15) | 10/15 | 3 of 4 keywords show ALIGNED-to-MEDIUM page type match; SEO retainer pricing model gap is the one HIGH-severity type mismatch |
-| Content Depth (0–15) | 9/15 | Service pages 722–1,001 words (adequate); `/pricing` (250) and `/contact` (88) thin relative to SERP norm for pricing/cost-guide content |
-| UX Signals (0–15) | 11/15 | Clear, distinct CTAs per page ("Get a free quote," "Start your project," "Request free audit"); process steps well laid out; no interactive quote/cost tool |
-| Schema Markup (0–15) | 10/15 | Strong ProfessionalService/Service/ItemList/BreadcrumbList/aggregateRating coverage; **FAQPage schema missing** on 3 pages with visible FAQ accordions |
-| Media Richness (0–15) | 4/15 | Only the logo image renders on `/services/web-design`, `/services/seo`, `/pricing`, `/portfolio`, `/about`; homepage relies on generic stock Unsplash photos; portfolio has 0 screenshots of its own demos |
-| Authority Signals (0–15) | 7/15 | 3 named testimonials + 5.0/3-review schema rating is a start, but thin vs. competitor signals ("10+ years," "150,000 teams," third-party review badges); no case-study depth |
-| Freshness (0–10) | 5/10 | Sitemap lastmod current (2026-06-28 per `technical.md`), but blog post dates are non-chronological (2025/2026 out of order), reading as placeholder content |
-| **Total** | **56/100** | |
-
----
-
-## Persona Scoring
-
-| Persona | Journey Stage | Relevance | Clarity | Trust | Action | Total | Rating |
-|---|---|---|---|---|---|---|---|
-| Comparison Shopper ("Top 10 agencies" researcher) | Consideration | 8/25 | 10/25 | 8/25 | 10/25 | **36/100** | Critical Mismatch |
-| Budget-Conscious SMB Owner | Consideration | 20/25 | 20/25 | 12/25 | 16/25 | 68/100 | Good |
-| Skeptical/Risk-Averse Evaluator | Decision | 22/25 | 18/25 | 10/25 | 18/25 | 68/100 | Good |
-| Local Service Business Owner | Awareness/Consideration | 20/25 | 20/25 | 10/25 | 18/25 | 68/100 | Good |
-| Non-Technical Founder / New Venture | Awareness | 22/25 | 20/25 | 14/25 | 20/25 | 76/100 | Good |
-
-**Weakest persona: Comparison Shopper (36/100).**
-Top issue: no comparison, differentiation, or third-party trust-badge content exists anywhere on the site, yet this persona type (driven by "Top 10 agencies" / "Best SEO companies" listicles) appears in 3 of the 4 SERPs analyzed.
-Recommended fix: add a concise "Why PinexaDigital vs. a typical agency" comparison block (ownership of code, fixed pricing vs. hourly, timeline, no template lock-in) to the homepage and `/services/web-design`.
-
-**Systemic issue:** Trust dimension is the weakest score across every persona (8–14/25) — driven by low review volume (3 reviews), no third-party badges, and no case-study depth.
-
----
+### Blog posts (sampled: "how-much-does-a-website-cost", "how-to-choose-a-web-design-agency") → informational intent
+**What Google rewards:** Direct, complete answers; original framework/opinion rather than rehashed generic advice; internal links to relevant commercial pages for users ready to convert.
+**Score: 9/10.** Both posts open with a direct numeric/actionable answer in the first sentence (good for featured snippets and AI Overviews), use original frameworks (the "7 questions" structure, the DIY/freelancer/agency price-tier breakdown), and link back to PinexaDigital's own pricing as a natural next step. This is well above typical agency-blog quality.
 
 ## Findings
 
-### 1. Site-wide de-indexing blocks all SXO gains (cross-ref)
-**Severity:** Critical
-**Description:** `robots.txt` (`Disallow: /`) and global `noindex, nofollow` in `layout.tsx` prevent Googlebot from crawling any page (full detail in `technical.md` #1–#2). Every SXO finding in this report is prospective.
-**Recommendation:** Treat the `technical.md` crawlability fixes as a hard prerequisite before investing in any SXO work below.
+### 1. Portfolio page structurally mismatches its search intent
+**Severity: High**
+Users arriving at `/portfolio` (whether via search or from a comparison-stage click) expect verifiable client proof; the page delivers industry demo templates instead. This is the single biggest page-type/intent mismatch on the site.
+**Recommendation:** Add a real case-study section as client work accumulates (see `content.md` Finding #2 — same root cause, cross-referenced here as a search-experience consequence).
 
-### 2. No comparison/differentiation content anywhere on the site
-**Severity:** High
-**Description:** All 4 analyzed keywords show a directory/listicle ("Top 10...", "Best SEO companies...") competitor in the top results (40–70% of SERP), but the site has zero "vs. other agencies" or comparison-table content.
-**Recommendation:** Add a "Why PinexaDigital" comparison block to the homepage and `/services/web-design` covering ownership of code, fixed pricing, timeline, and no-template positioning — differentiators the site already has but doesn't foreground competitively.
+### 2. Homepage lacks above-fold social proof
+**Severity: Medium**
+The homepage answers "what do you do and is it for me" well but doesn't yet answer "can I trust you" within the same scroll — no client count, review score, or logo strip visible before scrolling.
+**Recommendation:** Once real client work exists, add a compact trust strip (client count, average rating, or 2-3 recognizable logos) near the hero.
 
-### 3. No SEO retainer pricing shown anywhere
-**Severity:** High
-**Description:** `/services/seo` and `/pricing` cover only one-time web-design packages. Competing results for "SEO agency for small business" surface explicit monthly price anchors (e.g., "$499/mo").
-**Recommendation:** Add an SEO/Growth monthly retainer tier to `/pricing` and link it from the `/services/seo` CTA ("Request free audit").
+### 3. E-commerce page and the two Shopify-vs-WooCommerce blog posts overlap in message and audience
+**Severity: Low**
+Not a mismatch on its own — the service page's comparison format is genuinely well-matched to intent — but it duplicates territory with two separate blog posts covering the same decision. See `cluster.md` for the full cannibalization analysis; flagged here because it also means a visitor could land on any of three pages for the same query with inconsistent depth.
+**Recommendation:** Cross-link explicitly: the blog posts should point to `/services/ecommerce` as "ready to move forward," and the service page could link to the more detailed blog comparison for undecided visitors.
 
-### 4. Portfolio page has zero visual proof
-**Severity:** High
-**Description:** `/portfolio`'s "Live Demo Showcase" (8 industry demos) and "Client Results" (6 metrics) sections are entirely text-based — parsed images show only the site logo. For a page whose sole purpose is visual proof of work, this is a critical gap.
-**Recommendation:** Add real screenshot thumbnails or embedded live-preview iframes for each of the 8 demo cards and visual context for the 6 client-result stats.
+## JSON Category Block
 
-### 5. Generic stock photography undermines authenticity
-**Severity:** Medium
-**Description:** Homepage images are Unsplash stock photos ("PinexaDigital team at work," "Design process") rather than real team or project photography — a credibility risk for a trust-dependent service purchase.
-**Recommendation:** Replace with real team/work photos; at minimum use niche-specific custom photography rather than generic stock.
-
-### 6. FAQ content lacks FAQPage schema
-**Severity:** Medium
-**Description:** `/services/web-design`, `/services/seo`, and `/pricing` all contain well-structured, visible Q&A accordions (5–6 questions each), but schema arrays for these pages contain no `FAQPage` type — only WebSite/ProfessionalService/Service/BreadcrumbList/ItemList.
-**Recommendation:** Add `FAQPage` JSON-LD matching the visible accordion content on all three pages. Hand off to `/seo schema` for generation.
-
-### 7. Pricing page has no trust signals at the point of highest purchase anxiety
-**Severity:** Medium
-**Description:** `/pricing` shows 3 tiered cards and an FAQ but zero testimonials, reviews, guarantees, or client logos, despite the homepage already having 3 strong testimonials it could reuse.
-**Recommendation:** Insert a condensed "Trusted by 50+ businesses / 5.0 avg. rating" strip directly above or beside the pricing cards.
-
-### 8. Review volume is thin relative to competitor authority signals
-**Severity:** Medium
-**Description:** `ProfessionalService` schema shows `aggregateRating` 5.0 from only 3 reviews sitewide, versus competitor claims like "10+ years of results" or "150,000 teams."
-**Recommendation:** Actively solicit and publish more client reviews (on-site + Google Business Profile); cross-ref `/seo local` for GBP review strategy.
-
-### 9. Blog publish dates are non-chronological
-**Severity:** Low
-**Description:** The 6 blog posts show dates spanning March 2025–June 2026 in non-chronological display order (a June 2026 post appears above two 2025 posts), reading as placeholder/dummy content and weakening freshness signals.
-**Recommendation:** Correct publish dates to reflect real chronological order and ensure `dateModified` is set in `BlogPosting` schema.
-
-### 10. Existing cost-guide blog post is disconnected from `/pricing`
-**Severity:** Low
-**Description:** The blog post "How much does a website cost in 2026?" already matches the blog/cost-guide format that dominates half the "web design pricing packages" SERP, but it isn't cross-linked from `/pricing`.
-**Recommendation:** Add contextual links between `/pricing` and this post in both directions to capture transactional and informational intent together.
-
----
-
-## Priority Actions
-
-1. Fix crawlability (Finding #1 — prerequisite for everything else; owned by `technical.md`).
-2. Add comparison/differentiation content — addresses the weakest persona (Comparison Shopper, 36/100) and Finding #2.
-3. Add SEO retainer pricing (Finding #3) — highest-severity keyword-level gap ("SEO agency for small business," 52/100).
-4. Add real visual proof to `/portfolio` (Finding #4) — the site's biggest single-dimension gap (Media Richness, 4/15).
-5. Add FAQPage schema (Finding #6) and cross-link the pricing blog post (Finding #10) — low-effort, quick wins.
-
----
-
-## Limitations
-
-- WebSearch was used instead of a live SERP-scraping API (no DataForSEO connector available in this environment). It returns organic titles/snippets only — true People-Also-Ask boxes, ad copy, featured-snippet format, and AI Overview citations could not be directly observed and were inferred from snippet text and result-title patterns. This is a lower-precision proxy than a live SERP capture.
-- Competitor word counts and content depth were estimated from search snippets and known page types, not from fetching every competitor page in full.
-- The site is currently de-indexed (see `technical.md`), so there is no live ranking or Search Console data to validate any of these findings against real query performance — this analysis is prospective.
-- No GA4/GSC behavioral data was available to confirm actual on-page user drop-off; persona and gap scores are qualitative judgments based on parsed HTML/text content only.
-- Local-intent / Google Business Profile signals were not directly queried; flagged as a follow-up for `/seo local`.
-- `/services/ecommerce` and `/services/maintenance` were classified but not put through full SERP-backwards analysis (out of scope per the requested keyword set); recommend a follow-up pass if ecommerce/maintenance keywords become a priority.
-
-Recommend `/seo content` for deeper E-E-A-T remediation (Findings #5, #8) and `/seo schema` for FAQPage generation (Finding #6).
+```json
+{
+  "name": "Search Experience (SXO)",
+  "score": 76,
+  "what_works": [
+    "Pricing and e-commerce pages closely match the trust-building/comparison format Google rewards for their query types",
+    "Service pages name specific tools/tech (Next.js, n8n, HubSpot, etc.) as credible expertise signals rather than generic claims",
+    "Blog posts open with direct, quotable answers and use original frameworks rather than generic advice",
+    "Consistent 'who this is for' segmentation across service pages helps qualify/disqualify visitors efficiently"
+  ],
+  "findings": [
+    {
+      "title": "Portfolio page structurally mismatches its search intent",
+      "severity": "High",
+      "description": "Visitors expecting real client proof at /portfolio instead find industry demo templates.",
+      "recommendation": "Add a real case-study section as client work accumulates."
+    },
+    {
+      "title": "Homepage lacks above-fold social proof",
+      "severity": "Medium",
+      "description": "Homepage answers relevance well but not trust within the first scroll.",
+      "recommendation": "Add a compact trust strip once real client data exists."
+    },
+    {
+      "title": "E-commerce page and two blog posts overlap in message and audience",
+      "severity": "Low",
+      "description": "Three separate pages answer the same Shopify-vs-WooCommerce decision with inconsistent depth and no cross-linking.",
+      "recommendation": "Cross-link the service page and blog posts explicitly toward each other's strengths."
+    }
+  ]
+}
+```

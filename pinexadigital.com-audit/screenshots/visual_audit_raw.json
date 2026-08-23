@@ -1,0 +1,1383 @@
+{
+  "homepage": {
+    "url": "https://www.pinexadigital.com/",
+    "desktop": {
+      "innerWidth": 1440,
+      "innerHeight": 900,
+      "scrollWidth": 1440,
+      "hasHorizontalScroll": false,
+      "h1": {
+        "text": "We build websites that win US clients.",
+        "top": 249.5,
+        "bottom": 514.0625,
+        "visibleAboveFold": true
+      },
+      "ctas": [
+        {
+          "text": "Contact",
+          "tag": "a",
+          "top": 21.5,
+          "left": 826.515625,
+          "width": 79.53125,
+          "height": 37,
+          "aboveFold": true
+        },
+        {
+          "text": "Get a quote",
+          "tag": "a",
+          "top": 20,
+          "left": 1276.671875,
+          "width": 119.328125,
+          "height": 40,
+          "aboveFold": true
+        },
+        {
+          "text": "Start your project",
+          "tag": "a",
+          "top": 754.0625,
+          "left": 44,
+          "width": 207,
+          "height": 52,
+          "aboveFold": true
+        },
+        {
+          "text": "See our work",
+          "tag": "a",
+          "top": 754.0625,
+          "left": 263,
+          "width": 150.734375,
+          "height": 52,
+          "aboveFold": true
+        },
+        {
+          "text": "Learn more",
+          "tag": "a",
+          "top": 2398.00390625,
+          "left": 56.988990783691406,
+          "width": 126.99776458740234,
+          "height": 50.786376953125,
+          "aboveFold": false
+        },
+        {
+          "text": "Learn more",
+          "tag": "a",
+          "top": 2339.449462890625,
+          "left": 779.1258544921875,
+          "width": 126.99774169921875,
+          "height": 50.786376953125,
+          "aboveFold": false
+        },
+        {
+          "text": "Learn more",
+          "tag": "a",
+          "top": 2782.00390625,
+          "left": 56.988990783691406,
+          "width": 126.99776458740234,
+          "height": 50.786376953125,
+          "aboveFold": false
+        },
+        {
+          "text": "Learn more",
+          "tag": "a",
+          "top": 2723.449462890625,
+          "left": 779.1258544921875,
+          "width": 126.99774169921875,
+          "height": 50.786376953125,
+          "aboveFold": false
+        },
+        {
+          "text": "Start a conversation",
+          "tag": "a",
+          "top": 8886.3125,
+          "left": 744,
+          "width": 209.09375,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "contact@pinexadigital.com",
+          "tag": "a",
+          "top": 9873.40625,
+          "left": 1088,
+          "width": 185.265625,
+          "height": 18,
+          "aboveFold": false
+        }
+      ],
+      "navTargets": [
+        {
+          "text": "",
+          "width": 84,
+          "height": 32,
+          "top": 24,
+          "left": 44
+        },
+        {
+          "text": "Services",
+          "width": 82,
+          "height": 37,
+          "top": 22,
+          "left": 451
+        },
+        {
+          "text": "Portfolio",
+          "width": 83,
+          "height": 37,
+          "top": 22,
+          "left": 537
+        },
+        {
+          "text": "Pricing",
+          "width": 70,
+          "height": 37,
+          "top": 22,
+          "left": 623
+        },
+        {
+          "text": "About",
+          "width": 66,
+          "height": 37,
+          "top": 22,
+          "left": 698
+        },
+        {
+          "text": "Blog",
+          "width": 55,
+          "height": 37,
+          "top": 22,
+          "left": 767
+        },
+        {
+          "text": "Contact",
+          "width": 80,
+          "height": 37,
+          "top": 22,
+          "left": 827
+        },
+        {
+          "text": "Toggle theme",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 1229
+        },
+        {
+          "text": "Get a quote",
+          "width": 119,
+          "height": 40,
+          "top": 20,
+          "left": 1277
+        }
+      ],
+      "images": {
+        "total": 12,
+        "missingDims": 0,
+        "broken": 0
+      },
+      "baseFontSize": 16,
+      "bodyColor": "rgb(26, 26, 26)",
+      "bodyBg": "rgb(250, 250, 250)",
+      "overlaps": [
+        {
+          "a": "H3:CRM Automation & Integrat",
+          "b": "P:Automate your sales workf"
+        },
+        {
+          "a": "H3:Website Maintenance",
+          "b": "P:Monthly plans to keep you"
+        }
+      ],
+      "textOverflow": [],
+      "console_errors": [],
+      "screenshot": "homepage-desktop.png"
+    },
+    "mobile": {
+      "innerWidth": 375,
+      "innerHeight": 812,
+      "scrollWidth": 375,
+      "hasHorizontalScroll": false,
+      "h1": {
+        "text": "We build websites that win US clients.",
+        "top": 249.5,
+        "bottom": 375.5,
+        "visibleAboveFold": true
+      },
+      "ctas": [
+        {
+          "text": "Start your project",
+          "tag": "a",
+          "top": 647.5,
+          "left": 24,
+          "width": 207,
+          "height": 52,
+          "aboveFold": true
+        },
+        {
+          "text": "See our work",
+          "tag": "a",
+          "top": 711.5,
+          "left": 24,
+          "width": 150.734375,
+          "height": 52,
+          "aboveFold": true
+        },
+        {
+          "text": "Learn more",
+          "tag": "a",
+          "top": 2948.625244140625,
+          "left": 55.658477783203125,
+          "width": 126.99777221679688,
+          "height": 50.786376953125,
+          "aboveFold": false
+        },
+        {
+          "text": "Learn more",
+          "tag": "a",
+          "top": 3358.578125,
+          "left": 69.79531860351562,
+          "width": 126.99777221679688,
+          "height": 50.786376953125,
+          "aboveFold": false
+        },
+        {
+          "text": "Learn more",
+          "tag": "a",
+          "top": 3772.625244140625,
+          "left": 55.658477783203125,
+          "width": 126.99777221679688,
+          "height": 50.786376953125,
+          "aboveFold": false
+        },
+        {
+          "text": "Learn more",
+          "tag": "a",
+          "top": 4141.578125,
+          "left": 69.79531860351562,
+          "width": 126.99777221679688,
+          "height": 50.7861328125,
+          "aboveFold": false
+        },
+        {
+          "text": "Start a conversation",
+          "tag": "a",
+          "top": 11167.875,
+          "left": 24,
+          "width": 209.09375,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "contact@pinexadigital.com",
+          "tag": "a",
+          "top": 13447.875,
+          "left": 207.5,
+          "width": 185.265625,
+          "height": 18,
+          "aboveFold": false
+        }
+      ],
+      "navTargets": [
+        {
+          "text": "",
+          "width": 84,
+          "height": 32,
+          "top": 24,
+          "left": 24
+        },
+        {
+          "text": "Toggle theme",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 279
+        },
+        {
+          "text": "Toggle menu",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 319
+        }
+      ],
+      "images": {
+        "total": 12,
+        "missingDims": 0,
+        "broken": 0
+      },
+      "baseFontSize": 16,
+      "bodyColor": "rgb(26, 26, 26)",
+      "bodyBg": "rgb(250, 250, 250)",
+      "overlaps": [],
+      "textOverflow": [],
+      "console_errors": [],
+      "screenshot": "homepage-mobile.png"
+    }
+  },
+  "services": {
+    "url": "https://www.pinexadigital.com/services",
+    "desktop": {
+      "innerWidth": 1440,
+      "innerHeight": 900,
+      "scrollWidth": 1440,
+      "hasHorizontalScroll": false,
+      "h1": {
+        "text": "Everything you need to grow online.",
+        "top": 227.5,
+        "bottom": 294.6875,
+        "visibleAboveFold": true
+      },
+      "ctas": [
+        {
+          "text": "Contact",
+          "tag": "a",
+          "top": 21.5,
+          "left": 826.515625,
+          "width": 79.53125,
+          "height": 37,
+          "aboveFold": true
+        },
+        {
+          "text": "Get a quote",
+          "tag": "a",
+          "top": 20,
+          "left": 1276.671875,
+          "width": 119.328125,
+          "height": 40,
+          "aboveFold": true
+        },
+        {
+          "text": "Get a free quote",
+          "tag": "a",
+          "top": 3473.0625,
+          "left": 543.71875,
+          "width": 188.4375,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "contact@pinexadigital.com",
+          "tag": "a",
+          "top": 3700.5625,
+          "left": 1088,
+          "width": 185.265625,
+          "height": 18,
+          "aboveFold": false
+        }
+      ],
+      "navTargets": [
+        {
+          "text": "",
+          "width": 84,
+          "height": 32,
+          "top": 24,
+          "left": 44
+        },
+        {
+          "text": "Services",
+          "width": 82,
+          "height": 37,
+          "top": 22,
+          "left": 451
+        },
+        {
+          "text": "Portfolio",
+          "width": 83,
+          "height": 37,
+          "top": 22,
+          "left": 537
+        },
+        {
+          "text": "Pricing",
+          "width": 70,
+          "height": 37,
+          "top": 22,
+          "left": 623
+        },
+        {
+          "text": "About",
+          "width": 66,
+          "height": 37,
+          "top": 22,
+          "left": 698
+        },
+        {
+          "text": "Blog",
+          "width": 55,
+          "height": 37,
+          "top": 22,
+          "left": 767
+        },
+        {
+          "text": "Contact",
+          "width": 80,
+          "height": 37,
+          "top": 22,
+          "left": 827
+        },
+        {
+          "text": "Toggle theme",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 1229
+        },
+        {
+          "text": "Get a quote",
+          "width": 119,
+          "height": 40,
+          "top": 20,
+          "left": 1277
+        }
+      ],
+      "images": {
+        "total": 1,
+        "missingDims": 0,
+        "broken": 0
+      },
+      "baseFontSize": 16,
+      "bodyColor": "rgb(26, 26, 26)",
+      "bodyBg": "rgb(250, 250, 250)",
+      "overlaps": [],
+      "textOverflow": [],
+      "console_errors": [],
+      "screenshot": "services-desktop.png"
+    },
+    "mobile": {
+      "innerWidth": 375,
+      "innerHeight": 812,
+      "scrollWidth": 375,
+      "hasHorizontalScroll": false,
+      "h1": {
+        "text": "Everything you need to grow online.",
+        "top": 227.5,
+        "bottom": 340.890625,
+        "visibleAboveFold": true
+      },
+      "ctas": [
+        {
+          "text": "Get a free quote",
+          "tag": "a",
+          "top": 7668.46875,
+          "left": 93.28125,
+          "width": 188.4375,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "contact@pinexadigital.com",
+          "tag": "a",
+          "top": 8148.46875,
+          "left": 207.5,
+          "width": 185.265625,
+          "height": 18,
+          "aboveFold": false
+        }
+      ],
+      "navTargets": [
+        {
+          "text": "",
+          "width": 84,
+          "height": 32,
+          "top": 24,
+          "left": 24
+        },
+        {
+          "text": "Toggle theme",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 279
+        },
+        {
+          "text": "Toggle menu",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 319
+        }
+      ],
+      "images": {
+        "total": 1,
+        "missingDims": 0,
+        "broken": 0
+      },
+      "baseFontSize": 16,
+      "bodyColor": "rgb(26, 26, 26)",
+      "bodyBg": "rgb(250, 250, 250)",
+      "overlaps": [],
+      "textOverflow": [],
+      "console_errors": [],
+      "screenshot": "services-mobile.png"
+    }
+  },
+  "pricing": {
+    "url": "https://www.pinexadigital.com/pricing",
+    "desktop": {
+      "innerWidth": 1440,
+      "innerHeight": 900,
+      "scrollWidth": 1440,
+      "hasHorizontalScroll": false,
+      "h1": {
+        "text": "Simple, transparent pricing.",
+        "top": 227.5,
+        "bottom": 294.6875,
+        "visibleAboveFold": true
+      },
+      "ctas": [
+        {
+          "text": "Contact",
+          "tag": "a",
+          "top": 21.5,
+          "left": 826.515625,
+          "width": 79.53125,
+          "height": 37,
+          "aboveFold": true
+        },
+        {
+          "text": "Get a quote",
+          "tag": "a",
+          "top": 20,
+          "left": 1276.671875,
+          "width": 119.328125,
+          "height": 40,
+          "aboveFold": true
+        },
+        {
+          "text": "Get started",
+          "tag": "a",
+          "top": 979.375,
+          "left": 56,
+          "width": 389.328125,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "Start growing",
+          "tag": "a",
+          "top": 979.375,
+          "left": 525.328125,
+          "width": 389.328125,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "Let's talk",
+          "tag": "a",
+          "top": 979.375,
+          "left": 994.65625,
+          "width": 389.34375,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "Talk to us",
+          "tag": "a",
+          "top": 2097.5625,
+          "left": 653.5625,
+          "width": 132.875,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "contact@pinexadigital.com",
+          "tag": "a",
+          "top": 2325.0625,
+          "left": 1088,
+          "width": 185.265625,
+          "height": 18,
+          "aboveFold": false
+        }
+      ],
+      "navTargets": [
+        {
+          "text": "",
+          "width": 84,
+          "height": 32,
+          "top": 24,
+          "left": 44
+        },
+        {
+          "text": "Services",
+          "width": 82,
+          "height": 37,
+          "top": 22,
+          "left": 451
+        },
+        {
+          "text": "Portfolio",
+          "width": 83,
+          "height": 37,
+          "top": 22,
+          "left": 537
+        },
+        {
+          "text": "Pricing",
+          "width": 70,
+          "height": 37,
+          "top": 22,
+          "left": 623
+        },
+        {
+          "text": "About",
+          "width": 66,
+          "height": 37,
+          "top": 22,
+          "left": 698
+        },
+        {
+          "text": "Blog",
+          "width": 55,
+          "height": 37,
+          "top": 22,
+          "left": 767
+        },
+        {
+          "text": "Contact",
+          "width": 80,
+          "height": 37,
+          "top": 22,
+          "left": 827
+        },
+        {
+          "text": "Toggle theme",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 1229
+        },
+        {
+          "text": "Get a quote",
+          "width": 119,
+          "height": 40,
+          "top": 20,
+          "left": 1277
+        }
+      ],
+      "images": {
+        "total": 1,
+        "missingDims": 0,
+        "broken": 0
+      },
+      "baseFontSize": 16,
+      "bodyColor": "rgb(26, 26, 26)",
+      "bodyBg": "rgb(250, 250, 250)",
+      "overlaps": [],
+      "textOverflow": [],
+      "console_errors": [],
+      "screenshot": "pricing-desktop.png"
+    },
+    "mobile": {
+      "innerWidth": 375,
+      "innerHeight": 812,
+      "scrollWidth": 375,
+      "hasHorizontalScroll": false,
+      "h1": {
+        "text": "Simple, transparent pricing.",
+        "top": 227.5,
+        "bottom": 340.890625,
+        "visibleAboveFold": true
+      },
+      "ctas": [
+        {
+          "text": "Get started",
+          "tag": "a",
+          "top": 991.1875,
+          "left": 56,
+          "width": 263,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "Start growing",
+          "tag": "a",
+          "top": 1574.484375,
+          "left": 56,
+          "width": 263,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "Let's talk",
+          "tag": "a",
+          "top": 2103.78125,
+          "left": 56,
+          "width": 263,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "Talk to us",
+          "tag": "a",
+          "top": 3420.78125,
+          "left": 121.0625,
+          "width": 132.875,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "contact@pinexadigital.com",
+          "tag": "a",
+          "top": 3840.78125,
+          "left": 207.5,
+          "width": 185.265625,
+          "height": 18,
+          "aboveFold": false
+        }
+      ],
+      "navTargets": [
+        {
+          "text": "",
+          "width": 84,
+          "height": 32,
+          "top": 24,
+          "left": 24
+        },
+        {
+          "text": "Toggle theme",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 279
+        },
+        {
+          "text": "Toggle menu",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 319
+        }
+      ],
+      "images": {
+        "total": 1,
+        "missingDims": 0,
+        "broken": 0
+      },
+      "baseFontSize": 16,
+      "bodyColor": "rgb(26, 26, 26)",
+      "bodyBg": "rgb(250, 250, 250)",
+      "overlaps": [],
+      "textOverflow": [],
+      "console_errors": [],
+      "screenshot": "pricing-mobile.png"
+    }
+  },
+  "portfolio": {
+    "url": "https://www.pinexadigital.com/portfolio",
+    "desktop": {
+      "innerWidth": 1440,
+      "innerHeight": 900,
+      "scrollWidth": 1440,
+      "hasHorizontalScroll": false,
+      "h1": {
+        "text": "See exactly what we build.",
+        "top": 227.5,
+        "bottom": 294.6875,
+        "visibleAboveFold": true
+      },
+      "ctas": [
+        {
+          "text": "Contact",
+          "tag": "a",
+          "top": 21.5,
+          "left": 826.515625,
+          "width": 79.53125,
+          "height": 37,
+          "aboveFold": true
+        },
+        {
+          "text": "Get a quote",
+          "tag": "a",
+          "top": 20,
+          "left": 1276.671875,
+          "width": 119.328125,
+          "height": 40,
+          "aboveFold": true
+        },
+        {
+          "text": "Start your project",
+          "tag": "a",
+          "top": 1779.125,
+          "left": 609.140625,
+          "width": 221.71875,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "contact@pinexadigital.com",
+          "tag": "a",
+          "top": 2006.625,
+          "left": 1088,
+          "width": 185.265625,
+          "height": 18,
+          "aboveFold": false
+        }
+      ],
+      "navTargets": [
+        {
+          "text": "",
+          "width": 84,
+          "height": 32,
+          "top": 24,
+          "left": 44
+        },
+        {
+          "text": "Services",
+          "width": 82,
+          "height": 37,
+          "top": 22,
+          "left": 451
+        },
+        {
+          "text": "Portfolio",
+          "width": 83,
+          "height": 37,
+          "top": 22,
+          "left": 537
+        },
+        {
+          "text": "Pricing",
+          "width": 70,
+          "height": 37,
+          "top": 22,
+          "left": 623
+        },
+        {
+          "text": "About",
+          "width": 66,
+          "height": 37,
+          "top": 22,
+          "left": 698
+        },
+        {
+          "text": "Blog",
+          "width": 55,
+          "height": 37,
+          "top": 22,
+          "left": 767
+        },
+        {
+          "text": "Contact",
+          "width": 80,
+          "height": 37,
+          "top": 22,
+          "left": 827
+        },
+        {
+          "text": "Toggle theme",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 1229
+        },
+        {
+          "text": "Get a quote",
+          "width": 119,
+          "height": 40,
+          "top": 20,
+          "left": 1277
+        }
+      ],
+      "images": {
+        "total": 1,
+        "missingDims": 0,
+        "broken": 0
+      },
+      "baseFontSize": 16,
+      "bodyColor": "rgb(26, 26, 26)",
+      "bodyBg": "rgb(250, 250, 250)",
+      "overlaps": [],
+      "textOverflow": [],
+      "console_errors": [],
+      "screenshot": "portfolio-desktop.png"
+    },
+    "mobile": {
+      "innerWidth": 375,
+      "innerHeight": 812,
+      "scrollWidth": 375,
+      "hasHorizontalScroll": false,
+      "h1": {
+        "text": "See exactly what we build.",
+        "top": 227.5,
+        "bottom": 303.09375,
+        "visibleAboveFold": true
+      },
+      "ctas": [
+        {
+          "text": "Start your project",
+          "tag": "a",
+          "top": 4412.09375,
+          "left": 76.640625,
+          "width": 221.71875,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "contact@pinexadigital.com",
+          "tag": "a",
+          "top": 4832.09375,
+          "left": 207.5,
+          "width": 185.265625,
+          "height": 18,
+          "aboveFold": false
+        }
+      ],
+      "navTargets": [
+        {
+          "text": "",
+          "width": 84,
+          "height": 32,
+          "top": 24,
+          "left": 24
+        },
+        {
+          "text": "Toggle theme",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 279
+        },
+        {
+          "text": "Toggle menu",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 319
+        }
+      ],
+      "images": {
+        "total": 1,
+        "missingDims": 0,
+        "broken": 0
+      },
+      "baseFontSize": 16,
+      "bodyColor": "rgb(26, 26, 26)",
+      "bodyBg": "rgb(250, 250, 250)",
+      "overlaps": [],
+      "textOverflow": [],
+      "console_errors": [],
+      "screenshot": "portfolio-mobile.png"
+    }
+  },
+  "contact": {
+    "url": "https://www.pinexadigital.com/contact",
+    "desktop": {
+      "innerWidth": 1440,
+      "innerHeight": 900,
+      "scrollWidth": 1440,
+      "hasHorizontalScroll": false,
+      "h1": {
+        "text": "Let's build something great.",
+        "top": 243.5,
+        "bottom": 377.875,
+        "visibleAboveFold": true
+      },
+      "ctas": [
+        {
+          "text": "Contact",
+          "tag": "a",
+          "top": 21.5,
+          "left": 826.515625,
+          "width": 79.53125,
+          "height": 37,
+          "aboveFold": true
+        },
+        {
+          "text": "Get a quote",
+          "tag": "a",
+          "top": 20,
+          "left": 1276.671875,
+          "width": 119.328125,
+          "height": 40,
+          "aboveFold": true
+        },
+        {
+          "text": "Send message",
+          "tag": "button",
+          "top": 666.5,
+          "left": 784,
+          "width": 600,
+          "height": 48,
+          "aboveFold": true
+        },
+        {
+          "text": "contact@pinexadigital.com",
+          "tag": "a",
+          "top": 953.375,
+          "left": 1088,
+          "width": 185.265625,
+          "height": 18,
+          "aboveFold": false
+        }
+      ],
+      "navTargets": [
+        {
+          "text": "",
+          "width": 84,
+          "height": 32,
+          "top": 24,
+          "left": 44
+        },
+        {
+          "text": "Services",
+          "width": 82,
+          "height": 37,
+          "top": 22,
+          "left": 451
+        },
+        {
+          "text": "Portfolio",
+          "width": 83,
+          "height": 37,
+          "top": 22,
+          "left": 537
+        },
+        {
+          "text": "Pricing",
+          "width": 70,
+          "height": 37,
+          "top": 22,
+          "left": 623
+        },
+        {
+          "text": "About",
+          "width": 66,
+          "height": 37,
+          "top": 22,
+          "left": 698
+        },
+        {
+          "text": "Blog",
+          "width": 55,
+          "height": 37,
+          "top": 22,
+          "left": 767
+        },
+        {
+          "text": "Contact",
+          "width": 80,
+          "height": 37,
+          "top": 22,
+          "left": 827
+        },
+        {
+          "text": "Toggle theme",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 1229
+        },
+        {
+          "text": "Get a quote",
+          "width": 119,
+          "height": 40,
+          "top": 20,
+          "left": 1277
+        }
+      ],
+      "images": {
+        "total": 1,
+        "missingDims": 0,
+        "broken": 0
+      },
+      "baseFontSize": 16,
+      "bodyColor": "rgb(26, 26, 26)",
+      "bodyBg": "rgb(250, 250, 250)",
+      "overlaps": [],
+      "textOverflow": [],
+      "console_errors": [],
+      "screenshot": "contact-desktop.png"
+    },
+    "mobile": {
+      "innerWidth": 375,
+      "innerHeight": 812,
+      "scrollWidth": 375,
+      "hasHorizontalScroll": false,
+      "h1": {
+        "text": "Let's build something great.",
+        "top": 243.5,
+        "bottom": 319.09375,
+        "visibleAboveFold": true
+      },
+      "ctas": [
+        {
+          "text": "Send message",
+          "tag": "button",
+          "top": 1442.09375,
+          "left": 56,
+          "width": 263,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "contact@pinexadigital.com",
+          "tag": "a",
+          "top": 1894.09375,
+          "left": 207.5,
+          "width": 185.265625,
+          "height": 18,
+          "aboveFold": false
+        }
+      ],
+      "navTargets": [
+        {
+          "text": "",
+          "width": 84,
+          "height": 32,
+          "top": 24,
+          "left": 24
+        },
+        {
+          "text": "Toggle theme",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 279
+        },
+        {
+          "text": "Toggle menu",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 319
+        }
+      ],
+      "images": {
+        "total": 1,
+        "missingDims": 0,
+        "broken": 0
+      },
+      "baseFontSize": 16,
+      "bodyColor": "rgb(26, 26, 26)",
+      "bodyBg": "rgb(250, 250, 250)",
+      "overlaps": [],
+      "textOverflow": [],
+      "console_errors": [],
+      "screenshot": "contact-mobile.png"
+    }
+  },
+  "blog-post": {
+    "url": "https://www.pinexadigital.com/blog/whats-included-in-a-maintenance-plan",
+    "desktop": {
+      "innerWidth": 1440,
+      "innerHeight": 900,
+      "scrollWidth": 1440,
+      "hasHorizontalScroll": false,
+      "h1": {
+        "text": "What's Included in a Website Maintenance Plan? (And Why It's Worth It)",
+        "top": 243.5,
+        "bottom": 512.25,
+        "visibleAboveFold": true
+      },
+      "ctas": [
+        {
+          "text": "Contact",
+          "tag": "a",
+          "top": 21.5,
+          "left": 826.515625,
+          "width": 79.53125,
+          "height": 37,
+          "aboveFold": true
+        },
+        {
+          "text": "Get a quote",
+          "tag": "a",
+          "top": 20,
+          "left": 1276.671875,
+          "width": 119.328125,
+          "height": 40,
+          "aboveFold": true
+        },
+        {
+          "text": "Get a free quote",
+          "tag": "a",
+          "top": 1895.75,
+          "left": 1016,
+          "width": 368,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "Get a free quote",
+          "tag": "a",
+          "top": 4201.84375,
+          "left": 953.125,
+          "width": 156.875,
+          "height": 44,
+          "aboveFold": false
+        },
+        {
+          "text": "contact@pinexadigital.com",
+          "tag": "a",
+          "top": 4409.34375,
+          "left": 1088,
+          "width": 185.265625,
+          "height": 18,
+          "aboveFold": false
+        }
+      ],
+      "navTargets": [
+        {
+          "text": "",
+          "width": 84,
+          "height": 32,
+          "top": 24,
+          "left": 44
+        },
+        {
+          "text": "Services",
+          "width": 82,
+          "height": 37,
+          "top": 22,
+          "left": 451
+        },
+        {
+          "text": "Portfolio",
+          "width": 83,
+          "height": 37,
+          "top": 22,
+          "left": 537
+        },
+        {
+          "text": "Pricing",
+          "width": 70,
+          "height": 37,
+          "top": 22,
+          "left": 623
+        },
+        {
+          "text": "About",
+          "width": 66,
+          "height": 37,
+          "top": 22,
+          "left": 698
+        },
+        {
+          "text": "Blog",
+          "width": 55,
+          "height": 37,
+          "top": 22,
+          "left": 767
+        },
+        {
+          "text": "Contact",
+          "width": 80,
+          "height": 37,
+          "top": 22,
+          "left": 827
+        },
+        {
+          "text": "Toggle theme",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 1229
+        },
+        {
+          "text": "Get a quote",
+          "width": 119,
+          "height": 40,
+          "top": 20,
+          "left": 1277
+        }
+      ],
+      "images": {
+        "total": 9,
+        "missingDims": 0,
+        "broken": 0
+      },
+      "baseFontSize": 16,
+      "bodyColor": "rgb(26, 26, 26)",
+      "bodyBg": "rgb(250, 250, 250)",
+      "overlaps": [
+        {
+          "a": "A:the security",
+          "b": "A:See what's included at ea"
+        }
+      ],
+      "textOverflow": [],
+      "console_errors": [],
+      "screenshot": "blog-post-desktop.png"
+    },
+    "mobile": {
+      "innerWidth": 375,
+      "innerHeight": 812,
+      "scrollWidth": 375,
+      "hasHorizontalScroll": false,
+      "h1": {
+        "text": "What's Included in a Website Maintenance Plan? (And Why It's Worth It)",
+        "top": 283.5,
+        "bottom": 472.484375,
+        "visibleAboveFold": true
+      },
+      "ctas": [
+        {
+          "text": "Get a free quote",
+          "tag": "a",
+          "top": 5238.296875,
+          "left": 56,
+          "width": 263,
+          "height": 48,
+          "aboveFold": false
+        },
+        {
+          "text": "Get a free quote",
+          "tag": "a",
+          "top": 7489.796875,
+          "left": 24,
+          "width": 156.875,
+          "height": 44,
+          "aboveFold": false
+        },
+        {
+          "text": "contact@pinexadigital.com",
+          "tag": "a",
+          "top": 7889.796875,
+          "left": 207.5,
+          "width": 185.265625,
+          "height": 18,
+          "aboveFold": false
+        }
+      ],
+      "navTargets": [
+        {
+          "text": "",
+          "width": 84,
+          "height": 32,
+          "top": 24,
+          "left": 24
+        },
+        {
+          "text": "Toggle theme",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 279
+        },
+        {
+          "text": "Toggle menu",
+          "width": 32,
+          "height": 32,
+          "top": 24,
+          "left": 319
+        }
+      ],
+      "images": {
+        "total": 9,
+        "missingDims": 0,
+        "broken": 0
+      },
+      "baseFontSize": 16,
+      "bodyColor": "rgb(26, 26, 26)",
+      "bodyBg": "rgb(250, 250, 250)",
+      "overlaps": [
+        {
+          "a": "A:f",
+          "b": "A:"
+        }
+      ],
+      "textOverflow": [],
+      "console_errors": [],
+      "screenshot": "blog-post-mobile.png"
+    }
+  }
+}

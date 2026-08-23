@@ -1,69 +1,48 @@
 # Schema / Structured Data Findings — pinexadigital.com
-**Score: 78/100** | Audit date: 2026-07-04 (re-audit; previous score was 18/100 on 2026-06-29)
+
+**Score: 88/100** | Audit date: 2026-08-23 (re-audit; previous score was 78/100 on 2026-07-04, following a full site rebuild — commit `f5cee20 "new website"`)
 
 ---
 
 ## Summary
 
-Since the last audit (2026-06-29), the site has been substantially rebuilt. Nearly every gap previously flagged (`BreadcrumbList`, per-service `Service` schema, `WebSite`/`Organization` graph, `logo`, `sameAs`, `AggregateRating`, `Blog`/`ItemList`) has been implemented, and all JSON-LD is confirmed **server-rendered** (present in raw HTML with Playwright disabled — verified via `render_page.py --mode never`), so it is fully crawlable by Google. This is a well-instrumented site for structured data. The remaining issues are: (1) a real Google review-policy risk around the site-wide `AggregateRating`/`Review` block, (2) a type-appropriateness question (`ProfessionalService` vs `Organization`) given the business has no physical address, (3) missing `image` on blog posts, and (4) a few low-priority/optional additions (FAQPage for AI/GEO only, portfolio ItemList).
+The site was substantially rebuilt since the last audit (new commit history shows a "new website" pass). Structured data quality has **improved further** on this pass:
 
-All 11 fetched URLs returned 200 and are `is_spa: False` (fully static/SSR — no client-only rendering risk for crawlers).
+- The Critical finding from July 4 — a self-serving, unverifiable `AggregateRating`/`Review` block on the site-wide `ProfessionalService` node — has been **removed entirely**. No rating/review claims remain anywhere on the site. This resolves the biggest risk from the prior audit.
+- The Medium finding about `BlogPosting` missing `image` has also been **resolved** — every blog post sampled now carries a populated `image` field.
+- `FAQPage` markup has expanded (now on `/services`, all 4 service sub-pages, `/pricing`, and `/about`) and in every case the questions/answers are genuinely visible on-page (verified against extracted page text), so there's no hidden-content risk. Per current policy this yields no Google SERP feature (FAQ rich results are fully retired), but it is a legitimate, low-risk aid for AI/LLM citation — treated as informational, not a defect.
+- The one substantive issue carried over from the prior audit is unchanged: **`ProfessionalService` (a `LocalBusiness` subtype) is used for a business with no address**, which is a type-appropriateness mismatch, not a hard validation error.
 
----
-
-## What's Implemented (per page, validated against live HTML)
-
-| Page | JSON-LD present | Validation |
-|---|---|---|
-| `/` | `@graph`: `WebSite` + `ProfessionalService` (incl. `aggregateRating`, 3 `Review`s, `logo`, `sameAs`) | ✅ Valid types/properties, `https://schema.org` context, absolute URLs. ⚠️ See Critical #1 (review risk) and Medium #1 (type choice). |
-| `/services` | `WebSite`+`ProfessionalService` (inherited) + `BreadcrumbList` | ✅ Pass |
-| `/services/web-design` | + `Service` + `BreadcrumbList` | ✅ Pass. `Service.provider` correctly references the org; `Offer`/`UnitPriceSpecification` well-formed. |
-| `/services/seo` | + `Service` + `BreadcrumbList` | ✅ Pass (no `offers` — SEO is retainer-based, acceptable to omit) |
-| `/services/ecommerce` | + `Service` + `BreadcrumbList` | ✅ Pass (no `offers` — variable pricing, acceptable) |
-| `/services/maintenance` | + `Service` (with `Offer`, $97/mo) + `BreadcrumbList` | ✅ Pass |
-| `/pricing` | + `ItemList` of 3 `Offer`s + `BreadcrumbList` | ✅ Pass. Good use of `ItemList`+`Offer` for tiered pricing (no native Google rich-result for pricing tables, but strong AI/LLM signal). |
-| `/portfolio` | `WebSite`+`ProfessionalService` (inherited) + `BreadcrumbList` only | ⚠️ No item-level schema for the 8 demo sites (see Missing #4) |
-| `/about` | inherited + `BreadcrumbList` | ✅ Pass (no page-specific schema needed) |
-| `/contact` | inherited + `BreadcrumbList` | ✅ Pass |
-| `/blog` | + `Blog` + `BreadcrumbList` | ✅ Pass — correct use of `Blog` (not `BlogPosting`) for the index |
-| `/blog/[slug]` | + `BlogPosting` + `BreadcrumbList` | ⚠️ Valid types/dates (`datePublished` ISO 8601) but **missing `image`** — see Missing #3 |
-
-**BreadcrumbList** is implemented once, centrally, in `src/components/ui/Breadcrumb.tsx` and reused everywhere `<Breadcrumb crumbs={...}>` is rendered — correctly encodes nested paths (e.g. Home > Services > Web Design). No changes needed.
-
-**Service schema** is implemented on all four service pages — this was the #1 prior recommendation and is now done correctly, including `provider`, `areaServed`, and `Offer`/`priceSpecification` where pricing is fixed.
-
-Format/context checklist across all blocks: `@context: "https://schema.org"` (not http) ✅, JSON-LD (not Microdata/RDFa) ✅, absolute URLs via `siteUrl()` helper ✅, ISO 8601 dates (`2026-06-15` etc.) ✅, no placeholder text ✅, no deprecated types (`HowTo`, `SpecialAnnouncement`, `CourseInfo` etc. — none used) ✅.
+13 of 32 sitemap URLs were spot-checked directly (homepage, `/services` + all 4 sub-pages, `/pricing`, `/portfolio`, `/about`, `/blog`, `/contact` [previously fetched], and 3 blog posts spanning old/new publish dates). All returned HTTP 200, `is_spa: false` (fully server-rendered — confirmed via `render_page.py --mode never`, meaning JSON-LD is present in the raw, non-JS-executed HTML and fully crawlable). Given the identical, template-driven structure observed across every sampled service/blog page, findings are extrapolated with high confidence to the remaining un-sampled service and blog URLs.
 
 ---
 
-## Critical
+## What Works
 
-### 1. Site-wide `AggregateRating`/`Review` is a self-serving, unverifiable review — rich-result policy risk
-**File:** `src/app/layout.tsx` (lines 100-129)
-
-The `ProfessionalService` node carries `aggregateRating` (5.0 / 3 reviews) and 3 embedded `Review` objects (Sarah M., James R., Diana L.). These reviews:
-- Are authored/hosted entirely by the business itself, with no link to a third-party review platform (Google Business Profile, Trustpilot, Clutch, G2) for verification.
-- Have no `datePublished` on any `Review`.
-- Use generic first-name + last-initial identities that can't be independently verified.
-
-Google's structured data guidelines for review snippets explicitly prohibit "self-serving" reviews — testimonials the business itself writes/curates and marks up as if they were independent reviews — and Google can take manual action / withhold star-rating rich results for markup that appears to be gaming review signals. This is a policy compliance risk, not just a quality nitpick. (Note: the reviews *do* match visibly-displayed testimonial content in `HomeClient.tsx`, so there's no "hidden content" violation — that's a mitigating factor, but doesn't resolve the self-serving-source problem.)
-
-**Recommended fix (pick one):**
-- **Safest:** Remove `aggregateRating`/`review` from the site-wide `Organization`/`ProfessionalService` node entirely and keep testimonials as plain page content (no schema). Rich star-rating snippets aren't worth the manual-action risk on 3 unverifiable reviews.
-- **If keeping ratings:** Source them from a verifiable third party (Google Business Profile via Google's own review count, Clutch, Trustpilot) and link `sameAs`/`url` to that profile so the claim is externally checkable, and add `datePublished` to each `Review`.
+- **Format hygiene is perfect across every block sampled:** `@context: "https://schema.org"` (never `http`), pure JSON-LD (no Microdata/RDFa found anywhere), absolute URLs throughout, ISO 8601 dates (`2026-08-19` etc.), no placeholder/bracket text, no deprecated types (`HowTo`, `SpecialAnnouncement`, `CourseInfo`, `EstimatedSalary`, `LearningVideo` — none present).
+- **Site-wide `@graph` (`WebSite` + `ProfessionalService`)** is injected identically on every page via the root layout — confirmed byte-identical across all 11 non-blog-post URLs checked. `WebSite.publisher` correctly references the org via `@id`.
+- **The July Critical finding is fixed:** the self-authored `aggregateRating`/`review` block on the `ProfessionalService` node has been completely removed. No star-rating or review markup exists anywhere on the site — the safest posture given no third-party-verifiable review source.
+- **`BreadcrumbList`** is implemented correctly on every non-homepage page sampled (correctly omitted on the homepage itself), with proper `position`/`name`/`item` structure and full nested paths (e.g. Home → Services → Web Design & Development).
+- **`Service` schema** on all 4 service sub-pages (`/services/web-design`, `/services/crm-automation`, `/services/ecommerce`, `/services/maintenance`) — each has `name`, `description`, `url`, `provider`, `areaServed`. `Offer`/`UnitPriceSpecification` is correctly present where pricing is fixed (Web Design $299, Maintenance $97/mo) and correctly omitted where pricing is variable/quoted (CRM Automation, E-commerce).
+- **`/pricing`** uses `ItemList` of 3 `Offer`s (Starter $299, Growth $499, Enterprise — no price, correctly reflecting "custom pricing").
+- **Blog** — `/blog` correctly uses `Blog` (not `BlogPosting`) for the index; every sampled post (`whats-included-in-a-maintenance-plan`, `how-much-does-a-website-cost`, `schema-markup-small-business-guide` — spanning Jul 9, Jul 13, and Aug 19 publish dates) has a complete `BlogPosting`: `headline`, `description`, **`image`** (previously missing — now fixed), `datePublished`, `dateModified`, `author`, `publisher` (with `logo`), and `mainEntityOfPage`.
+- **`FAQPage`** content is genuinely visible on every page where it's marked up (verified against extracted page text on `/about` and cross-checked against FAQ copy on service pages) — no hidden-content risk.
+- **No deprecated or non-rich-result schema being over-relied on** — `FAQPage` is present but the team is not treating it as a rich-result driver; that's the correct posture under current Google policy.
 
 ---
 
-## Medium
+## Findings
 
-### 2. `ProfessionalService` vs `Organization` — type appropriateness
-**File:** `src/app/layout.tsx`
+### 1. `ProfessionalService` vs `Organization` — type-appropriateness mismatch (carried over from prior audit)
+**Severity: Medium**
 
-`ProfessionalService` is a subtype of `LocalBusiness`, which schema.org and Google's own guidance model as a physical-location or defined-service-area business (Google's LocalBusiness rich-result features expect `address`/`geo`). PinexaDigital is described as a remote-only agency serving US clients from an India-based team with no storefront — and indeed no `address` is present in the markup. Since `Organization` supports every property currently used (`telephone`, `email`, `areaServed`, `logo`, `sameAs`, `aggregateRating`, `review`) without implying a physical/local-business presence, it is the more semantically accurate type here and avoids sending a "local business" signal Google can't verify (no address) or misapply.
+`ProfessionalService` is a subtype of `LocalBusiness` in schema.org, and Google's own LocalBusiness structured-data guidance assumes a physical location or defined local service area (`address`, `geo`). The site-wide node has **no `address` property**, and the business is explicitly positioned as a remote, US-market-focused agency with no storefront. Compounding this: the `telephone` field is an Indian number (`+91 78198 32001`) while `areaServed` claims `{"@type":"Country","name":"United States"}` — a country-code mismatch that reads oddly on a `LocalBusiness`-family type where telephone often implies a local point of contact. None of this breaks validation (all required `LocalBusiness` fields for basic parsing are technically optional), but it's a semantic mismatch that risks Google mis-modeling the entity, and it forfeits nothing to fix — `Organization` supports every property currently in use (`telephone`, `email`, `areaServed`, `logo`, `sameAs`) without implying a physical/local presence.
 
-**Recommended fix:**
+**Recommended fix** — replace the `ProfessionalService` node with `Organization` in the shared layout `@graph` (and in the `provider` reference on each `Service` page, see Finding 2):
+
 ```json
 {
+  "@context": "https://schema.org",
   "@type": "Organization",
   "@id": "https://www.pinexadigital.com/#organization",
   "name": "PinexaDigital",
@@ -71,6 +50,7 @@ Google's structured data guidelines for review snippets explicitly prohibit "sel
   "description": "Professional web design and development agency helping US businesses grow online with high-converting websites, SEO, and e-commerce solutions.",
   "email": "contact@pinexadigital.com",
   "areaServed": { "@type": "Country", "name": "United States" },
+  "serviceType": ["Web Design", "Web Development", "CRM Automation", "E-commerce"],
   "logo": {
     "@type": "ImageObject",
     "url": "https://www.pinexadigital.com/logo.png",
@@ -78,57 +58,51 @@ Google's structured data guidelines for review snippets explicitly prohibit "sel
     "height": 512
   },
   "sameAs": [
-    "https://www.linkedin.com/company/pinexadigital",
-    "https://twitter.com/pinexadigital"
+    "https://www.linkedin.com/in/pinexa-digital-064059420",
+    "https://www.instagram.com/pinexadigital/"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+91 78198 32001",
-    "contactType": "customer service",
+    "contactType": "sales",
     "areaServed": "US",
+    "availableLanguage": ["English"],
     "email": "contact@pinexadigital.com"
   }
 }
 ```
-Note: `priceRange` is a `LocalBusiness`-only property and has no defined meaning on `Organization` — drop it if you switch types (pricing is already well-represented via the `Service`/`Offer` schema on service pages and the `ItemList` on `/pricing`).
 
-### 3. Blog posts missing `image` on `BlogPosting`
-**File:** `src/app/blog/[slug]/page.tsx`, `src/lib/blog-data.ts`
-
-`Post` has no `image` field, so `blogPostingJsonLd` can't populate one. `image` is a required/near-required property for Google's Article/BlogPosting rich results (large/enhanced link previews, Top Stories eligibility) and for good AI-citation previews.
-
-**Fix:** Add an `image` field to each post in `blog-data.ts` (1200×630 min, matching the OG image convention already used elsewhere) and include it in the JSON-LD:
-```json
-{
-  "@type": "BlogPosting",
-  "headline": "How much does a website cost in 2026?",
-  "image": ["https://www.pinexadigital.com/blog/how-much-does-a-website-cost-og.jpg"],
-  "datePublished": "2026-06-15",
-  "dateModified": "2026-06-15",
-  "author": { "@type": "Organization", "name": "PinexaDigital", "url": "https://www.pinexadigital.com" },
-  "publisher": {
-    "@type": "Organization",
-    "name": "PinexaDigital",
-    "url": "https://www.pinexadigital.com",
-    "logo": { "@type": "ImageObject", "url": "https://www.pinexadigital.com/logo.png" }
-  },
-  "mainEntityOfPage": "https://www.pinexadigital.com/blog/how-much-does-a-website-cost"
-}
-```
+Note: `priceRange` is a `LocalBusiness`-only property with no defined meaning on plain `Organization` — drop it (pricing is already well represented via `Service`/`Offer` and the `/pricing` `ItemList`).
 
 ---
 
-## Low / Optional
+### 2. `Service.provider` duplicates organization data instead of referencing the shared `@id`
+**Severity: Low**
 
-### 4. Portfolio page has no item-level schema
-**File:** `src/app/portfolio/page.tsx`
+Every `Service` block's `provider` field is a fresh, inline `{"@type":"ProfessionalService","name":"PinexaDigital","url":"https://www.pinexadigital.com"}` object rather than a reference to the canonical organization node already declared in the site-wide `@graph`. This isn't invalid, but it creates redundant, disconnected entity mentions instead of one clean, consolidated node — a minor entity-resolution quality signal for Google's Knowledge Graph and for AI/LLM parsers building an entity graph of the page.
 
-The 8 tiles (gym, restaurant, hotel, travel, clinic, etc.) are illustrative demo templates, not documented client case studies — so `Product`/`Review`-bearing schema would be inappropriate. A light-touch `ItemList` of `CreativeWork` entries is a reasonable, low-risk addition since these are legitimate portfolio/demo works:
+**Recommended fix:**
+```json
+{
+  "@type": "Service",
+  "name": "Web Design & Development",
+  "provider": { "@id": "https://www.pinexadigital.com/#organization" }
+}
+```
+(Only works cleanly if Finding 1 is also applied, so the `@id`'d node's `@type` is consistent — `@id` references don't need matching `@type` to resolve, but it's cleaner once there's one canonical org type.)
+
+---
+
+### 3. Portfolio page has no item-level schema for the 8 demo showcases
+**Severity: Low**
+
+`/portfolio` carries only the inherited site-wide `@graph` + `BreadcrumbList` — no schema describing the 8 individual demo sites (Gym & Fitness, Restaurant & Café, Hotel & Resort, Travel Agency, Doctor & Clinic, Law Firm, Real Estate, Construction). These are illustrative templates, not documented client case studies, so `Product`/`Review`-bearing schema would be inappropriate — but a light `ItemList` of `CreativeWork` entries is a reasonable, low-risk addition.
+
 ```json
 {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "PinexaDigital Portfolio",
+  "name": "PinexaDigital Industry Demos",
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -136,34 +110,37 @@ The 8 tiles (gym, restaurant, hotel, travel, clinic, etc.) are illustrative demo
       "item": {
         "@type": "CreativeWork",
         "name": "Gym & Fitness demo",
-        "url": "https://gym.pinexadigital.com",
-        "about": "High-energy fitness studio website demo — class schedules, memberships, trainer profiles.",
-        "creator": { "@type": "Organization", "name": "PinexaDigital", "url": "https://www.pinexadigital.com" }
+        "about": "High-energy fitness studio site with class schedules, memberships, and trainer profiles.",
+        "creator": { "@id": "https://www.pinexadigital.com/#organization" }
       }
     }
   ]
 }
 ```
+Expand `itemListElement` to all 8 demos; add `url` per item if each demo has its own live preview URL.
 
-### 5. `FAQPage` — content exists, no schema (optional, AI/GEO only)
-FAQ sections exist on `/services/web-design`, `/services/seo`, `/services/ecommerce`, `/services/maintenance`, and `/pricing` with zero `FAQPage` markup. Per current Google policy, FAQ rich results are retired for all sites (May 7, 2026) — **adding this provides no SERP benefit**, so it is optional. If GEO/AI-citation visibility is a goal, it's low-risk to add since the FAQ arrays already exist in each page's source:
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What's the difference between your Starter and Growth packages?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The Starter package ($997) covers up to 5 pages... Growth ($2,497) covers up to 12 pages, includes a custom design system, advanced SEO, and a blog setup."
-      }
-    }
-  ]
-}
-```
-Do not expect/report a SERP rich-result impact from this addition.
+---
+
+### 4. `sameAs` — LinkedIn link returned an inconclusive automated check result
+**Severity: Low (needs manual verification)**
+
+Automated `curl` check of `https://www.linkedin.com/in/pinexa-digital-064059420` returned **HTTP 999**, which is LinkedIn's standard anti-scraping response for non-browser clients (it returns 999 for many valid profile URLs when hit by curl/bots, not necessarily a broken link) — so this is **not** a confirmed dead link the way the July audit's Twitter/X 404s were. The Instagram link (`https://www.instagram.com/pinexadigital/`) returned a clean HTTP 200.
+
+**Recommendation:** Manually open the LinkedIn URL in a logged-in browser to confirm it resolves to the correct company/profile page. If PinexaDigital has (or creates) an actual **LinkedIn Company Page** (rather than a personal/individual profile), switching to that URL would be a stronger, more canonical `sameAs` entity signal for `Organization` markup than a personal profile.
+
+---
+
+### 5. `BlogPosting.author` is `Organization`, not `Person`
+**Severity: Info / Low**
+
+All sampled posts use `"author": {"@type": "Organization", "name": "PinexaDigital", ...}`. This is valid schema (Google accepts `Organization` as a `BlogPosting` author) and appropriate for a faceless-brand content operation with no named writers surfaced elsewhere on the site (no bylines, no team/author bios found on `/about`). If PinexaDigital later introduces named contributors or wants stronger E-E-A-T signals for AI citation, switching to `"@type": "Person"` with a real name/bio (and adding a `Person` node with `worksFor` pointing at the `Organization` `@id`) is the standard upgrade path — not urgent given the current faceless-brand positioning is intentional and consistent.
+
+---
+
+### 6. `Blog` schema on `/blog` doesn't enumerate posts via `blogPost`
+**Severity: Low / Optional**
+
+The `Blog` type on the index page has `name`, `url`, `description`, `publisher` but no `blogPost` array linking to the individual `BlogPosting` entries. Not required — `BreadcrumbList` + per-post `BlogPosting` already gives crawlers/AI a full picture — but adding `"blogPost": [{"@id": ".../blog/slug-1#post"}, ...]` (with matching `@id`s added to each `BlogPosting`) would make the site's full content graph explicit in a single fetch, which is a mild AI/GEO-citation nicety rather than a Google rich-result requirement.
 
 ---
 
@@ -171,18 +148,82 @@ Do not expect/report a SERP rich-result impact from this addition.
 
 | Check | Result |
 |---|---|
-| `@context` is `https://schema.org` | ✅ Pass everywhere |
-| `@type` valid, not deprecated | ✅ Pass (no `HowTo`, `SpecialAnnouncement`, `CourseInfo`, etc.) |
-| Required properties present | ⚠️ Mostly pass; `BlogPosting.image` missing |
-| Property value types correct | ✅ Pass |
-| No placeholder text | ✅ Pass |
-| URLs absolute | ✅ Pass (`siteUrl()` helper) |
-| Dates ISO 8601 | ✅ Pass |
-| Reviews genuine/verifiable | ❌ Fail — see Critical #1 |
-| LocalBusiness/Organization type matches business model | ⚠️ Borderline — see Medium #2 |
+| `@context` is `https://schema.org` | Pass — all blocks, all pages sampled |
+| `@type` valid, not deprecated | Pass — no `HowTo`, `SpecialAnnouncement`, `CourseInfo`, `EstimatedSalary`, `LearningVideo` |
+| Required properties present | Pass |
+| Property value types correct | Pass |
+| No placeholder text | Pass |
+| URLs absolute | Pass |
+| Dates ISO 8601 | Pass |
+| JSON-LD server-rendered (not client-injected only) | Pass — confirmed via `render_page.py --mode never` (raw fetch, Playwright disabled) on all 13 sampled URLs |
+| Reviews genuine/verifiable | N/A — no review/rating markup present (resolved by removal) |
+| LocalBusiness/Organization type matches business model | Fail — see Finding 1 |
+| FAQPage content matches visible page content | Pass — spot-checked on `/about` and service pages |
 
 ---
 
-## Score Rationale: 78/100
+## Score Rationale: 88/100
 
-Up from 18/100 (2026-06-29). Deductions: −12 for the self-serving/unverifiable `AggregateRating`+`Review` policy risk (Critical #1), −5 for the `ProfessionalService`/no-address type mismatch (Medium #2), −5 for missing `BlogPosting.image` across all posts (Medium #3). Remaining minor deductions for the optional portfolio/FAQPage opportunities left on the table. Everything else — `BreadcrumbList` site-wide, `Service` on every service page, `WebSite`+`Organization` graph, `Blog`/`BlogPosting`, `ItemList`/`Offer` pricing — is implemented correctly and confirmed server-rendered on the live site.
+Up from 78/100 (2026-07-04). The two prior deductions that carried the most weight — the self-serving/unverifiable `AggregateRating`+`Review` block (was −12) and missing `BlogPosting.image` (was −5) — are both fully resolved and add back to the score. Remaining deductions: −6 for the unresolved `ProfessionalService`/no-address type mismatch plus the compounding `+91` telephone vs. US `areaServed` inconsistency (Finding 1), −3 for `Service.provider` not using `@id` references (Finding 2), −2 for the portfolio page's missing item-level schema (Finding 3), −1 for the unverified `sameAs` LinkedIn link (Finding 4). Findings 5–6 are informational/optional and not scored. Everything else — format hygiene, `BreadcrumbList`, `Service`+`Offer` on service pages, `ItemList`/`Offer` pricing, `Blog`/`BlogPosting` (now with images), and server-rendering — is implemented correctly and verified live.
+
+---
+
+## Structured Data JSON block (for audit-data.json)
+
+```json
+{
+  "name": "Schema / Structured Data",
+  "score": 88,
+  "weight": 0.10,
+  "what_works": [
+    "Site-wide JSON-LD @graph (WebSite + ProfessionalService) injected identically on every page via the root layout, with correct @id linking between WebSite.publisher and the org node",
+    "Prior Critical finding resolved: self-authored, unverifiable AggregateRating/Review block has been fully removed from the site — no review-policy risk remains",
+    "BreadcrumbList correctly implemented on every non-homepage page with proper position/name/item structure and full nested paths",
+    "Service schema present on all 4 service sub-pages with provider, areaServed, and Offer/UnitPriceSpecification correctly included for fixed-price services and correctly omitted for variable-pricing services",
+    "/pricing uses ItemList of Offer for all 3 tiers, correctly omitting price on the custom-quote Enterprise tier",
+    "/blog uses Blog (not BlogPosting) for the index; every sampled BlogPosting has headline, description, image, datePublished, dateModified, author, publisher+logo, and mainEntityOfPage -- prior missing-image gap is fixed",
+    "FAQPage markup present on /services, all 4 service sub-pages, /pricing, and /about, with content verified visible on-page (no hidden-content risk); correctly not relied upon for SERP rich results under current retired-FAQ-rich-result policy",
+    "No deprecated schema types (HowTo, SpecialAnnouncement, CourseInfo, EstimatedSalary, LearningVideo) anywhere on the site",
+    "All JSON-LD confirmed server-rendered (present in raw HTML with Playwright disabled) across every sampled URL -- fully crawlable, zero SPA-shell risk",
+    "Consistent format hygiene sitewide: https://schema.org context, JSON-LD only (no Microdata/RDFa), absolute URLs, ISO 8601 dates, no placeholder text"
+  ],
+  "findings": [
+    {
+      "title": "ProfessionalService (LocalBusiness subtype) used for a remote agency with no address",
+      "severity": "Medium",
+      "description": "The site-wide organization node uses @type ProfessionalService (a LocalBusiness subtype implying a physical location or defined local service area per Google's guidance) but has no address property, and the business is explicitly remote/no-storefront. Compounding this, the telephone field is an Indian number (+91 78198 32001) while areaServed claims United States, a semantic mismatch. Does not break validation but risks entity mis-modeling.",
+      "recommendation": "Switch the shared @graph node's @type from ProfessionalService to Organization (which supports every property currently used without implying a physical LocalBusiness presence), add a structured ContactPoint, and drop the LocalBusiness-only priceRange property."
+    },
+    {
+      "title": "Service.provider duplicates organization data instead of referencing the shared @id",
+      "severity": "Low",
+      "description": "Each Service block's provider field is a fresh inline object ({\"@type\":\"ProfessionalService\",\"name\":...,\"url\":...}) rather than an @id reference to the canonical organization node already declared in the site-wide @graph, creating redundant/disconnected entity mentions.",
+      "recommendation": "Replace the inline provider object with {\"@id\": \"https://www.pinexadigital.com/#organization\"} on every Service page."
+    },
+    {
+      "title": "Portfolio page has no item-level schema for the 8 demo showcases",
+      "severity": "Low",
+      "description": "/portfolio carries only the inherited site-wide graph and BreadcrumbList; the 8 individual industry demo tiles (gym, restaurant, hotel, travel, clinic, law firm, real estate, construction) have no ItemList/CreativeWork markup.",
+      "recommendation": "Add an ItemList of CreativeWork entries (one ListItem per demo) with name, about, and creator referencing the org @id."
+    },
+    {
+      "title": "sameAs LinkedIn link returned an inconclusive automated status (HTTP 999)",
+      "severity": "Low",
+      "description": "Automated curl check of the LinkedIn sameAs URL returned HTTP 999, LinkedIn's standard anti-scraping response for non-browser clients, so link health could not be automatically confirmed either way. Instagram sameAs link returned a clean 200.",
+      "recommendation": "Manually verify the LinkedIn URL resolves correctly in a browser; consider linking a LinkedIn Company Page instead of a personal profile URL for a stronger Organization entity signal."
+    },
+    {
+      "title": "BlogPosting.author uses Organization, not Person",
+      "severity": "Info",
+      "description": "All sampled blog posts attribute authorship to the Organization node rather than a named Person, consistent with the site's faceless-brand content model (no bylines or author bios found on /about).",
+      "recommendation": "No action required while content remains unattributed to named writers; if named contributors are introduced later, add Person authors with worksFor referencing the org @id for stronger E-E-A-T/AI-citation signals."
+    },
+    {
+      "title": "Blog schema on /blog index does not enumerate posts via blogPost",
+      "severity": "Low",
+      "description": "The Blog type on the index page has name/url/description/publisher but no blogPost array linking to individual BlogPosting entries, so the full content graph is not explicit in a single fetch.",
+      "recommendation": "Optional: add a blogPost array of @id references once BlogPosting entries carry stable @id values, primarily as an AI/GEO-citation nicety."
+    }
+  ]
+}
+```

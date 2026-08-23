@@ -1,396 +1,215 @@
 {
-  "meta": {
-    "domain": "pinexadigital.com",
-    "url": "https://www.pinexadigital.com",
-    "audit_date": "2026-07-04",
-    "previous_audit_date": "2026-06-29",
-    "previous_health_score": 36,
-    "pages_crawled": 11,
-    "business_type": "Agency — Web Design & Development (US market, remote/no storefront)"
-  },
   "summary": {
-    "health_score": 38,
-    "business_type": "Web Design & Development Agency",
+    "health_score": 81,
+    "business_type": "Web design & development agency (remote/virtual, US-market-focused; no physical location)",
+    "audit_date": "2026-08-23",
     "top_findings": [
-      "robots.txt still returns 'Disallow: /' for all crawlers — unresolved 5 days after being flagged Critical; every other fix on this list has zero real-world effect until this ships",
-      "Canonical tags, sitemap URLs, and OG URLs all point at the non-www apex domain, which itself 308-redirects to www — a self-defeating canonical signal",
-      "Site-wide AggregateRating/Review schema (5.0★, 3 reviews) is self-authored and unverifiable — a real Google rich-result policy risk",
-      "JSON-LD sameAs links to LinkedIn and Twitter/X both resolve to HTTP 404 — broken entity signals, worse than having none",
-      "Sitemap is missing all 6 live blog post pages, and the +91 Indian phone number sitewide contradicts the site's US-market positioning"
+      "Portfolio page presents industry demo templates, not real client work -- zero case studies or testimonials exist anywhere on the site (High, Content & SXO)",
+      "No named human authors on any page or blog post -- all content attributed to the Organization only (High, Content)",
+      "No detectable backlink profile in Common Crawl; domain is ~2 months old with zero directory/citation presence (High, Off-Page Authority)",
+      "Floating mobile contact button overlaps the social-share icon on blog posts -- confirmed real layout bug via DOM overlap detection (High, Visual/UX)",
+      "Favicon is 146KB, the single largest network resource on the homepage, loaded on every page site-wide (High, Performance)"
     ],
     "quick_wins": [
-      "Change src/app/robots.ts from disallow:\"/\" to allow:\"/\" and redeploy — 15 minutes, est. +35-40pt real-world visibility impact",
-      "Change SITE.rootDomain in src/lib/site-config.ts to 'www.pinexadigital.com' — fixes canonical/sitemap/OG host mismatch everywhere in one edit",
-      "Remove the duplicate '| PinexaDigital' suffix from services/seo and services/maintenance page titles",
-      "Add the 6 blog posts to src/app/sitemap.ts by importing from blog-data.ts instead of a hardcoded array",
-      "Fix or remove the broken sameAs LinkedIn/Twitter links in layout.tsx JSON-LD"
+      "Replace the 146KB favicon with a properly optimized icon (a few KB) -- five-minute fix, removes the largest resource on every page",
+      "Correct llms.txt, which claims the homepage features 'testimonials' that don't actually exist anywhere on the site",
+      "Fix the CSS z-index/position collision between the floating contact button and the share-icon row on mobile blog posts",
+      "Switch the site-wide JSON-LD type from ProfessionalService to Organization + ContactPoint (ready-made snippet in findings/schema.md) -- resolves the LocalBusiness-without-address mismatch",
+      "Add /privacy and /terms to sitemap.xml, and replace the shared build-time lastmod on 11 static pages with real per-page dates",
+      "Increase mobile nav icon tap targets (theme toggle, hamburger) from 32x32px to at least 44x44px"
     ]
   },
   "categories": [
     {
       "name": "Technical SEO",
-      "score": 24,
+      "score": 91,
       "weight": 0.22,
       "what_works": [
-        "Sitewide meta robots correctly set to index,follow (fixed from prior audit's global noindex bug)",
-        "Canonical tags present on all 11 sitemap pages plus /privacy, /terms, and all 6 blog posts (host is wrong, but the tag itself is consistently implemented)",
-        "HSTS preload-eligible, plus X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy now ship on every route (new since prior audit)",
-        "All pages confirmed server-rendered (is_spa: False), zero console errors",
-        "6 blog post detail pages now return 200 (previously all 404) and /api/contact now exists"
+        "All 32 sitemap URLs return clean 200s with self-referencing canonicals, no duplicate titles",
+        "Correct domain canonicalization (non-www and http both 308-redirect to https://www.)",
+        "True HTTP 404 on nonexistent pages; consistent index,follow meta robots sitewide",
+        "Strong, consistent security headers (CSP, HSTS w/ preload, X-Content-Type-Options, X-Frame-Options) on homepage AND interior pages",
+        "Fully server-rendered content, crawlable without JS execution",
+        "llms.txt present at root with a clean page manifest"
       ],
       "findings": [
-        {
-          "title": "robots.txt still disallows the entire site — unresolved regression (5 days)",
-          "severity": "Critical",
-          "description": "src/app/robots.ts hardcodes rules:{userAgent:\"*\",disallow:\"/\"}. Confirmed live via curl. Blocks Googlebot, Bingbot, and every AI crawler from every URL, nullifying all other fixes shipped this cycle.",
-          "recommendation": "Change to allow:\"/\" (or remove the rules override), redeploy, verify with curl, then request re-crawl in GSC/Bing Webmaster Tools."
-        },
-        {
-          "title": "Canonical/sitemap/OG URLs use the wrong host (apex instead of www)",
-          "severity": "High",
-          "description": "SITE.rootDomain in site-config.ts is 'pinexadigital.com' (no www), but the live site serves at www.pinexadigital.com (apex 308-redirects). Every canonical tag points at a URL that itself redirects.",
-          "recommendation": "Change rootDomain to 'www.pinexadigital.com' in src/lib/site-config.ts; regenerate sitemap and redeploy."
-        },
-        {
-          "title": "Duplicate brand name in two <title> tags",
-          "severity": "Medium",
-          "description": "services/seo/page.tsx and services/maintenance/page.tsx hardcode '| PinexaDigital' inside their own title, and the layout template appends it again, producing '...| PinexaDigital | PinexaDigital' live.",
-          "recommendation": "Remove the manual '| PinexaDigital' suffix from both files; let the layout title template add it once."
-        },
-        {
-          "title": "No Content-Security-Policy header",
-          "severity": "Medium",
-          "description": "4 of 5 standard security headers ship via next.config.ts; CSP is the one missing, leaving XSS/injection mitigation weaker than it should be.",
-          "recommendation": "Add a CSP header, starting permissive (allowing 'unsafe-inline' for Next.js hydration scripts) and tightening iteratively."
-        },
-        {
-          "title": "Sitemap.xml omits all 6 live blog post pages",
-          "severity": "Medium",
-          "description": "sitemap.ts uses a hardcoded 11-URL array and never imports posts from blog-data.ts, so all 6 published, 200-returning blog posts are absent from the sitemap.",
-          "recommendation": "Generate blog post sitemap entries dynamically from the same data source that powers /blog and blog/[slug]."
-        },
-        {
-          "title": "Sitemap lastModified uses request-time new Date(), not real content dates",
-          "severity": "Medium",
-          "description": "All 11 sitemap URLs share an identical, fabricated lastmod timestamp generated at request time, which Google discounts as an inaccurate freshness signal.",
-          "recommendation": "Use real per-page last-modified dates (post 'date' field for blog, static constants for marketing pages)."
-        },
-        {
-          "title": "og-image.jpg still returns 404",
-          "severity": "Low",
-          "description": "metadataBase + openGraph.images + twitter.images all reference /og-image.jpg, which 404s — social shares render with no preview image.",
-          "recommendation": "Add a 1200x630 branded JPEG at public/og-image.jpg."
-        },
-        {
-          "title": "No IndexNow implementation",
-          "severity": "Low",
-          "description": "No IndexNow key file or API integration found. Optional, but would help re-establish visibility quickly once robots.txt is fixed.",
-          "recommendation": "Generate an IndexNow key, host it at /{key}.txt, call the IndexNow API on deploy."
-        }
+        {"title": "CSP allows 'unsafe-inline' for script-src and style-src", "severity": "Medium", "description": "Reduces the XSS-mitigation value of the Content-Security-Policy header.", "recommendation": "Migrate to nonce- or hash-based CSP via Next.js middleware."},
+        {"title": "llms.txt uses apex (non-www) URLs requiring a redirect hop", "severity": "Low", "description": "Links 308-redirect from pinexadigital.com to www.pinexadigital.com.", "recommendation": "Update llms.txt to use canonical www URLs directly."},
+        {"title": "No IndexNow integration", "severity": "Low", "description": "No IndexNow key file or publish-time ping despite regular blog publishing.", "recommendation": "Add IndexNow key and ping on publish/update for faster Bing/Yandex pickup."},
+        {"title": "Sitemap lastmod is a shared build timestamp for static pages", "severity": "Low", "description": "11 non-blog URLs share one identical lastmod value that tracks build time, not content changes.", "recommendation": "Only update lastmod on genuine content change."},
+        {"title": "/privacy and /terms exist but are missing from the sitemap", "severity": "Medium", "description": "Both return HTTP 200 and are crawlable but absent from sitemap.xml.", "recommendation": "Confirm whether intentional; if not, add both with low priority."}
       ]
     },
     {
       "name": "Content Quality",
-      "score": 48,
+      "score": 74,
       "weight": 0.23,
       "what_works": [
-        "Blog posts are real and substantive (900+ words sampled), dated, with BlogPosting/BreadcrumbList schema — prior 404 issue fully resolved",
-        "Transparent, specific pricing ($997/$2,497/Custom) with FAQ block — rare trust signal for this vertical",
-        "Service sub-pages are well-differentiated (700-1,000 words each, not template-duplicated) with numbered process steps",
-        "Consistent metadata (title/description/OG/canonical) present on every page checked"
+        "Differentiated, non-boilerplate service page copy across all 4 service pages",
+        "Specific, checkable claims (pricing, PageSpeed scores, delivery timelines) instead of vague marketing language",
+        "Blog content structured for direct-answer extraction (numbered lists, decision tables, good-sign/red-flag framing)",
+        "Consistent, opinionated brand voice reading as domain-expert-written, not templated filler",
+        "Honest FAQ content addressing real objections on /pricing and service pages"
       ],
       "findings": [
-        {
-          "title": "Site-wide testimonials/reviews are unverifiable and schema-embedded as fact",
-          "severity": "Critical",
-          "description": "3 homepage testimonials (first name + last initial only, no company, no photo, no link) are simultaneously asserted as structured Review/AggregateRating data (5.0★, 3 reviews) with no third-party verification path.",
-          "recommendation": "Replace with real, attributable reviews (full name + company + link, or sourced from a verified platform) or drop the Review/AggregateRating schema until real reviews exist."
-        },
-        {
-          "title": "Portfolio page has essentially no actual project imagery",
-          "severity": "Critical",
-          "description": "parse_html.py found exactly one <img> on /portfolio — the site logo. The page whose entire purpose is visual proof-of-work ships with no screenshots of actual client sites.",
-          "recommendation": "Add real screenshots (or clearly-labeled mockups) for each portfolio entry."
-        },
-        {
-          "title": "Zero named human authorship anywhere on the site",
-          "severity": "High",
-          "description": "Blog posts use Organization-only authorship (no Person, no bio, no headshot) on all 6 posts. /about describes 'a focused team' with no named individuals.",
-          "recommendation": "Add at least one named author with bio/credentials to /about and attribute blog posts to that person."
-        },
-        {
-          "title": "US-targeting site displays an Indian phone number sitewide",
-          "severity": "High",
-          "description": "+91 78198 32001 appears as a live tel: link in the footer of every page while all copy and schema explicitly target US businesses/customers.",
-          "recommendation": "Provision a US-based number (Google Voice, VoIP, or toll-free) for the public-facing footer/contact page."
-        },
-        {
-          "title": "/pricing is thin relative to purchase-decision weight",
-          "severity": "Medium",
-          "description": "250 words for a page that has to carry an entire buying decision — no case studies, no process narrative, no risk-reversal language beyond tier cards + FAQ.",
-          "recommendation": "Add a short 'what happens after you pay' narrative and at least one linked case study per tier."
-        },
-        {
-          "title": "No dedicated author/team page or bios",
-          "severity": "Medium",
-          "description": "No /team or /about#team section with individual bios, which would reinforce both Expertise and Experience E-E-A-T pillars.",
-          "recommendation": "Add a 3-4 person 'who we are' grid on /about with real names/roles/photos."
-        },
-        {
-          "title": "Blog post dates are not chronological",
-          "severity": "Low",
-          "description": "Post dates span a wide, non-chronological range, reading as backdated/batch-published rather than an ongoing cadence.",
-          "recommendation": "Verify and correct publish dates; add an 'updated' date for refreshed evergreen posts."
-        }
+        {"title": "No named human authors anywhere on the site", "severity": "High", "description": "BlogPosting.author and all bylines use Organization type only, never Person, across every sampled page.", "recommendation": "Add named author(s) with title/bio to blog posts; set BlogPosting.author to Person."},
+        {"title": "Portfolio shows demo templates, not real client work -- no case studies or testimonials exist", "severity": "High", "description": "/portfolio explicitly presents 8 industry demo templates ('imagine your brand in its place'); no other page has client names, testimonials, or outcome data.", "recommendation": "Add a real case-study section as client projects ship."},
+        {"title": "About page makes unverified experience claims", "severity": "Medium", "description": "/about asserts process maturity without concrete numbers (years operating, project count, team size).", "recommendation": "Add specific, verifiable proof points to /about."},
+        {"title": "Process description duplicated near-verbatim between /about and /services/web-design", "severity": "Low", "description": "The Discovery/Design/Build narrative repeats in very similar phrasing on both pages.", "recommendation": "Differentiate tone/detail level between the two instances."}
       ]
     },
     {
-      "name": "On-Page SEO",
-      "score": 55,
+      "name": "On-Page SEO (Search Experience)",
+      "score": 76,
       "weight": 0.20,
       "what_works": [
-        "Title/meta/heading hygiene is clean on 9 of 11 pages",
-        "Breadcrumb-based internal linking is consistent site-wide",
-        "3 of 4 SERP-backwards-analyzed keywords show ALIGNED-to-MEDIUM page-type match against what Google currently rewards"
+        "Pricing and e-commerce pages closely match the trust-building/comparison format Google rewards for their query types",
+        "Service pages name specific tools/tech as credible expertise signals rather than generic claims",
+        "Blog posts open with direct, quotable answers and use original frameworks",
+        "Consistent 'who this is for' segmentation across service pages qualifies visitors efficiently"
       ],
       "findings": [
-        {
-          "title": "No comparison/differentiation content anywhere on the site",
-          "severity": "High",
-          "description": "All 4 keywords analyzed via SERP-backwards SXO review show a directory/listicle competitor ('Top 10 agencies') in 40-70% of results, but the site has zero comparison or 'why us' content.",
-          "recommendation": "Add a 'Why PinexaDigital vs. a typical agency' comparison block to the homepage and /services/web-design."
-        },
-        {
-          "title": "No SEO retainer pricing shown anywhere",
-          "severity": "High",
-          "description": "/services/seo and /pricing cover only one-time web-design packages. Competing 'SEO agency for small business' results anchor at explicit monthly prices (e.g. $499/mo).",
-          "recommendation": "Add an SEO/Growth monthly retainer tier to /pricing and link it from the /services/seo CTA."
-        },
-        {
-          "title": "Sitemap architecture issues (non-canonical host, missing blog URLs)",
-          "severity": "High",
-          "description": "See Technical SEO findings — sitemap lists non-www URLs that redirect on every entry and omits all 6 blog posts.",
-          "recommendation": "Fix rootDomain and dynamically include blog posts in sitemap.ts."
-        },
-        {
-          "title": "FAQ content lacks FAQPage schema on 3 pages",
-          "severity": "Medium",
-          "description": "/services/web-design, /services/seo, and /pricing all have visible, well-structured Q&A accordions with no FAQPage JSON-LD wrapping them.",
-          "recommendation": "Add FAQPage schema matching the existing visible accordion content (no SERP rich-result benefit post-May-2026 policy change, but valuable for AI/GEO citation)."
-        },
-        {
-          "title": "Pricing page has no trust signals at the point of highest purchase anxiety",
-          "severity": "Medium",
-          "description": "/pricing shows 3 tiered cards and an FAQ but zero testimonials, guarantees, or client logos next to the price table.",
-          "recommendation": "Insert a condensed 'Trusted by 50+ businesses / 5.0 avg rating' strip directly above or beside the pricing cards."
-        }
+        {"title": "Portfolio page structurally mismatches its search intent", "severity": "High", "description": "Visitors expecting real client proof instead find industry demo templates.", "recommendation": "Add a real case-study section as client work accumulates."},
+        {"title": "Homepage lacks above-fold social proof", "severity": "Medium", "description": "Homepage answers relevance well but not trust within the first scroll.", "recommendation": "Add a compact trust strip once real client data exists."},
+        {"title": "E-commerce service page and two blog posts overlap in message and audience", "severity": "Low", "description": "Three pages answer the same Shopify-vs-WooCommerce decision with inconsistent depth and no cross-linking.", "recommendation": "Cross-link the service page and blog posts explicitly."}
       ]
     },
     {
       "name": "Schema / Structured Data",
-      "score": 78,
+      "score": 88,
       "weight": 0.10,
       "what_works": [
-        "WebSite + ProfessionalService graph, BreadcrumbList site-wide, per-service Service schema, ItemList/Offer pricing, and Blog/BlogPosting are all now correctly implemented and confirmed server-rendered — up from 18/100 on 2026-06-29",
-        "All JSON-LD validated: correct @context, valid types, absolute URLs, ISO 8601 dates, no placeholder text"
+        "Site-wide JSON-LD @graph (WebSite + ProfessionalService) injected identically via root layout, correct @id linking",
+        "Prior Critical finding resolved: self-authored AggregateRating/Review block fully removed",
+        "BreadcrumbList correctly implemented on every non-homepage page",
+        "Service schema on all 4 service sub-pages with correct Offer/pricing presence",
+        "/pricing uses ItemList of Offer for all 3 tiers; Blog/BlogPosting complete with image, dates, author, publisher",
+        "FAQPage markup present and verified to match visible content; no deprecated schema types anywhere"
       ],
       "findings": [
-        {
-          "title": "Site-wide AggregateRating/Review is a self-serving, unverifiable review policy risk",
-          "severity": "Critical",
-          "description": "The ProfessionalService node carries aggregateRating (5.0/3 reviews) and 3 embedded Review objects with no third-party verification path and no datePublished — a real Google rich-result policy risk (self-serving reviews).",
-          "recommendation": "Remove Review/AggregateRating schema until real, verifiable third-party reviews exist, or source them from Google Business Profile/Clutch and link the profile."
-        },
-        {
-          "title": "ProfessionalService vs Organization — type appropriateness",
-          "severity": "Medium",
-          "description": "ProfessionalService is a LocalBusiness subtype implying a physical/service-area presence, but this is a remote-only agency with no address in the markup.",
-          "recommendation": "Switch to Organization type, which supports all currently-used properties without implying a local-business presence."
-        },
-        {
-          "title": "Blog posts missing image on BlogPosting",
-          "severity": "Medium",
-          "description": "Post type in blog-data.ts has no image field, so BlogPosting JSON-LD can't populate one — needed for Article rich results.",
-          "recommendation": "Add a 1200x630 image field to each post and include it in the JSON-LD."
-        }
+        {"title": "ProfessionalService (LocalBusiness subtype) used for a remote agency with no address", "severity": "Medium", "description": "Implies a physical location Google's guidance assumes for LocalBusiness types; compounded by an Indian phone number vs. US areaServed.", "recommendation": "Switch to Organization + ContactPoint (ready-made JSON-LD in findings/schema.md)."},
+        {"title": "Service.provider duplicates organization data instead of referencing the shared @id", "severity": "Low", "description": "Each Service block re-declares an inline provider object instead of an @id reference.", "recommendation": "Replace inline provider with an @id reference to the canonical org node."},
+        {"title": "Portfolio page has no item-level schema for the 8 demo showcases", "severity": "Low", "description": "No ItemList/CreativeWork markup for the individual demo tiles.", "recommendation": "Add an ItemList of CreativeWork entries."},
+        {"title": "sameAs LinkedIn link returned an inconclusive automated status (HTTP 999)", "severity": "Low", "description": "LinkedIn's standard anti-bot response; inconclusive, not confirmed broken.", "recommendation": "Manually verify; consider a Company Page instead of a personal profile URL."}
       ]
     },
     {
       "name": "Performance (Core Web Vitals)",
-      "score": 85,
+      "score": 78,
       "weight": 0.10,
       "what_works": [
-        "CLS measured at 0 across all pages/profiles — next/image consistently emits explicit width/height",
-        "INP proxy (TBT) is Good — no long main-thread tasks, no third-party analytics scripts found",
-        "Vercel edge caching functioning (X-Vercel-Cache: HIT), TTFB in 180-310ms lab range",
-        "Fonts preloaded via next/font/google with display:swap — no FOIT/CLS risk"
+        "Desktop performance excellent: Lighthouse 100/100, LCP 0.7s",
+        "CLS is 0 (perfect) across every page and viewport tested",
+        "TBT is low everywhere (58-80ms), well within the good threshold",
+        "Reasonable total page weight (~649KB, 32 requests) with responsive/lazy-loaded images and font preloading already in place"
       ],
       "findings": [
-        {
-          "title": "Mobile LCP is borderline at the Good threshold",
-          "severity": "Medium",
-          "description": "Simulated mobile LCP measured 2.7s, right at the 2.5s cutoff; desktop LCP is excellent (1.1s). Lab-only estimate, no CrUX field data available.",
-          "recommendation": "Add fetchpriority=high on the hero/LCP image, avoid loading=lazy on it, confirm appropriately-capped resolution for mobile."
-        },
-        {
-          "title": "~48 KiB of estimated unused JavaScript",
-          "severity": "Low",
-          "description": "Lighthouse flagged unused JS in first-party chunks, a minor contributor to mobile TBT.",
-          "recommendation": "Audit chunk composition for unused code paths; confirm route-level code-splitting."
-        },
-        {
-          "title": "No CrUX/PageSpeed API key configured",
-          "severity": "Info",
-          "description": "All figures are single-run lab simulations, not real Chrome UX Report field data.",
-          "recommendation": "Configure a PageSpeed Insights API key once traffic accumulates for authoritative field-data validation."
-        }
+        {"title": "Favicon is 146KB, the largest resource on the homepage", "severity": "High", "description": "/favicon.png transfers 146,954 bytes, larger than the hero image, loaded on every page site-wide.", "recommendation": "Replace with a properly optimized favicon (a few KB)."},
+        {"title": "Mobile LCP in the Needs Improvement band on all pages tested", "severity": "Medium", "description": "Lab LCP under mobile throttling ranges 2.9-3.9s across 4 pages tested, versus a <2.5s Good threshold.", "recommendation": "Identify and prioritize the actual LCP element per page (fetchpriority=high, reduce JS-hydration blocking)."},
+        {"title": "Multiple 40-70KB JS chunks load on the homepage", "severity": "Low", "description": "Several Next.js chunk files compete with the LCP element for mobile bandwidth/parse time.", "recommendation": "Code-split non-critical sections to load after first paint."}
       ]
     },
     {
       "name": "AI Search Readiness (GEO)",
-      "score": 32,
+      "score": 83,
       "weight": 0.10,
       "what_works": [
-        "llms.txt now exists and is well-formed (new since prior audit)",
-        "/services, /pricing, /about substantially expanded with genuine FAQ-style Q&A and self-contained direct-answer passages",
-        "All pages are server-rendered (is_spa: False) — technical crawlability is not the bottleneck once robots.txt is fixed",
-        "Blog post opening passages are legitimately extractable AI-citation content"
+        "robots.txt fully open, no AI crawler blocked",
+        "Well-formed llms.txt with page manifest and explicit AI citation/attribution policy",
+        "Blog content structured for direct extraction (numbered frameworks, direct answers)",
+        "FAQPage schema present and verified to match visible content",
+        "All structured data server-rendered, fully visible without JS execution"
       ],
       "findings": [
-        {
-          "title": "robots.txt still blocks every AI crawler — unresolved",
-          "severity": "Critical",
-          "description": "GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, and Google-Extended are all blocked by the same Disallow:/ rule as regular search engines. Nothing else in this category matters until this is fixed.",
-          "recommendation": "Same fix as Technical SEO #1: allow crawling. Estimated impact: +35-40 pts to this category alone."
-        },
-        {
-          "title": "sameAs entity links point to non-existent profiles (404s)",
-          "severity": "Critical",
-          "description": "Both LinkedIn and Twitter/X sameAs URLs in the ProfessionalService schema return HTTP 404 and aren't linked anywhere in visible HTML — a false structured-data claim, worse than no signal at all.",
-          "recommendation": "Create and verify both profiles before relying on them, or remove sameAs entirely until real profiles exist."
-        },
-        {
-          "title": "Headline stats remain unsourced and undated",
-          "severity": "High",
-          "description": "+127% growth, 50+ businesses, 5.0 stars, 40% traffic lift, 98% satisfaction all lack methodology, date range, or verifiable link.",
-          "recommendation": "Add one sentence of provenance per stat, or link the rating claim to an external, checkable review platform."
-        },
-        {
-          "title": "No FAQPage schema despite existing FAQ content",
-          "severity": "High",
-          "description": "Genuine Q&A content exists on /services and /pricing but is not wrapped in FAQPage JSON-LD anywhere.",
-          "recommendation": "Add FAQPage schema mirroring the existing on-page Q&A; low effort since content already exists."
-        },
-        {
-          "title": "+91 phone number contradicts areaServed: United States",
-          "severity": "High",
-          "description": "Same contact-geography mismatch as flagged in Content Quality, relevant here for AI entity-resolution trust scoring.",
-          "recommendation": "Provision a US virtual number and update the schema telephone field."
-        }
+        {"title": "llms.txt claims testimonials exist on the homepage -- they don't", "severity": "Medium", "description": "llms.txt Home entry mentions 'testimonials' but none exist anywhere on the site.", "recommendation": "Add real testimonials or correct the llms.txt description."},
+        {"title": "No explicit per-bot rules in robots.txt", "severity": "Low", "description": "Blanket Allow: / works but provides no auditable, bot-specific confirmation.", "recommendation": "Optionally add explicit User-agent blocks for major AI crawlers."},
+        {"title": "Thin brand-entity disambiguation signals", "severity": "Low", "description": "sameAs only links LinkedIn and Instagram; no Crunchbase/Clutch/G2/Wikidata presence.", "recommendation": "Claim agency-directory profiles as both backlinks and sameAs signals."}
       ]
     },
     {
-      "name": "Images",
-      "score": 70,
+      "name": "Images / Visual UX",
+      "score": 79,
       "weight": 0.05,
       "what_works": [
-        "next/image serves WebP/AVIF automatically with responsive srcSet and explicit width/height on every image found — 0 CLS risk measured across all pages/viewports",
-        "Lazy-loading confirmed on below-fold images"
+        "Homepage above-the-fold: H1, sub-headline, and two CTAs fully visible without scrolling on desktop and mobile",
+        "No horizontal scroll, no broken/unsized images, no console errors across all 12 page/viewport combinations tested",
+        "All homepage images have descriptive, non-generic alt text; consistent 16px readable typography sitewide",
+        "Contact page desktop layout shows the full lead-capture form above the fold"
       ],
       "findings": [
-        {
-          "title": "Portfolio page has essentially no real project images (cross-ref Content Quality)",
-          "severity": "High",
-          "description": "Only 1 image (the logo) renders on /portfolio despite it being the site's dedicated visual-proof page.",
-          "recommendation": "Add real screenshots for each portfolio entry — see Content Quality Critical #2."
-        },
-        {
-          "title": "Homepage relies on generic stock photography",
-          "severity": "Medium",
-          "description": "Unsplash-sourced 'team at work' / 'design process' images rather than real team or project photography — a credibility risk for a trust-dependent purchase.",
-          "recommendation": "Replace with real team/work photos or niche-specific custom photography."
-        },
-        {
-          "title": "No dedicated alt-text audit performed",
-          "severity": "Info",
-          "description": "This pass focused on technical image delivery (format/sizing/CLS) rather than a full alt-text quality review across all images.",
-          "recommendation": "Run a follow-up alt-text-specific pass once portfolio imagery is added."
-        }
+        {"title": "Floating contact button overlaps social-share icon on mobile blog post", "severity": "High", "description": "Confirmed via DOM overlap detector: a real layout collision on the mobile blog post, not a screenshot artifact.", "recommendation": "Add position-aware logic so floating buttons don't render over other interactive elements."},
+        {"title": "Large empty vertical gap between header and content on every interior page", "severity": "Medium", "description": "Substantial blank space pushes content and CTAs out of the above-the-fold area, especially on mobile.", "recommendation": "Reduce top padding/margin on interior page hero sections."},
+        {"title": "Contact form not visible above the fold on mobile", "severity": "Medium", "description": "Mobile stacks trust bullets above the form, pushing it to top:1442px, far below the 812px viewport.", "recommendation": "Reorder or compress the mobile stack so the form appears sooner."},
+        {"title": "Mobile nav icon buttons below recommended tap-target size", "severity": "Medium", "description": "Theme-toggle and hamburger buttons measure 32x32px, below the 44-48px recommended minimum.", "recommendation": "Increase tappable hit area to at least 44x44px."}
       ]
     }
   ],
-  "additional_categories": [
+  "supplementary": [
     {
-      "name": "Sitemap Structure",
-      "score": 52,
-      "note": "Findings folded into Technical SEO and On-Page SEO above; full detail in findings/sitemap.md"
-    },
-    {
-      "name": "Visual / Mobile UX",
-      "score": 90,
-      "note": "Strong above-the-fold execution; findings/visual.md has full screenshot-based detail"
-    },
-    {
-      "name": "Search Experience (SXO)",
-      "score": 56,
-      "note": "SERP-backwards keyword analysis; findings folded into On-Page SEO above; full detail in findings/sxo.md"
-    },
-    {
-      "name": "Backlinks / Authority",
+      "name": "Off-Page Authority / Backlinks",
       "score": 5,
-      "note": "New site, no measurable backlink profile yet via Common Crawl (Tier 0, no Moz/Bing/DataForSEO configured). This is a baseline, not a defect — excluded from the weighted health score. Full detail in findings/backlinks.md"
+      "confidence": "Low -- Tier 0 (Common Crawl only), directional floor score, not a confidence-weighted assessment",
+      "note": "Not included in the weighted health score; the seo-audit skill's category weights don't allocate a slot for backlinks. Domain is genuinely new (~2 months old, registered 2026-06-21) with zero detectable backlinks -- expected at this stage, not a defect.",
+      "findings": [
+        {"title": "Zero referring domains / no backlink authority signal exists", "severity": "High", "description": "Forced re-download of Common Crawl's web graph confirms the domain remains entirely absent from the crawl.", "recommendation": "Expected for a new domain; begin structured outreach now that indexability is fixed."},
+        {"title": "No directory or citation presence yet", "severity": "Medium", "description": "No Google Business Profile, Clutch, DesignRush, or GoodFirms listing found.", "recommendation": "List on Clutch, DesignRush, GoodFirms, and Google Business Profile -- free, high-authority, industry-relevant."}
+      ]
+    },
+    {
+      "name": "Blog Content Architecture",
+      "note": "Qualitative content-cluster analysis feeding into the Content Quality and On-Page categories' quick wins; not independently scored.",
+      "findings": [
+        {"title": "Confirmed cannibalization: two 'Shopify vs WooCommerce' posts target the same query space", "severity": "High", "description": "Same core keyword, same intent, one-directional linking between the two.", "recommendation": "Pick one as canonical, or re-scope the older post around a distinctly different query."},
+        {"title": "SEO/AI-search content cluster (4 posts) has no corresponding service page to convert into", "severity": "Medium", "description": "The second-largest topical cluster on the blog funnels only to a generic /services or /contact.", "recommendation": "Add an SEO/AEO line item to /services, or fold explicitly into /services/web-design."},
+        {"title": "Internal linking from posts to service/pricing pages is thin and inconsistent", "severity": "Medium", "description": "5 of 6 audited posts have exactly one manually-placed contextual link; 'Related articles' modules appear recency-based, not topic-aware.", "recommendation": "Add contextual spoke-to-spoke links; make related-articles topic-aware."}
+      ]
     }
   ],
   "action_plan": {
     "phases": [
       {
-        "name": "Phase 1: Critical Fixes",
-        "timeframe": "Today (Week 1)",
+        "name": "Phase 1: Quick Wins",
+        "timeframe": "Week 1",
         "items": [
-          "Fix src/app/robots.ts: change disallow:\"/\" to allow:\"/\" and redeploy — the single highest-priority item on this entire audit",
-          "Fix SITE.rootDomain in src/lib/site-config.ts to 'www.pinexadigital.com' to resolve the canonical/sitemap/OG host mismatch",
-          "Remove or fix the site-wide AggregateRating/Review schema (self-serving review policy risk)",
-          "Fix or remove the broken sameAs LinkedIn/Twitter links",
-          "After deploy: verify robots.txt live, submit for re-crawl in Google Search Console and Bing Webmaster Tools"
+          "Replace the 146KB favicon with a properly optimized icon (Performance, High)",
+          "Fix the mobile floating-button/share-icon CSS collision on blog posts (Visual, High)",
+          "Correct llms.txt's inaccurate 'testimonials' claim (GEO, Medium)",
+          "Switch site-wide schema from ProfessionalService to Organization + ContactPoint using the ready-made snippet (Schema, Medium)",
+          "Add /privacy and /terms to sitemap.xml; fix static-page lastmod dates (Technical/Sitemap, Medium)",
+          "Increase mobile nav tap targets to 44x44px (Visual, Medium)"
         ]
       },
       {
         "name": "Phase 2: High-Impact Improvements",
         "timeframe": "Weeks 2-3",
         "items": [
-          "Add real portfolio screenshots (replace the logo-only placeholder page)",
-          "Add named human authorship (founder/team bio + Person schema on blog posts)",
-          "Replace the +91 phone number with a US-based number sitewide",
-          "Add the 6 blog posts to sitemap.ts dynamically",
-          "Add FAQPage schema to /services/web-design, /services/seo, and /pricing",
-          "Fix duplicate title tags on services/seo and services/maintenance",
-          "Add a comparison/'why us' content block to the homepage and /services/web-design",
-          "Add an SEO monthly retainer price to /pricing and /services/seo"
+          "Reduce header-to-content whitespace on interior pages, especially mobile (Visual, Medium)",
+          "Reorder the mobile Contact page so the form appears above the fold (Visual, Medium)",
+          "Resolve the Shopify-vs-WooCommerce content cannibalization -- consolidate or re-scope (Content Architecture, High)",
+          "Add contextual internal links between blog posts and relevant service pages (Content Architecture, Medium)",
+          "Harden CSP by removing 'unsafe-inline' via nonce-based script/style policy (Technical, Medium)",
+          "Investigate and improve mobile LCP timing across key pages (Performance, Medium)"
         ]
       },
       {
         "name": "Phase 3: Content & Authority",
         "timeframe": "Month 2",
         "items": [
-          "Source and date the homepage headline stats (+127%, 50+, 5.0, 40%, 98%)",
-          "Add a trust-signal strip (ratings/testimonials) directly on /pricing",
-          "Expand /pricing content depth with a post-purchase process narrative",
-          "Add Content-Security-Policy header",
-          "Replace generic stock photography with real team/project imagery",
-          "Fix mobile nav tap-target sizing (32px → 44px+)",
-          "Add fetchpriority=high to the homepage hero/LCP image",
-          "Correct non-chronological blog post publish dates",
-          "Add a CSP header and IndexNow key file"
+          "Add named human author(s) with bio/credentials to blog content and BlogPosting schema (Content, High)",
+          "Build a real case-study section as client projects ship, replacing/supplementing the demo showcase (Content & SXO, High)",
+          "Add verifiable proof points to /about (years operating, project count, team size) (Content, Medium)",
+          "Claim directory listings on Clutch, DesignRush, GoodFirms, and Google Business Profile (Off-Page, High)",
+          "Add an SEO/AI-search service page or fold that content cluster into an existing service page (Content Architecture, Medium)"
         ]
       },
       {
         "name": "Phase 4: Monitoring & Iteration",
         "timeframe": "Ongoing",
         "items": [
-          "Once real traffic accumulates, configure a PageSpeed Insights API key to validate LCP against real CrUX field data",
-          "Build off-site authority signals: verified LinkedIn/Twitter profiles, Google Business Profile, Clutch.co listing",
-          "Configure Moz or Bing Webmaster API keys to unlock real backlink discovery beyond Common Crawl's quarterly snapshot",
-          "Re-run this audit after Phase 1 ships to confirm indexation recovery and re-baseline all category scores"
+          "Add IndexNow integration for faster Bing/Yandex pickup on new blog posts",
+          "Configure Moz free tier once directory listings/guest posts go live to track referring domains as the backlink profile grows",
+          "Re-run a full audit after Phase 1-2 items ship to confirm fixes and re-baseline scores",
+          "Monitor mobile LCP via real CrUX field data once Google API credentials are configured"
         ]
       }
     ]

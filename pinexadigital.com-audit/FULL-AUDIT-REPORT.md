@@ -1,126 +1,195 @@
-# PinexaDigital.com — Full SEO Audit Report
-**Domain:** pinexadigital.com (live at https://www.pinexadigital.com)
-**Audit date:** 2026-07-04
-**Previous audit:** 2026-06-29 (Health Score 36/100)
-**Business type:** Web Design & Development Agency, targeting US small-business clients (remote team, no physical storefront)
-**Pages crawled:** 11 (via sitemap.xml) + 1 sample blog post detail page
+# SEO Audit Report — pinexadigital.com
+
+**Audit date:** 2026-08-23
+**Overall SEO Health Score: 81 / 100**
+**Business type:** Web design & development agency — remote/virtual, US-market-focused, no physical location
+**Site:** Next.js 16 on Vercel, 32 pages (homepage, 4 service pages + hub, pricing, portfolio, about, contact, blog + 21 posts)
+
+> **Context:** This audit found the current site is a substantially rebuilt version (git commit `f5cee20 "new website"`) of what a prior 2026-07-04 audit assessed. That prior audit found a sitewide `noindex`, a fully blocked `robots.txt`, and a self-authored fake review schema block — all **resolved** in the current build. This report reflects the live site as of today only.
 
 ---
 
 ## Executive Summary
 
-### Overall SEO Health Score: 38/100 (was 36/100 on 2026-06-29)
+PinexaDigital's rebuilt site is in strong technical and structural health: fully crawlable, well-secured, cleanly structured data, and genuinely good copywriting that avoids typical agency-site fluff. The 81/100 score reflects a site with no blocking technical issues and no Critical-severity findings anywhere — a meaningful jump from the pre-rebuild baseline. What's holding the score back from higher is not mechanics but **trust infrastructure**: the site has zero real client proof (testimonials, case studies, reviews), no named human authors behind its advice content, and — expected for a ~2-month-old domain — no backlink profile or directory presence yet. These are the right problems to have at this stage: they're solvable with real business activity (client work, reviews, directory listings) rather than code fixes, though several code-level quick wins (a 146KB favicon, a mobile UI bug, an inaccurate llms.txt claim) are worth fixing immediately regardless.
 
-This score is nearly unchanged from five days ago, and that flatness is the headline finding. Underneath it, the site has genuinely improved a great deal: Schema/Structured Data jumped from 18→78, Content Quality from 28→48, and AI Search Readiness from 21→32. Six blog posts that returned 404 now work, `/api/contact` now exists, and four of five standard security headers now ship. **None of that improvement has had any real-world effect**, because `robots.txt` still contains `Disallow: /` — the exact same rule flagged Critical on 2026-06-29, confirmed unchanged via live `curl` today. Every specialist audit run this cycle (Technical, Sitemap, SXO, GEO) independently arrived at the same conclusion: *nothing else in this report matters until that one line is fixed.*
+### Top 5 Priority Issues
 
-A quality-only score — what this site would earn if it were fully crawlable today — is roughly **65-70/100**. The 38 reported here reflects the gap between "code quality" and "what Google and AI crawlers can currently see," which is zero.
-
-### Top 5 Critical Issues
-
-1. **`robots.txt` still blocks every crawler** (`src/app/robots.ts`, `Disallow: /`) — unresolved for 5 days, verified live. Blocks Googlebot, Bingbot, GPTBot, ClaudeBot, PerplexityBot, and Google-Extended alike.
-2. **Canonical tags, sitemap, and Open Graph URLs all point at the wrong host** (`pinexadigital.com`, no www) while the site actually serves at `www.pinexadigital.com` — every canonical tag points at a URL that itself redirects.
-3. **Site-wide `AggregateRating`/`Review` schema is self-authored and unverifiable** — a real Google rich-result policy risk, not just a quality nitpick.
-4. **`sameAs` links to LinkedIn and Twitter/X both return HTTP 404** — a false structured-data claim that actively hurts AI entity-resolution trust rather than merely omitting a signal.
-5. **The Portfolio page — the site's dedicated proof-of-work page — contains no actual project images**, only the logo.
+1. **Portfolio page shows demo templates, not real client work — zero case studies or testimonials exist anywhere on the site.** (High — Content & Search Experience) The single biggest trust gap; affects both conversion and E-E-A-T.
+2. **No named human authors on any page.** (High — Content) All content is attributed to the Organization only; Google's E-E-A-T guidance rewards identifiable, credentialed authors for advice content.
+3. **No detectable backlink profile.** (High — Off-Page Authority) Domain is genuinely new (~2 months old, registered 2026-06-21) with zero directory or citation presence — expected, but the highest-leverage next step.
+4. **Floating contact button overlaps the social-share icon on mobile blog posts.** (High — Visual/UX) A confirmed real layout bug, not cosmetic — makes the share button unusable at that scroll position.
+5. **Favicon is 146KB — the largest single resource loaded on every page.** (High — Performance) Trivial to fix, meaningful first-load-weight impact given it loads sitewide.
 
 ### Top 5 Quick Wins
 
-1. Change `src/app/robots.ts` from `disallow:"/"` to `allow:"/"` and redeploy — 15 minutes, estimated +35-40pt impact once crawlers return.
-2. Change `SITE.rootDomain` in `src/lib/site-config.ts` to `"www.pinexadigital.com"` — one edit fixes canonical, sitemap, and OG URLs everywhere.
-3. Remove the duplicate `"| PinexaDigital"` suffix hardcoded in `services/seo/page.tsx` and `services/maintenance/page.tsx`.
-4. Add the 6 live blog posts to `src/app/sitemap.ts` by importing from `blog-data.ts` instead of using a hardcoded route array.
-5. Fix or remove the broken `sameAs` LinkedIn/Twitter links in `layout.tsx`'s JSON-LD.
+1. Replace the 146KB favicon with a properly optimized icon (a few KB) — five-minute fix.
+2. Fix the CSS collision between the floating contact button and share icons on mobile blog posts.
+3. Correct `llms.txt`, which inaccurately claims the homepage features testimonials that don't exist.
+4. Switch the site-wide schema from `ProfessionalService` to `Organization` + `ContactPoint` — a ready-made JSON-LD snippet is provided in `findings/schema.md`.
+5. Add `/privacy` and `/terms` to `sitemap.xml`, and fix the shared build-time `lastmod` on 11 static pages.
 
 ---
 
-## Technical SEO — Score: 24/100
+## Category Scores
 
-Since the last audit, real fixes landed: the sitewide `noindex` bug is gone, blog posts work, `/api/contact` exists, and 4/5 security headers now ship. But the score stayed low because `robots.txt` still disallows the entire site — a hard gate that makes every other fix invisible to search engines. A new High-severity issue also surfaced: canonical/sitemap/OG URLs all use the non-www apex host, which itself redirects to the actually-served `www` host.
+| Category | Score | Weight | Weighted |
+|---|---|---|---|
+| Technical SEO | 91 | 22% | 20.0 |
+| Content Quality | 74 | 23% | 17.0 |
+| On-Page SEO (Search Experience) | 76 | 20% | 15.2 |
+| Schema / Structured Data | 88 | 10% | 8.8 |
+| Performance (Core Web Vitals) | 78 | 10% | 7.8 |
+| AI Search Readiness (GEO) | 83 | 10% | 8.3 |
+| Images / Visual UX | 79 | 5% | 4.0 |
+| **Overall Health Score** | | | **81** |
 
-**What works:** meta robots correctly `index,follow` sitewide; canonical tags present everywhere (wrong host, but consistently implemented); HSTS preload-eligible plus 4 other security headers; all pages confirmed server-rendered with zero console errors; 6 blog posts and the contact API now functional.
-
-**Key issues:** robots.txt total block (Critical, unresolved 5 days) · canonical/sitemap/OG host mismatch (High) · duplicate title suffix on 2 pages (Medium) · no CSP header (Medium) · sitemap missing 6 blog URLs (Medium) · fabricated sitemap lastmod timestamps (Medium) · og-image.jpg 404 (Low) · no IndexNow (Low).
-
-Full detail: `findings/technical.md` and `findings/sitemap.md`.
-
----
-
-## Content Quality — Score: 48/100
-
-Word counts across most pages are now solid (700-1,000 words on service pages, 787 on About), and the blog is live with real, substantive posts — a full reversal from the prior audit's "blog is all 404s" finding. The remaining gaps are almost entirely E-E-A-T (trust/authority), not thinness: unverifiable testimonials asserted as schema fact, zero named human authorship anywhere on the site, a portfolio page with no real project imagery, and a US-targeting site whose footer phone number is Indian.
-
-**What works:** real 900+ word blog posts with correct schema · transparent, specific pricing · well-differentiated service pages · consistent metadata across all 11 pages.
-
-**Key issues:** unverifiable testimonials/reviews embedded as schema fact (Critical) · portfolio page has ~1 real image (Critical) · zero named human authorship (High) · +91 phone number on a US-targeted site (High) · thin `/pricing` copy (Medium) · no team/author bio page (Medium) · non-chronological blog dates (Low).
-
-Full detail: `findings/content.md`.
+*Off-Page Authority (backlinks) is tracked separately at a directional-floor score of 5/100 with low confidence (Tier 0 data only) and is not part of the weighted score above — see the dedicated section below.*
 
 ---
 
-## On-Page SEO — Score: 55/100
+## Technical SEO — 91/100
 
-A SERP-backwards analysis (SXO methodology) of 4 high-intent target keywords found the site's page types are *structurally* close to what Google currently rewards — process breakdowns, FAQs, tiered pricing, and testimonials that many competitors lack. The gap is thin proof and missing price anchors at the exact moments searchers compare options, compounded by the same sitemap architecture issues noted under Technical SEO.
+All 32 sitemap URLs return clean HTTP 200s with self-referencing canonicals and no duplicate titles. Domain canonicalization is correct (non-www → www, http → https, both single-hop 308 redirects). robots.txt is fully open, meta robots is `index, follow` sitewide, and a genuine 404 (not a soft-404) is returned for nonexistent pages. Security headers (CSP, HSTS with preload, X-Content-Type-Options, X-Frame-Options, Permissions-Policy) are consistently applied across homepage and interior pages alike. Content is fully server-rendered — no JS-execution dependency for crawlability.
 
-**Key issues:** no comparison/"why us" content anywhere, while 3 of 4 analyzed keywords show a directory/listicle competitor in the SERP (High) · no SEO retainer pricing shown anywhere despite competitors anchoring at explicit monthly prices (High) · sitemap host/coverage issues (High, cross-ref Technical) · FAQ content on 3 pages has no `FAQPage` schema (Medium) · `/pricing` has zero trust signals beside the price table (Medium).
+**What works:** clean 200s across the board; correct canonicalization; strong, consistent security headers; server-rendered content; `llms.txt` present at root.
 
-Full detail: `findings/sxo.md` and `findings/sitemap.md`.
+**Key findings:**
+- **Medium** — CSP allows `'unsafe-inline'` for scripts/styles, weakening its XSS-mitigation value. Fix: nonce- or hash-based CSP via Next.js middleware.
+- **Medium** — `/privacy` and `/terms` exist and are crawlable (verified HTTP 200) but are missing from `sitemap.xml`.
+- **Low** — No IndexNow integration despite regular blog publishing.
+- **Low** — `llms.txt` links use the apex domain, adding an avoidable redirect hop.
+- **Low** — Sitemap `lastmod` for 11 static pages is a shared build-time timestamp, not a genuine per-page change signal.
 
----
-
-## Schema & Structured Data — Score: 78/100
-
-The single largest improvement this cycle (up from 18/100). Nearly every gap from the prior audit — `BreadcrumbList`, per-service `Service` schema, `WebSite`/`Organization` graph, `Blog`/`BlogPosting`, `ItemList`/`Offer` pricing — is now implemented correctly and confirmed server-rendered on all 11 pages. The remaining issues are policy risk and type-appropriateness, not missing implementation.
-
-**What works:** `BreadcrumbList` site-wide via a shared component · `Service` schema on all 4 service pages with correct `provider`/`Offer` nesting · valid JSON-LD throughout (correct `@context`, ISO 8601 dates, absolute URLs, no placeholders).
-
-**Key issues:** self-serving, unverifiable `AggregateRating`/`Review` block is a genuine Google rich-result policy risk (Critical) · `ProfessionalService` (a `LocalBusiness` subtype) used with no address for a remote-only agency — `Organization` is more accurate (Medium) · `BlogPosting` missing `image` field (Medium) · optional: portfolio `ItemList`, `FAQPage` for AI/GEO only.
-
-Full detail: `findings/schema.md`.
+Full detail: `findings/technical.md`, `findings/sitemap.md`
 
 ---
 
-## Performance (Core Web Vitals) — Score: 85/100 *(lab-only estimate — no CrUX API key configured)*
+## Content Quality — 74/100
 
-Lighthouse-based lab testing shows a strong baseline: CLS is 0 across every page/viewport tested, INP proxy (TBT) is low with no third-party scripts competing for the main thread, and Vercel edge caching keeps TTFB in a healthy 180-310ms range. The one area to watch is mobile LCP, which lab-simulates right at the 2.5s "Good" boundary.
+Content quality is genuinely above average for an agency site — specific, numeric, low on marketing fluff, and structured for skimmability and citation. Service pages are differentiated rather than boilerplate-duplicated. The gap is entirely trust infrastructure: no named authors, no real client proof.
 
-**Key issues:** mobile LCP borderline at 2.7s, real-world 75th-percentile traffic could push some visits into "Needs Improvement" (Medium) · ~48 KiB estimated unused JavaScript (Low) · no real CrUX field data available yet to confirm these lab numbers (Info).
+**What works:** differentiated service-page copy; specific checkable claims (pricing, PageSpeed numbers, timelines); citation-ready blog structure (numbered frameworks, decision tables); consistent, opinionated brand voice; honest FAQ content.
 
-Full detail: `findings/performance.md`.
+**Key findings:**
+- **High** — No named human authors anywhere; all content attributed to the Organization only.
+- **High** — Portfolio presents demo templates, not real client work; zero testimonials/case studies exist sitewide.
+- **Medium** — `/about` makes unverified experience claims (no years-in-business, project count, or team size).
+- **Low** — Process description duplicated near-verbatim between `/about` and `/services/web-design`.
 
----
-
-## AI Search Readiness (GEO) — Score: 32/100 (was 21/100)
-
-Real content-side progress happened this cycle: `/llms.txt` now exists, the blog is live and citable, and `/services`/`/pricing`/`/about` now carry genuine FAQ-style Q&A sections. None of it can be discovered by any AI crawler while `robots.txt` blocks GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, and Google-Extended identically to regular search engines. A new integrity problem also surfaced: the `sameAs` LinkedIn and Twitter/X links both 404 — a false entity claim that actively hurts trust rather than merely being absent.
-
-**Key issues:** robots.txt blocks all AI crawlers (Critical, unresolved) · broken `sameAs` entity links (Critical) · unsourced/undated headline stats (High) · no `FAQPage` schema despite existing FAQ content (High) · +91 phone number contradicts `areaServed: United States` (High).
-
-Full detail: `findings/geo.md`.
+Full detail: `findings/content.md`
 
 ---
 
-## Images — Score: 70/100
+## On-Page SEO (Search Experience) — 76/100
 
-Technical image delivery is strong: `next/image` automatically serves WebP/AVIF with responsive `srcSet` and explicit dimensions, producing zero measured CLS across every page and viewport tested. The gap is content, not technical implementation — the portfolio page (the site's dedicated visual-proof page) has essentially no real project photography, and the homepage relies on generic stock imagery rather than authentic team/work photos.
+Reading key pages' SERPs backwards against likely target keywords, most commercial pages closely match the format Google rewards for their query type — `/pricing` and `/services/ecommerce` in particular. The portfolio page is the clear exception.
 
-Full detail: cross-referenced in `findings/content.md` and `findings/sxo.md`.
+**What works:** pricing and e-commerce pages match comparison/trust-building intent well; service pages name specific tools as expertise signals; blog posts open with direct, quotable answers.
+
+**Key findings:**
+- **High** — Portfolio page structurally mismatches its search/click intent (demos instead of real proof — same root cause as the Content finding above).
+- **Medium** — Homepage lacks above-fold social proof.
+- **Low** — E-commerce service page and two blog posts overlap in message/audience with no cross-linking.
+
+Full detail: `findings/sxo.md`
 
 ---
 
-## Additional Specialist Findings
+## Schema / Structured Data — 88/100
 
-- **Sitemap Structure (52/100):** Well-formed XML, but functionally inert while robots.txt blocks crawling, lists non-canonical (redirecting) URLs, and is missing all 6 blog posts. Full detail: `findings/sitemap.md`.
-- **Visual / Mobile UX (90/100):** Excellent above-the-fold execution on homepage (desktop and mobile), zero horizontal scroll, zero CLS risk. Deductions for undersized mobile nav tap-targets (32px, sitewide) and no above-the-fold CTA on Services/Pricing mobile views. Full detail: `findings/visual.md`.
-- **Backlinks / Authority (5/100, informational floor score):** No measurable backlink profile via Common Crawl — expected for a newly-launched site, not itself a defect. Excluded from the weighted health score. Full detail: `findings/backlinks.md`.
+Format hygiene is excellent across every page sampled — pure JSON-LD, no deprecated types, ISO 8601 dates, server-rendered. Previously flagged Critical issues (a self-authored fake review block, missing blog images) are fully resolved.
+
+**What works:** consistent site-wide `@graph`; `BreadcrumbList` correct on every interior page; `Service` schema with correct `Offer` presence; `Blog`/`BlogPosting` complete; `FAQPage` verified to match visible content.
+
+**Key findings:**
+- **Medium** — `ProfessionalService` (a `LocalBusiness` subtype) is used for a remote agency with no address, compounded by an Indian phone number against a US `areaServed` claim. Ready-made `Organization` + `ContactPoint` replacement provided in `findings/schema.md`.
+- **Low** — `Service.provider` duplicates org data inline instead of using an `@id` reference.
+- **Low** — Portfolio's 8 demo tiles have no item-level schema.
+- **Low** — LinkedIn `sameAs` link status is inconclusive on automated check (LinkedIn's standard bot-block, not a confirmed dead link).
+
+Full detail: `findings/schema.md`
+
+---
+
+## Performance (Core Web Vitals) — 78/100
+
+*Lab data only (Lighthouse, simulated throttling) — no Google CrUX API key is configured in this environment, so this is not real-user field data.*
+
+Desktop performance is excellent (Lighthouse 100/100, LCP 0.7s). Mobile is good but not great — LCP lands in the "Needs Improvement" band (2.5-4.0s) on every page tested, while CLS is perfect (0) and TBT is well within budget everywhere.
+
+**What works:** perfect CLS everywhere; low TBT everywhere; reasonable total page weight with responsive/lazy-loaded images and font preloading already in place.
+
+**Key findings:**
+- **High** — Favicon is 146KB, the largest single resource on the homepage, loaded on every page.
+- **Medium** — Mobile LCP in the Needs Improvement band (2.9-3.9s) across all 4 pages tested.
+- **Low** — Several 40-70KB JS chunks load on the homepage, competing with the LCP element for mobile bandwidth.
+
+Full detail: `findings/performance.md`
+
+---
+
+## AI Search Readiness (GEO) — 83/100
+
+Genuinely ahead of most small business sites: robots.txt is fully open to AI crawlers, and a well-formed `llms.txt` exists with a clean page manifest and an explicit AI-citation policy. Blog content is structurally citation-ready.
+
+**What works:** robots.txt blocks no AI crawler; `llms.txt` present with attribution policy; citation-ready blog structure; `FAQPage` schema verified accurate; all structured data server-rendered.
+
+**Key findings:**
+- **Medium** — `llms.txt` inaccurately claims the homepage features testimonials that don't exist anywhere on the site.
+- **Low** — No explicit per-bot rules in robots.txt (blanket allow works, but isn't self-auditing).
+- **Low** — Thin brand-entity disambiguation signals (`sameAs` covers only LinkedIn/Instagram, no Crunchbase/Clutch/Wikidata).
+
+Full detail: `findings/geo.md`
+
+---
+
+## Images / Visual UX — 79/100
+
+The rebuild is clean and professional: no horizontal scroll, no broken images, no console errors across 12 page/viewport combinations tested (6 pages × desktop/mobile). The homepage above-the-fold execution is a genuine strength.
+
+**What works:** homepage hero fully visible above the fold on both viewports with strong contrast; zero broken/unsized images; consistent readable typography; descriptive alt text on all homepage images.
+
+**Key findings:**
+- **High** — Floating contact button overlaps the social-share icon on mobile blog posts (confirmed via DOM overlap detection, not a screenshot artifact).
+- **Medium** — Large empty vertical gap between header and content on every interior page, worst on mobile.
+- **Medium** — Contact form not visible above the fold on mobile (buried at ~1.8 screen-heights down).
+- **Medium** — Mobile nav icon buttons (32×32px) remain below the recommended 44px tap-target size — unaddressed since the prior audit.
+
+Full detail: `findings/visual.md`
+
+---
+
+## Off-Page Authority / Backlinks — 5/100 (directional floor, low confidence)
+
+*Tracked separately from the weighted health score — Tier 0 data only (Common Crawl + verification crawler; no Moz/Bing Webmaster/DataForSEO configured).*
+
+A forced, non-cached Common Crawl re-check confirms `pinexadigital.com` remains entirely absent from the web graph — no in-degree, no PageRank, zero referring domains. WHOIS confirms this is a genuinely young domain (registered 2026-06-21, ~2 months old) — this is expected, not a defect. The one material change since the last check: the technical blockers that previously made link-building premature (a sitewide `robots.txt` disallow) are now fixed, so directory/citation building is now a practical next step.
+
+**Key findings:**
+- **High** — Zero referring domains / no backlink authority signal exists — expected for domain age.
+- **Medium** — No Google Business Profile, Clutch, DesignRush, or GoodFirms listing yet — the highest-leverage, lowest-effort starting point for this business type.
+- **Low** — LinkedIn `sameAs` uses a personal-profile URL pattern rather than a Company Page.
+
+Full detail: `findings/backlinks.md`
+
+---
+
+## Blog Content Architecture (Supplementary)
+
+The 21-post blog clusters into 6 topic hubs, 4 of which map cleanly to a service page. Internal linking exists but is thin (typically one contextual link per post), and two posts genuinely cannibalize each other.
+
+**Key findings:**
+- **High** — `shopify-vs-woocommerce-which-is-right-for-you` and `shopify-vs-woocommerce-2026` target the same query/intent with one-directional linking between them — real cannibalization risk.
+- **Medium** — The SEO/AI-search content cluster (4 posts, the second-largest on the blog) has no matching service page to convert into.
+- **Medium** — Internal linking from posts to service/pricing pages is thin and inconsistent; "related articles" modules appear recency-based rather than topic-aware.
+
+Full detail: `findings/cluster.md`
 
 ---
 
 ## Methodology Notes
 
-- No Google API credentials (PageSpeed/CrUX/Search Console/GA4) or DataForSEO connector were configured in this environment — Performance figures are Lighthouse lab estimates, and SXO competitor analysis used WebSearch snippets rather than a live SERP-scraping API. Both are clearly flagged as directional in their respective findings files.
-- Backlink analysis ran at Common Crawl Tier 0 only (no Moz/Bing Webmaster keys) — sufficient to confirm "no measurable profile yet," not to rule out link discovery entirely.
-- All findings for pages behind the robots.txt block were gathered via direct HTTP fetch (bypassing the crawl-blocking directive for audit purposes only), not by pretending the site is currently indexed.
-
----
-
-*Full per-category findings, evidence, and ready-to-use code snippets are in `findings/*.md`. See `ACTION-PLAN.md` for a prioritized, phased implementation roadmap.*
+- No Google API credentials (PageSpeed/CrUX/GSC/GA4) were configured in this environment — Performance findings are lab-only (Lighthouse), and no real-user field data or search-console indexation/traffic data is included in this audit.
+- No Moz or Bing Webmaster API key was configured — the backlink section runs at Tier 0 (Common Crawl only) and should be treated as directional, not comprehensive.
+- All 32 sitemap URLs were verified live; a representative subset was used for deep content, schema, and performance analysis rather than exhaustively fetching every page, given the site's flat, template-consistent structure.

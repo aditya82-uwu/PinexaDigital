@@ -22,11 +22,7 @@ const serviceJsonLd = {
   name: "CRM Automation Setup & Integration",
   description: "CRM automation setup, workflow automation, and third-party tool integration using n8n, Zapier, and Make for US businesses.",
   url: siteUrl("/services/crm-automation"),
-  provider: {
-    "@type": "ProfessionalService",
-    name: SITE.brandName,
-    url: siteUrl(),
-  },
+  provider: { "@id": `${siteUrl()}/#organization` },
   areaServed: { "@type": "Country", name: "United States" },
 };
 
@@ -103,7 +99,7 @@ export default function CRMAutomationPage() {
       />
 
       {/* ── Hero ── */}
-      <section className="bg-card pt-20 pb-16 px-6 border-b border-line">
+      <section className="bg-card pt-12 md:pt-20 pb-16 px-6 border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Services", href: "/services" }, { label: "CRM Automation Setup & Integration" }]} />
           <Eyebrow className="mb-3">CRM Automation Setup & Integration</Eyebrow>

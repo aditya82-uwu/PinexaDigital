@@ -1,71 +1,72 @@
 # Performance / Core Web Vitals Audit — pinexadigital.com
 
-**Method note (important caveat):** No PageSpeed Insights / CrUX API key was configured for this run, so this assessment is **lab-only** (Lighthouse 13.4.0 CLI, local runs) with simulated throttling. There is no real Chrome User Experience Report (field) data behind these numbers — actual 75th-percentile visitor experience (device mix, network conditions, cache-cold visits) may differ. Treat the "estimated CWV status" below as a lab-based projection, not a confirmed pass/fail.
+**Score: 78/100** | Audit date: 2026-08-23
+**Method note (caveat):** No PageSpeed Insights / CrUX API key is configured in this environment, so this is **lab-only** data (Lighthouse, simulated mobile throttling), not real Chrome UX Report field data from actual visitors. Lab numbers under simulated throttling are typically more pessimistic than real-world field data on a fast connection, but they're the best available signal here. This supersedes the 2026-07-04 audit — the site has been rebuilt since (git commit `f5cee20`).
 
-Pages tested: `/`, `/services`, `/pricing`, `/portfolio`
-Tool: `npx lighthouse` (performance category only), one run per page per profile.
+## Summary
 
-## Category Score: 85 / 100 (lab estimate)
+Desktop performance is excellent (Lighthouse performance score 100, LCP 0.7s). Mobile performance is good but not great: Lighthouse mobile scores range 0.88–0.94 across the homepage, a service page, a blog post, and `/pricing`, with mobile LCP landing in Google's "Needs Improvement" band (2.5–4.0s) on every page tested — homepage 3.9s, blog post 3.4s, service page 3.2s, pricing 2.9s. Cumulative Layout Shift is perfect (0) everywhere, and Total Blocking Time is well within budget (58–80ms) everywhere, so the site isn't janky or unresponsive — the bottleneck is purely how long it takes the largest above-fold element to paint on a throttled mobile connection.
 
-## Estimated Core Web Vitals Status (mobile, simulated — closest proxy to real-world 75th percentile)
+One concrete, easy fix stood out: **the favicon (`/favicon.png`) is 146KB** — by far the single largest network transfer on the homepage, larger than the actual hero image. A favicon should be a few KB; this one is loaded on every single page view.
 
-| Metric | Homepage (lab) | Estimated Field Status | Notes |
-|---|---|---|---|
-| LCP | 2.7s (mobile sim) / 1.1s (desktop sim) | **Needs Improvement (borderline)** | Mobile simulated result sits right at the 2.5s "Good" boundary; real-world 75th percentile (slower devices, cache-cold TTFB, no CDN warm hit) plausibly crosses into 2.5–4.0s territory. |
-| INP (proxy via TBT) | 161ms mobile TBT / 0–21ms desktop TBT | **Good** | Low JS execution cost, no long tasks observed, no third-party scripts hijacking the main thread. |
-| CLS | 0 (all 4 pages, both profiles) | **Good** | Every image request inspected carried explicit `width`/`height` attributes via `next/image`; no layout shift measured in any run. |
+## What Works
 
-## Raw Lab Data
-
-### Desktop (simulate, no CPU throttle, RTT 40ms / 10 Mbps)
-| Page | Perf Score | LCP | CLS | TBT | Speed Index | Server Response |
-|---|---|---|---|---|---|---|
-| / | 93 | 1.1s | 0 | 21ms | 2.3s | 185ms |
-| /services | 98 | 0.4s | 0 | 0ms | 1.6s | 307ms |
-| /pricing | 99 | 0.5s | 0 | 0ms | 1.3s | 184ms |
-| /portfolio | 93 | 0.5s | 0 | 0ms | 2.7s | 290ms |
-
-### Mobile (simulate, 4x CPU slowdown, slow-4G-like RTT 150ms / ~1.6 Mbps) — homepage only run in this session
-| Metric | Value | Score |
-|---|---|---|
-| LCP | 2.7s | 0.85 |
-| CLS | 0 | 1.0 |
-| TBT | 161ms | 0.93 |
-| FCP | 1.0s | 1.0 |
-| Speed Index | 3.9s | 0.82 |
-| Server response (TTFB) | 293ms | 1.0 |
-| Total page weight | 512 KiB | good |
-| Unused JavaScript | ~48 KiB estimated savings | flagged |
-
-### Real-world curl check (single sample, this network location)
-- Homepage: `HTTP 200`, total time 0.575s, TTFB 0.43s, 77 KB HTML, `X-Vercel-Cache: HIT`, `Age: 606` (served from edge cache), gzip encoding confirmed.
+- Desktop: Lighthouse performance score 100/100, LCP 0.7s, CLS 0, TBT 0ms — no desktop issues
+- CLS is 0 (perfect) on every page tested (mobile and desktop) — no layout shift problems from fonts, images, or ads
+- TBT is low everywhere (58–80ms, well under the 200ms "good" threshold) — main thread isn't blocked, interactions stay responsive
+- Total page weight is reasonable (~649KB on homepage mobile, 32 requests) — not bloated by third-party trackers or excess scripts
+- Images use Next.js `/_next/image` with responsive `srcSet` and lazy loading on below-fold images
+- Font preloading is already in place (`<link rel="preload">` for woff2 files, confirmed in homepage headers)
+- Unused CSS is negligible (0 estimated savings); unused JS is minor (~25KB estimated savings)
 
 ## Findings
 
-### 1. Mobile LCP is borderline at the "Good" threshold (Medium severity)
-Simulated mobile LCP for the homepage measured 2.7s — just above the 2.5s "Good" cutoff. Desktop LCP is excellent (1.1s), so the gap is driven by mobile CPU/network throttling and hero image delivery on constrained connections. Given CWV grading uses the 75th percentile, any additional real-world variance (slower devices, cache-cold ISR revalidation, cellular networks) could push a meaningful share of mobile visits into "Needs Improvement."
-**Recommendation:** Add `fetchpriority="high"` (and ensure no `loading="lazy"`) on the hero/LCP image; preload it explicitly if it's not the site logo; confirm the LCP element is served at an appropriately capped resolution for mobile viewports (avoid shipping the same large `srcSet` candidate unnecessarily); verify the hero image compresses well via `next/image` AVIF/WebP output.
+### 1. Favicon is 146KB — the single largest resource on the homepage
+**Severity: High**
+`/favicon.png` transfers 146,954 bytes — larger than every other asset on the page, including the hero image (77KB). Favicons are typically expected to be under 10-15KB; a modern favicon setup uses a small optimized PNG/ICO plus SVG, not a full-resolution image. Since the favicon loads on every single page across the entire site, this is pure unnecessary weight repeated site-wide (though browser-cached after first load, it still costs on first visit and cold cache).
+**Recommendation:** Replace with a properly sized favicon (32x32 / 180x180 for apple-touch-icon, optimized PNG typically 1-5KB) or an SVG favicon. This is a five-minute fix with an outsized (no pun intended) impact on first-load weight.
 
-### 2. ~48 KiB of estimated unused JavaScript (Low severity)
-Lighthouse flagged unused JS on the homepage bundle (9 first-party `_next/static` chunks observed, none third-party). This is a minor contributor to mobile TBT/parse cost.
-**Recommendation:** Audit chunk composition for unused component code (e.g., unused UI library paths, icon sets); confirm route-level code-splitting so `/pricing` and `/services` don't pull homepage-only logic; re-run `next build --analyze` if available.
+### 2. Mobile LCP is in the "Needs Improvement" band (2.5–4.0s) on all 4 pages tested
+**Severity: Medium**
+Homepage 3.9s, blog post 3.4s, service page 3.2s, pricing 2.9s under Lighthouse's simulated mobile throttling. None crossed into "Poor" (>4.0s), but none hit "Good" (<2.5s) either. Given CLS and TBT are both excellent, this points to render-path timing (JS chunk loading/hydration ahead of the LCP element, or the LCP image/text not being prioritized) rather than a fundamentally slow site.
+**Recommendation:** Identify the actual LCP element per page (Lighthouse's `largest-contentful-paint-element` audit didn't resolve an element in this run — worth re-running with `--throttling-method=devtools` for a cleaner trace) and ensure it's prioritized: use `fetchpriority="high"` on the LCP image if it's image-based, or ensure critical text isn't blocked behind JS hydration if it's text-based. Also consider deferring non-critical JS chunks that load before first paint.
 
-### 3. Speed Index elevated on image-heavy pages (Low-Medium severity)
-Portfolio (2.7s desktop) and homepage mobile (3.9s) show slower visual completeness than `/services` and `/pricing`, consistent with more/larger imagery (Unsplash-sourced photos) painting progressively.
-**Recommendation:** Ensure only the first 1-2 above-the-fold images are eager-loaded; confirm all portfolio grid images use `loading="lazy"` (largely already true per HTML sample) and appropriately small `srcSet` breakpoints for grid thumbnails.
+### 3. Several JS chunks in the 40–70KB range load on the homepage
+**Severity: Low**
+Network data shows multiple `/_next/static/chunks/*.js` files each in the 40-70KB range (transfer size) loading on the homepage. Not alarming individually, but cumulatively they compete with the LCP element for bandwidth/parse time on a throttled mobile connection, and likely contribute to Finding 2.
+**Recommendation:** Audit whether all homepage chunks are needed for above-the-fold content, or whether some (e.g., below-fold interactive sections) can be code-split to load after LCP.
 
-### 4. Good practices already in place (Positive / Informational)
-- CLS measured at 0 across all four pages and both device profiles — `next/image` is consistently emitting explicit `width`/`height`, eliminating the most common layout-shift cause.
-- Fonts use `next/font/google` (Jost, Outfit) with `display: swap` and preloaded `woff2` — no font-driven CLS/FOIT risk observed.
-- No third-party analytics/tag-manager scripts (GTM, GA, Hotjar, Clarity, etc.) were found in the network request list or HTML `<head>` for the homepage — nothing hijacking the main thread today. (Re-check this if/when analytics tooling is added, as that is the single most common future INP regression source.)
-- Vercel edge caching is functioning (`X-Vercel-Cache: HIT`, gzip `Content-Encoding`), keeping TTFB in the 180–310ms lab range across pages, within acceptable bounds for LCP.
+## JSON Category Block
 
-### 5. No field (CrUX) data available (Informational)
-This assessment could not validate against real Chrome User Experience Report data (no API key configured / possibly below CrUX traffic threshold). All figures above are single-run lab simulations and should be treated as directional, not authoritative. Recommend configuring a PageSpeed Insights API key or checking CrUX Vis once the domain accumulates sufficient traffic, and re-running this audit against field data before treating LCP as fully resolved.
-
-## Prioritized Recommendations (by expected impact)
-1. **High:** Confirm/optimize LCP element delivery on mobile (fetchpriority, sizing, compression) — closes the borderline LCP gap.
-2. **Medium:** Trim ~48 KiB unused JS from shipped bundles to reduce mobile TBT/INP risk headroom.
-3. **Medium:** Audit image loading strategy on `/portfolio` (and homepage) to improve Speed Index.
-4. **Low:** Once real traffic accumulates, replace this lab-only estimate with CrUX field data (PageSpeed Insights API key or CrUX Vis) for authoritative pass/fail against the 75th-percentile thresholds.
-5. **Ongoing:** If analytics/tag-manager scripts are added in the future, load them via `next/script` with `strategy="lazyOnload"` or `afterInteractive` to protect the currently-clean INP profile.
+```json
+{
+  "name": "Performance (CWV)",
+  "score": 78,
+  "what_works": [
+    "Desktop performance is excellent: Lighthouse 100/100, LCP 0.7s",
+    "CLS is 0 (perfect) across every page and viewport tested",
+    "TBT is low everywhere (58-80ms), well within the good threshold",
+    "Reasonable total page weight (~649KB, 32 requests) with responsive/lazy-loaded images and font preloading already in place"
+  ],
+  "findings": [
+    {
+      "title": "Favicon is 146KB, the largest resource on the homepage",
+      "severity": "High",
+      "description": "/favicon.png transfers 146,954 bytes, larger than the hero image, loaded on every page site-wide.",
+      "recommendation": "Replace with a properly optimized favicon (a few KB, PNG or SVG)."
+    },
+    {
+      "title": "Mobile LCP in the Needs Improvement band on all pages tested",
+      "severity": "Medium",
+      "description": "Lab LCP under mobile throttling ranges 2.9-3.9s across homepage, service page, blog post, and pricing page, versus a <2.5s Good threshold.",
+      "recommendation": "Identify and prioritize the actual LCP element per page (fetchpriority=high or reduced JS-hydration blocking)."
+    },
+    {
+      "title": "Multiple 40-70KB JS chunks load on the homepage",
+      "severity": "Low",
+      "description": "Several Next.js chunk files in this size range compete with the LCP element for mobile bandwidth/parse time.",
+      "recommendation": "Audit whether all homepage JS is needed above-the-fold; code-split non-critical sections to load after first paint."
+    }
+  ]
+}
+```

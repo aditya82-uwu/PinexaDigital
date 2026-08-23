@@ -21,11 +21,7 @@ const serviceJsonLd = {
   name: "E-commerce Development",
   description: "Custom Shopify, WooCommerce, and Next.js e-commerce stores built for US markets.",
   url: siteUrl("/services/ecommerce"),
-  provider: {
-    "@type": "ProfessionalService",
-    name: SITE.brandName,
-    url: siteUrl(),
-  },
+  provider: { "@id": `${siteUrl()}/#organization` },
   areaServed: { "@type": "Country", name: "United States" },
 };
 
@@ -109,7 +105,7 @@ export default function EcommercePage() {
       />
 
       {/* ── Hero ── */}
-      <section className="bg-card pt-20 pb-16 px-6 border-b border-line">
+      <section className="bg-card pt-12 md:pt-20 pb-16 px-6 border-b border-line">
         <div className="max-w-350 mx-auto">
           <Breadcrumb crumbs={[{ label: "Services", href: "/services" }, { label: "E-commerce" }]} />
           <Eyebrow className="mb-3">E-commerce</Eyebrow>

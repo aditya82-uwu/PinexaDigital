@@ -48,3 +48,6 @@ next-env.d.ts
 pinexa-local-dev-audit/
 .audit-home.json
 skills-lock.json
+
+.vercel
+.env*

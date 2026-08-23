@@ -5,6 +5,7 @@ import { SITE, siteUrl } from "@/lib/site-config";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingContact from "@/components/layout/FloatingContact";
+import StickyQuoteBar from "@/components/layout/StickyQuoteBar";
 import ThemeProvider from "./ThemeProvider";
 
 const sora = Sora({
@@ -131,6 +132,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex-1">{children}</main>
           <Footer />
           <FloatingContact />
+          <StickyQuoteBar />
         </ThemeProvider>
       </body>
     </html>

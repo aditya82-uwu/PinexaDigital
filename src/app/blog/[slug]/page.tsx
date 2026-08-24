@@ -285,7 +285,7 @@ export default async function BlogPostPage({
                 {morePosts.map((p) => (
                   <Link key={p.slug} href={`/blog/${p.slug}`} className="group flex gap-3">
                     <div className="relative w-16 h-16 rounded-lg overflow-hidden shrink-0">
-                      <Image src={p.image} alt={p.title} fill className="object-cover" />
+                      <Image src={p.image} alt={p.title} fill sizes="64px" className="object-cover" />
                     </div>
                     <div className="min-w-0">
                       <span className={`inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mb-1 ${p.accent}`}>

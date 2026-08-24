@@ -149,6 +149,7 @@ export default function HomeClient() {
           alt="PinexaDigital team collaborating"
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-r from-black/85 via-black/60 to-black/30" />
@@ -164,7 +165,7 @@ export default function HomeClient() {
             </motion.div>
 
             <motion.h1 variants={stagger(0.05)} className="display-hero text-white mb-6">
-              We build websites that win US clients.
+              We build websites that bring people in.
             </motion.h1>
 
             <motion.p variants={stagger(0.1)} className="text-[19px] leading-8 text-white/70 mb-10 max-w-lg">
@@ -458,7 +459,7 @@ export default function HomeClient() {
                     </div>
                   </div>
                   <div className="relative h-56 md:h-full min-h-70">
-                    <Image src={photo} alt={title} fill className="object-cover" />
+                    <Image src={photo} alt={title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                     <div className="absolute inset-0 bg-linear-to-t from-black/15 to-transparent md:bg-linear-to-l md:from-black/10" />
                   </div>
                 </div>
@@ -519,6 +520,7 @@ export default function HomeClient() {
               src="/images/home/contact-cta.webp"
               alt="Let's talk about your project"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-linear-to-r from-transparent to-contrast lg:bg-linear-to-r" />

@@ -325,7 +325,7 @@ export default async function BlogPostPage({
           <div>
             <p className="text-[15px] font-semibold text-title mb-1">{SITE.brandName}</p>
             <p className="text-[14px] leading-6 text-prose">
-              Web design and development agency helping US businesses grow online. We write about web design, SEO, e-commerce, and digital growth for business owners who want honest, actionable information.
+              Web design and SEO agency helping US businesses grow online. We write about web design, SEO, e-commerce, and digital growth for business owners who want honest, actionable information.
             </p>
           </div>
         </div>

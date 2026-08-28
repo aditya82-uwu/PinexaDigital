@@ -14,6 +14,7 @@ const routes: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/services/web-design",     priority: 0.8, changeFrequency: "monthly", lastModified: "2026-08-19" },
   { path: "/services/crm-automation", priority: 0.8, changeFrequency: "monthly", lastModified: "2026-08-19" },
   { path: "/services/ecommerce",      priority: 0.8, changeFrequency: "monthly", lastModified: "2026-08-19" },
+  { path: "/services/seo",            priority: 0.8, changeFrequency: "monthly", lastModified: "2026-08-28" },
   { path: "/services/maintenance",    priority: 0.8, changeFrequency: "monthly", lastModified: "2026-08-19" },
   { path: "/pricing",                 priority: 0.9, changeFrequency: "monthly", lastModified: "2026-08-19" },
   { path: "/portfolio",               priority: 0.8, changeFrequency: "monthly", lastModified: "2026-08-19" },

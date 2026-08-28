@@ -4,10 +4,11 @@
 ## Pages
 - [Home](https://www.pinexadigital.com/): Agency overview, services, and pricing
 - [Pricing](https://www.pinexadigital.com/pricing): Service tiers — Starter $299, Growth $499, Enterprise custom
-- [Services](https://www.pinexadigital.com/services): Web Design, CRM Automation, E-commerce, Maintenance
+- [Services](https://www.pinexadigital.com/services): Web Design, CRM Automation, E-commerce, SEO, Maintenance
 - [Web Design & Development](https://www.pinexadigital.com/services/web-design): Custom websites starting at $299, 2-week delivery
 - [CRM Automation & Integration](https://www.pinexadigital.com/services/crm-automation): n8n, Zapier, and Make workflow automation starting at $200
 - [E-commerce](https://www.pinexadigital.com/services/ecommerce): Shopify, WooCommerce, and custom stores for US markets
+- [SEO](https://www.pinexadigital.com/services/seo): Technical SEO, on-page, content, and local SEO — free audit, fixed monthly quote
 - [Website Maintenance](https://www.pinexadigital.com/services/maintenance): Monthly plans from $97/month
 - [Blog](https://www.pinexadigital.com/blog): Articles on web design, SEO, and digital growth for US businesses
 - [About](https://www.pinexadigital.com/about): Agency story and approach

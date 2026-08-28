@@ -8,7 +8,7 @@ import { faqPageJsonLd } from "@/lib/faq-schema";
 
 export const metadata: Metadata = pageMetadata({
   title: "Pricing – Transparent Web Design Packages",
-  description: `Simple, transparent pricing for professional web design and development. No hidden fees. ${SITE.brandName} serves US clients with fixed-price packages.`,
+  description: `Simple, transparent pricing for web design, SEO, and e-commerce. No hidden fees. ${SITE.brandName} serves US clients with fixed-price packages and scoped SEO quotes.`,
   path: "/pricing",
 });
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Code2, Workflow, ShoppingBag, ShieldCheck, ArrowRight, Check } from "lucide-react";
+import { Code2, Workflow, ShoppingBag, Search, ShieldCheck, ArrowRight, Check } from "lucide-react";
 import { SITE, pageMetadata } from "@/lib/site-config";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import Eyebrow from "@/components/ui/Eyebrow";
@@ -68,6 +68,24 @@ const services = [
     ],
   },
   {
+    icon: Search,
+    title: "SEO",
+    shortDesc: "Technical SEO, on-page optimisation, content strategy, and local SEO to grow organic traffic and rankings.",
+    fullDesc:
+      "A website that doesn't rank is invisible to the customers searching for what you offer. We handle SEO end to end: technical audits and fixes, on-page optimisation, keyword research and content strategy, local SEO and Google Business Profile management, and link building. Every engagement starts with a free audit of your site and competitors, followed by a fixed monthly quote scoped to your goals, whether that's local visibility, national organic traffic, or both. No fixed packages, no hourly billing, and a monthly report showing exactly what was done and how it moved the numbers.",
+    href: "/services/seo",
+    tags: ["Technical SEO", "On-Page SEO", "Content Strategy", "Local SEO"],
+    gradient: "from-indigo-500 to-sky-500",
+    includes: [
+      "Free technical & competitive SEO audit",
+      "On-page optimisation across every page",
+      "Keyword research and content strategy",
+      "Local SEO and Google Business Profile setup",
+      "Link building and authority growth",
+      "Monthly ranking and traffic reporting",
+    ],
+  },
+  {
     icon: ShieldCheck,
     title: "Website Maintenance",
     shortDesc: "Monthly plans to keep your site fast, secure, and always up to date.",
@@ -102,7 +120,7 @@ const faqs = [
   },
   {
     q: "How is your pricing structured?",
-    a: "Web design and e-commerce projects are fixed-price, one-time fees: Starter from $299, Growth from $499. Maintenance is a monthly retainer, and CRM automation starts at $200–$300 for simple workflows, with custom integrations quoted individually. All pricing is transparent with no hidden fees.",
+    a: "Web design and e-commerce projects are fixed-price, one-time fees: Starter from $299, Growth from $499. Maintenance and SEO are monthly retainers scoped to your site after a free audit, and CRM automation starts at $200–$300 for simple workflows, with custom integrations quoted individually. All pricing is transparent with no hidden fees.",
   },
 ];
 

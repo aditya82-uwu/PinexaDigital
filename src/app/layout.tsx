@@ -25,12 +25,15 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
   title: {
-    default: `${SITE.brandName} | Web Design & Development Agency`,
+    default: `${SITE.brandName} | Web Design & SEO Agency`,
     template: `%s | ${SITE.brandName}`,
   },
   description: SITE.description,
   keywords: [
     "web design agency",
+    "SEO agency",
+    "SEO services",
+    "search engine optimization",
     "web development",
     "US web design",
     "website design for small business",
@@ -46,13 +49,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl(),
     siteName: SITE.brandName,
-    title: `${SITE.brandName} | Web Design & Development Agency`,
+    title: `${SITE.brandName} | Web Design & SEO Agency`,
     description: SITE.description,
-    images: [{ url: "/logo.png", width: 512, height: 512, alt: `${SITE.brandName} Web Agency` }],
+    images: [{ url: "/logo.png", width: 512, height: 512, alt: `${SITE.brandName} Web Design & SEO Agency` }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.brandName} | Web Design & Development Agency`,
+    title: `${SITE.brandName} | Web Design & SEO Agency`,
     description: SITE.description,
     images: ["/logo.png"],
   },
@@ -92,7 +95,7 @@ const jsonLd = {
       description: SITE.description,
       email: SITE.emailContact,
       areaServed: { "@type": "Country", name: "United States" },
-      serviceType: ["Web Design", "Web Development", "CRM Automation", "E-commerce"],
+      serviceType: ["Web Design", "Web Development", "SEO", "CRM Automation", "E-commerce", "Website Maintenance"],
       logo: {
         "@type": "ImageObject",
         url: `${siteUrl()}/logo.png`,

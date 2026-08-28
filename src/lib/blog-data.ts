@@ -102,6 +102,10 @@ export const posts: Post[] = [
         ],
       },
       {
+        t: "p",
+        v: "This mirrors the timeline for SEO more broadly, not just content, [see our full month-by-month breakdown](/blog/how-long-does-seo-take) if you want the complete picture beyond blogging alone.",
+      },
+      {
         t: "h2",
         v: "Common mistakes that waste the effort",
       },
@@ -587,7 +591,7 @@ export const posts: Post[] = [
           "Carry over title tags and meta descriptions deliberately, improve them intentionally, don't let a new CMS auto-generate generic ones",
           "Preserve your internal linking structure and anchor text, internal links distribute the ranking power your best pages have earned",
           "Test Core Web Vitals on staging before launch, not after, using the same [performance benchmarks](/blog/website-speed-optimization) you'd hold any live page to",
-          "Re-verify your robots.txt allows both search and AI crawlers, staging environments are often blocked by default and that block sometimes ships to production by accident",
+          "Re-verify your robots.txt allows both search and AI crawlers, staging environments are often blocked by default and that block sometimes ships to production by accident, [one of several issues worth checking against a full technical audit](/blog/technical-seo-checklist)",
           "[Re-test accessibility](/blog/website-accessibility-ada-compliance-guide) (keyboard navigation, alt text, contrast) on the new templates before launch, a redesign is exactly when WCAG violations quietly slip back in",
           "If local search matters to your business, keep your NAP and [LocalBusiness schema](/blog/seo-for-small-business-us) byte-for-byte identical to what's on your Google Business Profile",
         ],
@@ -1339,7 +1343,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "Local SEO compounds over time. A business that starts today and works consistently for 12 months will be nearly impossible for a brand-new competitor to displace quickly. Start now.",
+        v: "Local SEO compounds over time. A business that starts today and works consistently for 12 months will be nearly impossible for a brand-new competitor to displace quickly. Start now. If you're weighing local against broader, national SEO, [see our full realistic SEO timeline](/blog/how-long-does-seo-take) for how the two actually compare.",
       },
     ],
   },
@@ -1497,7 +1501,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "Google uses three metrics, collectively called Core Web Vitals, as ranking signals. Understanding them helps you prioritize what to fix.",
+        v: "Google uses three metrics, collectively called Core Web Vitals, as ranking signals. Understanding them helps you prioritize what to fix, though speed is only one piece of the picture, [see our full technical SEO checklist](/blog/technical-seo-checklist) for the crawlability and indexability issues that matter just as much.",
       },
       {
         t: "ul",
@@ -1767,7 +1771,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "\"SEO-friendly\" on a proposal can mean anything from full [technical SEO and schema markup](/blog/schema-markup-small-business-guide) built in from day one, to literally nothing beyond the site technically being crawlable. Ask what specific SEO work is included at the price quoted: meta tags, structured data, sitemap submission, Core Web Vitals targets, and whether ongoing optimization is a separate retainer. A precise answer with named deliverables is a good sign. \"We build everything with SEO best practices in mind,\" with no specifics, usually means none of it was actually budgeted.",
+        v: "\"SEO-friendly\" on a proposal can mean anything from full [technical SEO and schema markup](/blog/schema-markup-small-business-guide) built in from day one, to literally nothing beyond the site technically being crawlable. Ask what specific SEO work is included at the price quoted: meta tags, structured data, sitemap submission, Core Web Vitals targets, and whether ongoing optimization is a separate retainer, [worth pricing out honestly rather than guessing](/blog/seo-pricing-guide-small-business). A precise answer with named deliverables is a good sign. \"We build everything with SEO best practices in mind,\" with no specifics, usually means none of it was actually budgeted.",
       },
       {
         t: "h2",
@@ -3118,6 +3122,299 @@ export const posts: Post[] = [
       {
         t: "p",
         v: "The agencies that retain the most clients usually aren't doing anything dramatically different day to day, they're just not relying on memory for the renewal reminders and cross-sell moments that are easy to let slip. If you want a CRM automation setup built around your specific AMS and compliance needs, [tell us what you're working with](/services/crm-automation) and we'll recommend the right workflow honestly.",
+      },
+    ],
+  },
+  {
+    slug: "seo-pricing-guide-small-business",
+    title: "How Much Does SEO Cost for a Small Business in 2026? (Real Pricing Guide)",
+    excerpt:
+      "SEO doesn't have a sticker price like a website build. What agencies, freelancers, and DIY tools actually charge, what drives the number up or down, and the red flags in a cheap quote.",
+    seoTitle: "SEO Pricing Guide for Small Business (2026)",
+    seoDescription:
+      "How much SEO actually costs in 2026: real price ranges for DIY, freelancers, and agencies, what drives the price, and red flags to avoid in a cheap quote.",
+    date: "2026-08-27",
+    readTime: "7 min read",
+    category: "SEO",
+    accent: "bg-violet-500/10 text-violet-600 dark:text-violet-400",
+    image: "/images/blog/seo-pricing-guide-small-business.webp",
+    content: [
+      {
+        t: "p",
+        v: "There's no honest fixed price for SEO, and any agency quoting you a flat monthly number without first auditing your site is guessing. What we can give you is a real range: most small businesses pay between $300 and $2,500 a month for an ongoing SEO retainer, with a one-time technical audit running $500 to $2,500 depending on site size, and the actual number inside that range depends almost entirely on how competitive your keywords are and how much technical debt your site is carrying.",
+      },
+      {
+        t: "h2",
+        v: "Why SEO can't be sold like a website build",
+      },
+      {
+        t: "p",
+        v: "A website build has a knowable scope, you can [price it against a fixed feature list](/blog/small-business-website-pricing-guide): a set number of pages, a defined set of revisions, a fixed delivery date. SEO doesn't work that way. The starting point is different for every business (some sites have zero technical issues and a decade of domain authority, others have neither), the competition varies wildly by keyword and market, and the work itself is ongoing labor, not a one-time deliverable. Any agency that quotes you an identical flat price before seeing your site is applying the same number to a completely different amount of actual work.",
+      },
+      {
+        t: "h2",
+        v: "Realistic price ranges by option",
+      },
+      {
+        t: "ul",
+        v: [
+          "DIY tools (Semrush, Ahrefs, RankMath): $0-$130/month in software, plus dozens of hours of your own time learning and executing, workable if you have time but not cash",
+          "Freelancer: $300-$1,500/month, quality varies enormously since there's no team behind a single freelancer's blind spots",
+          "Small agency retainer: $750-$2,500/month, usually covers technical fixes, on-page work, some content, and monthly reporting",
+          "Enterprise or highly competitive national campaigns: $3,000-$10,000+/month, needed only for genuinely competitive, high-value national keywords",
+          "One-time technical audit with no ongoing retainer: $500-$2,500, a reasonable starting point if you want to know what's broken before committing to monthly spend",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What actually drives the price up or down",
+      },
+      {
+        t: "ul",
+        v: [
+          "How competitive your target keywords are, a local trade keyword and a national SaaS keyword require entirely different levels of effort",
+          "How much technical debt your site is carrying, [a site full of the issues we cover in our technical SEO checklist](/blog/technical-seo-checklist) takes real hours to fix before any content work even starts",
+          "Whether you need local or national reach, local SEO is generally faster and cheaper to move, see [our local SEO guide](/blog/seo-for-small-business-us) for why",
+          "How much content needs to be built from scratch versus optimized, a site with zero existing content starts from a slower position",
+          "Your current domain authority and history, a domain with past penalties or a thin backlink profile needs more groundwork before it can compete",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What a legitimate SEO quote should include",
+      },
+      {
+        t: "ul",
+        v: [
+          "A specific scope: what's being audited, what's being built, and what's explicitly excluded",
+          "A defined reporting cadence, monthly at minimum, showing rankings, traffic, and the specific work completed",
+          "No fixed-term contract lock-in beyond a reasonable initial commitment, usually 3-6 months to show real movement",
+          "Transparency about link building tactics, you should know exactly how links are being earned on your behalf",
+          "A free or low-cost audit before any retainer commitment, so the price is scoped to your actual site, not a guess",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Red flags in an SEO quote",
+      },
+      {
+        t: "ul",
+        v: [
+          "Guaranteed #1 rankings or a guaranteed timeline, nobody controls Google's algorithm, [one of the same agency red flags we cover elsewhere](/blog/how-to-choose-a-web-design-agency)",
+          "A price dramatically below every other quote with no explanation, often a sign of outsourced, templated work or risky link schemes",
+          "No visibility into what links are being built or where, a common cover for black-hat tactics that can get your site penalized",
+          "Long-term contracts with steep cancellation penalties",
+          "Vague monthly reports with no specific completed-work detail, just a screenshot of a rankings dashboard",
+        ],
+      },
+      {
+        t: "note",
+        v: "Anyone promising a specific ranking position or a guaranteed timeline is not being honest with you. Not even Google's own engineers can guarantee where a page will rank.",
+      },
+      {
+        t: "h2",
+        v: "How we price SEO",
+      },
+      {
+        t: "p",
+        v: "We don't sell fixed SEO packages, because a flat price sold before seeing your site is either overpriced for an easy win or underscoped for a genuinely competitive market. Every engagement starts with a free audit of your site and your competitors, and we follow up with a fixed monthly quote scoped to what your site actually needs, no hourly billing, no guessing.",
+      },
+      {
+        t: "p",
+        v: "The best way to know what SEO will actually cost for your business is to start with an audit, not an industry-wide average. [Get a free SEO audit](/services/seo) and we'll tell you honestly what it would take to move the needle.",
+      },
+    ],
+  },
+  {
+    slug: "technical-seo-checklist",
+    title: "Technical SEO Checklist: 15 Issues Quietly Capping Your Rankings",
+    excerpt:
+      "Most sites don't lose rankings from thin content, they lose them to technical issues nobody's looking for: blocked pages, duplicate URLs, broken redirects, and slow Core Web Vitals.",
+    seoTitle: "Technical SEO Checklist 2026 (15-Point Audit)",
+    seoDescription:
+      "A 15-point technical SEO checklist covering crawlability, indexability, Core Web Vitals, structured data, and duplicate content issues costing you rankings.",
+    date: "2026-08-30",
+    readTime: "8 min read",
+    category: "SEO",
+    accent: "bg-violet-500/10 text-violet-600 dark:text-violet-400",
+    image: "/images/blog/technical-seo-checklist.webp",
+    content: [
+      {
+        t: "p",
+        v: "The single biggest driver of a ranking problem usually isn't your content, it's a technical issue quietly stopping Google from crawling, indexing, or trusting the pages you've already written. A site can have genuinely good content and still rank nowhere because a stray noindex tag, a blocked robots.txt rule, or a duplicate URL structure is telling Google not to bother. Here are the 15 issues we find most often, grouped by what they actually break.",
+      },
+      {
+        t: "h2",
+        v: "Crawlability: can Google even reach your pages?",
+      },
+      {
+        t: "ul",
+        v: [
+          "A robots.txt file accidentally blocking key sections, this happens constantly after a staging-to-production migration when a \"Disallow: /\" rule never gets removed",
+          "No XML sitemap submitted in Google Search Console, or a stale sitemap still listing pages that no longer exist",
+          "Orphaned pages with zero internal links pointing to them, if nothing on your site links to a page, Google has to stumble onto it by accident",
+          "Excessive redirect chains, a URL that redirects through three or four hops instead of going straight to the final destination wastes crawl budget and dilutes ranking signals",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Indexability: is Google allowed to index what it finds?",
+      },
+      {
+        t: "ul",
+        v: [
+          "A noindex tag left on pages after a redesign or staging migration, we see this constantly, [see our redesign SEO checklist for the full list of what breaks during a migration](/blog/website-redesign-seo-checklist)",
+          "Canonical tags pointing to the wrong URL, or missing entirely, telling Google to index a duplicate instead of the real page",
+          "Thin or auto-generated pages with near-zero unique content, indexed and diluting your site's overall quality signal",
+          "Pagination and filter URLs generating thousands of near-duplicate indexed pages, common on e-commerce sites with faceted navigation",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Duplicate content and canonical issues",
+      },
+      {
+        t: "ul",
+        v: [
+          "www vs. non-www and http vs. https both resolving without a single canonical version, splitting your ranking signal across duplicate URLs",
+          "Trailing slash inconsistency, \"/page\" and \"/page/\" both live and both indexed as separate URLs",
+          "URL parameters (tracking tags, session IDs, sort options) creating infinite duplicate URL variations",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Site speed and Core Web Vitals",
+      },
+      {
+        t: "p",
+        v: "Google uses Core Web Vitals (loading speed, interactivity, and visual stability) as a direct ranking factor, and a slow site is fighting an uphill battle no amount of content can fully offset. [We cover the specific fixes in detail here](/blog/website-speed-optimization), but the two most common offenders are unoptimized images and render-blocking scripts loaded before anything visible on the page.",
+      },
+      {
+        t: "h2",
+        v: "Structured data gaps",
+      },
+      {
+        t: "p",
+        v: "Missing or broken schema markup doesn't just cost you rich results in the search listing, it removes a direct signal that helps Google and AI answer engines understand what your page actually is. [Our schema markup guide](/blog/schema-markup-small-business-guide) covers the specific types worth adding first.",
+      },
+      {
+        t: "ul",
+        v: [
+          "No Organization or LocalBusiness schema on the homepage, leaving Google to infer basic facts about your business instead of being told directly",
+          "Broken or incomplete schema, present in the code but missing required fields, which can get the whole block ignored rather than partially credited",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Mobile and rendering issues",
+      },
+      {
+        t: "ul",
+        v: [
+          "Content that renders differently, or not at all, on mobile versus desktop, since Google indexes the mobile version of your site first",
+          "JavaScript-rendered content that never actually loads for Google's crawler, common on sites built with heavy client-side frameworks and no server-side rendering",
+        ],
+      },
+      {
+        t: "note",
+        v: "If your site was recently redesigned or migrated and rankings dropped afterward, technical issues are the most common cause, not a Google penalty. Work through this list before assuming the worst.",
+      },
+      {
+        t: "h2",
+        v: "How to actually check for these",
+      },
+      {
+        t: "p",
+        v: "Most of these are free to diagnose. Google Search Console's coverage and indexing reports surface crawl errors, blocked pages, and noindex issues directly. A crawler like Screaming Frog (free up to 500 URLs) maps redirect chains, duplicate titles, and canonical problems across your whole site in minutes. PageSpeed Insights covers the Core Web Vitals side. None of this requires paid tools to get a first real picture of where you stand.",
+      },
+      {
+        t: "p",
+        v: "Most of these are quick, cheap fixes once you know they exist, the hard part is finding them in the first place. If you'd rather have this scoped and priced for you rather than DIY it, [see what a technical audit typically costs](/blog/seo-pricing-guide-small-business). Every SEO engagement we run starts with a full technical audit covering all fifteen of these, so you know exactly what's actually holding your rankings back [before we touch anything else](/services/seo).",
+      },
+    ],
+  },
+  {
+    slug: "how-long-does-seo-take",
+    title: "How Long Does SEO Take to Work? A Realistic Timeline for Small Businesses",
+    excerpt:
+      "Early movement in weeks, meaningful traffic in months, competitive rankings in a year. What actually happens between hiring someone and seeing results, and what speeds it up or slows it down.",
+    seoTitle: "How Long Does SEO Take to Work? (Realistic Timeline)",
+    seoDescription:
+      "A realistic SEO timeline for small businesses: what happens month by month, what speeds up results, what slows them down, and why 30-day promises are a red flag.",
+    date: "2026-09-02",
+    readTime: "6 min read",
+    category: "SEO",
+    accent: "bg-violet-500/10 text-violet-600 dark:text-violet-400",
+    image: "/images/blog/how-long-does-seo-take.webp",
+    content: [
+      {
+        t: "p",
+        v: "Most businesses see early technical movement within 6-8 weeks, measurable traffic growth within 3-6 months, and genuinely competitive rankings within 6-12 months. That's not a stalling tactic, it's how Google's indexing and trust-building process actually works: pages have to be crawled, evaluated against competitors, and proven over time before they earn a stable position. Anyone promising page-one rankings inside 30 days is either targeting keywords with zero real competition or not doing SEO at all.",
+      },
+      {
+        t: "h2",
+        v: "Why SEO can't move faster than this",
+      },
+      {
+        t: "p",
+        v: "Paid ads are instant because you're buying placement. SEO is earned, and earning takes repeated signals over time: Google has to crawl your changes, index them, compare the page against every competitor already ranking for that term, and watch how real users respond before it trusts the page enough to rank it competitively. None of that happens on the first crawl. It happens gradually, as evidence accumulates.",
+      },
+      {
+        t: "h2",
+        v: "A realistic month-by-month timeline",
+      },
+      {
+        t: "ol",
+        v: [
+          "Weeks 1-2: technical audit and fixes go live, crawlability and indexing issues get resolved, this is foundational work with no visible ranking movement yet",
+          "Weeks 3-8: Google starts recrawling and reindexing fixed pages, early long-tail keywords (low competition, very specific phrases) start appearing on page 2-3",
+          "Months 3-4: on-page and content work starts compounding, long-tail keywords move to page 1, some easier mid-competition terms start appearing",
+          "Months 4-6: organic traffic becomes measurable and consistent month-over-month, not just occasional spikes",
+          "Months 6-12: genuinely competitive keywords start moving into top positions, assuming consistent work throughout",
+          "12+ months: rankings stabilize and start compounding, older content and accumulated backlinks make the site harder for new competitors to displace",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What speeds it up",
+      },
+      {
+        t: "ul",
+        v: [
+          "A technically clean site to start with, [working through a technical SEO checklist](/blog/technical-seo-checklist) before content work begins removes a common bottleneck",
+          "An existing domain with some age and authority, rather than a brand-new domain starting from zero trust",
+          "Consistent content publishing rather than a burst of posts followed by silence, [the same compounding pattern that makes blogging worthwhile applies directly here](/blog/does-my-business-need-a-blog)",
+          "Lower keyword competition in your specific market or niche",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What slows it down",
+      },
+      {
+        t: "ul",
+        v: [
+          "Significant technical debt that has to be fixed before content work can even start paying off",
+          "A history of thin, duplicate, or low-quality content diluting the site's overall trust with Google",
+          "Highly competitive, high-value keywords where established competitors have years of accumulated authority",
+          "Inconsistent effort, a few months of work followed by months of nothing, which resets momentum more than people expect",
+        ],
+      },
+      {
+        t: "note",
+        v: "If an agency promises specific rankings within 30 days, that's not confidence, it's a red flag. [We cover this and other pricing red flags in detail here](/blog/seo-pricing-guide-small-business).",
+      },
+      {
+        t: "h2",
+        v: "Local vs. national timelines",
+      },
+      {
+        t: "p",
+        v: "If your business depends on local search, the timeline above compresses significantly since Map Pack rankings respond more to Google Business Profile activity and citations than to competitive keyword authority. [Our local SEO guide breaks down that faster timeline in detail](/blog/seo-for-small-business-us). National, non-local competition follows the slower curve above, since there's no proximity factor working in your favor.",
+      },
+      {
+        t: "p",
+        v: "SEO rewards businesses that start now and stay consistent, not businesses looking for a shortcut that doesn't exist. If you want an honest, specific timeline instead of an industry-wide average, [get a free SEO audit](/services/seo) and we'll tell you what's realistic for your site and your market.",
       },
     ],
   },

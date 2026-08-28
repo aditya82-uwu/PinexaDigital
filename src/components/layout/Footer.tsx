@@ -9,6 +9,7 @@ const cols = [
       { label: "Web Design",  href: "/services/web-design" },
       { label: "CRM Automation", href: "/services/crm-automation" },
       { label: "E-commerce",  href: "/services/ecommerce" },
+      { label: "SEO",         href: "/services/seo" },
       { label: "Maintenance", href: "/services/maintenance" },
     ],
   },

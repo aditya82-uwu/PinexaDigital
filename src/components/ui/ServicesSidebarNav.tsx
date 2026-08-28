@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { Code2, Workflow, ShoppingBag, ShieldCheck } from "lucide-react";
+import { Code2, Workflow, ShoppingBag, Search, ShieldCheck } from "lucide-react";
 
 const services = [
   { title: "Web Design & Development", href: "/services/web-design", icon: Code2 },
   { title: "CRM Automation & Integration", href: "/services/crm-automation", icon: Workflow },
   { title: "E-commerce Solutions", href: "/services/ecommerce", icon: ShoppingBag },
+  { title: "SEO", href: "/services/seo", icon: Search },
   { title: "Website Maintenance", href: "/services/maintenance", icon: ShieldCheck },
 ];
 

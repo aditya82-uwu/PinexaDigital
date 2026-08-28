@@ -68,6 +68,7 @@ export default function ContactForm() {
           <option value="web-design">Web Design &amp; Development</option>
           <option value="crm-automation">CRM Automation &amp; Integration</option>
           <option value="ecommerce">E-commerce</option>
+          <option value="seo">SEO</option>
           <option value="maintenance">Website Maintenance</option>
           <option value="other">Other / Not sure</option>
         </select>

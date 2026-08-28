@@ -98,8 +98,9 @@ Service pages that actually exist — do not link to any other `/services/*` pat
 - `/services/ecommerce`
 - `/services/maintenance`
 - `/services/crm-automation`
+- `/services/seo`
 
-There is no `/services/seo` page. For SEO/schema/AI-search topics, CTA into `/services/web-design` (SEO work is sold as part of builds) or `/contact`.
+For SEO/schema/AI-search topics, CTA into `/services/seo`. For general web build topics, `/services/web-design`.
 
 Current post slugs (check this list before choosing a CTA target or claiming a topic isn't covered yet):
 
@@ -125,6 +126,18 @@ signs-your-website-needs-a-redesign       (Web Design)
 small-business-website-pricing-guide      (Pricing)
 shopify-vs-woocommerce-which-is-right-for-you (E-commerce)
 whats-included-in-a-maintenance-plan      (Maintenance)
+web-design-for-roofing-companies          (Industry)
+web-design-for-locksmiths                 (Industry)
+web-design-for-hvac-companies              (Industry)
+web-design-for-plumbing-companies         (Industry)
+web-design-for-med-spas-and-dental-practices (Industry)
+shopify-for-fashion-and-apparel-brands    (Industry)
+shopify-for-beauty-and-skincare-brands    (Industry)
+crm-automation-for-real-estate-agents     (Industry)
+crm-automation-for-insurance-agencies     (Industry)
+seo-pricing-guide-small-business          (SEO)
+technical-seo-checklist                   (SEO)
+how-long-does-seo-take                    (SEO)
 ```
 
 ## Avoid duplicate/cannibalizing topics

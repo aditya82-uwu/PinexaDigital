@@ -8,9 +8,9 @@ export const SITE = {
   emailContact: "contact@pinexadigital.com",
   emailSales: "sales@pinexadigital.com",
   phone: "+91 78198 32001",
-  tagline: "We build websites that bring people in.",
+  tagline: "We build websites that get found and convert.",
   description:
-    "Professional web design and development agency helping US businesses grow online with high-converting websites, SEO, and e-commerce solutions.",
+    "Web design and SEO agency for US businesses: high-converting websites, technical and local SEO, e-commerce, and CRM automation.",
 } as const;
 
 export function siteUrl(path: string = "") {
@@ -38,7 +38,7 @@ export function pageMetadata({
       title,
       description,
       siteName: SITE.brandName,
-      images: [{ url: "/logo.png", width: 512, height: 512, alt: `${SITE.brandName} Web Agency` }],
+      images: [{ url: "/logo.png", width: 512, height: 512, alt: `${SITE.brandName} Web Design & SEO Agency` }],
     },
     twitter: {
       card: "summary_large_image",

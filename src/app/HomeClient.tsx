@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
-  Code2, Workflow, ShoppingBag, ShieldCheck, ArrowRight, ArrowUpRight,
+  Code2, Workflow, ShoppingBag, Search, ShieldCheck, ArrowRight, ArrowUpRight,
   Clock, BarChart3, Zap, Globe, MessageSquare, Layers, ChevronDown, Check,
 } from "lucide-react";
 import Eyebrow from "@/components/ui/Eyebrow";
@@ -57,10 +57,10 @@ const services = [
     pastel: "bg-emerald-100 dark:bg-emerald-950/25",
   },
   {
-    icon: ShieldCheck,
-    title: "Website Maintenance",
-    desc: "Monthly plans to keep your site fast, secure, and always up to date.",
-    href: "/services/maintenance",
+    icon: Search,
+    title: "SEO",
+    desc: "Technical SEO, on-page optimisation, content, and local search to grow organic traffic.",
+    href: "/services/seo",
     pastel: "bg-rose-100 dark:bg-rose-950/25",
   },
 ];
@@ -165,11 +165,11 @@ export default function HomeClient() {
             </motion.div>
 
             <motion.h1 variants={stagger(0.05)} className="display-hero text-white mb-6">
-              We build websites that bring people in.
+              We build websites that get found and convert.
             </motion.h1>
 
             <motion.p variants={stagger(0.1)} className="text-[19px] leading-8 text-white/70 mb-10 max-w-lg">
-              High-converting web design and development for businesses ready to grow online. Fast delivery, transparent pricing, real results.
+              Web design and SEO for businesses ready to grow online. Fast delivery, transparent pricing, real results.
             </motion.p>
 
             <motion.div variants={stagger(0.15)} className="relative max-w-md mb-6">

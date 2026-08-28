@@ -11,8 +11,8 @@ import FAQAccordion from "@/components/ui/FAQAccordion";
 import { faqPageJsonLd } from "@/lib/faq-schema";
 
 export const metadata: Metadata = pageMetadata({
-  title: "About Us – Web Agency for US Businesses",
-  description: `Learn about ${SITE.brandName}, a web design and development agency focused on helping US businesses grow online with professional, high-converting websites, SEO, and e-commerce solutions.`,
+  title: "About Us – Web Design & SEO Agency for US Businesses",
+  description: `Learn about ${SITE.brandName}, a web design and SEO agency helping US businesses build high-converting websites and grow organic search traffic, plus e-commerce and CRM automation.`,
   path: "/about",
 });
 
@@ -125,13 +125,13 @@ export default function AboutPage() {
               US businesses.
             </h1>
             <p className="text-[18px] leading-7 text-prose mb-4">
-              {SITE.brandName} is a web design and development agency specialising in US markets. We help businesses, from solo founders to established companies, build the professional web presence they need to compete and grow online.
+              {SITE.brandName} is a web design and SEO agency specialising in US markets. We help businesses, from solo founders to established companies, build the online presence and search visibility they need to compete and grow.
             </p>
             <p className="text-[16px] leading-7 text-prose mb-4">
-              We built this agency because the web design market is full of a predictable pattern: overpriced projects, missed deadlines, agencies that disappear after launch, and websites that look nice but don't generate business. We decided to do the opposite: fixed prices, honest timelines, measurable outcomes, and genuine accountability for results.
+              We built this agency because the web design and SEO industry is full of a predictable pattern: overpriced projects, missed deadlines, agencies that disappear after launch, and websites that look nice but don't generate business or rank anywhere. We decided to do the opposite: fixed prices, honest timelines, measurable outcomes, and genuine accountability for results.
             </p>
             <p className="text-[16px] leading-7 text-prose">
-              Every site we build is engineered specifically for the US market: fast on American infrastructure, designed to meet US consumer expectations, and optimised for Google's US search results. We are not a general-purpose digital agency. We are focused on one thing: high-converting web presence for US businesses.
+              Every site we build is engineered specifically for the US market: fast on American infrastructure, designed to meet US consumer expectations, and optimised for Google's US search results. We are not a general-purpose digital agency. We are focused on one thing: helping US businesses get found and convert, through web design and SEO working together, not as separate add-ons.
             </p>
           </div>
           <div className="bg-surface rounded-xl p-8 shadow-card grid grid-cols-2 gap-8">
@@ -151,7 +151,7 @@ export default function AboutPage() {
       {/* ── Marquee divider ── */}
       <section className="bg-card py-10 border-b border-line overflow-hidden">
         <MarqueeText
-          items={["Web Design & Development", "CRM Automation & Integration", "E-commerce Solutions", "Website Maintenance"]}
+          items={["Web Design & Development", "CRM Automation & Integration", "E-commerce Solutions", "SEO", "Website Maintenance"]}
         />
       </section>
 

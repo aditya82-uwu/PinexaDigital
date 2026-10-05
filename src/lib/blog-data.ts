@@ -335,7 +335,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "If you're spending real money on Google Ads and sending it to a page built for a completely different job, the fix is usually smaller and cheaper than the ad spend it's currently wasting. If you want a landing page built to match a specific campaign, [tell us what you're running](/services/web-design) and we'll tell you honestly whether your homepage already does the job or whether a dedicated page will actually move the needle.",
+        v: "If you're spending real money on Google Ads and sending it to a page built for a completely different job, the fix is usually smaller and cheaper than the ad spend it's currently wasting. That's a reason to fix the landing page, not a reason to abandon Ads for SEO instead, [the two channels solve different timelines, not the same one](/blog/google-ads-vs-seo-small-business). If you want a landing page built to match a specific campaign, [tell us what you're running](/services/web-design) and we'll tell you honestly whether your homepage already does the job or whether a dedicated page will actually move the needle.",
       },
     ],
   },
@@ -538,7 +538,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "Website accessibility isn't a one-time checkbox, it's an ongoing part of maintaining a site, the same way [security patches and performance monitoring](/blog/website-maintenance-guide) are. Most of the core fixes above are achievable in days, not months, and they reduce real legal exposure while genuinely improving the experience for a meaningful share of your visitors. If you want your site properly audited rather than patched with a widget, that's work we build into every [redesign and rebuild](/services/web-design), not sold separately as an afterthought.",
+        v: "Website accessibility isn't a one-time checkbox, it's an ongoing part of maintaining a site, the same way [security patches and performance monitoring](/blog/website-maintenance-guide) are, and the same way an accurate [privacy policy](/blog/website-privacy-policy-ccpa-compliance-guide) needs revisiting whenever the site changes. Demand letters disproportionately target service businesses with high-stakes visitors, [law firm sites are a documented example](/blog/web-design-for-law-firms), so this isn't a risk only large companies need to think about. Most of the core fixes above are achievable in days, not months, and they reduce real legal exposure while genuinely improving the experience for a meaningful share of your visitors. If you want your site properly audited rather than patched with a widget, that's work we build into every [redesign and rebuild](/services/web-design), not sold separately as an afterthought.",
       },
     ],
   },
@@ -783,7 +783,7 @@ export const posts: Post[] = [
         t: "ul",
         v: [
           "Instant lead routing: a website form submission creates a CRM contact and assigns it to the right person within seconds, not at the next check-in",
-          "Automated follow-up sequences: a scheduled email or SMS sequence triggers the moment a lead comes in, so nobody goes cold while your team is busy",
+          "Automated follow-up sequences: a scheduled [email or SMS sequence](/blog/email-vs-sms-marketing-small-business) triggers the moment a lead comes in, so nobody goes cold while your team is busy",
           "Deal stage sync: when a deal moves stages in the CRM, connected tools (invoicing, project boards, Slack) update automatically instead of needing a second manual step",
           "Duplicate detection and enrichment: incoming leads are checked against existing contacts and enriched with basic company data before a human ever sees them",
           "Missed-call and no-show recovery: a missed call or a no-show appointment automatically triggers a text or email instead of quietly disappearing",
@@ -1476,7 +1476,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "If you'd rather work through a specific scenario than a full feature table, [we've also written up five real business situations and which platform fits each one](/blog/shopify-vs-woocommerce-which-is-right-for-you). And if you're still unsure, [tell us about your products and goals](/services/ecommerce) and we'll give you an honest recommendation, including whether you even need us or whether Shopify's own setup wizard will serve you perfectly well.",
+        v: "If you'd rather work through a specific scenario than a full feature table, [we've also written up five real business situations and which platform fits each one](/blog/shopify-vs-woocommerce-which-is-right-for-you). Whichever platform you pick, [give it a real stress test before your biggest sales weekend of the year](/blog/ecommerce-holiday-readiness-checklist), that's when checkout performance actually gets tested. And if you're still unsure, [tell us about your products and goals](/services/ecommerce) and we'll give you an honest recommendation, including whether you even need us or whether Shopify's own setup wizard will serve you perfectly well.",
       },
     ],
   },
@@ -1559,7 +1559,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "A service business generating $15,000/month from its website at a 1.5% conversion rate is converting 1.5 out of every 100 visitors. Improving load time from 5 seconds to 1.5 seconds, with no other changes, can realistically push that to 3.5%. That's more than doubling revenue from the same traffic. A $499 website rebuild that achieves this pays for itself in the first month. Speed isn't a technical detail. It's a business decision, and one that erodes on its own if nobody's [maintaining the site](/blog/website-maintenance-guide) after launch.",
+        v: "A service business generating $15,000/month from its website at a 1.5% conversion rate is converting 1.5 out of every 100 visitors. Improving load time from 5 seconds to 1.5 seconds, with no other changes, can realistically push that to 3.5%. That's more than doubling revenue from the same traffic. A $499 website rebuild that achieves this pays for itself in the first month. Speed isn't a technical detail. It's a business decision, and one that erodes on its own if nobody's [maintaining the site](/blog/website-maintenance-guide) after launch, and for e-commerce specifically, [it's the difference that shows up most during your highest-traffic sale of the year](/blog/ecommerce-holiday-readiness-checklist).",
       },
     ],
   },
@@ -1608,7 +1608,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "More than 60% of US web traffic is now mobile. \"Mobile-friendly\" means your desktop site scales down acceptably. \"Mobile-first\" means you designed for the phone first, then expanded to desktop. The difference shows up in navigation patterns, button placement, font sizing, and load performance on cellular connections. Test your site on an actual iPhone or Android device, not just a browser simulator, since the experience is often dramatically different.",
+        v: "More than 60% of US web traffic is now mobile. \"Mobile-friendly\" means your desktop site scales down acceptably. \"Mobile-first\" means you designed for the phone first, then expanded to desktop. The difference shows up in navigation patterns, button placement, font sizing, and load performance on cellular connections. It matters most for businesses whose customers decide on the spot, [a restaurant site losing someone mid-scroll to a slow menu page](/blog/web-design-for-restaurants) is a direct, measurable loss, not an abstract UX concern. Test your site on an actual iPhone or Android device, not just a browser simulator, since the experience is often dramatically different.",
       },
       {
         t: "h2",
@@ -1698,7 +1698,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "Approximately 70% of people who fill out a contact form feel a moment of doubt after clicking submit: did it work? Will they actually respond? An instant confirmation email eliminates that doubt, prevents follow-up \"did you get my message?\" emails, and gives the person something to find in their inbox when they want to reference what they wrote. Use that confirmation email to reinforce one concrete reason they made a good decision: your response time commitment, a brief reminder of what you do well, or a client quote. Keep it short. It's confirmation, not a newsletter.",
+        v: "Approximately 70% of people who fill out a contact form feel a moment of doubt after clicking submit: did it work? Will they actually respond? An instant confirmation, [whether by email or a quick text](/blog/email-vs-sms-marketing-small-business), eliminates that doubt, prevents follow-up \"did you get my message?\" messages, and gives the person something to find when they want to reference what they wrote. Use that confirmation to reinforce one concrete reason they made a good decision: your response time commitment, a brief reminder of what you do well, or a client quote. Keep it short. It's confirmation, not a newsletter.",
       },
       {
         t: "h2",
@@ -1706,7 +1706,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "These five changes take less than two hours to implement and cost nothing. Combined, cutting from six fields to three, rewriting placeholder text, changing the button copy, adding a process-focused testimonial, and setting up an auto-reply, routinely doubles contact form conversion rates. If your site gets 1,000 visitors per month and your form currently converts at 1.5%, you're getting 15 leads. The same traffic with a 3% conversion rate is 30 leads, without spending another dollar on ads or SEO. Optimize what you already have first, then look at [what happens to a lead after they submit](/blog/crm-automation-small-business-guide), since a great form feeding a slow follow-up process still loses the deal.",
+        v: "These five changes take less than two hours to implement and cost nothing. Combined, cutting from six fields to three, rewriting placeholder text, changing the button copy, adding a process-focused testimonial, and setting up an auto-reply, routinely doubles contact form conversion rates. If your site gets 1,000 visitors per month and your form currently converts at 1.5%, you're getting 15 leads. The same traffic with a 3% conversion rate is 30 leads, without spending another dollar on ads or SEO. Every field you collect should also be covered in [an accurate privacy policy](/blog/website-privacy-policy-ccpa-compliance-guide), not just the fields you kept, but the fact that you're collecting them at all. Optimize what you already have first, then look at [what happens to a lead after they submit](/blog/crm-automation-small-business-guide), since a great form feeding a slow follow-up process still loses the deal.",
       },
     ],
   },
@@ -1855,7 +1855,7 @@ export const posts: Post[] = [
           "You can't easily update pricing, hours, or services yourself without calling a developer",
           "Your site has no clear path to conversion, no obvious next step for a visitor who's ready to act",
           "It wasn't built with SEO in mind and you're invisible for searches you should be winning",
-          "You've outgrown what it was built for, new services, new locations, or e-commerce that was bolted on afterward",
+          "You've outgrown what it was built for, new services, new locations, or e-commerce that was bolted on afterward, the specific fixes that matter differ by industry, from a [restaurant's online ordering flow](/blog/web-design-for-restaurants) to a [law firm's intake process](/blog/web-design-for-law-firms)",
         ],
       },
       {
@@ -3357,7 +3357,7 @@ export const posts: Post[] = [
       },
       {
         t: "p",
-        v: "Paid ads are instant because you're buying placement. SEO is earned, and earning takes repeated signals over time: Google has to crawl your changes, index them, compare the page against every competitor already ranking for that term, and watch how real users respond before it trusts the page enough to rank it competitively. None of that happens on the first crawl. It happens gradually, as evidence accumulates.",
+        v: "Paid ads are instant because you're buying placement, [which is exactly why Ads and SEO solve different problems rather than competing for the same budget](/blog/google-ads-vs-seo-small-business). SEO is earned, and earning takes repeated signals over time: Google has to crawl your changes, index them, compare the page against every competitor already ranking for that term, and watch how real users respond before it trusts the page enough to rank it competitively. None of that happens on the first crawl. It happens gradually, as evidence accumulates.",
       },
       {
         t: "h2",
@@ -3415,6 +3415,447 @@ export const posts: Post[] = [
       {
         t: "p",
         v: "SEO rewards businesses that start now and stay consistent, not businesses looking for a shortcut that doesn't exist. If you want an honest, specific timeline instead of an industry-wide average, [get a free SEO audit](/services/seo) and we'll tell you what's realistic for your site and your market.",
+      },
+    ],
+  },
+  {
+    slug: "website-privacy-policy-ccpa-compliance-guide",
+    title: "Website privacy policies and CCPA: what US small businesses actually need to have in 2026.",
+    excerpt:
+      "Whether CCPA applies to your business, what a real privacy policy needs to say, and the cookie consent and data-request mechanics most small business sites still get wrong.",
+    seoTitle: "Website Privacy Policy & CCPA Guide (2026)",
+    seoDescription:
+      "Does CCPA apply to your small business website? What a real privacy policy must cover in 2026, cookie consent basics, and handling consumer data requests.",
+    date: "2026-09-06",
+    readTime: "6 min read",
+    category: "Privacy",
+    accent: "bg-purple-500/10 text-purple-600 dark:text-purple-400",
+    image: "/images/blog/website-privacy-policy-ccpa-compliance-guide.webp",
+    content: [
+      {
+        t: "p",
+        v: "Most small business websites should have a real, accurate privacy policy whether or not California's CCPA technically applies to them, because the practical standard customers and competitors now expect is higher than the legal minimum. CCPA itself only binds businesses that meet specific size or data-volume thresholds, but a generic, copy-pasted policy that doesn't match what your site actually does is arguably worse than having none: it's a documented, dated claim you can be held to.",
+      },
+      {
+        t: "h2",
+        v: "Does CCPA actually apply to your business?",
+      },
+      {
+        t: "p",
+        v: "CCPA, as amended by CPRA, applies to a for-profit business doing business in California that meets at least one of three thresholds: annual gross revenue over $25 million, buying/selling/sharing the personal information of 100,000 or more California consumers or households a year, or deriving 50% or more of annual revenue from selling or sharing personal information. Most small, single-location businesses fall under all three thresholds and aren't technically covered. The catch: if you sell online, run retargeting ads, or use analytics and marketing pixels, you may be collecting and sharing more consumer data than you realize, and other states (Virginia, Colorado, Connecticut, Utah and more) now have similar laws with their own thresholds.",
+      },
+      {
+        t: "h2",
+        v: "What a real privacy policy needs to say",
+      },
+      {
+        t: "ul",
+        v: [
+          "What personal information you actually collect, name, email, phone, IP address, cookies, form submissions, not a vague \"information you provide us\"",
+          "Why you collect it and how it's used, matching your actual practices, not boilerplate marketing language",
+          "Whether you sell or share it with third parties (ad networks and analytics tools often count), and a \"Do Not Sell or Share My Personal Information\" link if CCPA applies to you",
+          "How long you retain data and how someone can request deletion or a copy of what you hold",
+          "A working contact method for privacy requests, not just a generic info@ inbox nobody monitors",
+          "The policy's last-updated date, so visitors and regulators can see it isn't stale",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Cookie consent: what's actually required vs. optional",
+      },
+      {
+        t: "p",
+        v: "CCPA runs on an opt-out model: you can set cookies by default but must honor a clear opt-out request and the browser-level \"Global Privacy Control\" signal. GDPR, which only applies if you're actively targeting EU residents, runs on a stricter opt-in model requiring consent before non-essential cookies load at all. Most US small-business sites only need to handle the CCPA opt-out case, but if your [contact form](/blog/contact-form-conversion-tips) or checkout collects data from any EU visitors, treat that traffic under the stricter opt-in standard rather than guessing.",
+      },
+      {
+        t: "h2",
+        v: "Handling a data request when one actually comes in",
+      },
+      {
+        t: "ol",
+        v: [
+          "Verify the requester's identity using information you already have on file, don't hand over data to anyone who simply emails asking for it",
+          "Confirm what categories of data you actually hold on that person, pulling from your CRM, email platform, and website analytics, not just guessing",
+          "Respond within the required window, CCPA gives businesses 45 days, extendable once by another 45 with notice",
+          "Document the request and your response, a dated record is your protection if the same request is ever disputed",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Where most small business sites get this wrong",
+      },
+      {
+        t: "ul",
+        v: [
+          "Publishing a generic template policy that references data practices (like selling data to named third-party categories) the site doesn't actually engage in",
+          "Collecting data through forms with no visible link to the privacy policy anywhere near the submit button",
+          "Never updating the policy after adding a new tool, like a chat widget or new analytics platform, that changes what's actually being collected",
+          "Treating privacy like a one-time launch task instead of something that gets reviewed [the same way the rest of the site does](/blog/website-maintenance-guide)",
+        ],
+      },
+      {
+        t: "note",
+        v: "Never publish a privacy policy you copy-pasted from a template without editing it to match your actual data practices. A policy that promises something you don't do, or omits something you do, is a liability specifically because it's dated and in writing.",
+      },
+      {
+        t: "p",
+        v: "Privacy compliance isn't a one-time checkbox, it changes every time you add a new tool, form, or integration to the site, which is exactly why it belongs in [any redesign or migration checklist](/blog/website-redesign-seo-checklist) rather than being treated as separate legal paperwork. If you want this built in correctly from the start rather than bolted on later, [tell us what your site collects](/services/web-design) and we'll make sure the policy actually matches what you're running.",
+      },
+    ],
+  },
+  {
+    slug: "email-vs-sms-marketing-small-business",
+    title: "Email vs. SMS marketing for small businesses: which channel actually gets opened in 2026.",
+    excerpt:
+      "What email and SMS are each genuinely good at, the compliance rules that make texting riskier to get wrong, and how to combine both instead of picking just one.",
+    seoTitle: "Email vs SMS Marketing for Small Business (2026)",
+    seoDescription:
+      "Email vs SMS marketing compared for small businesses: what each channel does best, CAN-SPAM and TCPA compliance basics, and when to combine them.",
+    date: "2026-09-11",
+    readTime: "6 min read",
+    category: "Automation",
+    accent: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
+    image: "/images/blog/email-vs-sms-marketing-small-business.webp",
+    content: [
+      {
+        t: "p",
+        v: "SMS gets opened faster, usually within minutes, and email costs less to send and supports far more content, so the honest answer isn't \"pick one,\" it's matching each channel to the kind of message it's actually built for. Businesses that default to one channel for everything are either annoying customers with urgent-feeling texts about a newsletter, or burying a time-sensitive appointment reminder in an inbox nobody checks in real time.",
+      },
+      {
+        t: "h2",
+        v: "What email does better",
+      },
+      {
+        t: "ul",
+        v: [
+          "Cost per contact is dramatically lower, and most platforms let you send to a large list without a per-message fee",
+          "No practical length limit, so you can actually explain an offer, share a guide, or tell a story",
+          "Easier segmentation and automation sequences built around behavior, not just a single blast",
+          "Lower intrusion for anything that isn't genuinely time-sensitive, a monthly update or a long-form offer belongs here, not in a text",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What SMS does better",
+      },
+      {
+        t: "p",
+        v: "Text messages get seen almost immediately, which makes SMS the right channel specifically for time-sensitive, short messages: an appointment reminder, a \"your table is ready\" alert, or the [missed-call and no-show recovery automation](/blog/crm-automation-small-business-guide) worth building for any appointment-based business. Using it for anything longer or less urgent burns through goodwill fast, since a text feels more personal and more interruptive than an email by default.",
+      },
+      {
+        t: "h2",
+        v: "The compliance basics you can't skip",
+      },
+      {
+        t: "p",
+        v: "Email marketing is governed by CAN-SPAM: no misleading subject lines, a real physical address in every message, and a working unsubscribe link honored within 10 business days. SMS carries real financial risk if you get it wrong, TCPA requires prior express written consent before you text anyone for marketing purposes, and violations can carry statutory damages of $500 to $1,500 per message in a private lawsuit. Never add a phone number to a texting list just because someone gave it to you on a [contact form](/blog/contact-form-conversion-tips), consent for one channel isn't automatic consent for the other.",
+      },
+      {
+        t: "h2",
+        v: "Combining both instead of picking one",
+      },
+      {
+        t: "p",
+        v: "The highest-performing setups use email for nurture content and longer offers, and reserve SMS for a short list of genuinely time-critical triggers, an appointment confirmation, a shipping update, a same-day reminder. Both channels should plug into the same automation layer so a lead doesn't fall through a gap between them, which is the same workflow logic covered in [our automation platform comparison](/blog/n8n-vs-zapier-vs-make-comparison).",
+      },
+      {
+        t: "note",
+        v: "Get explicit, documented opt-in before texting anyone for marketing purposes. Unlike email, a TCPA violation isn't just an annoyed unsubscribe, it's real statutory liability per message sent without consent.",
+      },
+      {
+        t: "p",
+        v: "Neither channel replaces the other, and the businesses that get the most out of both are the ones that match the message to the channel instead of defaulting to whichever tool they set up first. If you want both wired into your CRM so leads get the right message on the right channel automatically, [tell us what you're trying to automate](/services/crm-automation) and we'll scope the workflow, not just the tool.",
+      },
+    ],
+  },
+  {
+    slug: "web-design-for-restaurants",
+    title: "Web design for restaurants: the pages and features that actually drive reservations and orders.",
+    excerpt:
+      "What a restaurant website actually needs to work for hungry, impatient visitors: a real menu, online ordering, reservations, and mobile speed that doesn't lose the sale.",
+    seoTitle: "Restaurant Website Design Guide (2026)",
+    seoDescription:
+      "What restaurant websites actually need in 2026: a crawlable menu (not a PDF), online ordering, reservations, mobile speed, and local SEO basics.",
+    date: "2026-09-16",
+    readTime: "6 min read",
+    category: "Industry",
+    accent: "bg-sky-500/10 text-sky-600 dark:text-sky-400",
+    image: "/images/blog/web-design-for-restaurants.webp",
+    content: [
+      {
+        t: "p",
+        v: "Most restaurant website visitors want one of three things within seconds of landing: today's hours, the menu, or a way to order or reserve a table. If any of those takes more than a couple of taps, most people back out and call, use a delivery app, or pick the competitor whose site was faster. A restaurant site isn't a brand showcase first, it's a utility for someone who's already decided to eat and is deciding where.",
+      },
+      {
+        t: "h2",
+        v: "The non-negotiable pages and features",
+      },
+      {
+        t: "ul",
+        v: [
+          "Hours and location visible on every page, not buried in a footer, including a clear note when holiday hours differ from the norm",
+          "A real, on-page menu with prices, not a PDF link that's slow to open and impossible to search on mobile",
+          "Online ordering, either embedded directly or linked clearly, with no confusion about which button to tap",
+          "A reservation widget or clear booking link, not just a phone number for people who'd rather not call",
+          "Genuine mobile-first speed, since most \"restaurants near me\" searches happen on a phone, [the same performance fundamentals that apply everywhere else](/blog/website-speed-optimization) matter even more here",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Why a PDF menu is a conversion killer",
+      },
+      {
+        t: "p",
+        v: "A PDF menu loads slowly on mobile data, can't be skimmed without pinching and zooming, and is invisible to Google, it can't feed rich snippets, can't be indexed item by item, and gives crawlers nothing to work with. An HTML menu built with proper [structured data](/blog/schema-markup-small-business-guide) lets Google (and increasingly AI search assistants) surface specific dishes, prices, and dietary info directly in search results, something a PDF simply cannot do.",
+      },
+      {
+        t: "h2",
+        v: "Local SEO matters more for restaurants than almost any other business",
+      },
+      {
+        t: "p",
+        v: "Restaurant searches are overwhelmingly local and immediate, \"best tacos near me,\" \"open now,\" \"dinner reservations tonight.\" That makes [Google Business Profile accuracy and local citations](/blog/seo-for-small-business-us) disproportionately important compared to broader, less time-sensitive industries. Keep your hours, menu highlights, and photos on your GBP listing in sync with your actual website, any mismatch is exactly the kind of thing that makes a hungry visitor pick a different result.",
+      },
+      {
+        t: "h2",
+        v: "Online ordering: build vs. third-party platform",
+      },
+      {
+        t: "ul",
+        v: [
+          "Third-party platforms (DoorDash, UberEats, Grubhub): fastest to launch and already have built-in customer traffic, but typically take 15-30% commission per order and put the customer relationship in the platform's hands, not yours",
+          "Direct ordering built into your own site: no per-order commission once it's built, you own the customer data and repeat-order relationship, but requires a real upfront build and your own marketing to drive traffic to it",
+          "Most restaurants end up running both, using third-party platforms for discovery and a direct ordering system to retain the customers once they know you",
+        ],
+      },
+      {
+        t: "note",
+        v: "Review your posted hours and holiday closures on both your website and Google Business Profile at least monthly. Nothing drives a hungry customer to a competitor faster than showing up to a restaurant that's listed as open but isn't.",
+      },
+      {
+        t: "p",
+        v: "A restaurant website succeeds or fails on speed and clarity, not visual flourish, someone deciding between you and the place next door isn't browsing, they're checking a short list of facts and acting on the first site that answers them cleanly. If your site is still running a PDF menu or taking too long to load on a phone, [tell us what you're working with](/services/web-design) and we'll tell you honestly what's actually costing you reservations.",
+      },
+    ],
+  },
+  {
+    slug: "web-design-for-law-firms",
+    title: "Web design for law firms: what actually builds trust and converts visitors into consultations.",
+    excerpt:
+      "Law firm website visitors are deciding who to trust during a stressful, high-stakes moment. What actually earns that trust in the first few seconds, and what advertising rules you can't ignore.",
+    seoTitle: "Law Firm Website Design Guide (2026)",
+    seoDescription:
+      "What law firm websites need to build trust and convert consultations in 2026: attorney bios, practice area pages, intake friction, and bar advertising rules.",
+    date: "2026-09-21",
+    readTime: "7 min read",
+    category: "Industry",
+    accent: "bg-sky-500/10 text-sky-600 dark:text-sky-400",
+    image: "/images/blog/web-design-for-law-firms.webp",
+    content: [
+      {
+        t: "p",
+        v: "Someone landing on a law firm's website is usually in a stressful, high-stakes moment, an accident, a divorce, a charge, and deciding who to trust with it in under a minute. That means a law firm site has a narrower job than most: establish credibility fast, and make the next step, a call or a consultation request, as frictionless as possible. A site that looks dated or generic actively works against a firm that may otherwise be excellent, because trust is being judged before a single word of copy is read.",
+      },
+      {
+        t: "h2",
+        v: "What builds trust in the first few seconds",
+      },
+      {
+        t: "ul",
+        v: [
+          "Real attorney photos and bios, not stock imagery or a vague \"our team\" page with no names",
+          "Visible credentials: bar admissions, years practicing, notable case results (within what your jurisdiction's advertising rules allow)",
+          "Genuine client testimonials, specific rather than generic, and compliant with your bar's rules on endorsements",
+          "A design that looks current and professionally built, not a templated layout that reads as dated the moment [design trends have moved past it](/blog/web-design-trends-us-2026)",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Practice area pages, not one generic \"services\" page",
+      },
+      {
+        t: "p",
+        v: "A single \"Practice Areas\" page listing six specialties in a bullet list ranks for almost nothing and reassures almost nobody. Someone searching \"DUI defense attorney\" wants a page that speaks directly to that situation, what the process looks like, what outcomes are realistic, what it costs to find out more, not a generalist page trying to serve every visitor at once. Dedicated pages per practice area are also simply how [local SEO](/blog/seo-for-small-business-us) works: Google ranks specific pages for specific, high-intent searches, not a homepage trying to cover everything.",
+      },
+      {
+        t: "h2",
+        v: "Making it painless to take the next step",
+      },
+      {
+        t: "p",
+        v: "The single highest-leverage change most law firm sites can make is shortening the path from \"I'm worried\" to \"I called or submitted a form.\" A prominent click-to-call number and a short intake form, name, phone, a one-line description of the situation, convert far better than a long questionnaire demanding every detail upfront. The same principle that [reduces friction on any contact form](/blog/contact-form-conversion-tips) applies with extra weight here: someone in crisis isn't going to fill out twelve fields before finding out if you can help.",
+      },
+      {
+        t: "h2",
+        v: "Compliance and advertising rules you can't ignore",
+      },
+      {
+        t: "p",
+        v: "Every state bar has its own advertising rules, commonly restricting guarantee-of-outcome language, requiring disclaimers on case results, and governing how testimonials can be presented. Review your specific jurisdiction's rules before publishing results or reviews, since violations can trigger bar discipline, not just an awkward correction. [Accessibility is a compliance issue here too](/blog/website-accessibility-ada-compliance-guide), law firm sites are a documented target for ADA demand letters, and a [proper privacy policy](/blog/website-privacy-policy-ccpa-compliance-guide) matters more than usual given how much sensitive personal information an intake form can collect.",
+      },
+      {
+        t: "note",
+        v: "Any case result or outcome statistic published on the site needs the disclaimer language your bar requires, results vary by case and jurisdiction, no outcome is guaranteed. Skipping this isn't a design oversight, it's a compliance risk.",
+      },
+      {
+        t: "p",
+        v: "A law firm's website is often the first impression a prospective client forms before ever speaking to someone, and in a field built on trust, that first impression carries more weight than most firms budget for. If your current site looks dated, buries your practice areas, or makes it harder than it should be to reach you, [tell us what you're working with](/services/web-design) and we'll tell you honestly what's actually costing you consultations.",
+      },
+    ],
+  },
+  {
+    slug: "google-ads-vs-seo-small-business",
+    title: "Google Ads vs. SEO: where should a small business put its first marketing dollar in 2026?",
+    excerpt:
+      "Ads buys instant visibility you pay for every click. SEO earns visibility you keep without paying per click, but takes months to build. A practical framework for choosing, or running both.",
+    seoTitle: "Google Ads vs SEO for Small Business (2026)",
+    seoDescription:
+      "Google Ads vs SEO compared for small business budgets: real cost differences, what each channel actually gets you, and when to run both at once.",
+    date: "2026-09-26",
+    readTime: "6 min read",
+    category: "Conversion",
+    accent: "bg-pink-500/10 text-pink-600 dark:text-pink-400",
+    image: "/images/blog/google-ads-vs-seo-small-business.webp",
+    content: [
+      {
+        t: "p",
+        v: "If you need leads this month, start with Google Ads, it buys visibility immediately and you can pause it the moment it isn't working. If you're building toward the next few years, start SEO now too, because [it takes months to show results no matter when you begin](/blog/how-long-does-seo-take), so delaying it only pushes that payoff further out. These aren't competing choices as much as they feel like one: most small businesses that can afford it should be running both, just with very different expectations for each.",
+      },
+      {
+        t: "h2",
+        v: "What Google Ads actually gets you",
+      },
+      {
+        t: "ul",
+        v: [
+          "Immediate placement at the top of search results, no waiting for Google to trust a new or improving page",
+          "Full control over exactly who sees your ad, by keyword, location, time of day, and device",
+          "You can pause, adjust, or kill a campaign instantly if it's not converting, with no sunk cost in the content itself",
+          "But every lead costs money for as long as you run it, there's no compounding asset left behind once you stop paying, and [the landing page you send that traffic to matters as much as the ad itself](/blog/landing-page-vs-homepage-ppc)",
+        ],
+      },
+      {
+        t: "h2",
+        v: "What SEO actually gets you",
+      },
+      {
+        t: "p",
+        v: "SEO builds a compounding asset: a page that ranks well keeps generating traffic without an ongoing per-click cost, and [a well-maintained blog keeps adding new entry points over time](/blog/does-my-business-need-a-blog) rather than being a one-time build. The tradeoff is real patience, meaningful results take months, not days, and there's no way to buy your way past that timeline the way you can with Ads.",
+      },
+      {
+        t: "h2",
+        v: "Real cost comparison at small-business budgets",
+      },
+      {
+        t: "p",
+        v: "Google Ads cost-per-click varies enormously by industry, from a couple of dollars in low-competition local niches to $50 or more for competitive legal or insurance terms, and that cost is ongoing for as long as the campaign runs. SEO is typically sold as a monthly retainer rather than per-click, and [realistic pricing depends heavily on your market and current site condition](/blog/seo-pricing-guide-small-business). The core difference isn't which is cheaper month to month, it's that Ads spend stops producing the moment you stop paying, while SEO work keeps paying out well after you've moved on to other priorities.",
+      },
+      {
+        t: "h2",
+        v: "When to run both at once",
+      },
+      {
+        t: "p",
+        v: "Ads make sense for immediate or seasonal demand, a launch, a sale, filling a slow month, while SEO builds in the background for the keywords and content that matter long term. Many businesses that invest consistently in both eventually scale back Ads spend on their own branded or core terms once organic rankings mature there, redirecting that budget toward competitive terms SEO hasn't reached yet.",
+      },
+      {
+        t: "h2",
+        v: "The mistake: treating it as either/or forever",
+      },
+      {
+        t: "p",
+        v: "The businesses that get the worst return usually picked one channel permanently based on an early impression, Ads felt expensive so they quit after a month, or SEO felt slow so they gave up before it had time to compound. Budget for each based on what it's actually good at: Ads for speed and control, SEO for durability, and revisit the split quarterly as your results come in, not once and never again.",
+      },
+      {
+        t: "note",
+        v: "Don't stop SEO the moment Ads starts converting, and don't assume SEO alone can cover an urgent, immediate need. They solve different timelines, not the same one at different speeds.",
+      },
+      {
+        t: "p",
+        v: "There's no universal right answer, only the right split for your budget, your timeline, and how much patience you actually have for a channel that compounds instead of converting instantly. If you want an honest read on where your first dollar should go, [tell us your situation](/services/seo) and we'll recommend the mix that actually fits, not just the channel we'd rather sell.",
+      },
+    ],
+  },
+  {
+    slug: "ecommerce-holiday-readiness-checklist",
+    title: "E-commerce holiday readiness checklist: what to fix on your site before Black Friday.",
+    excerpt:
+      "Most holiday traffic failures come from the same handful of preventable issues: slow checkout, broken mobile cart flows, and unclear shipping cutoffs. A pre-launch checklist that covers them.",
+    seoTitle: "E-commerce Holiday Readiness Checklist (2026)",
+    seoDescription:
+      "An e-commerce holiday readiness checklist: performance under load, checkout friction, shipping clarity, and the technical checks to run before Black Friday.",
+    date: "2026-10-01",
+    readTime: "6 min read",
+    category: "E-commerce",
+    accent: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
+    image: "/images/blog/ecommerce-holiday-readiness-checklist.webp",
+    content: [
+      {
+        t: "p",
+        v: "Most holiday e-commerce failures come from the same handful of preventable issues, year after year: a checkout that's slow under real traffic, a mobile cart flow that quietly breaks, or shipping cutoff dates that aren't clear until a customer's already paid. None of these require a site redesign to fix, they require a focused pass through the exact points where holiday shoppers actually drop off, run with enough lead time to fix what you find.",
+      },
+      {
+        t: "h2",
+        v: "Performance: your site needs to survive the traffic spike",
+      },
+      {
+        t: "p",
+        v: "Holiday traffic doesn't arrive evenly, it spikes hard around specific hours of specific days, and a site that loads fine on a normal Tuesday can slow to a crawl under that load. Revisit [the same Core Web Vitals fundamentals that matter every other week of the year](/blog/website-speed-optimization), but this time under simulated peak load, not just a single clean pageview test. A slow checkout page during a flash sale doesn't just lose that one sale, it loses every customer loading the page at the same moment.",
+      },
+      {
+        t: "h2",
+        v: "Checkout friction kills more holiday sales than slow pages",
+      },
+      {
+        t: "ul",
+        v: [
+          "Offer guest checkout, forcing an account creation before purchase is one of the most common cart-abandonment causes during high-intent holiday traffic",
+          "Minimize form fields to what's actually required for shipping and payment, [the same friction-reduction principles that apply to any form](/blog/contact-form-conversion-tips) apply directly to checkout",
+          "Support saved payment methods and digital wallets (Apple Pay, Google Pay) for one-tap completion on mobile",
+          "Make the total cost, including shipping, visible before the final step, a surprise shipping fee at checkout is a top reason for last-second abandonment",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Inventory and shipping clarity",
+      },
+      {
+        t: "ul",
+        v: [
+          "Show real-time stock levels on product pages, especially for anything likely to sell out, ambiguity here either kills urgency or creates false promises",
+          "Post a clear, prominent shipping cutoff date for guaranteed holiday delivery, and update it as the calendar moves closer to the holiday",
+          "Make your return policy visible before purchase, not buried in a footer link nobody finds until after a problem",
+        ],
+      },
+      {
+        t: "h2",
+        v: "Mobile is where most holiday shopping actually happens",
+      },
+      {
+        t: "p",
+        v: "A large and growing share of holiday purchases happen on a phone, often triggered by a social ad or a promotional email, which makes mobile checkout the highest-stakes part of the entire site during this period. If your platform choice (Shopify, WooCommerce, or otherwise) makes mobile checkout clunky, [this is the moment that cost actually shows up](/blog/shopify-vs-woocommerce-2026), not as an abstract platform comparison, but as lost holiday revenue in real time.",
+      },
+      {
+        t: "h2",
+        v: "The pre-Black-Friday technical checklist",
+      },
+      {
+        t: "ol",
+        v: [
+          "Run a real test transaction through the entire checkout flow yourself, on both desktop and mobile, with an actual card, not just a load test against the homepage",
+          "Confirm your payment gateway and SSL certificate are current and won't need renewal mid-season",
+          "Verify [Product and Offer schema](/blog/schema-markup-small-business-guide) is accurate and current, so Google Shopping listings reflect real pricing and availability",
+          "Check that conversion tracking and analytics are firing correctly on the actual purchase event, not just the page view",
+          "Audit last year's sale and promo pages for broken links or outdated discount codes still indexed and findable",
+        ],
+      },
+      {
+        t: "note",
+        v: "Run the test transaction yourself, with a real card, before the sale starts. A load test tells you the site survives traffic, it doesn't tell you the checkout button actually works under the conditions a real customer experiences.",
+      },
+      {
+        t: "p",
+        v: "The gap between a strong holiday season and a frustrating one is usually a handful of fixable issues caught with a few weeks of lead time, not a bigger ad budget. If you want your site stress-tested before the traffic arrives, [tell us what platform you're running](/services/ecommerce) and we'll tell you honestly what's actually at risk this season.",
       },
     ],
   },

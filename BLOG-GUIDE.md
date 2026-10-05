@@ -61,6 +61,8 @@ Every category has an accent color hardcoded alongside it. Reusing a category is
 | E-commerce | `bg-orange-500/10 text-orange-600 dark:text-orange-400` |
 | Performance | `bg-emerald-500/10 text-emerald-600 dark:text-emerald-400` |
 | Pricing | `bg-yellow-500/10 text-yellow-600 dark:text-yellow-400` |
+| Industry | `bg-sky-500/10 text-sky-600 dark:text-sky-400` |
+| Privacy | `bg-purple-500/10 text-purple-600 dark:text-purple-400` |
 
 Only introduce a new category + accent color pair if the post genuinely doesn't fit any of the above. Pick an unused Tailwind color to keep every category visually distinct on the blog grid.
 
@@ -138,6 +140,12 @@ crm-automation-for-insurance-agencies     (Industry)
 seo-pricing-guide-small-business          (SEO)
 technical-seo-checklist                   (SEO)
 how-long-does-seo-take                    (SEO)
+website-privacy-policy-ccpa-compliance-guide (Privacy)
+email-vs-sms-marketing-small-business     (Automation)
+web-design-for-restaurants                (Industry)
+web-design-for-law-firms                  (Industry)
+google-ads-vs-seo-small-business          (Conversion)
+ecommerce-holiday-readiness-checklist     (E-commerce)
 ```
 
 ## Avoid duplicate/cannibalizing topics
